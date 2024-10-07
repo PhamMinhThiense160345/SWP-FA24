@@ -1,0 +1,6 @@
+@Vegetarians_Assistant___Be_HostAddress = http://localhost:5036
+
+GET {{Vegetarians_Assistant___Be_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
