@@ -434,11 +434,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\DO AN\\BE\\Vegetarians Assistant _ BE\\Vegetarians Assistant _ BE.csproj",
+      "projectUniqueName": "C:\\CN9\\SWP490\\SWP490-FA24\\Vegetarians Assistant _ BE.csproj",
       "projectName": "Vegetarians Assistant _ BE",
-      "projectPath": "C:\\DO AN\\BE\\Vegetarians Assistant _ BE\\Vegetarians Assistant _ BE.csproj",
+      "projectPath": "C:\\CN9\\SWP490\\SWP490-FA24\\Vegetarians Assistant _ BE.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\DO AN\\BE\\Vegetarians Assistant _ BE\\obj\\",
+      "outputPath": "C:\\CN9\\SWP490\\SWP490-FA24\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
