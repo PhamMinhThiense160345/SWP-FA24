@@ -12,12 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Implement\" />
-    <Folder Include="Services\Interface\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Vegetarians Assistant.Repo\Vegetarians Assistant.Repo.csproj" />
+    <ProjectReference Include="..\Vegetarians Assistant.Services\Vegetarians Assistant.Services.csproj" />
   </ItemGroup>
 
 </Project>

@@ -599,6 +599,17 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Vegetarians Assistant.Services/1.0.0": {
+        "dependencies": {
+          "Vegetarians Assistant.Repo": "1.0.0"
+        },
+        "runtime": {
+          "Vegetarians Assistant.Services.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
       }
     }
   },
@@ -1078,6 +1089,11 @@
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
     },
     "Vegetarians Assistant.Repo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Vegetarians Assistant.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,7 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\Vegetarians Assistant\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\Vegetarians Assistant\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\2\\vegetarians assistant\\vegetarians assistant.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 623,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,6 +35,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\Vegetarians Assistant\\Vegetarians Assistant.API\\appsettings.json",
+              "RelativeDocumentMoniker": "Vegetarians Assistant.API\\appsettings.json",
+              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\Vegetarians Assistant\\Vegetarians Assistant.API\\appsettings.json",
+              "RelativeToolTip": "Vegetarians Assistant.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-08T11:58:16.267Z",
+              "EditorCaption": ""
             }
           ]
         },
