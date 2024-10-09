@@ -121,6 +121,8 @@ D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Ass
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Repo.dll
+D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Services.dll
+D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Services.pdb
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Repo.pdb
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.csproj.AssemblyReference.cache
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.GeneratedMSBuildEditorConfig.editorconfig
@@ -144,5 +146,3 @@ D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Ass
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.pdb
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.genruntimeconfig.cache
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\ref\Vegetarians Assistant.API.dll
-D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Services.dll
-D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Vegetarians Assistant.Services.pdb

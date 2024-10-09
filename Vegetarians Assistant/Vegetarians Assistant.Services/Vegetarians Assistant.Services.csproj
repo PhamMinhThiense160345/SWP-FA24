@@ -8,11 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Implement\" />
-    <Folder Include="Services\Interface\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Vegetarians Assistant.Repo\Vegetarians Assistant.Repo.csproj" />
   </ItemGroup>
 
