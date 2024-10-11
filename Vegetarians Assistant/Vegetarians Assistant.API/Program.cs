@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Vegetarians_Assistant.API.Mapper;
+using Vegetarians_Assistant.Repo.Entity;
+using Vegetarians_Assistant.Repo.Repositories.Implement;
+using Vegetarians_Assistant.Repo.Repositories.Interface;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +14,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Add connection string
+builder.Services.AddDbContext<VegetariansAssistantV3Context>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+//Add service to the container
+
+
+// Add AutoMapper
+builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
+
+//Memory cache
+builder.Services.AddMemoryCache();
+
+//Addcors
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -20,6 +41,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.MapControllers();
 
 app.MapControllers();
 

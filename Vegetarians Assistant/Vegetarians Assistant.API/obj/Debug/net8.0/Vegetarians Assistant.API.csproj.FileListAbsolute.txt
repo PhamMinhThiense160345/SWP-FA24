@@ -146,3 +146,4 @@ D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Ass
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.pdb
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\Vegetarians Assistant.API.genruntimeconfig.cache
 D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\ref\Vegetarians Assistant.API.dll
+D:\FPT\Learning\Capstone Project\project\2\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\AutoMapper.dll
