@@ -10,6 +10,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Admin
     public interface IUserManagementService
     {
         Task<List<UserView>> GetAllUser();
-        Task<UserView?> GetCustomerByUsername(string userName);
+        Task<UserView?> GetUserByUsername(string userName);
     }
 }

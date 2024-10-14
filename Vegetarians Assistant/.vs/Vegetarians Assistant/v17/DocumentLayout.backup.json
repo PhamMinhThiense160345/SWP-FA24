@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\admin\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant.services\\services\\implement\\admin\\usermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\interface\\admin\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant.services\\services\\interface\\admin\\iusermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\interface\\nutritionist\\idishmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{57185C35-F531-4A33-B016-98E5F1026085}|Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant.services\\services\\interface\\nutritionist\\idishmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp490-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\nutritionistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89D887BE-1EA0-45CD-80EA-D65C2F97CAF0}|Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant.api\\controllers\\nutritionistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 623,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,54 +46,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant.API\\Program.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
-              "RelativeToolTip": "Vegetarians Assistant.API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T04:28:29.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "IUserManagementService.cs",
               "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Admin\\IUserManagementService.cs",
               "RelativeDocumentMoniker": "Vegetarians Assistant.Services\\Services\\Interface\\Admin\\IUserManagementService.cs",
               "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Admin\\IUserManagementService.cs",
               "RelativeToolTip": "Vegetarians Assistant.Services\\Services\\Interface\\Admin\\IUserManagementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T04:00:30.335Z",
+              "WhenOpened": "2024-10-14T05:13:23.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserManagementService.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\UserManagementService.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant.Services\\Services\\Implement\\Admin\\UserManagementService.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\UserManagementService.cs",
-              "RelativeToolTip": "Vegetarians Assistant.Services\\Services\\Implement\\Admin\\UserManagementService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAqwFIAAAAtAAAAAAAAAA==",
+              "Title": "IDishManagementService.cs",
+              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Nutritionist\\IDishManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant.Services\\Services\\Interface\\Nutritionist\\IDishManagementService.cs",
+              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Nutritionist\\IDishManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant.Services\\Services\\Interface\\Nutritionist\\IDishManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T04:00:14.099Z",
+              "WhenOpened": "2024-10-14T05:13:22.099Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant.API\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Vegetarians Assistant.API\\Controllers\\UserController.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAcwFEAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "NutritionistController.cs",
+              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionistController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant.API\\Controllers\\NutritionistController.cs",
+              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionistController.cs",
+              "RelativeToolTip": "Vegetarians Assistant.API\\Controllers\\NutritionistController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T03:51:53.26Z",
+              "WhenOpened": "2024-10-14T05:00:42.712Z",
               "EditorCaption": ""
             }
           ]

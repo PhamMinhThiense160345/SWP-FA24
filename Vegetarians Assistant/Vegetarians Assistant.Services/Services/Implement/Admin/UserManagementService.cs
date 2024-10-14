@@ -60,7 +60,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<UserView?> GetCustomerByUsername(String username)
+        public async Task<UserView?> GetUserByUsername(String username)
         {
 
             try

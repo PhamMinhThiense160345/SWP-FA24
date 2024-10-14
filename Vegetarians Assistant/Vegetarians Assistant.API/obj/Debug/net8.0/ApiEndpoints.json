@@ -1,5 +1,51 @@
 [
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
+    "Method": "GetDishs",
+    "RelativePath": "api/v1/nutritionists/alldish",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.DishView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
+    "Method": "GetDishByNameDish",
+    "RelativePath": "api/v1/nutritionists/getDishByName/{name}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.DishView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",
@@ -21,7 +67,7 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
-    "Method": "GetCustomerByAccountID",
+    "Method": "GetUserByUserName",
     "RelativePath": "api/v1/users/getUserByUsername/{username}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -48,7 +94,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "Login",
-    "RelativePath": "api/v1/users/signin",
+    "RelativePath": "api/v1/users/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

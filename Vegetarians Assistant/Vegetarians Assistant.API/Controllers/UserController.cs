@@ -16,7 +16,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _loginAService = loginAService;
             _userManagementService = userManagementService;
         }
-        [HttpPost("/api/v1/users/signin")]
+        [HttpPost("/api/v1/users/login")]
         public async Task<IActionResult> Login([FromBody] LoginView loginInfo)
         {
             if (loginInfo.Email.IsNullOrEmpty())
@@ -70,9 +70,9 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
         [HttpGet("/api/v1/users/getUserByUsername/{username}")]
-        public async Task<ActionResult<UserView>> GetCustomerByAccountID(string username)
+        public async Task<ActionResult<UserView>> GetUserByUserName(string username)
         {
-            var userDetail = await _userManagementService.GetCustomerByUsername(username);
+            var userDetail = await _userManagementService.GetUserByUsername(username);
             if (userDetail == null)
             {
                 return NotFound("User not found");
