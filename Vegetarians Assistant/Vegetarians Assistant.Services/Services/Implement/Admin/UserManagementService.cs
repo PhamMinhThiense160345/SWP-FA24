@@ -100,5 +100,43 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<UserView?> GetUserByUserId(int id)
+        {
+            try
+            {
+                var user = await _unitOfWork.UserRepository.GetByIDAsync(id);
+                if (user != null)
+                {
+                    var userView = new UserView()
+                    {
+                        UserId = user.UserId,
+                        Email = user.Email,
+                        Username = user.Username,
+                        Fullname= user.Fullname,
+                        Status = user.Status,
+                        Weight = user.Weight,
+                        ActivityLevel= user.ActivityLevel,
+                        Address = user.Address,
+                        Age = user.Age,
+                        DietaryPreferenceId= user.DietaryPreferenceId,
+                        Gender= user.Gender,
+                        Height = user.Height,
+                        ImageUrl= user.ImageUrl,
+                        IsEmailVerified = user.IsEmailVerified,
+                        IsPhoneVerified = user.IsPhoneVerified,
+                        Password = user.Password,
+                        PhoneNumber = user.PhoneNumber,
+                        Profession = user.Profession,
+                        RoleId = user.RoleId
+                    };
+                    return userView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

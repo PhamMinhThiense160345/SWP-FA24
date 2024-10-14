@@ -80,5 +80,33 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<DishView?> GetDishByDishId(int id)
+        {
+            try
+            {
+                var dish = await _unitOfWork.DishRepository.GetByIDAsync(id);
+                if (dish != null)
+                {
+                    var dishView = new DishView()
+                    {
+                        DishId = dish.DishId,
+                        Name = dish.Name,
+                        Description = dish.Description,
+                        ImageUrl= dish.ImageUrl,
+                        DietaryPreferenceId= dish.DietaryPreferenceId,
+                        DishType = dish.DishType,
+                        Ingredients = dish.Ingredients,
+                        Price = dish.Price,
+                        Recipe= dish.Recipe
+                    };
+                    return dishView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

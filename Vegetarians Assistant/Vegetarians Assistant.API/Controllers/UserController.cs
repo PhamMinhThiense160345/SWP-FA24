@@ -79,5 +79,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return userDetail;
         }
+        [HttpGet("/api/v1/users/GetUserByID/{id}")]
+
+        public async Task<ActionResult<UserView>> GetUserByID(int id)
+        {
+            var userDetail = await _userManagementService.GetUserByUserId(id);
+            if (userDetail == null)
+            {
+                return NotFound("Users not found");
+            }
+            return Ok(userDetail);
+        }
     }
 }

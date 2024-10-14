@@ -36,5 +36,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return dishDetail;
         }
+        [HttpGet("/api/v1/nutritionists/GetDishByID/{id}")]
+
+        public async Task<ActionResult<DishView>> GetDishByID(int id)
+        {
+            var dishDetail = await _dishManagementService.GetDishByDishId(id);
+            if (dishDetail == null)
+            {
+                return NotFound("Dishs not found");
+            }
+            return Ok(dishDetail);
+        }
     }
 }
