@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vegetarians_Assistant.Services.Services.Interface.Customer
+namespace Vegetarians_Assistant.Services.Services.Implement.Customer
 {
-    internal interface ILoginC
+    internal class LoginCService
     {
     }
 }
