@@ -614,6 +614,7 @@
       },
       "Vegetarians Assistant.Services/1.0.0": {
         "dependencies": {
+          "AutoMapper": "13.0.1",
           "Vegetarians Assistant.Repo": "1.0.0"
         },
         "runtime": {

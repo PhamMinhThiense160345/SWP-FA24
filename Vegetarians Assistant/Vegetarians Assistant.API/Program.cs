@@ -3,6 +3,8 @@ using Vegetarians_Assistant.API.Mapper;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Implement;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
+using Vegetarians_Assistant.Services.Services.Implement.Admin;
+using Vegetarians_Assistant.Services.Services.Interface.Admin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,7 @@ builder.Services.AddDbContext<VegetariansAssistantV3Context>(options =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //Add service to the container
-
+builder.Services.AddScoped<ILoginAService, LoginAService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
