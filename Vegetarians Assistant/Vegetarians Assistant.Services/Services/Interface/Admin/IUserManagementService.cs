@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Services.ModelView;
 
 namespace Vegetarians_Assistant.Services.Services.Interface.Admin
 {
-    public interface ILoginAService
+    public interface IUserManagementService
     {
-        Task<UserView?> AuthenticateUser(LoginView loginInfo);
-
-        Task<bool> IsExistedEmail(string email);
+        Task<List<UserView>> GetAllUser();
+        Task<UserView?> GetCustomerByUsername(string userName);
     }
 }

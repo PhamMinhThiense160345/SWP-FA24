@@ -22,6 +22,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //Add service to the container
 builder.Services.AddScoped<ILoginAService, LoginAService>();
+builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
