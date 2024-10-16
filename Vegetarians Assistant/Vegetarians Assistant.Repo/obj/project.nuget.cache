@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O2J62U8xlP8=",
+  "dgSpecHash": "pHffRIWvMwM=",
   "success": true,
-  "projectFilePath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+  "projectFilePath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
