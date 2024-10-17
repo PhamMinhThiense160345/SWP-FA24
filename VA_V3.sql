@@ -28,7 +28,6 @@ CREATE TABLE Roles (
 INSERT INTO Roles (role_name)
 VALUES
 ('Admin'),       -- Vai trò Quản trị viên
-('Manager'),    -- Vai trò quản lí 
 ('Staff'),       -- Vai trò Nhân viên
 ('Customer'),   -- Vai trò Khách hàng
 ('Moderator'),    -- Vai trò Khách hàng
@@ -36,8 +35,8 @@ VALUES
 -- Bảng Users: Lưu trữ thông tin người dùng
 CREATE TABLE Users (
     user_id INT PRIMARY KEY IDENTITY(1,1), -- Khóa ch ính, tự động tăng
-    username VARCHAR(50) NOT NULL,         -- Tên đăng nhập
-	fullname VARCHAR(50) NOT NULL,         -- Tên đầy đủ
+    username VARCHAR(50) ,         -- Tên đăng nhập
+	fullname VARCHAR(50) ,         -- Tên đầy đủ
     password VARCHAR(50) NOT NULL,         -- Mật khẩu
     email VARCHAR(100),                    -- Email người dùng
     phone_number VARCHAR(15),              -- Số điện thoại
@@ -49,10 +48,9 @@ CREATE TABLE Users (
     gender VARCHAR(10),                    -- Giới tính
     profession VARCHAR(50),                -- Nghề nghiệp
     dietary_preference_id INT,             -- Tham chiếu đến bảng Dietary_Preferences (sở thích ăn uống)
-    status VARCHAR(20) DEFAULT 'active',   -- Trạng thái người dùng (active, inactive, banned)
+    status VARCHAR(20) DEFAULT 'active',   -- Trạng thái người dùng (active, inactive, banned, banSocical)
     role_id INT,                           -- Tham chiếu đến bảng Roles (vai trò người dùng)
 	activity_level VARCHAR(10),            -- Cột lưu cường độ hoạt động thể thao(low , med,hig)
-    is_email_verified BIT DEFAULT 0,       -- Xác minh email
     is_phone_verified BIT DEFAULT 0,       -- Xác minh số điện thoại
     FOREIGN KEY (dietary_preference_id) REFERENCES Dietary_Preferences(id), -- Liên kết với bảng Dietary_Preferences
     FOREIGN KEY (role_id) REFERENCES Roles(role_id) -- Liên kết với bảng Roles
@@ -174,7 +172,6 @@ CREATE TABLE Nutritional_Info (
 CREATE TABLE Fixed_Menus (
     fixed_menu_id INT PRIMARY KEY IDENTITY(1,1),
     name VARCHAR(100),               -- Tên của menu (menu 1, menu 2,...)
-    image_url VARCHAR(255),          -- Hình ảnh của menu
     description TEXT                 -- Mô tả cho menu (tuỳ chọn)
 );
 
@@ -183,23 +180,24 @@ CREATE TABLE Fixed_Menu_Items (
     id INT PRIMARY KEY IDENTITY(1,1),
     fixed_menu_id INT,              -- Liên kết đến bảng Fixed_Menus
     dish_id INT,                    -- Liên kết đến bảng Dishes
-    meal_time VARCHAR(10),          -- Phân loại món ăn theo bữa (breakfast, lunch, dinner)
+    /*meal_time VARCHAR(10),          -- Phân loại món ăn theo bữa (breakfast, lunch, dinner)*/
     FOREIGN KEY (fixed_menu_id) REFERENCES Fixed_Menus(fixed_menu_id),
     FOREIGN KEY (dish_id) REFERENCES Dishes(dish_id)
+	
 );
 
 
 CREATE TABLE Status (
     status_id INT PRIMARY KEY IDENTITY(1,1),
-    status_name VARCHAR(50) NOT NULL -- Tên trạng thái (pending, in_progress, delivered, completed, cancelled)
+    status_name VARCHAR(50) NOT NULL -- Tên trạng thái (pending, in_progress, delivering, delivered, cancelled)
 );
 
 INSERT INTO Status (status_name)
 VALUES
 ('pending'),        -- Đơn hàng đang chờ xử lý
 ('in_progress'),    -- Đơn hàng đang được xử lý
-('delivered'),      -- Đơn hàng đã được giao
-('completed'),      -- Đơn hàng đã hoàn thành
+('delivering'),      -- Đơn hàng đang  được giao
+('delivered'),      -- Đơn hàng đã giao xong
 ('cancelled');      -- Đơn hàng đã bị hủy
 
 
@@ -228,7 +226,6 @@ CREATE TABLE OrderItems (
     order_id INT,                            -- Liên kết đến bảng Orders
     dish_id INT,                             -- Liên kết đến bảng Dishes
     quantity INT,                            -- Số lượng món ăn trong đơn hàng
-    price DECIMAL(10,2),                     -- Giá của món ăn
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),   -- Liên kết đến bảng Orders
     FOREIGN KEY (dish_id) REFERENCES Dishes(dish_id)      -- Liên kết đến bảng Dishes
 );
@@ -254,20 +251,6 @@ CREATE TABLE Article_Likes (
     FOREIGN KEY (user_id) REFERENCES Users(user_id)           -- Khóa ngoại đến người dùng
 );
 
-
--- Bảng Restaurants: Lưu trữ thông tin về các địa điểm/quán ăn chay
-CREATE TABLE Restaurants (
-    restaurant_id INT PRIMARY KEY IDENTITY(1,1),
-    name VARCHAR(100) NOT NULL,           -- Tên nhà hàng
-    address VARCHAR(255) NOT NULL,        -- Địa chỉ nhà hàng
-    city VARCHAR(50),                     -- Thành phố
-    country VARCHAR(50),                  -- Quốc gia
-	activity_time VARCHAR(50),            -- Thời gian mở cửa - đóng cửa 
-    type VARCHAR(50),                     -- Loại nhà hàng (ví dụ: Chay, Vegan, etc.)
-    contact_number VARCHAR(20),           -- Số điện thoại liên hệ
-    description TEXT,                     -- Mô tả về nhà hàng
-    website VARCHAR(255),                 -- Trang web của nhà hàng (nếu có)
-);
 -- Bảng Comments: Bình luận của người dùng về món ăn và thực đơn
 
 CREATE TABLE Comments (
@@ -303,16 +286,6 @@ CREATE TABLE ArticleImages (
     FOREIGN KEY (article_id) REFERENCES Articles(article_id)
 );
 
--- Bảng để lưu nhiều hình ảnh cho bình luận
-CREATE TABLE CommentImages (
-    comment_image_id INT PRIMARY KEY IDENTITY(1,1),
-    comment_id INT,
-    image_url VARCHAR(255),
-    FOREIGN KEY (comment_id) REFERENCES Comments(comment_id)
-);
-
-
-
 CREATE TABLE Notification_Types (
     notification_type_id INT PRIMARY KEY IDENTITY(1,1),
     notification_type_name VARCHAR(50) NOT NULL  -- Tên loại thông báo (new_article, order_status, promotion, friend_request, etc.)
@@ -326,7 +299,6 @@ VALUES
 ('new_follower');
 
 
--- Bảng Notifications: Lưu trữ thông tin về các thông báo đẩy gửi cho người dùng
 CREATE TABLE Notifications (
     notification_id INT PRIMARY KEY IDENTITY(1,1),
     user_id INT,
@@ -334,9 +306,11 @@ CREATE TABLE Notifications (
     content TEXT,
     sent_date DATETIME DEFAULT GETDATE(),
     status VARCHAR(20) DEFAULT 'unread', -- Các giá trị: 'unread', 'read'
+    device_token VARCHAR(255), -- Thêm device token để đẩy thông báo
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (notification_type_id) REFERENCES Notification_Types(notification_type_id)
 );
+
 
 
 --cài đặt thông báo 
@@ -350,27 +324,25 @@ CREATE TABLE Notification_Settings (
     FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
-
-
--- Bảng HealthRecords: Lưu trữ thông tin sức khỏe của người dùng theo thời gian
-CREATE TABLE HealthRecords (
-    record_id INT PRIMARY KEY IDENTITY(1,1),
-    user_id INT,
-    record_date DATE,
-    weight DECIMAL(5,2),
-    height DECIMAL(5,2),
-    notes TEXT,
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
---follow người dùng 
-CREATE TABLE Follows (
-    follow_id INT PRIMARY KEY IDENTITY(1,1),
-    follower_id INT,                        -- Người theo dõi (follower)
-    followed_id INT,                        -- Người được theo dõi (followed)
+CREATE TABLE Followers (
+    follower_id INT PRIMARY KEY IDENTITY(1,1),
+    user_id INT,                            -- Người được theo dõi (followed)
+    follower_user_id INT,                   -- Người theo dõi (follower)
     follow_date DATETIME,                   -- Ngày bắt đầu theo dõi
-    FOREIGN KEY (follower_id) REFERENCES Users(user_id),  -- Khóa ngoại tới người theo dõi
-    FOREIGN KEY (followed_id) REFERENCES Users(user_id)   -- Khóa ngoại tới người được theo dõi
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),          -- Khóa ngoại tới người được theo dõi
+    FOREIGN KEY (follower_user_id) REFERENCES Users(user_id)  -- Khóa ngoại tới người theo dõi
 );
+
+CREATE TABLE Followings (
+    following_id INT PRIMARY KEY IDENTITY(1,1),
+    user_id INT,                             -- Người theo dõi (follower)
+    following_user_id INT,                   -- Người được theo dõi (followed)
+    follow_date DATETIME,                    -- Ngày bắt đầu theo dõi
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),          -- Khóa ngoại tới người theo dõi
+    FOREIGN KEY (following_user_id) REFERENCES Users(user_id) -- Khóa ngoại tới người được theo dõi
+);
+
+
 --phương thức thanh toán 
 CREATE TABLE Payment_Methods (
     payment_method_id INT PRIMARY KEY IDENTITY(1,1),
@@ -418,38 +390,3 @@ CREATE TABLE User_Memberships (
 
 
 
-
-
--- Bảng NutritionTracking: Theo dõi thông tin dinh dưỡng hàng ngày của người dùng
-/*CREATE TABLE NutritionTracking (
-    tracking_id INT PRIMARY KEY IDENTITY(1,1),
-    user_id INT,
-    tracking_date DATE,
-    calories INT,
-    protein DECIMAL(5,2),
-    carbs DECIMAL(5,2),
-    fat DECIMAL(5,2),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
--- Bảng Dish_Restaurant: Liên kết món ăn với nhà hàng
-CREATE TABLE Dish_Restaurant (
-    restaurant_id INT,
-    dish_id INT,
-    PRIMARY KEY (restaurant_id, dish_id),
-    FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id),
-    FOREIGN KEY (dish_id) REFERENCES Dishes(dish_id)
-);
-
--- Bảng này chỉ cần thêm dữ liệu khi hệ thống vận hành
-
-
-CREATE TABLE Discount_History (
-    discount_id INT PRIMARY KEY IDENTITY(1,1),
-    user_id INT,                                  -- Liên kết đến bảng Users (FK)
-    order_id INT,                                 -- Liên kết đến bảng Orders (FK)
-    discount_amount DECIMAL(10,2),                -- Giá trị discount đã áp dụng
-    discount_date DATE DEFAULT GETDATE(),         -- Ngày discount được sử dụng
-    FOREIGN KEY (user_id) REFERENCES Users(user_id), -- Liên kết với bảng Users
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id) -- Liên kết với bảng Orders
-);
-*/
