@@ -158,5 +158,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
+    "Method": "RegisterStaff",
+    "RelativePath": "api/v1/users/RegisterStaff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "Vegetarians_Assistant.Services.ModelView.UserView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

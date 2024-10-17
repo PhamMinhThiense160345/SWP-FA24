@@ -12,5 +12,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Admin
         Task<List<UserView>> GetAllUser();
         Task<UserView?> GetUserByUsername(string userName);
         Task<UserView?> GetUserByUserId(int id);
+        Task<bool> CreateUserStaff(UserView newUser);
+        Task<bool> IsExistedEmail(string email);
     }
 }

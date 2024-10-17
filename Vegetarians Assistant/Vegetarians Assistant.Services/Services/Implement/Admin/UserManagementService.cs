@@ -138,5 +138,73 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<bool> CreateUserStaff(UserView newUser)
+        {
+            try
+            {
+                bool status = false;
+                newUser.Status = "active";
+                newUser.RoleId = 3;
+                var user = _mapper.Map<User>(newUser);
+                await _unitOfWork.UserRepository.InsertAsync(user);
+                await _unitOfWork.SaveAsync();
+                var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
+                if (insertedUser != null)
+                {
+                    if (newUser.RoleId == 3)
+                    {
+                        var staff = new User
+                        {
+                            Username = insertedUser.Username,
+                            Fullname = newUser.Fullname,
+                            Email = insertedUser.Email,
+                            Address = insertedUser.Address,
+                            PhoneNumber = insertedUser.PhoneNumber,
+                            Age = insertedUser.Age,
+                            Gender = insertedUser.Gender,
+                            Height = insertedUser.Height,
+                            Weight = insertedUser.Weight,
+                            ActivityLevel = insertedUser.ActivityLevel,
+                            DietaryPreferenceId = insertedUser.DietaryPreferenceId,
+                            Profession = insertedUser.Profession,
+                            Password = insertedUser.Password
+                        };
+                        await _unitOfWork.UserRepository.InsertAsync(staff);
+                        await _unitOfWork.SaveAsync();
+                        status = true;
+                    }
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                var insertedAccount = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
+                if (insertedAccount != null)
+                {
+                    await _unitOfWork.UserRepository.DeleteAsync(insertedAccount);
+                    await _unitOfWork.SaveAsync();
+                }
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> IsExistedEmail(string email)
+        {
+            try
+            {
+                bool status = true;
+                var existed = (await _unitOfWork.UserRepository.FindAsync(e => e.Email == email)).FirstOrDefault();
+                if (existed == null)
+                {
+                    status = false;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }
