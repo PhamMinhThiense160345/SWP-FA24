@@ -17,7 +17,5 @@ public partial class Comment
 
     public virtual Article Article { get; set; } = null!;
 
-    public virtual ICollection<CommentImage> CommentImages { get; set; } = new List<CommentImage>();
-
     public virtual User User { get; set; } = null!;
 }

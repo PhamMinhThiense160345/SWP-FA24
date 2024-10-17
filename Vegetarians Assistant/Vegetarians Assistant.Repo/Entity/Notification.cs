@@ -17,6 +17,8 @@ public partial class Notification
 
     public string? Status { get; set; }
 
+    public string? DeviceToken { get; set; }
+
     public virtual NotificationType? NotificationType { get; set; }
 
     public virtual User? User { get; set; }

@@ -11,8 +11,6 @@ public partial class FixedMenuItem
 
     public int? DishId { get; set; }
 
-    public string? MealTime { get; set; }
-
     public virtual Dish? Dish { get; set; }
 
     public virtual FixedMenu? FixedMenu { get; set; }

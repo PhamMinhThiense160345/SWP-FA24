@@ -45,7 +45,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                     Gender = user.Gender,
                     Height = user.Height,
                     ImageUrl = user.ImageUrl,
-                    IsEmailVerified = user.IsEmailVerified,
                     IsPhoneVerified = user.IsPhoneVerified,
                     PhoneNumber = user.PhoneNumber,
                     Profession = user.Profession,

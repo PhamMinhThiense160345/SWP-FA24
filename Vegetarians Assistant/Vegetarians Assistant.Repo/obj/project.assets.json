@@ -4415,11 +4415,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+      "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
       "projectName": "Vegetarians Assistant.Repo",
-      "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+      "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
       "packagesPath": "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP490-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
+      "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Pham Huu Tri\\AppData\\Roaming\\NuGet\\NuGet.Config",

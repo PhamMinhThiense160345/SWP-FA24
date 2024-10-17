@@ -7,9 +7,9 @@ public partial class User
 {
     public int UserId { get; set; }
 
-    public string Username { get; set; } = null!;
+    public string? Username { get; set; }
 
-    public string Fullname { get; set; } = null!;
+    public string? Fullname { get; set; }
 
     public string Password { get; set; } = null!;
 
@@ -39,8 +39,6 @@ public partial class User
 
     public string? ActivityLevel { get; set; }
 
-    public bool? IsEmailVerified { get; set; }
-
     public bool? IsPhoneVerified { get; set; }
 
     public virtual ICollection<ArticleLike> ArticleLikes { get; set; } = new List<ArticleLike>();
@@ -53,11 +51,13 @@ public partial class User
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual ICollection<Follow> FollowFolloweds { get; set; } = new List<Follow>();
+    public virtual ICollection<Follower> FollowerFollowerUsers { get; set; } = new List<Follower>();
 
-    public virtual ICollection<Follow> FollowFollowers { get; set; } = new List<Follow>();
+    public virtual ICollection<Follower> FollowerUsers { get; set; } = new List<Follower>();
 
-    public virtual ICollection<HealthRecord> HealthRecords { get; set; } = new List<HealthRecord>();
+    public virtual ICollection<Following> FollowingFollowingUsers { get; set; } = new List<Following>();
+
+    public virtual ICollection<Following> FollowingUsers { get; set; } = new List<Following>();
 
     public virtual ICollection<NotificationSetting> NotificationSettings { get; set; } = new List<NotificationSetting>();
 
