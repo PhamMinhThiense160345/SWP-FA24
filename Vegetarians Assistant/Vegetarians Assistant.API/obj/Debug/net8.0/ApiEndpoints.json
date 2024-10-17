@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RegisterCustomer",
+    "RelativePath": "api/v1/customers/RegisterCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "Vegetarians_Assistant.Services.ModelView.UserView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
     "Method": "GetDishs",
     "RelativePath": "api/v1/nutritionists/alldish",
@@ -154,6 +170,38 @@
       {
         "Name": "loginInfo",
         "Type": "Vegetarians_Assistant.Services.ModelView.LoginView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
+    "Method": "RegisterModerator",
+    "RelativePath": "api/v1/users/RegisterModerator",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "Vegetarians_Assistant.Services.ModelView.UserView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
+    "Method": "RegisterNutritionist",
+    "RelativePath": "api/v1/users/RegisterNutritionist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUser",
+        "Type": "Vegetarians_Assistant.Services.ModelView.UserView",
         "IsRequired": true
       }
     ],

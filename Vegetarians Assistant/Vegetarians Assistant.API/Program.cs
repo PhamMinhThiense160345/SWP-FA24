@@ -4,8 +4,10 @@ using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Implement;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.Services.Implement.Admin;
+using Vegetarians_Assistant.Services.Services.Implement.Customer;
 using Vegetarians_Assistant.Services.Services.Implement.Nutritionist;
 using Vegetarians_Assistant.Services.Services.Interface.Admin;
+using Vegetarians_Assistant.Services.Services.Interface.Customer;
 using Vegetarians_Assistant.Services.Services.Interface.Nutritionist;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ILoginAService, LoginAService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<IDishManagementService, DishManagementService>();
+builder.Services.AddScoped<ICustomerManagementService, CustomerManagementService>();
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
