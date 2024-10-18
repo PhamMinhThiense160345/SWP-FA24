@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Vegetarians_Assistant.API.Mapper;
 using Vegetarians_Assistant.Repo.Entity;
@@ -45,6 +46,7 @@ var app = builder.Build();
     app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthorization();
 
