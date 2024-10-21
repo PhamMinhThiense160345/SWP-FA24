@@ -25,32 +25,33 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             try
             {
                 var users = (await _unitOfWork.UserRepository.GetAsync()).ToList();
-                List<UserView> userViews = new List<UserView>();
-                foreach (User user in users)
-                {
-                    var userView = new UserView()
-                    {
-                        UserId = user.UserId,
-                        Email = user.Email,
-                        ActivityLevel = user.ActivityLevel,
-                        Address = user.Address,
-                        Age = user.Age,
-                        DietaryPreferenceId = user.DietaryPreferenceId,
-                        Fullname = user.Fullname,
-                        Gender = user.Gender,
-                        Height = user.Height,
-                        ImageUrl = user.ImageUrl,
-                        IsPhoneVerified = user.IsPhoneVerified,
-                        Password = user.Password,
-                        PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession,
-                        RoleId = user.RoleId,
-                        Status = user.Status,
-                        Username = user.Username,
-                        Weight = user.Weight
-                    };
-                    userViews.Add(userView);
-                }
+                List<UserView> userViews = _mapper.Map<List<UserView>>(users);
+                    //new List<UserView>();
+                //foreach (User user in users)
+                //{
+                //    var userView = new UserView()
+                //    {
+                //        UserId = user.UserId,
+                //        Email = user.Email,
+                //        ActivityLevel = user.ActivityLevel,
+                //        Address = user.Address,
+                //        Age = user.Age,
+                //        DietaryPreferenceId = user.DietaryPreferenceId,
+                //        Fullname = user.Fullname,
+                //        Gender = user.Gender,
+                //        Height = user.Height,
+                //        ImageUrl = user.ImageUrl,
+                //        IsPhoneVerified = user.IsPhoneVerified,
+                //        Password = user.Password,
+                //        PhoneNumber = user.PhoneNumber,
+                //        Profession = user.Profession,
+                //        RoleId = user.RoleId,
+                //        Status = user.Status,
+                //        Username = user.Username,
+                //        Weight = user.Weight
+                //    };
+                //    userViews.Add(userView);
+                //}
                 return userViews;
 
             }
