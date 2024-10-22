@@ -30,9 +30,26 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost]
+        public async Task<IActionResult> editArticle([FromBody] ArticleView view)
+        {
+            try
+            {
+                var article = await _articleService.Edit(view);
+                if (article == null)
+                {
+                    return BadRequest("Cập nhập bài viết thất bại");
+                }
 
-        
-        
+                return Ok(article);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
+
+
+        }
     }
 }

@@ -14,7 +14,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
     {
         Task<ArticleView> GetById(int id);
 
-    
+        Task<ArticleView> Edit(ArticleView view);
+
 
     }
 
