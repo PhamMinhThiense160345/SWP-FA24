@@ -24,6 +24,6 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public int? DietaryPreferenceId { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal? Price { get; set; } //dâdawdwadaw
     }
 }
