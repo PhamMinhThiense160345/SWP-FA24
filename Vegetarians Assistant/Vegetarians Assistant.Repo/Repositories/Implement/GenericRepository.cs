@@ -12,7 +12,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly VegetariansAssistantV3Context context;
+        protected readonly VegetariansAssistantV3Context context;
         private readonly DbSet<TEntity> dbSet;
         public GenericRepository(VegetariansAssistantV3Context context)
         {
