@@ -23,7 +23,16 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-
+        public async Task<ArticleView?> Edit(ArticleView? view)
+        {
+            if (view != null)
+            {
+                var article = _mapper.Map<Article>(view);
+                await _articleRepo.UpdateAsync(article);
+                return view;
+            }
+            return null;
+        }
 
         public async Task<ArticleView?> GetById(int id)
         {
