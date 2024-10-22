@@ -13,8 +13,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
     public interface IArticleService
     {
         Task<ArticleView> GetById(int id);
+        Task<ArticleView> Edit(ArticleView view);
 
-    
 
     }
 
