@@ -33,6 +33,17 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             }
             return null;
         }
+        public async Task<List<CommentView>> getArticleComment(int id)
+        {
+            var comments = await _articleRepo.getArticleComment(id);
+            var commentViews = new List<CommentView>();
+            foreach (var comment in comments)
+            {
+                commentViews.Add(MapToCommentView(comment));
+            }
+
+            return commentViews;
+        }
 
         public async Task<ArticleView?> GetById(int id)
         {
@@ -63,8 +74,16 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return articleView;
         }
+        public CommentView MapToCommentView(Comment comment)
+        {
+            var commentView = _mapper.Map<CommentView>(comment);
 
-       
-        
+            commentView.UserName = comment.User.Username;
+
+            return commentView;
+        }
+
+
+
     }
 }

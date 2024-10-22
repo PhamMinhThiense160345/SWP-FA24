@@ -48,6 +48,19 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("comment/{id}")]
+        public async Task<IActionResult> getArticleComment(int id)
+        {
+            try
+            {
+                var comments = await _articleService.getArticleComment(id);
+                return Ok(comments);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
 
