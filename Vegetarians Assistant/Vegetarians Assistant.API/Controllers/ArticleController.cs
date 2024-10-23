@@ -50,6 +50,25 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("changeStatus/{id}")]
+        public async Task<IActionResult> changeStatusArticle(int id)
+        {
+            try
+            {
+                var article = await _articleService.changeStatus(id);
+                if (article == null)
+                {
+                    return BadRequest("Cập nhập trạng thái bài viết thất bại");
+                }
+
+                return Ok(article);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("comment/{id}")]
         public async Task<IActionResult> getArticleComment(int id)
         {
