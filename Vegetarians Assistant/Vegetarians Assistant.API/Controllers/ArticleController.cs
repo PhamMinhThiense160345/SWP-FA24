@@ -30,6 +30,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost]
         public async Task<IActionResult> editArticle([FromBody] ArticleView view)
         {
@@ -48,6 +49,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet("comment/{id}")]
         public async Task<IActionResult> getArticleComment(int id)
         {
@@ -62,6 +64,19 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("comment")]
+        public async Task<IActionResult> postComment(CommentView view)
+        {
+            try
+            {
+                await _articleService.postComment(view);
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
     }
