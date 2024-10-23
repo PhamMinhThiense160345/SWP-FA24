@@ -24,6 +24,5 @@ namespace Vegetarians_Assistant.Repo.Repositories.Repo
         {
             return await context.Comments.Include(c => c.User).Where(c => c.ArticleId == id).ToListAsync();
         }
-
     }
 }

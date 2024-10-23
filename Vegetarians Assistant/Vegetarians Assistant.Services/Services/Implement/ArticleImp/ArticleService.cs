@@ -23,6 +23,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
+
         public async Task<ArticleView?> Edit(ArticleView? view)
         {
             if (view != null)
@@ -33,6 +34,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             }
             return null;
         }
+
         public async Task<List<CommentView>> getArticleComment(int id)
         {
             var comments = await _articleRepo.getArticleComment(id);
@@ -45,11 +47,18 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             return commentViews;
         }
 
+        public async Task<CommentView> postComment(CommentView view)
+        {
+            var comment = _mapper.Map<Comment>(view);
+            _unitOfWork.CommentRepository.UpdateAsync(comment);
+            return view;
+        }
+
         public async Task<ArticleView?> GetById(int id)
         {
             var article = await _articleRepo.GetByIDAsync(id);
 
-            if(article != null)
+            if (article != null)
             {
                 return MapToArticleView(article);
             }
@@ -74,6 +83,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return articleView;
         }
+
         public CommentView MapToCommentView(Comment comment)
         {
             var commentView = _mapper.Map<CommentView>(comment);
@@ -82,8 +92,5 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return commentView;
         }
-
-
-
     }
 }
