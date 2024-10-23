@@ -91,6 +91,22 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             commentView.UserName = comment.User.Username;
 
             return commentView;
+
+        }
+
+        public async Task<ArticleView> changeStatus(int id)
+        {
+            var view = await GetById(id);
+            if (view != null)
+            {
+                view.Status = Enum.Enum.STATUS.INACTIVE;
+
+                await Edit(view);
+
+                return view;
+            }
+
+            return null;
         }
     }
 }
