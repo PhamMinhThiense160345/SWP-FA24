@@ -171,6 +171,20 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("/api/v1/customers/EditCustomer")]
+        public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
+        {
+            try
+            {
+                var view = await _customerManagementService.EditUser(newUser);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
+            }
+        }
+
 
 
 
