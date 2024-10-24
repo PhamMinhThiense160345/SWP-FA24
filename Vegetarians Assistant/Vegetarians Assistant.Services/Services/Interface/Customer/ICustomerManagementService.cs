@@ -13,5 +13,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Customer
         Task<bool> IsExistedPhone(string phone);
         Task<bool> CreateUserCustomer(UserView newUser);
         Task<UserView?> GetUserByUsername(string userName);
+        Task<UserView?> EditUser(UserView view);
     }
 }
