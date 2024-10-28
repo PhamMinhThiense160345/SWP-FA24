@@ -12,7 +12,8 @@ namespace Vegetarians_Assistant.API.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IArticleService _articleService;
-        public ArticleController(IArticleService articleService) {
+        public ArticleController(IArticleService articleService)
+        {
             _articleService = articleService;
         }
 
@@ -23,7 +24,8 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 var article = await _articleService.GetById(id);
                 return Ok(article);
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -43,6 +45,20 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("comment")]
+        public async Task<IActionResult> postComment(CommentView view)
+        {
+            try
+            {
+                await _articleService.postComment(view);
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
+
+        }
     }
 }

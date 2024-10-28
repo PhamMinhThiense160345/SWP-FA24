@@ -37,8 +37,14 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return commentViews;
         }
+        public async Task<CommentView> postComment(CommentView view)
+        {
+            var comment = _mapper.Map<Comment>(view);
+            _unitOfWork.CommentRepository.UpdateAsync(comment);
+            return view;
+        }
 
-    
+
 
         public async Task<ArticleView?> GetById(int id)
         {
