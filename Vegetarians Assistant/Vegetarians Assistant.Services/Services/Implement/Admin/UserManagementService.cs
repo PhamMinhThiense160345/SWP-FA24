@@ -79,7 +79,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Address = user.Address,
                         Age = user.Age,
                         DietaryPreferenceId = user.DietaryPreferenceId,
-                        Fullname = user.Fullname,
                         Gender = user.Gender,
                         Height = user.Height,
                         ImageUrl = user.ImageUrl,
@@ -111,7 +110,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         UserId = user.UserId,
                         Email = user.Email,
                         Username = user.Username,
-                        Fullname= user.Fullname,
                         Status = user.Status,
                         Weight = user.Weight,
                         ActivityLevel= user.ActivityLevel,
@@ -154,7 +152,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         var staff = new User
                         {
                             Username = insertedUser.Username,
-                            Fullname = newUser.Fullname,
                             Email = insertedUser.Email,
                             Address = insertedUser.Address,
                             PhoneNumber = insertedUser.PhoneNumber,
@@ -203,7 +200,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         var staff = new User
                         {
                             Username = insertedUser.Username,
-                            Fullname = newUser.Fullname,
                             Email = insertedUser.Email,
                             Address = insertedUser.Address,
                             PhoneNumber = insertedUser.PhoneNumber,
@@ -253,7 +249,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         var staff = new User
                         {
                             Username = insertedUser.Username,
-                            Fullname = newUser.Fullname,
                             Email = insertedUser.Email,
                             Address = insertedUser.Address,
                             PhoneNumber = insertedUser.PhoneNumber,

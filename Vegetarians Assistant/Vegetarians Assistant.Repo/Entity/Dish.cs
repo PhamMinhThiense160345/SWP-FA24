@@ -13,8 +13,6 @@ public partial class Dish
 
     public string? Description { get; set; }
 
-    public string? Ingredients { get; set; }
-
     public string? Recipe { get; set; }
 
     public string? ImageUrl { get; set; }
@@ -23,13 +21,15 @@ public partial class Dish
 
     public decimal? Price { get; set; }
 
+    public string? Status { get; set; }
+
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+
     public virtual DietaryPreference? DietaryPreference { get; set; }
+
+    public virtual ICollection<DishIngredient> DishIngredients { get; set; } = new List<DishIngredient>();
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<FixedMenuItem> FixedMenuItems { get; set; } = new List<FixedMenuItem>();
-
-    public virtual ICollection<NutritionalInfo> NutritionalInfos { get; set; } = new List<NutritionalInfo>();
-
-    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }

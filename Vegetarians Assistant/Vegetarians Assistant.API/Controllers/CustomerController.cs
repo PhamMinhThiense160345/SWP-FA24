@@ -26,14 +26,6 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest("User name must be 100 characters or less");
             }
-            if (string.IsNullOrEmpty(newUser.Fullname))
-            {
-                return BadRequest("Full name is required");
-            }
-            if (newUser.Fullname.Length > 100)
-            {
-                return BadRequest("Full name must be 100 characters or less");
-            }
 
             if (string.IsNullOrEmpty(newUser.Email))
             {

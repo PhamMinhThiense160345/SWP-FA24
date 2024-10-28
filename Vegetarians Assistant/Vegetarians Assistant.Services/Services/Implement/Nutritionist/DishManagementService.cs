@@ -36,7 +36,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                         DietaryPreferenceId = dish.DietaryPreferenceId,
                         DishType = dish.DishType,
                         ImageUrl = dish.ImageUrl,
-                        Ingredients = dish.Ingredients,
+                        Status = dish.Status,
                         Price = dish.Price,
                         Recipe = dish.Recipe
                     };
@@ -65,7 +65,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                         Description = dish.Description,
                         ImageUrl= dish.ImageUrl,
                         DishType= dish.DishType,
-                        Ingredients= dish.Ingredients,
+                        Status = dish.Status,
                         Price = dish.Price,
                         Recipe= dish.Recipe,
                         DietaryPreferenceId = dish.DietaryPreferenceId
@@ -95,7 +95,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                         ImageUrl= dish.ImageUrl,
                         DietaryPreferenceId= dish.DietaryPreferenceId,
                         DishType = dish.DishType,
-                        Ingredients = dish.Ingredients,
+                        Status = dish.Status,
                         Price = dish.Price,
                         Recipe= dish.Recipe
                     };

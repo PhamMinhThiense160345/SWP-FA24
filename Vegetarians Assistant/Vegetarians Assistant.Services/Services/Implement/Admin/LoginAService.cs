@@ -41,7 +41,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                     Address = user.Address,
                     Age = user.Age,
                     DietaryPreferenceId = user.DietaryPreferenceId,
-                    Fullname = user.Fullname,
                     Gender = user.Gender,
                     Height = user.Height,
                     ImageUrl = user.ImageUrl,

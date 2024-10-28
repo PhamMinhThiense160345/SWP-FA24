@@ -9,8 +9,6 @@ public partial class User
 
     public string? Username { get; set; }
 
-    public string? Fullname { get; set; }
-
     public string Password { get; set; } = null!;
 
     public string? Email { get; set; }
@@ -39,11 +37,17 @@ public partial class User
 
     public string? ActivityLevel { get; set; }
 
+    public string? Goal { get; set; }
+
     public bool? IsPhoneVerified { get; set; }
+
+    public bool? IsEmailVerified { get; set; }
 
     public virtual ICollection<ArticleLike> ArticleLikes { get; set; } = new List<ArticleLike>();
 
     public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
+
+    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
@@ -68,4 +72,6 @@ public partial class User
     public virtual Role? Role { get; set; }
 
     public virtual UserMembership? UserMembership { get; set; }
+
+    public virtual ICollection<UsersNutritionCriterion> UsersNutritionCriteria { get; set; } = new List<UsersNutritionCriterion>();
 }

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Vegetarians Assistant.API.props" />
+</Project>

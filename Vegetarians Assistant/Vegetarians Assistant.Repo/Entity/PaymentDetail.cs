@@ -9,7 +9,7 @@ public partial class PaymentDetail
 
     public int? OrderId { get; set; }
 
-    public int? PaymentMethodId { get; set; }
+    public string? PaymentMethod { get; set; }
 
     public string? PaymentStatus { get; set; }
 
@@ -19,7 +19,7 @@ public partial class PaymentDetail
 
     public decimal? Amount { get; set; }
 
-    public virtual Order? Order { get; set; }
+    public decimal? RefundAmount { get; set; }
 
-    public virtual PaymentMethod? PaymentMethod { get; set; }
+    public virtual Order? Order { get; set; }
 }

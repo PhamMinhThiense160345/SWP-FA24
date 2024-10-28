@@ -75,7 +75,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                         Address = user.Address,
                         Age = user.Age,
                         DietaryPreferenceId = user.DietaryPreferenceId,
-                        Fullname = user.Fullname,
                         Gender = user.Gender,
                         Height = user.Height,
                         ImageUrl = user.ImageUrl,
@@ -114,7 +113,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                         var staff = new User
                         {
                             Username = insertedUser.Username,
-                            Fullname = newUser.Fullname,
                             Email = insertedUser.Email,
                             Address = insertedUser.Address,
                             PhoneNumber = insertedUser.PhoneNumber,

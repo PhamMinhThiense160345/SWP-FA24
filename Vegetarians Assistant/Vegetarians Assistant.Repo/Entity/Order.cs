@@ -15,23 +15,19 @@ public partial class Order
 
     public string? DeliveryAddress { get; set; }
 
-    public string? PaymentMethod { get; set; }
-
-    public string? Note { get; set; }
+    public string? Status { get; set; }
 
     public decimal? DeliveryFee { get; set; }
 
-    public int? StatusId { get; set; }
+    public decimal? DeliveryFailedFee { get; set; }
 
     public DateTime? CompletedTime { get; set; }
 
+    public string? Note { get; set; }
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
-
     public virtual ICollection<PaymentDetail> PaymentDetails { get; set; } = new List<PaymentDetail>();
-
-    public virtual Status? Status { get; set; }
 
     public virtual User? User { get; set; }
 }
