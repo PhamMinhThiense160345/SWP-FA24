@@ -143,5 +143,17 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<UserView?> EditUser(UserView view)
+        {
+            var user = _mapper.Map<User>(view);
+            if (user != null)
+            {
+                await _unitOfWork.UserRepository.UpdateAsync(user);
+                await _unitOfWork.SaveAsync();
+                return view;
+            }
+
+            return null;
+        }
     }
 }
