@@ -20,6 +20,9 @@ namespace Vegetarians_Assistant.Repo.Repositories.Repo
             return await context.Articles.Include(a => a.Author).Include(a => a.ArticleLikes).FirstOrDefaultAsync(a => a.ArticleId == id);
         }
 
-     
+        public async Task<List<Comment>> getArticleComment(int id)
+        {
+            return await context.Comments.Include(c => c.User).Where(c => c.ArticleId == id).ToListAsync();
+        }
     }
 }
