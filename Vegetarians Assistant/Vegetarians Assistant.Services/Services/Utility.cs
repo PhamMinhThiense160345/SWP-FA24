@@ -49,22 +49,7 @@ namespace Vegetarians_Assistant.Services.Util
                     message = "User name must be 100 characters or less"
                 };
             }
-            if (string.IsNullOrEmpty(newUser.Fullname))
-            {
-                return new ErrorView
-                {
-                    status = 400,
-                    message = "Full name is required"
-                };
-            }
-            if (newUser.Fullname.Length > 100)
-            {
-                return new ErrorView
-                {
-                    status = 400,
-                    message = "Full name must be 100 characters or less"
-                };
-            }
+           
 
             if (string.IsNullOrEmpty(newUser.Email))
             {
