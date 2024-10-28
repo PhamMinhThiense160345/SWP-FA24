@@ -6,13 +6,9 @@ namespace Vegetarians_Assistant.API.Mapper
 {
     public class Mapping : Profile
     {
-        public Mapping()
+        public Mapping() 
         {
             CreateMap<User, UserView>().ReverseMap();
-            CreateMap<Article, ArticleView>().ReverseMap();
-            CreateMap<Comment, CommentView>().ReverseMap();
-          
-
         }
     }
 }
