@@ -457,13 +457,7 @@ D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vege
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Mono.TextTemplating.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\System.CodeDom.dll
 D:\FPT\Learning\Capstone Project\project\new\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\System.Composition.AttributedModel.dll
