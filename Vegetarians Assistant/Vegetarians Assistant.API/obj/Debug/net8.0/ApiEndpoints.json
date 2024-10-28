@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "getArticleDetail",
+    "RelativePath": "api/Article/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "RegisterCustomer",
     "RelativePath": "api/v1/customers/RegisterCustomer",
