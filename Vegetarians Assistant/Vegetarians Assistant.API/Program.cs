@@ -56,11 +56,10 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
 app.UseCors();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.MapControllers();
 
