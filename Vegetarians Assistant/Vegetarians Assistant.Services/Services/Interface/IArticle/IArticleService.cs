@@ -15,6 +15,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
         Task<ArticleView> GetById(int id);
 
         Task<List<CommentView>> getArticleComment(int id);
+        Task<CommentView> postComment(CommentView view);
+
 
     }
 
