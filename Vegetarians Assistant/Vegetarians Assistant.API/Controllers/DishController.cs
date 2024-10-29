@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Vegetarians_Assistant.Services.ModelView;
-using Vegetarians_Assistant.Services.Services.Interface.Nutritionist;
+using Vegetarians_Assistant.Services.Services.Interface.Dish;
 
 namespace Vegetarians_Assistant.API.Controllers
 {

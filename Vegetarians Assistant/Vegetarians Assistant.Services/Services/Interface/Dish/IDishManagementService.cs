@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Services.ModelView;
 
-namespace Vegetarians_Assistant.Services.Services.Interface.Nutritionist
+namespace Vegetarians_Assistant.Services.Services.Interface.Dish
 {
     public interface IDishManagementService
     {

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
-using Vegetarians_Assistant.Services.Services.Interface.Nutritionist;
+using Vegetarians_Assistant.Services.Services.Interface.Dish;
 
-namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
+namespace Vegetarians_Assistant.Services.Services.Implement.Dish
 {
     public class DishManagementService : IDishManagementService
     {
@@ -26,18 +26,40 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
             {
                 var dishs = (await _unitOfWork.DishRepository.GetAsync()).ToList();
                 List<DishView> dishViews = new List<DishView>();
-                foreach (Dish dish in dishs)
+
+                var dietaryPreferenceIds = new HashSet<int>();
+                foreach (var dish in dishs)
+                {
+                    if (dish.DietaryPreferenceId.HasValue)
+                    {
+                        dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
+                    }
+                }
+
+                // Lấy danh sách DietaryPreferences từ repository
+                var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
+
+                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in dietaryPreferences)
+                {
+                    preferenceDictionary[preference.Id] = preference.PreferenceName;
+                }
+
+                foreach (var dish in dishs)
                 {
                     var dishView = new DishView()
                     {
                         DishId = dish.DishId,
                         Name = dish.Name,
                         Description = dish.Description,
-                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         DishType = dish.DishType,
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
-                        Recipe = dish.Recipe
+                        Recipe = dish.Recipe,
+                        PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
+                    ? preferenceDictionary[dish.DietaryPreferenceId.Value]
+                    : null
                     };
                     dishViews.Add(dishView);
                 }
@@ -56,6 +78,26 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
             {
                 var dishes = await _unitOfWork.DishRepository.GetAsync(c => c.DishType == dishType);
                 var dishViews = new List<DishView>();
+
+                var dietaryPreferenceIds = new HashSet<int>();
+                foreach (var dish in dishes)
+                {
+                    if (dish.DietaryPreferenceId.HasValue)
+                    {
+                        dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
+                    }
+                }
+
+                // Lấy danh sách DietaryPreferences từ repository
+                var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
+
+                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in dietaryPreferences)
+                {
+                    preferenceDictionary[preference.Id] = preference.PreferenceName;
+                }
+
                 foreach (var dish in dishes)
                 {
                     dishViews.Add(new DishView
@@ -63,11 +105,13 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                         DishId = dish.DishId,
                         Name = dish.Name,
                         Description = dish.Description,
-                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         DishType = dish.DishType,
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
-                        Recipe = dish.Recipe
+                        Recipe = dish.Recipe,
+                        PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
+                    ? preferenceDictionary[dish.DietaryPreferenceId.Value]
+                    : null
                     });
                 }
                 return dishViews;
@@ -84,6 +128,26 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
             {
                 var dishes = await _unitOfWork.DishRepository.FindAsync(c => c.Name.Contains(name));
                 var dishViews = new List<DishView>();
+
+                var dietaryPreferenceIds = new HashSet<int>();
+                foreach (var dish in dishes)
+                {
+                    if (dish.DietaryPreferenceId.HasValue)
+                    {
+                        dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
+                    }
+                }
+
+                // Lấy danh sách DietaryPreferences từ repository
+                var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
+
+                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in dietaryPreferences)
+                {
+                    preferenceDictionary[preference.Id] = preference.PreferenceName;
+                }
+
                 foreach (var dish in dishes)
                 {
                     dishViews.Add(new DishView
@@ -91,11 +155,13 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                         DishId = dish.DishId,
                         Name = dish.Name,
                         Description = dish.Description,
-                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         DishType = dish.DishType,
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
-                        Recipe = dish.Recipe
+                        Recipe = dish.Recipe,
+                        PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
+                    ? preferenceDictionary[dish.DietaryPreferenceId.Value]
+                    : null
                     });
                 }
                 return dishViews;
@@ -113,16 +179,23 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                 var dish = await _unitOfWork.DishRepository.GetByIDAsync(id);
                 if (dish != null)
                 {
+                    string? preferenceName = null;
+                    if (dish.DietaryPreferenceId.HasValue)
+                    {
+                        var dietaryPreference = await _unitOfWork.DietaryPreferenceRepository.GetByIDAsync(dish.DietaryPreferenceId.Value);
+                        preferenceName = dietaryPreference?.PreferenceName;
+                    }
+
                     var dishView = new DishView()
                     {
                         DishId = dish.DishId,
                         Name = dish.Name,
                         Description = dish.Description,
                         ImageUrl= dish.ImageUrl,
-                        DietaryPreferenceId= dish.DietaryPreferenceId,
                         DishType = dish.DishType,
                         Price = dish.Price,
-                        Recipe= dish.Recipe
+                        Recipe= dish.Recipe,
+                        PreferenceName = preferenceName
                     };
                     return dishView;
                 }
