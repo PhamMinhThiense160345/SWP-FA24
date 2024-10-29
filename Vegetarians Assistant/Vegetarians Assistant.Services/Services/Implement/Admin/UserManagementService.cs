@@ -81,7 +81,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Height = user.Height,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession
+                        Profession = user.Profession,
+                        Status = user.Status,
+                        RoleId = user.RoleId
                     };
                     return userView;
                 }
@@ -113,7 +115,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Height = user.Height,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession
+                        Profession = user.Profession,
+                        Status = user.Status,
+                        RoleId = user.RoleId
                     };
                     return userView;
                 }
