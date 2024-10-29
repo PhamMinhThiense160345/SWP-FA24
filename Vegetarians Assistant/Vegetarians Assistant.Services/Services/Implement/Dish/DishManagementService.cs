@@ -49,35 +49,63 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Nutritionist
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<DishView?> GetDishByname(string name)
+        public async Task<List<DishView?>> GetDishByDishType(string dishType)
         {
 
             try
             {
-                var dish = (await _unitOfWork.DishRepository.FindAsync(c => c.Name == name)).FirstOrDefault();
-                if (dish != null)
+                var dishes = await _unitOfWork.DishRepository.GetAsync(c => c.DishType == dishType);
+                var dishViews = new List<DishView>();
+                foreach (var dish in dishes)
                 {
-                    var dishview = new DishView()
+                    dishViews.Add(new DishView
                     {
                         DishId = dish.DishId,
                         Name = dish.Name,
                         Description = dish.Description,
-                        ImageUrl= dish.ImageUrl,
-                        DishType= dish.DishType,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
+                        DishType = dish.DishType,
+                        ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
-                        Recipe= dish.Recipe,
-                        DietaryPreferenceId = dish.DietaryPreferenceId
-                    };
-                    return dishview;
+                        Recipe = dish.Recipe
+                    });
                 }
-                return null;
-
+                return dishViews;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<List<DishView?>> GetDishByname(string name)
+        {
+
+            try
+            {
+                var dishes = await _unitOfWork.DishRepository.FindAsync(c => c.Name.Contains(name));
+                var dishViews = new List<DishView>();
+                foreach (var dish in dishes)
+                {
+                    dishViews.Add(new DishView
+                    {
+                        DishId = dish.DishId,
+                        Name = dish.Name,
+                        Description = dish.Description,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
+                        DishType = dish.DishType,
+                        ImageUrl = dish.ImageUrl,
+                        Price = dish.Price,
+                        Recipe = dish.Recipe
+                    });
+                }
+                return dishViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        
         public async Task<DishView?> GetDishByDishId(int id)
         {
             try

@@ -80,9 +80,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishs",
-    "RelativePath": "api/v1/nutritionists/alldish",
+    "RelativePath": "api/v1/dishs/alldish",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -100,9 +100,35 @@
     ]
   },
   {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "GetDishByDishType",
+    "RelativePath": "api/v1/dishs/getDishByDishType/{dishType}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dishType",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.DishView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishByID",
-    "RelativePath": "api/v1/nutritionists/GetDishByID/{id}",
+    "RelativePath": "api/v1/dishs/GetDishByID/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -126,9 +152,9 @@
     ]
   },
   {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionistController",
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishByNameDish",
-    "RelativePath": "api/v1/nutritionists/getDishByName/{name}",
+    "RelativePath": "api/v1/dishs/getDishByName/{name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -141,7 +167,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Vegetarians_Assistant.Services.ModelView.DishView",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.DishView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

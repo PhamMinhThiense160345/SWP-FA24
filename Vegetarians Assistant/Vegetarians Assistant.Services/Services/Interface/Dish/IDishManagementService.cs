@@ -10,7 +10,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Nutritionist
     public interface IDishManagementService
     {
         Task<List<DishView>> GetAllDish();
-        Task<DishView?> GetDishByname(string name);
+        Task<List<DishView?>> GetDishByname(string name);
+        Task<List<DishView?>> GetDishByDishType(string dishType);
         Task<DishView?> GetDishByDishId(int id);
     }
 }

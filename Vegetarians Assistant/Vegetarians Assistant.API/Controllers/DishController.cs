@@ -7,14 +7,14 @@ namespace Vegetarians_Assistant.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NutritionistController : ControllerBase
+    public class DishController : ControllerBase
     {
         private readonly IDishManagementService _dishManagementService;
-        public NutritionistController(IDishManagementService dishManagementService)
+        public DishController(IDishManagementService dishManagementService)
         {
             _dishManagementService = dishManagementService;
         }
-        [HttpGet("/api/v1/nutritionists/alldish")]
+        [HttpGet("/api/v1/dishs/alldish")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishs()
         {
 
@@ -26,8 +26,8 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishsList);
         }
 
-        [HttpGet("/api/v1/nutritionists/getDishByName/{name}")]
-        public async Task<ActionResult<DishView>> GetDishByNameDish(string name)
+        [HttpGet("/api/v1/dishs/getDishByName/{name}")]
+        public async Task<ActionResult<IEnumerable<DishView>>> GetDishByNameDish(string name)
         {
             var dishDetail = await _dishManagementService.GetDishByname(name);
             if (dishDetail == null)
@@ -36,7 +36,18 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return dishDetail;
         }
-        [HttpGet("/api/v1/nutritionists/GetDishByID/{id}")]
+
+        [HttpGet("/api/v1/dishs/getDishByDishType/{dishType}")]
+        public async Task<ActionResult<IEnumerable<DishView>>> GetDishByDishType(string dishType)
+        {
+            var dishDetail = await _dishManagementService.GetDishByDishType(dishType);
+            if (dishDetail == null)
+            {
+                return NotFound("Dish not found");
+            }
+            return Ok(dishDetail);
+        }
+        [HttpGet("/api/v1/dishs/GetDishByID/{id}")]
 
         public async Task<ActionResult<DishView>> GetDishByID(int id)
         {
