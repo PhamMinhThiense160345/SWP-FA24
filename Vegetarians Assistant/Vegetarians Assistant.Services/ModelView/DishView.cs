@@ -16,8 +16,6 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public string? Description { get; set; }
 
-        public string? Ingredients { get; set; }
-
         public string? Recipe { get; set; }
 
         public string? ImageUrl { get; set; }
