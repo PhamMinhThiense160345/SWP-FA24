@@ -33,7 +33,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 }
                 UserView? userView = new UserView()
                 {
-                    UserId = user.UserId,
                     Email = user.Email,
                     Password = user.Password,
                     Username = user.Username,
@@ -43,12 +42,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                     DietaryPreferenceId = user.DietaryPreferenceId,
                     Gender = user.Gender,
                     Height = user.Height,
-                    ImageUrl = user.ImageUrl,
-                    IsPhoneVerified = user.IsPhoneVerified,
                     PhoneNumber = user.PhoneNumber,
                     Profession = user.Profession,
-                    RoleId = user.RoleId,
-                    Status = user.Status,
                     Weight = user.Weight
                 };
                 return userView;

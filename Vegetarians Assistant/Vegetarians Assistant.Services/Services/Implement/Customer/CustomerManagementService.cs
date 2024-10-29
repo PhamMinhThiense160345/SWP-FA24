@@ -66,9 +66,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                 {
                     var userView = new UserView()
                     {
-                        UserId = user.UserId,
                         Email = user.Email,
-                        Status = user.Status,
                         Username = user.Username,
                         Weight = user.Weight,
                         ActivityLevel = user.ActivityLevel,
@@ -77,12 +75,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                         DietaryPreferenceId = user.DietaryPreferenceId,
                         Gender = user.Gender,
                         Height = user.Height,
-                        ImageUrl = user.ImageUrl,
-                        IsPhoneVerified = user.IsPhoneVerified,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession,
-                        RoleId = user.RoleId
+                        Profession = user.Profession
                     };
                     return userView;
                 }
@@ -101,14 +96,14 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
             {
                 bool status = false;
                 newUser.Status = "active";
-                newUser.RoleId = 4;
+                newUser.RoleId = 3;
                 var user = _mapper.Map<User>(newUser);
                 await _unitOfWork.UserRepository.InsertAsync(user);
                 await _unitOfWork.SaveAsync();
                 var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
                 if (insertedUser != null)
                 {
-                    if (newUser.RoleId == 4)
+                    if (newUser.RoleId == 3)
                     {
                         var staff = new User
                         {
@@ -125,7 +120,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                             Profession = insertedUser.Profession,
                             Password = insertedUser.Password
                         };
-                        await _unitOfWork.UserRepository.InsertAsync(staff);
                         await _unitOfWork.SaveAsync();
                         status = true;
                     }

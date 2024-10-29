@@ -70,9 +70,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 {
                     var userView = new UserView()
                     {
-                        UserId = user.UserId,
                         Email = user.Email,
-                        Status = user.Status,
                         Username= user.Username,
                         Weight = user.Weight,
                         ActivityLevel = user.ActivityLevel,
@@ -81,12 +79,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         DietaryPreferenceId = user.DietaryPreferenceId,
                         Gender = user.Gender,
                         Height = user.Height,
-                        ImageUrl = user.ImageUrl,
-                        IsPhoneVerified = user.IsPhoneVerified,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession,
-                        RoleId = user.RoleId
+                        Profession = user.Profession
                     };
                     return userView;
                 }
@@ -107,10 +102,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 {
                     var userView = new UserView()
                     {
-                        UserId = user.UserId,
                         Email = user.Email,
                         Username = user.Username,
-                        Status = user.Status,
                         Weight = user.Weight,
                         ActivityLevel= user.ActivityLevel,
                         Address = user.Address,
@@ -118,12 +111,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         DietaryPreferenceId= user.DietaryPreferenceId,
                         Gender= user.Gender,
                         Height = user.Height,
-                        ImageUrl= user.ImageUrl,
-                        IsPhoneVerified = user.IsPhoneVerified,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
-                        Profession = user.Profession,
-                        RoleId = user.RoleId
+                        Profession = user.Profession
                     };
                     return userView;
                 }
@@ -134,137 +124,28 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 throw new Exception(ex.Message);
             }
         }
-        public async Task<bool> CreateUserStaff(UserView newUser)
+        public async Task<bool> CreateUserStaff(StaffView newUser)
         {
             try
             {
                 bool status = false;
                 newUser.Status = "active";
-                newUser.RoleId = 3;
                 var user = _mapper.Map<User>(newUser);
                 await _unitOfWork.UserRepository.InsertAsync(user);
                 await _unitOfWork.SaveAsync();
                 var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
                 if (insertedUser != null)
                 {
-                    if (newUser.RoleId == 3)
-                    {
                         var staff = new User
                         {
                             Username = insertedUser.Username,
                             Email = insertedUser.Email,
-                            Address = insertedUser.Address,
                             PhoneNumber = insertedUser.PhoneNumber,
-                            Age = insertedUser.Age,
-                            Gender = insertedUser.Gender,
-                            Height = insertedUser.Height,
-                            Weight = insertedUser.Weight,
-                            ActivityLevel = insertedUser.ActivityLevel,
-                            DietaryPreferenceId = insertedUser.DietaryPreferenceId,
-                            Profession = insertedUser.Profession,
-                            Password = insertedUser.Password
+                            Password = insertedUser.Password,
+                            RoleId = insertedUser.RoleId
                         };
-                        await _unitOfWork.UserRepository.InsertAsync(staff);
                         await _unitOfWork.SaveAsync();
                         status = true;
-                    }
-                }
-                return status;
-            }
-            catch (Exception ex)
-            {
-                var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
-                if (insertedUser != null)
-                {
-                    await _unitOfWork.UserRepository.DeleteAsync(insertedUser);
-                    await _unitOfWork.SaveAsync();
-                }
-                throw new Exception(ex.Message);
-            }
-        }
-        public async Task<bool> CreateUserNutritionist(UserView newUser)
-        {
-            try
-            {
-                bool status = false;
-                newUser.Status = "active";
-                newUser.RoleId = 6;
-                var user = _mapper.Map<User>(newUser);
-                await _unitOfWork.UserRepository.InsertAsync(user);
-                await _unitOfWork.SaveAsync();
-                var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
-                if (insertedUser != null)
-                {
-                    if (newUser.RoleId == 6)
-                    {
-                        var staff = new User
-                        {
-                            Username = insertedUser.Username,
-                            Email = insertedUser.Email,
-                            Address = insertedUser.Address,
-                            PhoneNumber = insertedUser.PhoneNumber,
-                            Age = insertedUser.Age,
-                            Gender = insertedUser.Gender,
-                            Height = insertedUser.Height,
-                            Weight = insertedUser.Weight,
-                            ActivityLevel = insertedUser.ActivityLevel,
-                            DietaryPreferenceId = insertedUser.DietaryPreferenceId,
-                            Profession = insertedUser.Profession,
-                            Password = insertedUser.Password
-                        };
-                        await _unitOfWork.UserRepository.InsertAsync(staff);
-                        await _unitOfWork.SaveAsync();
-                        status = true;
-                    }
-                }
-                return status;
-            }
-            catch (Exception ex)
-            {
-                var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
-                if (insertedUser != null)
-                {
-                    await _unitOfWork.UserRepository.DeleteAsync(insertedUser);
-                    await _unitOfWork.SaveAsync();
-                }
-                throw new Exception(ex.Message);
-            }
-        }
-
-        public async Task<bool> CreateUserModerator(UserView newUser)
-        {
-            try
-            {
-                bool status = false;
-                newUser.Status = "active";
-                newUser.RoleId = 5;
-                var user = _mapper.Map<User>(newUser);
-                await _unitOfWork.UserRepository.InsertAsync(user);
-                await _unitOfWork.SaveAsync();
-                var insertedUser = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == newUser.Email)).FirstOrDefault();
-                if (insertedUser != null)
-                {
-                    if (newUser.RoleId == 5)
-                    {
-                        var staff = new User
-                        {
-                            Username = insertedUser.Username,
-                            Email = insertedUser.Email,
-                            Address = insertedUser.Address,
-                            PhoneNumber = insertedUser.PhoneNumber,
-                            Age = insertedUser.Age,
-                            Gender = insertedUser.Gender,
-                            Height = insertedUser.Height,
-                            Weight = insertedUser.Weight,
-                            ActivityLevel = insertedUser.ActivityLevel,
-                            DietaryPreferenceId = insertedUser.DietaryPreferenceId,
-                            Profession = insertedUser.Profession,
-                            Password = insertedUser.Password
-                        };
-                        await _unitOfWork.UserRepository.InsertAsync(staff);
-                        await _unitOfWork.SaveAsync();
-                        status = true;
-                    }
                 }
                 return status;
             }

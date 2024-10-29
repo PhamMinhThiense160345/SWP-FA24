@@ -8,7 +8,6 @@ namespace Vegetarians_Assistant.Services.ModelView
 {
     public class UserView
     {
-        public int UserId { get; set; }
 
         public string Username { get; set; } = null!;
 
@@ -19,8 +18,6 @@ namespace Vegetarians_Assistant.Services.ModelView
         public string? PhoneNumber { get; set; }
 
         public string? Address { get; set; }
-
-        public string? ImageUrl { get; set; }
 
         public int? Height { get; set; }
 
@@ -39,9 +36,5 @@ namespace Vegetarians_Assistant.Services.ModelView
         public int? RoleId { get; set; }
 
         public string? ActivityLevel { get; set; }
-
-        public bool? IsEmailVerified { get; set; }
-
-        public bool? IsPhoneVerified { get; set; }
     }
 }
