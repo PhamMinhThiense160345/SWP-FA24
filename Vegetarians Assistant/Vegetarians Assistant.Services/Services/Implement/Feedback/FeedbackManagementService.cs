@@ -90,42 +90,69 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
             }
         }
 
-        public async Task<FeedbackView?> GetFeedbackByFeedbackId(int id)
+        public async Task<List<FeedbackView?>> GetFeedbackByDishId(int id)
         {
             try
             {
-                var feedback = await _unitOfWork.FeedbackRepository.GetByIDAsync(id);
-                if (feedback != null)
+                var feedbacks = await _unitOfWork.FeedbackRepository.GetAsync(c => c.DishId == id);
+                List<FeedbackView> feedbackViews = new List<FeedbackView>();
+
+                var dishIds = new HashSet<int>();
+                foreach (var feedback in feedbacks)
                 {
-                    string? dishName = null;
                     if (feedback.DishId.HasValue)
                     {
-                        var dish = await _unitOfWork.DishRepository.GetByIDAsync(feedback.DishId.Value);
-                        dishName = dish?.Name;
+                        dishIds.Add(feedback.DishId.Value);
                     }
+                }
 
-                    string? userName = null;
+                var dishes = await _unitOfWork.DishRepository.GetAsync(dp => dishIds.Contains(dp.DishId));
+
+                var preferenceDictionary1 = new Dictionary<int, string>();
+                foreach (var preference in dishes)
+                {
+                    preferenceDictionary1[preference.DishId] = preference.Name;
+                }
+
+                var userIds = new HashSet<int>();
+                foreach (var feedback in feedbacks)
+                {
                     if (feedback.UserId.HasValue)
                     {
-                        var dish = await _unitOfWork.UserRepository.GetByIDAsync(feedback.UserId.Value);
-                        userName = dish?.Username;
+                        userIds.Add(feedback.UserId.Value);
                     }
+                }
 
+                var users = await _unitOfWork.UserRepository.GetAsync(dp => userIds.Contains(dp.UserId));
+
+                var preferenceDictionary2 = new Dictionary<int, string>();
+                foreach (var preference in users)
+                {
+                    preferenceDictionary2[preference.UserId] = preference.Username;
+                }
+
+                foreach (var feedback in feedbacks)
+                {
                     var feedbackView = new FeedbackView()
                     {
                         FeedbackId = feedback.FeedbackId,
                         DishId = feedback.DishId,
-                        DishName = dishName,
+                        DishName = feedback.DishId.HasValue && preferenceDictionary1.ContainsKey(feedback.DishId.Value)
+                    ? preferenceDictionary1[feedback.DishId.Value]
+                    : null,
                         UserId = feedback.UserId,
-                        Username = userName,
+                        Username = feedback.UserId.HasValue && preferenceDictionary2.ContainsKey(feedback.UserId.Value)
+                    ? preferenceDictionary2[feedback.UserId.Value]
+                    : null,
                         OrderId = feedback.OrderId,
                         Rating = feedback.Rating,
                         FeedbackContent = feedback.FeedbackContent,
                         FeedbackDate = feedback.FeedbackDate
                     };
-                    return feedbackView;
+                    feedbackViews.Add(feedbackView);
                 }
-                return null;
+                return feedbackViews;
+
             }
             catch (Exception ex)
             {

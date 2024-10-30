@@ -84,7 +84,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return commentView;
         }
-        public async Task<List<ArticleView?>> GetArticleByAuthorId(int id)
+        public async Task<List<ArticleView?>> GetArticleByRoleId(int id)
         {
             try
             {

@@ -58,10 +58,10 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("/api/v1/articles/GetArticleByAuthorId/{id}")]
+        [HttpGet("/api/v1/articles/GetArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
         {
-            var articleDetail = await _articleService.GetArticleByAuthorId(id);
+            var articleDetail = await _articleService.GetArticleByRoleId(id);
             if (articleDetail == null)
             {
                 return NotFound("Article not found");
