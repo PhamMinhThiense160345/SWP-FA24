@@ -66,13 +66,13 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                 {
                     var userView = new UserView()
                     {
+                        UserId = user.UserId,
                         Email = user.Email,
                         Username = user.Username,
                         Weight = user.Weight,
                         ActivityLevel = user.ActivityLevel,
                         Address = user.Address,
                         Age = user.Age,
-                        DietaryPreferenceId = user.DietaryPreferenceId,
                         Gender = user.Gender,
                         Height = user.Height,
                         Password = user.Password,

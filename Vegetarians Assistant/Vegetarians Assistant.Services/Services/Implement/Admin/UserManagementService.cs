@@ -25,70 +25,103 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             try
             {
                 var users = (await _unitOfWork.UserRepository.GetAsync()).ToList();
-                List<UserView> userViews = _mapper.Map<List<UserView>>(users);
-                    //new List<UserView>();
-                //foreach (User user in users)
-                //{
-                //    var userView = new UserView()
-                //    {
-                //        UserId = user.UserId,
-                //        Email = user.Email,
-                //        ActivityLevel = user.ActivityLevel,
-                //        Address = user.Address,
-                //        Age = user.Age,
-                //        DietaryPreferenceId = user.DietaryPreferenceId,
-                //        Fullname = user.Fullname,
-                //        Gender = user.Gender,
-                //        Height = user.Height,
-                //        ImageUrl = user.ImageUrl,
-                //        IsPhoneVerified = user.IsPhoneVerified,
-                //        Password = user.Password,
-                //        PhoneNumber = user.PhoneNumber,
-                //        Profession = user.Profession,
-                //        RoleId = user.RoleId,
-                //        Status = user.Status,
-                //        Username = user.Username,
-                //        Weight = user.Weight
-                //    };
-                //    userViews.Add(userView);
-                //}
-                return userViews;
+                List<UserView> userViews = new List<UserView>();
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public async Task<UserView?> GetUserByUsername(String username)
-        {
+                var roleIds = new HashSet<int>();
+                foreach (var user in users)
+                {
+                    if (user.RoleId.HasValue)
+                    {
+                        roleIds.Add(user.RoleId.Value);
+                    }
+                }
 
-            try
-            {
-                var user = (await _unitOfWork.UserRepository.FindAsync(c => c.Username == username)).FirstOrDefault();
-                if (user != null)
+                var roles = await _unitOfWork.RoleRepository.GetAsync(dp => roleIds.Contains(dp.RoleId));
+
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in roles)
+                {
+                    preferenceDictionary[preference.RoleId] = preference.RoleName;
+                }
+                foreach (var user in users)
                 {
                     var userView = new UserView()
                     {
+                        UserId = user.UserId,
                         Email = user.Email,
-                        Username= user.Username,
+                        Username = user.Username,
                         Weight = user.Weight,
                         ActivityLevel = user.ActivityLevel,
                         Address = user.Address,
                         Age = user.Age,
-                        DietaryPreferenceId = user.DietaryPreferenceId,
                         Gender = user.Gender,
                         Height = user.Height,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
                         Profession = user.Profession,
                         Status = user.Status,
-                        RoleId = user.RoleId
+                        RoleId = user.RoleId,
+                        RoleName = user.RoleId.HasValue && preferenceDictionary.ContainsKey(user.RoleId.Value)
+                    ? preferenceDictionary[user.RoleId.Value]
+                    : null
                     };
-                    return userView;
+                    userViews.Add(userView);
                 }
-                return null;
+                return userViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<List<UserView?>> GetUserByUsername(string userName)
+        {
 
+            try
+            {
+                var users = (await _unitOfWork.UserRepository.FindAsync(c => c.Username.Contains(userName)));
+                List<UserView> userViews = new List<UserView>();
+
+                var roleIds = new HashSet<int>();
+                foreach (var user in users)
+                {
+                    if (user.RoleId.HasValue)
+                    {
+                        roleIds.Add(user.RoleId.Value);
+                    }
+                }
+
+                var roles = await _unitOfWork.RoleRepository.GetAsync(dp => roleIds.Contains(dp.RoleId));
+
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in roles)
+                {
+                    preferenceDictionary[preference.RoleId] = preference.RoleName;
+                }
+                foreach (var user in users)
+                {
+                    userViews.Add(new UserView
+                    {
+                        UserId = user.UserId,
+                        Email = user.Email,
+                        Username = user.Username,
+                        Weight = user.Weight,
+                        ActivityLevel = user.ActivityLevel,
+                        Address = user.Address,
+                        Age = user.Age,
+                        Gender = user.Gender,
+                        Height = user.Height,
+                        Password = user.Password,
+                        PhoneNumber = user.PhoneNumber,
+                        Profession = user.Profession,
+                        Status = user.Status,
+                        RoleId = user.RoleId,
+                        RoleName = user.RoleId.HasValue && preferenceDictionary.ContainsKey(user.RoleId.Value)
+                    ? preferenceDictionary[user.RoleId.Value]
+                    : null
+                    });
+                }
+                return userViews;
             }
             catch (Exception ex)
             {
@@ -102,22 +135,29 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 var user = await _unitOfWork.UserRepository.GetByIDAsync(id);
                 if (user != null)
                 {
+                    string? roleName = null;
+                    if (user.RoleId.HasValue)
+                    {
+                        var role = await _unitOfWork.RoleRepository.GetByIDAsync(user.RoleId.Value);
+                        roleName = role?.RoleName;
+                    }
                     var userView = new UserView()
                     {
+                        UserId = id,
                         Email = user.Email,
                         Username = user.Username,
                         Weight = user.Weight,
                         ActivityLevel= user.ActivityLevel,
                         Address = user.Address,
                         Age = user.Age,
-                        DietaryPreferenceId= user.DietaryPreferenceId,
                         Gender= user.Gender,
                         Height = user.Height,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
                         Profession = user.Profession,
                         Status = user.Status,
-                        RoleId = user.RoleId
+                        RoleId = user.RoleId,
+                        RoleName = roleName
                     };
                     return userView;
                 }

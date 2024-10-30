@@ -72,7 +72,7 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return NotFound("User not found");
             }
-            return userDetail;
+            return Ok(userDetail);
         }
 
 

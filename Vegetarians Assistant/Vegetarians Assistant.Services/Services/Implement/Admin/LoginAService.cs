@@ -33,13 +33,13 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                 }
                 UserView? userView = new UserView()
                 {
+                    UserId = user.UserId,
                     Email = user.Email,
                     Password = user.Password,
                     Username = user.Username,
                     ActivityLevel = user.ActivityLevel,
                     Address = user.Address,
                     Age = user.Age,
-                    DietaryPreferenceId = user.DietaryPreferenceId,
                     Gender = user.Gender,
                     Height = user.Height,
                     PhoneNumber = user.PhoneNumber,

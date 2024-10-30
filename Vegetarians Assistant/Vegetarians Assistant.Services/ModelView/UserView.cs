@@ -8,7 +8,7 @@ namespace Vegetarians_Assistant.Services.ModelView
 {
     public class UserView
     {
-
+        public int UserId { get; set; }
         public string Username { get; set; } = null!;
 
         public string Password { get; set; } = null!;
@@ -29,11 +29,11 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public string? Profession { get; set; }
 
-        public int? DietaryPreferenceId { get; set; }
-
         public string? Status { get; set; }
 
         public int? RoleId { get; set; }
+
+        public string? RoleName { get; set; } = null!;
 
         public string? ActivityLevel { get; set; }
     }

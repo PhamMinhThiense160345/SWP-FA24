@@ -20,7 +20,10 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public string? ImageUrl { get; set; }
 
+        public string? Status { get; set; }
+
         public string? PreferenceName { get; set; } = null!;
+        public int? DietaryPreferenceId { get; set; }
 
         public decimal? Price { get; set; }
 

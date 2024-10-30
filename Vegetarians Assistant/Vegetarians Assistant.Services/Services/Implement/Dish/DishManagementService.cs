@@ -57,6 +57,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
                         Recipe = dish.Recipe,
+                        Status = dish.Status,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
                     ? preferenceDictionary[dish.DietaryPreferenceId.Value]
                     : null
@@ -109,6 +111,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
                         Recipe = dish.Recipe,
+                        Status = dish.Status,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
                     ? preferenceDictionary[dish.DietaryPreferenceId.Value]
                     : null
@@ -159,6 +163,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         ImageUrl = dish.ImageUrl,
                         Price = dish.Price,
                         Recipe = dish.Recipe,
+                        Status = dish.Status,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
                     ? preferenceDictionary[dish.DietaryPreferenceId.Value]
                     : null
@@ -195,6 +201,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         DishType = dish.DishType,
                         Price = dish.Price,
                         Recipe= dish.Recipe,
+                        Status = dish.Status,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
                         PreferenceName = preferenceName
                     };
                     return dishView;
