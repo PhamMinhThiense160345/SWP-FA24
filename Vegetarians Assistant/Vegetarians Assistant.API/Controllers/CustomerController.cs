@@ -44,21 +44,21 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Existed username");
             }
         }
-        
-           [HttpPost("/api/v1/customers/EditCustomer")]
-   public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
-   {
-       try
-       {
-           var view = await _customerManagementService.EditUser(newUser);
-           return Ok(view);
-       }
-       catch (Exception ex)
 
-       {
-           return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
-       }
-   }
+        [HttpPut("/api/v1/customers/EditCustomer")]
+        public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
+        {
+            try
+            {
+                var view = await _customerManagementService.EditUser(newUser);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
+            }
+        }
+
 
         private bool IsValidEmail(string email)
         {
