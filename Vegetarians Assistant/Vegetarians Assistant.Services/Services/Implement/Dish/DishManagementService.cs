@@ -78,7 +78,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
 
             try
             {
-                var dishes = await _unitOfWork.DishRepository.GetAsync(c => c.DishType == dishType);
+                var dishes = await _unitOfWork.DishRepository.FindAsync(c => c.DishType == dishType);
                 var dishViews = new List<DishView>();
 
                 var dietaryPreferenceIds = new HashSet<int>();
@@ -130,7 +130,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
 
             try
             {
-                var dishes = await _unitOfWork.DishRepository.FindAsync(c => c.Name.Contains(name));
+                var dishes = await _unitOfWork.DishRepository.GetAsync(c => c.Name.Contains(name));
                 var dishViews = new List<DishView>();
 
                 var dietaryPreferenceIds = new HashSet<int>();

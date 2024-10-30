@@ -34,7 +34,7 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return NotFound("Dish not found");
             }
-            return dishDetail;
+            return Ok(dishDetail);
         }
 
         [HttpGet("/api/v1/dishs/getDishByDishType/{dishType}")]

@@ -84,5 +84,58 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return commentView;
         }
+        public async Task<List<ArticleView?>> GetArticleByAuthorId(int id)
+        {
+            try
+            {
+                var dish = await _unitOfWork.UserRepository.GetAsync(c => c.RoleId == id);
+                var userIds = dish.Select(u => u.UserId).ToList();
+                if (id.Equals(3) || id.Equals(5))
+                {
+                    var articles = await _unitOfWork.ArticleRepository.GetAsync(a => a.AuthorId.HasValue && userIds.Contains(a.AuthorId.Value));
+                    var articleViews = new List<ArticleView>();
+
+                    var authorIds = new HashSet<int>();
+                    foreach (var article in articles)
+                    {
+                        if (article.AuthorId.HasValue)
+                        {
+                            authorIds.Add(article.AuthorId.Value);
+                        }
+                    }
+
+                    var users = await _unitOfWork.UserRepository.GetAsync(dp => authorIds.Contains(dp.UserId));
+
+                    var preferenceDictionary = new Dictionary<int, string>();
+                    foreach (var preference in users)
+                    {
+                        preferenceDictionary[preference.UserId] = preference.Username;
+                    }
+
+                    foreach (var article in articles)
+                    {
+                        articleViews.Add(new ArticleView
+                        {
+                            ArticleId = article.ArticleId,
+                            Title = article.Title,
+                            Content = article.Content,
+                            Status = article.Status,
+                            ArticleImages = article.ArticleImages.Select(img => img.ImageUrl).ToList(),
+                            Likes = article.ArticleLikes.Count(),
+                            AuthorId = article.AuthorId,
+                            AuthorName = article.AuthorId.HasValue && preferenceDictionary.ContainsKey(article.AuthorId.Value)
+                        ? preferenceDictionary[article.AuthorId.Value]
+                        : null
+                        });
+                    }
+                    return articleViews;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

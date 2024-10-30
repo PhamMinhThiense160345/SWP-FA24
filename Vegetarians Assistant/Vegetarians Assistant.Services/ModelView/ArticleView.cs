@@ -17,7 +17,6 @@ namespace Vegetarians_Assistant.Services.ModelView
         public string? Status { get; set; }
 
         public int? AuthorId { get; set; }
-
         public string? AuthorName { get; set; }
 
         public List<string> ArticleImages { get; set; }

@@ -103,9 +103,10 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest("Phone you entered has already existed");
             }
-            var staff = await _userManagementService.GetUserByUsername(newUser.Username);
-            if (staff == null)
+            if (await _userManagementService.IsExistedUserName(newUser.Username))
             {
+                return BadRequest("Username you entered has already existed");
+            }
                 bool checkRegister = await _userManagementService.CreateUserStaff(newUser);
                 if (checkRegister)
                 {
@@ -115,11 +116,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 {
                     return BadRequest("Not correct role");
                 }
-            }
-            else
-            {
-                return BadRequest("Existed username");
-            }
         }
 
 

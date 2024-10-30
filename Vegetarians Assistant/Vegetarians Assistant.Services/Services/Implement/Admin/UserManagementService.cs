@@ -239,6 +239,23 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             {
                 throw new Exception(ex.Message);
             }
+        }
+        public async Task<bool> IsExistedUserName(string name)
+        {
+            try
+            {
+                bool status = true;
+                var existed = (await _unitOfWork.UserRepository.FindAsync(e => e.Username == name)).FirstOrDefault();
+                if (existed == null)
+                {
+                    status = false;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
 
         }
     }
