@@ -44,6 +44,24 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("editArticle")]
+        public async Task<IActionResult> editArticle([FromBody] ArticleView view)
+        {
+            try
+            {
+                var article = await _articleService.Edit(view);
+                if (article == null)
+                {
+                    return BadRequest("Cập nhập bài viết thất bại");
+                }
+
+                return Ok(article);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost("comment")]
         public async Task<IActionResult> postComment(CommentView view)
@@ -69,4 +87,5 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(articleDetail);
         }
     }
+
 }
