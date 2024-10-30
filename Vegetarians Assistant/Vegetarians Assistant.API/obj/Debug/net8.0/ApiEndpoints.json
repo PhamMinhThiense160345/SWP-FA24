@@ -50,7 +50,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByAuthorId",
-    "RelativePath": "api/v1/articles/GetArticleByAuthorId/{id}",
+    "RelativePath": "api/v1/articles/GetArticleByRoleId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -77,7 +77,7 @@
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "EditCustomer",
     "RelativePath": "api/v1/customers/EditCustomer",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -226,7 +226,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FeedbackController",
     "Method": "GetFeedbackByID",
-    "RelativePath": "api/v1/feedbacks/GetFeedbackByID/{id}",
+    "RelativePath": "api/v1/feedbacks/getFeedbackByDishID/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

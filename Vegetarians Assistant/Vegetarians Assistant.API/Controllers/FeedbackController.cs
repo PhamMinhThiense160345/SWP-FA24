@@ -26,10 +26,10 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(feedbacksList);
         }
-        [HttpGet("/api/v1/feedbacks/GetFeedbackByID/{id}")]
+        [HttpGet("/api/v1/feedbacks/getFeedbackByDishID/{id}")]
         public async Task<ActionResult<FeedbackView>> GetFeedbackByID(int id)
         {
-            var feedbackDetail = await _feedbackManagementService.GetFeedbackByFeedbackId(id);
+            var feedbackDetail = await _feedbackManagementService.GetFeedbackByDishId(id);
             if (feedbackDetail == null)
             {
                 return NotFound("Feedbacks not found");
