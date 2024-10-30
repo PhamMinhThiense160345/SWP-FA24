@@ -90,5 +90,48 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
             }
         }
 
+        public async Task<FeedbackView?> GetFeedbackByFeedbackId(int id)
+        {
+            try
+            {
+                var feedback = await _unitOfWork.FeedbackRepository.GetByIDAsync(id);
+                if (feedback != null)
+                {
+                    string? dishName = null;
+                    if (feedback.DishId.HasValue)
+                    {
+                        var dish = await _unitOfWork.DishRepository.GetByIDAsync(feedback.DishId.Value);
+                        dishName = dish?.Name;
+                    }
+
+                    string? userName = null;
+                    if (feedback.UserId.HasValue)
+                    {
+                        var dish = await _unitOfWork.UserRepository.GetByIDAsync(feedback.UserId.Value);
+                        userName = dish?.Username;
+                    }
+
+                    var feedbackView = new FeedbackView()
+                    {
+                        FeedbackId = feedback.FeedbackId,
+                        DishId = feedback.DishId,
+                        DishName = dishName,
+                        UserId = feedback.UserId,
+                        Username = userName,
+                        OrderId = feedback.OrderId,
+                        Rating = feedback.Rating,
+                        FeedbackContent = feedback.FeedbackContent,
+                        FeedbackDate = feedback.FeedbackDate
+                    };
+                    return feedbackView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

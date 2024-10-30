@@ -48,7 +48,6 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishDetail);
         }
         [HttpGet("/api/v1/dishs/GetDishByID/{id}")]
-
         public async Task<ActionResult<DishView>> GetDishByID(int id)
         {
             var dishDetail = await _dishManagementService.GetDishByDishId(id);

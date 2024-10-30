@@ -198,6 +198,32 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FeedbackController",
+    "Method": "GetFeedbackByID",
+    "RelativePath": "api/v1/feedbacks/GetFeedbackByID/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.FeedbackView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",
