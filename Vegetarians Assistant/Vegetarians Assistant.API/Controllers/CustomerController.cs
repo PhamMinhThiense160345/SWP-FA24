@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Customer;
+using Vegetarians_Assistant.Services.Util;
 
 namespace Vegetarians_Assistant.API.Controllers
 {
@@ -164,11 +165,16 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
 
-        [HttpPost("/api/v1/customers/EditCustomer")]
+        [HttpPut("/api/v1/customers/EditCustomer")]
         public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
         {
             try
             {
+                ErrorView? error = Utility.validateCustomer(newUser);
+                if (error != null)
+                {
+                    BadRequest(error.message);
+                }
                 var view = await _customerManagementService.EditUser(newUser);
                 return Ok(view);
             }
@@ -177,7 +183,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
             }
         }
-
 
 
         private bool IsValidEmail(string email)

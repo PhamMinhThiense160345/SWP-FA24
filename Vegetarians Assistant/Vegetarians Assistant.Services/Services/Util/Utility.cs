@@ -48,8 +48,8 @@ namespace Vegetarians_Assistant.Services.Util
                     status = 400,
                     message = "User name must be 100 characters or less"
                 };
-           
             }
+         
 
             if (string.IsNullOrEmpty(newUser.Email))
             {
