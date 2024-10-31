@@ -76,7 +76,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpGet("/api/v1/articles/GetArticleByRoleId/{id}")]
+        [HttpGet("/api/v1/articles/getArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
         {
             var articleDetail = await _articleService.GetArticleByRoleId(id);
@@ -85,6 +85,32 @@ namespace Vegetarians_Assistant.API.Controllers
                 return NotFound("Article not found");
             }
             return Ok(articleDetail);
+        }
+        [HttpPost("/api/v1/articles/createArticleByCustomer")]
+        public async Task<IActionResult> createArticleByCustomer([FromBody] ArticleView newArticle)
+        {
+                bool checkRegister = await _articleService.CreateArticleByCustomer(newArticle);
+                if (checkRegister)
+                {
+                    return Ok("Create success");
+                }
+                else
+                {
+                    return BadRequest("Not correct role");
+                }
+        }
+        [HttpPost("/api/v1/articles/createArticleByNutritionist")]
+        public async Task<IActionResult> createArticleByNutritionist([FromBody] ArticleView newArticle)
+        {
+            bool checkRegister = await _articleService.CreateArticleByNutritionist(newArticle);
+            if (checkRegister)
+            {
+                return Ok("Create success");
+            }
+            else
+            {
+                return BadRequest("Not correct role");
+            }
         }
     }
 

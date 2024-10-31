@@ -49,8 +49,56 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "editArticle",
+    "RelativePath": "api/Article/editArticle",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "view",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "createArticleByCustomer",
+    "RelativePath": "api/v1/articles/createArticleByCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newArticle",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "createArticleByNutritionist",
+    "RelativePath": "api/v1/articles/createArticleByNutritionist",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newArticle",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByAuthorId",
-    "RelativePath": "api/v1/articles/GetArticleByRoleId/{id}",
+    "RelativePath": "api/v1/articles/getArticleByRoleId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -84,6 +132,38 @@
       {
         "Name": "newUser",
         "Type": "Vegetarians_Assistant.Services.ModelView.UserView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "GetCustomerMembership",
+    "RelativePath": "api/v1/customers/EditCustomer/membership/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "GetCustomerMembershipTier",
+    "RelativePath": "api/v1/customers/EditCustomer/membershipTier/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
