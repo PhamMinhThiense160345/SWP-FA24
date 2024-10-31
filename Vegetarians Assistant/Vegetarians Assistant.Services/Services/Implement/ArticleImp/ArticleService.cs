@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
@@ -25,17 +24,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             _unitOfWork = unitOfWork;
         }
 
-
-        public async Task<ArticleView?> Edit(ArticleView? view)
-        {
-            if (view != null)
-            {
-                var article = _mapper.Map<Article>(view);
-                await _articleRepo.UpdateAsync(article);
-                return view;
-            }
-            return null;
-        }
+      
 
         public async Task<List<CommentView>> getArticleComment(int id)
         {
@@ -149,75 +138,53 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             }
         }
 
-        public async Task<bool> CreateArticleByCustomer(ArticleView newArticle)
+        public async Task<List<ArticleView?>> GetArticleByAuthorId(int id)
         {
+
             try
             {
-                bool status = false;
+                var articles = await _unitOfWork.ArticleRepository.FindAsync(c => c.AuthorId == id);
+                var articleViews = new List<ArticleView>();
 
-                newArticle.Status = "pending";
-
-                var article = _mapper.Map<Article>(newArticle);
-
-                await _unitOfWork.ArticleRepository.InsertAsync(article);
-                await _unitOfWork.SaveAsync();
-
-                var insertedArticle = await _unitOfWork.ArticleRepository.GetByIDAsync(article.ArticleId);
-
-                if (insertedArticle != null)
+                var authorIds = new HashSet<int>();
+                foreach (var article in articles)
                 {
-                    status = true;
+                    if (article.AuthorId.HasValue)
+                    {
+                        authorIds.Add(article.AuthorId.Value);
+                    }
                 }
 
-                return status;
+                var users = await _unitOfWork.UserRepository.GetAsync(dp => authorIds.Contains(dp.UserId));
+
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in users)
+                {
+                    preferenceDictionary[preference.UserId] = preference.Username;
+                }
+
+                foreach (var article in articles)
+                {
+                    articleViews.Add(new ArticleView
+                    {
+                        ArticleId = article.ArticleId,
+                        Title = article.Title,
+                        Content = article.Content,
+                        Status = article.Status,
+                        ArticleImages = article.ArticleImages.Select(img => img.ImageUrl).ToList(),
+                        Likes = article.ArticleLikes.Count(),
+                        AuthorId = article.AuthorId,
+                        AuthorName = article.AuthorId.HasValue && preferenceDictionary.ContainsKey(article.AuthorId.Value)
+                    ? preferenceDictionary[article.AuthorId.Value]
+                    : null
+                    });
+                }
+                return articleViews;
             }
             catch (Exception ex)
             {
-                var insertedArticle = (await _unitOfWork.ArticleRepository.FindAsync(a => a.Title == newArticle.Title && a.AuthorId == newArticle.AuthorId)).FirstOrDefault();
-                if (insertedArticle != null)
-                {
-                    await _unitOfWork.ArticleRepository.DeleteAsync(insertedArticle);
-                    await _unitOfWork.SaveAsync();
-                }
-
-                throw new Exception($"Lỗi khi tạo bài viết: {ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
-
-        public async Task<bool> CreateArticleByNutritionist(ArticleView newArticle)
-        {
-            try
-            {
-                bool status = false;
-
-                newArticle.Status = "accepted";
-
-                var article = _mapper.Map<Article>(newArticle);
-
-                await _unitOfWork.ArticleRepository.InsertAsync(article);
-                await _unitOfWork.SaveAsync();
-
-                var insertedArticle = await _unitOfWork.ArticleRepository.GetByIDAsync(article.ArticleId);
-
-                if (insertedArticle != null)
-                {
-                    status = true;
-                }
-
-                return status;
-            }
-            catch (Exception ex)
-            {
-                var insertedArticle = (await _unitOfWork.ArticleRepository.FindAsync(a => a.Title == newArticle.Title && a.AuthorId == newArticle.AuthorId)).FirstOrDefault();
-                if (insertedArticle != null)
-                {
-                    await _unitOfWork.ArticleRepository.DeleteAsync(insertedArticle);
-                    await _unitOfWork.SaveAsync();
-                }
-
-                throw new Exception($"Lỗi khi tạo bài viết: {ex.Message}");
-            }
-        }
-
     }
 }

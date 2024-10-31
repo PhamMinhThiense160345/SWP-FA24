@@ -44,24 +44,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost("editArticle")]
-        public async Task<IActionResult> editArticle([FromBody] ArticleView view)
-        {
-            try
-            {
-                var article = await _articleService.Edit(view);
-                if (article == null)
-                {
-                    return BadRequest("Cập nhập bài viết thất bại");
-                }
-
-                return Ok(article);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
 
         [HttpPost("comment")]
         public async Task<IActionResult> postComment(CommentView view)
@@ -77,7 +59,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
         [HttpGet("/api/v1/articles/getArticleByRoleId/{id}")]
-        public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
+        public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByRoleId(int id)
         {
             var articleDetail = await _articleService.GetArticleByRoleId(id);
             if (articleDetail == null)
@@ -86,32 +68,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(articleDetail);
         }
-        [HttpPost("/api/v1/articles/createArticleByCustomer")]
-        public async Task<IActionResult> createArticleByCustomer([FromBody] ArticleView newArticle)
+
+        [HttpGet("/api/v1/articles/getArticleByAuthorId/{id}")]
+        public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
         {
-                bool checkRegister = await _articleService.CreateArticleByCustomer(newArticle);
-                if (checkRegister)
-                {
-                    return Ok("Create success");
-                }
-                else
-                {
-                    return BadRequest("Not correct role");
-                }
-        }
-        [HttpPost("/api/v1/articles/createArticleByNutritionist")]
-        public async Task<IActionResult> createArticleByNutritionist([FromBody] ArticleView newArticle)
-        {
-            bool checkRegister = await _articleService.CreateArticleByNutritionist(newArticle);
-            if (checkRegister)
+            var articleDetail = await _articleService.GetArticleByAuthorId(id);
+            if (articleDetail == null)
             {
-                return Ok("Create success");
+                return NotFound("Article not found");
             }
-            else
-            {
-                return BadRequest("Not correct role");
-            }
+            return Ok(articleDetail);
         }
     }
-
 }

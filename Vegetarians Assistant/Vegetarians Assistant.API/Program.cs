@@ -15,7 +15,6 @@ using Vegetarians_Assistant.Services.Services.Interface.IArticle;
 using Vegetarians_Assistant.Services.Services.Interface.Dish;
 using Vegetarians_Assistant.Services.Services.Interface.Feedback;
 using Vegetarians_Assistant.Services.Services.Implement.Feedback;
-using Vegetarians_Assistant.Services.Services.Interface.Membership;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,8 +40,7 @@ builder.Services.AddScoped<IDishManagementService, DishManagementService>();
 builder.Services.AddScoped<ICustomerManagementService, CustomerManagementService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddScoped<IFeedbackManagementService, FeedbackManagementService>();
-builder.Services.AddScoped<IMembershipTierService, MembershipTierService>();
-builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+
 
 
 
