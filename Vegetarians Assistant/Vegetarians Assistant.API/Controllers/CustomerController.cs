@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Customer;
+using Vegetarians_Assistant.Services.Services.Interface.Membership;
 
 namespace Vegetarians_Assistant.API.Controllers
 {
@@ -10,9 +11,12 @@ namespace Vegetarians_Assistant.API.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerManagementService _customerManagementService;
+        private readonly IMembershipTierService _membershipTierService;
+        private readonly IUsermembershipService _usermembershipService;
         public CustomerController(ICustomerManagementService customerManagementService)
         {
             _customerManagementService = customerManagementService;
+
         }
 
         [HttpPost("/api/v1/customers/RegisterCustomer")]
@@ -59,6 +63,33 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpGet("/api/v1/customers/EditCustomer/membership/{id}")]
+        public async Task<IActionResult> GetCustomerMembership(int id)
+        {
+            try
+            {
+                var view = await _usermembershipService.getCustomerMembership(id);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("/api/v1/customers/EditCustomer/membershipTier/{id}")]
+        public async Task<IActionResult> GetCustomerMembershipTier(int id)
+        {
+            try
+            {
+                var view = await _membershipTierService.getCustomerMembershipTier(id);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         private bool IsValidEmail(string email)
         {

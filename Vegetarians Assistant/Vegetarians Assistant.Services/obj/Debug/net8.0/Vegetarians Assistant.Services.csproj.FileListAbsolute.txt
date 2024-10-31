@@ -78,19 +78,3 @@ D:\FPT\Learning\Capstone Project\project\my code\SWP-FA24\Vegetarians Assistant\
 D:\FPT\Learning\Capstone Project\project\my code\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\refint\Vegetarians Assistant.Services.dll
 D:\FPT\Learning\Capstone Project\project\my code\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.pdb
 D:\FPT\Learning\Capstone Project\project\my code\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\ref\Vegetarians Assistant.Services.dll
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\bin\Debug\net8.0\Vegetarians Assistant.Services.deps.json
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\bin\Debug\net8.0\Vegetarians Assistant.Services.dll
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\bin\Debug\net8.0\Vegetarians Assistant.Services.pdb
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\bin\Debug\net8.0\Vegetarians Assistant.Repo.dll
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\bin\Debug\net8.0\Vegetarians Assistant.Repo.pdb
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.csproj.AssemblyReference.cache
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.GeneratedMSBuildEditorConfig.editorconfig
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.AssemblyInfoInputs.cache
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.AssemblyInfo.cs
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.csproj.CoreCompileInputs.cache
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.sourcelink.json
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetari.448402E5.Up2Date
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.dll
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\refint\Vegetarians Assistant.Services.dll
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\Vegetarians Assistant.Services.pdb
-D:\FPT\Learning\Capstone Project\project\TEST\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Services\obj\Debug\net8.0\ref\Vegetarians Assistant.Services.dll
