@@ -35,6 +35,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Status> StatusRepository { get; }
         IGenericRepository<User> UserRepository { get; }
         IGenericRepository<UserMembership> UserMembershipRepository { get; }
+        IGenericRepository<Cart> CartRepository { get; }
         Task SaveAsync();
     }
 }

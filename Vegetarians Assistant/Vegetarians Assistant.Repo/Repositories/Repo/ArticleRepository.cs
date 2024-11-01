@@ -17,7 +17,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Repo
 
         public async Task<Article> GetByIDAsync(int id)
         {
-            return await context.Articles.Include(a => a.Author).Include(a => a.ArticleLikes).FirstOrDefaultAsync(a => a.ArticleId == id);
+            var aticle = await context.Articles.Include(a => a.Author).Include(a => a.ArticleLikes).FirstOrDefaultAsync(a => a.ArticleId == id);
+            return aticle;
         }
 
         public async Task<List<Comment>> getArticleComment(int id)
