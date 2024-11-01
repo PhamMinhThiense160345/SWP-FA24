@@ -14,3 +14,4 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Membership
         Task<UserMembershipView> addPointForMembership(int userId, int points);
     }
 }
+//

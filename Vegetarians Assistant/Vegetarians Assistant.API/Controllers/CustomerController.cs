@@ -13,11 +13,13 @@ namespace Vegetarians_Assistant.API.Controllers
         private readonly ICustomerManagementService _customerManagementService;
         private readonly IMembershipTierService _membershipTierService;
         private readonly IUsermembershipService _usermembershipService;
-        public CustomerController(ICustomerManagementService customerManagementService)
+        public CustomerController(ICustomerManagementService customerManagementService, IMembershipTierService membershipTierService, IUsermembershipService usermembershipService)
         {
             _customerManagementService = customerManagementService;
-
-        }
+            _membershipTierService = membershipTierService;
+            _usermembershipService = usermembershipService;
+        
+    }
 
         [HttpPost("/api/v1/customers/RegisterCustomer")]
         public async Task<IActionResult> RegisterCustomer([FromBody] UserView newUser)
@@ -63,7 +65,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [HttpGet("/api/v1/customers/EditCustomer/membership/{id}")]
+        [HttpGet("/api/v1/customers/membership/{id}")]
         public async Task<IActionResult> GetCustomerMembership(int id)
         {
             try
@@ -77,7 +79,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [HttpGet("/api/v1/customers/EditCustomer/membershipTier/{id}")]
+        [HttpGet("/api/v1/customers/membershipTier/{id}")]
         public async Task<IActionResult> GetCustomerMembershipTier(int id)
         {
             try
@@ -90,6 +92,21 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("/api/v1/customers/EditCustomer/membership/changePoint/{userId}/{points}")]
+        public async Task<IActionResult> changePoint(int userId, int points)
+        {
+            try
+            {
+                var view = await _usermembershipService.addPointForMembership(userId, points);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         private bool IsValidEmail(string email)
         {

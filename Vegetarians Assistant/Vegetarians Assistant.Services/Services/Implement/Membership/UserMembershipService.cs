@@ -22,8 +22,29 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Membership
 
         public async Task<UserMembershipView> addPointForMembership(int userId, int points)
         {
+           
             UserMembership membership = await _unitOfWork.UserMembershipRepository.GetByIDAsync(userId);
+
+            if (membership == null)
+            {
+               
+                throw new Exception("Membership not found");
+            }
+    
             membership.AccumulatedPoints += points;
+
+            var allTiers = await _unitOfWork.MembershipTierRepository.GetAllAsync();
+            foreach (var tier in allTiers.OrderBy(t => t.RequiredPoints))
+            {
+                if (membership.AccumulatedPoints >= tier.RequiredPoints)
+                {
+                    membership.TierId = tier.TierId;
+                }
+                else
+                {
+                    break;
+                }
+            }
             await _unitOfWork.UserMembershipRepository.UpdateAsync(membership);
             await _unitOfWork.SaveAsync();
             var view = _mapper.Map<UserMembershipView>(membership);
