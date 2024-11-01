@@ -27,5 +27,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         Task UpdateAsync(TEntity entityToUpdate);
 
         Task<int> CountAsync(Expression<Func<TEntity, bool>> filter = null);
+       
+            Task<IEnumerable<TEntity>> GetAllAsync();
+        }
     }
-}

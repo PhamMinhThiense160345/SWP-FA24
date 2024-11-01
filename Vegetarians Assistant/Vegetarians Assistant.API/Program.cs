@@ -41,12 +41,20 @@ builder.Services.AddScoped<CartRepository>();
 builder.Services.AddScoped<ILoginAService, LoginAService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<IDishManagementService, DishManagementService>();
+
 builder.Services.AddScoped<ICustomerManagementService, CustomerManagementService>();
+
 builder.Services.AddScoped<IArticleService, ArticleService>();
+
 builder.Services.AddScoped<IFeedbackManagementService, FeedbackManagementService>();
+
 builder.Services.AddScoped<IMembershipTierService, MembershipTierService>();
+
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+
 builder.Services.AddScoped<ICartService, CartService>();
+
+builder.Services.AddScoped<IUsermembershipService, UserMembershipService>();
 
 
 // Add AutoMapper
