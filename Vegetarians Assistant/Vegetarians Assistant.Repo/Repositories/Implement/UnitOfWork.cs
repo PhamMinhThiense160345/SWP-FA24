@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
+using Vegetarians_Assistant.Repo.Repositories.Repo;
 
 namespace Vegetarians_Assistant.Repo.Repositories.Implement
 {
@@ -37,6 +38,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<Status> _statusRepository;
         private GenericRepository<User> _userRepository;
         private GenericRepository<UserMembership> _userMembershipRepository;
+        private GenericRepository<Cart> _cartRepository;
         public UnitOfWork(VegetariansAssistantV3Context context)
         {
             this.context = context;
@@ -74,6 +76,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<Status> StatusRepository => _statusRepository ?? new GenericRepository<Status>(context);
         public IGenericRepository<User> UserRepository => _userRepository ?? new GenericRepository<User>(context);
         public IGenericRepository<UserMembership> UserMembershipRepository => _userMembershipRepository ?? new GenericRepository<UserMembership>(context);
+        public IGenericRepository<Cart> CartRepository => _cartRepository ?? new GenericRepository<Cart>(context);
 
         protected virtual void Dispose(bool disposing)
         {

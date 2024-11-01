@@ -16,6 +16,8 @@ using Vegetarians_Assistant.Services.Services.Interface.Dish;
 using Vegetarians_Assistant.Services.Services.Interface.Feedback;
 using Vegetarians_Assistant.Services.Services.Implement.Feedback;
 using Vegetarians_Assistant.Services.Services.Interface.Membership;
+using Vegetarians_Assistant.Services.Services.Interface.CartImp;
+using Vegetarians_Assistant.Services.Services.Interface.ICart;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +35,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //add Repo
 builder.Services.AddScoped<ArticleRepository>();
+builder.Services.AddScoped<CartRepository>();
 
 //Add service to the container
 builder.Services.AddScoped<ILoginAService, LoginAService>();
@@ -43,7 +46,7 @@ builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddScoped<IFeedbackManagementService, FeedbackManagementService>();
 builder.Services.AddScoped<IMembershipTierService, MembershipTierService>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
-
+builder.Services.AddScoped<ICartService, CartService>();
 
 
 // Add AutoMapper
