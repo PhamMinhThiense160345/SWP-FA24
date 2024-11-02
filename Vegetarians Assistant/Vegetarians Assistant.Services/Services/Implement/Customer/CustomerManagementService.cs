@@ -77,6 +77,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                         Height = user.Height,
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
+                        DietaryPreferenceId = user.DietaryPreferenceId,
+                        Goal = user.Goal,
+                        IsPhoneVerified = user.IsPhoneVerified,
                         Profession = user.Profession
                     };
                     return userView;
@@ -117,6 +120,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                             Weight = insertedUser.Weight,
                             ActivityLevel = insertedUser.ActivityLevel,
                             DietaryPreferenceId = insertedUser.DietaryPreferenceId,
+                            IsPhoneVerified = insertedUser.IsPhoneVerified,
+                            Goal = insertedUser.Goal,
                             Profession = insertedUser.Profession,
                             Password = insertedUser.Password
                         };

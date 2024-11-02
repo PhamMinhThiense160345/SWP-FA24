@@ -29,6 +29,10 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public string? Profession { get; set; }
 
+        public int? DietaryPreferenceId { get; set; }
+
+        public string? Goal { get; set; }
+
         public string? Status { get; set; }
 
         public int? RoleId { get; set; }
@@ -36,5 +40,6 @@ namespace Vegetarians_Assistant.Services.ModelView
         public string? RoleName { get; set; } = null!;
 
         public string? ActivityLevel { get; set; }
+        public bool? IsPhoneVerified { get; set; }
     }
 }
