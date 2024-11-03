@@ -119,5 +119,27 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
+        public async Task<bool> ChangeOrderStatus(int id, string newStatus)
+        {
+            try
+            {
+                var order = await _unitOfWork.OrderRepository.GetByIDAsync(id);
+
+                if (order == null)
+                {
+                    return false; // Order not found
+                }
+
+                order.Status = newStatus;
+                await _unitOfWork.OrderRepository.UpdateAsync(order);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

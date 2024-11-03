@@ -48,5 +48,26 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(ordersList);
         }
+        [HttpPut("/api/v1/orders/{id}/change-status")]
+        public async Task<IActionResult> ChangeOrderStatus(int id, [FromBody] string newStatus)
+        {
+            try
+            {
+                var success = await _orderManagementService.ChangeOrderStatus(id, newStatus);
+
+                if (success)
+                {
+                    return Ok("Order status updated successfully");
+                }
+                else
+                {
+                    return NotFound("Order not found or failed to update status");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
