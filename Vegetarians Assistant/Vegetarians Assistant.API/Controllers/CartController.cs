@@ -42,5 +42,20 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(cartDetail);
         }
 
+        [HttpDelete("/api/v1/carts/removeCartByUserId/{id}")]
+        public async Task<IActionResult> RemoveCartByUserId(int id)
+        {
+            var success = await _cartService.RemoveCartByUserId(id);
+
+            if (success)
+            {
+                return Ok("Cart deleted successfully");
+            }
+            else
+            {
+                return NotFound("Cart not found or failed to delete");
+            }
+        }
+
     }
 }

@@ -101,9 +101,38 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<bool> RemoveCartByUserId(int id)
+        {
+            try
+            {
+                var cartes = (await _unitOfWork.CartRepository.FindAsync(c => c.UserId == id)).ToList();
+
+                if (cartes.Any())
+                {
+                    foreach (var cart in cartes)
+                    {
+                        await _unitOfWork.CartRepository.DeleteAsync(cart);
+                    }
+
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public Task deleteFromCart(int cartId)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
