@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
+using Vegetarians_Assistant.Services.Enum;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IArticle;
 
@@ -23,7 +24,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-
 
         public async Task<ArticleView?> Edit(ArticleView? view)
         {
@@ -47,14 +47,14 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
             return commentViews;
         }
+
         public async Task<CommentView> postComment(CommentView view)
         {
             var comment = _mapper.Map<Comment>(view);
-            _unitOfWork.CommentRepository.UpdateAsync(comment);
+            await _unitOfWork.CommentRepository.UpdateAsync(comment);
+            await _unitOfWork.SaveAsync();
             return view;
         }
-
-
 
         public async Task<ArticleView?> GetById(int id)
         {
@@ -146,6 +146,25 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             {
                 throw new Exception(ex.Message);
             }
+
+        }
+
+        public async Task<ArticleView> changeStatus(int id)
+        {
+            var view = await GetById(id);
+            if(view != null)
+            {
+                view.Status = view.Status == Enum.Enum.STATUS.INACTIVE?
+                    Enum.Enum.STATUS.ACTIVE : 
+                    view.Status == Enum.Enum.STATUS.ACTIVE? Enum.Enum.STATUS.INACTIVE 
+                    : Enum.Enum.STATUS.ACTIVE;
+
+                await Edit(view);
+
+                return view;
+            }
+
+            return null;
         }
     }
 }
