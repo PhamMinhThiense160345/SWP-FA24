@@ -19,6 +19,7 @@ namespace Vegetarians_Assistant.API.Mapper
             CreateMap<UserMembership, UserMembershipView>().ReverseMap();
             CreateMap<MembershipTier, MembershipTierView>().ReverseMap();
             CreateMap<Cart, CartView>().ReverseMap();
+            CreateMap<User, DeliveryView>().ReverseMap();
         }
     }
 }

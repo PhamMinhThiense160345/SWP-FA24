@@ -11,5 +11,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ICart
     {
         Task addToCart(CartView view);
         Task deleteFromCart(int cartId);
+        Task<List<CartView?>> GetCartByUserId(int id);
+
     }
 }

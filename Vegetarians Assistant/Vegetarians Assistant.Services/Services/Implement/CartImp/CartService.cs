@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,54 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             await _unitOfWork.SaveAsync();
         }
 
+        public async Task<List<CartView?>> GetCartByUserId(int id)
+        {
 
+            try
+            {
+                var carts = await _unitOfWork.CartRepository.FindAsync(c => c.UserId == id);
+                var cartViews = new List<CartView>();
+
+                var dishIds = new HashSet<int>();
+                foreach (var cart in carts)
+                {
+                    if (cart.DishId.HasValue)
+                    {
+                        dishIds.Add(cart.DishId.Value);
+                    }
+                }
+
+                var dishes = await _unitOfWork.DishRepository.GetAsync(dp => dishIds.Contains(dp.DishId));
+
+                var preferenceDictionary = new Dictionary<int, decimal>();
+                foreach (var preference in dishes)
+                {
+                    preferenceDictionary[preference.DishId] = (decimal)preference.Price;
+                }
+
+                foreach (var cart in carts)
+                {
+                    cartViews.Add(new CartView
+                    {
+                        UserId = cart.UserId,
+                        DishId = cart.DishId,
+                        Price = cart.DishId.HasValue && preferenceDictionary.ContainsKey(cart.DishId.Value)
+                    ? preferenceDictionary[cart.DishId.Value]
+                    : null,
+                        CartId = cart.CartId,
+                        Quantity = cart.Quantity,
+                        TotalPrice = (decimal)((cart.Quantity) * (cart.DishId.HasValue && preferenceDictionary.ContainsKey(cart.DishId.Value)
+                    ? preferenceDictionary[cart.DishId.Value]
+                    : null))
+                    });
+                }
+                return cartViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public Task deleteFromCart(int cartId)
         {
             throw new NotImplementedException();

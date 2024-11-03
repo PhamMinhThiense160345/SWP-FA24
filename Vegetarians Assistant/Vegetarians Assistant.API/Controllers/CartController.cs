@@ -18,7 +18,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _cartService = cartService;
         }
 
-        [HttpPost("/api/v1/cart/addToCart")]
+        [HttpPost("/api/v1/carts/addToCart")]
         public async Task<IActionResult> addToCart([FromBody] CartView view)
         {
             try
@@ -31,6 +31,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-       
+        [HttpGet("/api/v1/carts/getCartByUserId/{id}")]
+        public async Task<ActionResult<IEnumerable<CartView>>> GetCartByUserId(int id)
+        {
+            var cartDetail = await _cartService.GetCartByUserId(id);
+            if (cartDetail == null)
+            {
+                return NotFound("Cart not found");
+            }
+            return Ok(cartDetail);
+        }
+
     }
 }
