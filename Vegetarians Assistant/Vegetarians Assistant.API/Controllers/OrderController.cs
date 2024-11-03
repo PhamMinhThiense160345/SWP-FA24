@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IOrder;
 
@@ -25,6 +26,27 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest("Not correct role");
             }
+        }
+        [HttpGet("/api/v1/orders/getOrderByStatus/{Status}")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByStatus(string Status)
+        {
+            var orderDetail = await _orderManagementService.GetOrderByStatus(Status);
+            if (orderDetail == null)
+            {
+                return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
+        [HttpGet("/api/v1/orders/allOrder")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> AllOrder()
+        {
+
+            var ordersList = await _orderManagementService.GetAllOrder();
+            if (ordersList.IsNullOrEmpty())
+            {
+                return NotFound("No orders found on the system");
+            }
+            return Ok(ordersList);
         }
     }
 }

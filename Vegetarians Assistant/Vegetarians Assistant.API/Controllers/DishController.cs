@@ -14,7 +14,7 @@ namespace Vegetarians_Assistant.API.Controllers
         {
             _dishManagementService = dishManagementService;
         }
-        [HttpGet("/api/v1/dishs/alldish")]
+        [HttpGet("/api/v1/dishs/allDish")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishs()
         {
 

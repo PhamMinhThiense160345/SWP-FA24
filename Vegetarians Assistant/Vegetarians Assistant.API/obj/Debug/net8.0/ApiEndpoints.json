@@ -335,7 +335,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishs",
-    "RelativePath": "api/v1/dishs/alldish",
+    "RelativePath": "api/v1/dishs/allDish",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -478,6 +478,26 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "AllOrder",
+    "RelativePath": "api/v1/orders/allOrder",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.OrderView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "CreateOrderByCustomer",
     "RelativePath": "api/v1/orders/createOrderByCustomer",
     "HttpMethod": "POST",
@@ -491,6 +511,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "GetOrderByStatus",
+    "RelativePath": "api/v1/orders/getOrderByStatus/{Status}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Status",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.OrderView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",

@@ -53,5 +53,71 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<OrderView?>> GetOrderByStatus(string Status)
+        {
+
+            try
+            {
+                var orders = await _unitOfWork.OrderRepository.FindAsync(c => c.Status == Status);
+                var orderViews = new List<OrderView>();
+
+                foreach (var order in orders)
+                {
+                    orderViews.Add(new OrderView
+                    {
+                        OrderId = order.OrderId,
+                        Status = order.Status,
+                        CompletedTime = order.CompletedTime,
+                        DeliveryAddress = order.DeliveryAddress,
+                        DeliveryFailedFee = order.DeliveryFailedFee,
+                        DeliveryFee = order.DeliveryFee,
+                        Note = order.Note,
+                        OrderDate = order.OrderDate,
+                        TotalPrice = order.TotalPrice,
+                        UserId = order.UserId
+                    });
+                }
+                return orderViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<OrderView>> GetAllOrder()
+        {
+            try
+            {
+                var orders = (await _unitOfWork.OrderRepository.GetAsync()).ToList();
+                List<OrderView> orderViews = new List<OrderView>();
+
+                foreach (var order in orders)
+                {
+                    var orderView = new OrderView()
+                    {
+                        OrderId = order.OrderId,
+                        Status = order.Status,
+                        CompletedTime = order.CompletedTime,
+                        DeliveryAddress = order.DeliveryAddress,
+                        DeliveryFailedFee = order.DeliveryFailedFee,
+                        DeliveryFee = order.DeliveryFee,
+                        Note = order.Note,
+                        OrderDate = order.OrderDate,
+                        TotalPrice = order.TotalPrice,
+                        UserId = order.UserId
+                    };
+                    orderViews.Add(orderView);
+                }
+                return orderViews;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
