@@ -68,6 +68,13 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
                     preferenceDictionary[preference.DishId] = (decimal)preference.Price;
                 }
 
+                var preferenceDictionary2 = new Dictionary<int, string>();
+                foreach (var preferences in dishes)
+                {
+                    preferenceDictionary2[preferences.DishId] = preferences.Name;
+                }
+
+
                 foreach (var cart in carts)
                 {
                     cartViews.Add(new CartView
@@ -76,6 +83,9 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
                         DishId = cart.DishId,
                         Price = cart.DishId.HasValue && preferenceDictionary.ContainsKey(cart.DishId.Value)
                     ? preferenceDictionary[cart.DishId.Value]
+                    : null,
+                        DishName = cart.DishId.HasValue && preferenceDictionary2.ContainsKey(cart.DishId.Value)
+                    ? preferenceDictionary2[cart.DishId.Value]
                     : null,
                         CartId = cart.CartId,
                         Quantity = cart.Quantity,

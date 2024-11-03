@@ -461,6 +461,22 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "CreateOrderByCustomer",
+    "RelativePath": "api/v1/orders/createOrderByCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newOrder",
+        "Type": "Vegetarians_Assistant.Services.ModelView.OrderView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",

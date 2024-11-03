@@ -18,6 +18,8 @@ using Vegetarians_Assistant.Services.Services.Implement.Feedback;
 using Vegetarians_Assistant.Services.Services.Interface.Membership;
 using Vegetarians_Assistant.Services.Services.Interface.CartImp;
 using Vegetarians_Assistant.Services.Services.Interface.ICart;
+using Vegetarians_Assistant.Services.Services.Interface.IOrder;
+using Vegetarians_Assistant.Services.Services.Implement.OrderImp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +57,8 @@ builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<ICartService, CartService>();
 
 builder.Services.AddScoped<IUsermembershipService, UserMembershipService>();
+
+builder.Services.AddScoped<IOrderManagementService, OrderManagementService>();
 
 
 // Add AutoMapper

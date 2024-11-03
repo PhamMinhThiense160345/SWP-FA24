@@ -14,9 +14,11 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public int? DishId { get; set; }
 
-        public int? Quantity { get; set; }
+        public string? DishName { get; set; } = null!;
 
         public decimal? Price { get; set; }
+
+        public int? Quantity { get; set; }
 
         public decimal? TotalPrice { get; set; }
     }
