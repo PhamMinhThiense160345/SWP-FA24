@@ -63,6 +63,26 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("changeStatus/{id}")]
+        public async Task<IActionResult> changeStatusArticle(int id)
+        {
+            try
+            {
+                var article = await _articleService.changeStatus(id);
+                if (article == null)
+                {
+                    return BadRequest("Cập nhập trạng thái bài viết thất bại");
+                }
+
+                return Ok(article);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
         [HttpPost("comment")]
         public async Task<IActionResult> postComment(CommentView view)
         {
@@ -76,8 +96,10 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpGet("/api/v1/articles/getArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByRoleId(int id)
+
         {
             var articleDetail = await _articleService.GetArticleByRoleId(id);
             if (articleDetail == null)

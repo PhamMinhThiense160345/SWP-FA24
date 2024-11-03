@@ -78,10 +78,12 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
             return await query.ToListAsync();
         }
 
+
         public async Task<TEntity> GetByIDAsync(object id)
         {
             return await dbSet.FindAsync(id);
         }
+
 
         public async Task InsertAsync(TEntity entity)
         {

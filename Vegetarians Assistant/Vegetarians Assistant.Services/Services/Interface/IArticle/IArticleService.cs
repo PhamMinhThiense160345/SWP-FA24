@@ -16,11 +16,12 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
         Task<ArticleView> Edit(ArticleView view);
         Task<List<CommentView>> getArticleComment(int id);
         Task<CommentView> postComment(CommentView view);
-
+        Task<ArticleView> changeStatus(int id);
         Task<List<ArticleView?>> GetArticleByRoleId(int id);
         Task<bool> CreateArticleByCustomer(ArticleView newArticle);
         Task<bool> CreateArticleByNutritionist(ArticleView newArticle);
-        Task<List<ArticleView?>> GetArticleByAuthorId(int id);
+    
+
     }
 
 }
