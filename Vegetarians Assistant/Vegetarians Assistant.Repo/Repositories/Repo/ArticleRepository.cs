@@ -23,7 +23,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Repo
 
         public async Task<List<Comment>> getArticleComment(int id)
         {
-            return await context.Comments.Include(c => c.User).Where(c => c.ArticleId == id).ToListAsync();
+            return await context.Comments.Include(c => c.User).Where(c => c.ArticleId == id).ToListAsync();//test
         }
     }
 }

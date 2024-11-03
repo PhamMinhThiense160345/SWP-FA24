@@ -20,7 +20,9 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
         Task<List<ArticleView?>> GetArticleByRoleId(int id);
         Task<bool> CreateArticleByCustomer(ArticleView newArticle);
         Task<bool> CreateArticleByNutritionist(ArticleView newArticle);
-    
+        Task<List<ArticleView?>> GetArticleByAuthorId(int id);
+
+
 
     }
 
