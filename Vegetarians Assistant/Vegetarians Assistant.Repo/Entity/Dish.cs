@@ -29,6 +29,8 @@ public partial class Dish
 
     public virtual ICollection<DishIngredient> DishIngredients { get; set; } = new List<DishIngredient>();
 
+    public virtual ICollection<FavoriteDish> FavoriteDishes { get; set; } = new List<FavoriteDish>();
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<FixedMenuItem> FixedMenuItems { get; set; } = new List<FixedMenuItem>();

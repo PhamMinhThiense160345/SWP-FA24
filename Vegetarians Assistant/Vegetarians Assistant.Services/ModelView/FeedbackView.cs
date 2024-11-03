@@ -11,7 +11,7 @@ namespace Vegetarians_Assistant.Services.ModelView
     {
         public int FeedbackId { get; set; }
 
-        public int? DishId { get; set; }
+        public int DishId { get; set; }
         public string? DishName { get; set; } = null!;
 
         public int? UserId { get; set; }

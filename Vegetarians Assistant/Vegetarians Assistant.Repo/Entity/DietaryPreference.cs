@@ -7,7 +7,7 @@ public partial class DietaryPreference
 {
     public int Id { get; set; }
 
-    public string PreferenceName { get; set; } = null!;
+    public string? PreferenceName { get; set; }
 
     public virtual ICollection<Dish> Dishes { get; set; } = new List<Dish>();
 

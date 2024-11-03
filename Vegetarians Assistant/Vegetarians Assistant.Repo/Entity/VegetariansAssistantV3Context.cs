@@ -31,6 +31,8 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<DishIngredient> DishIngredients { get; set; }
 
+    public virtual DbSet<FavoriteDish> FavoriteDishes { get; set; }
+
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
     public virtual DbSet<FixedMenu> FixedMenus { get; set; }
@@ -65,9 +67,9 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<UsersNutritionCriterion> UsersNutritionCriteria { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -86,10 +88,7 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .IsUnicode(false)
                 .HasDefaultValue("pending")
                 .HasColumnName("status");
-            entity.Property(e => e.Title)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("title");
+            entity.Property(e => e.Title).HasColumnName("title");
 
             entity.HasOne(d => d.Author).WithMany(p => p.Articles)
                 .HasForeignKey(d => d.AuthorId)
@@ -103,7 +102,6 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.ArticleImageId).HasColumnName("article_image_id");
             entity.Property(e => e.ArticleId).HasColumnName("article_id");
             entity.Property(e => e.ImageUrl)
-                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("image_url");
 
@@ -188,7 +186,6 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.PreferenceName)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("preference_name");
         });
 
@@ -243,6 +240,33 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.HasOne(d => d.Ingredient).WithMany(p => p.DishIngredients)
                 .HasForeignKey(d => d.IngredientId)
                 .HasConstraintName("FK__Dish_Ingr__ingre__42ACE4D4");
+        });
+
+        modelBuilder.Entity<FavoriteDish>(entity =>
+        {
+            entity.HasKey(e => e.FavoriteId).HasName("PK__Favorite__46ACF4CB5B72700B");
+
+            entity.ToTable("Favorite_Dishes");
+
+            entity.HasIndex(e => e.UserId, "idx_favorite_user");
+
+            entity.Property(e => e.FavoriteId).HasColumnName("favorite_id");
+            entity.Property(e => e.DishId).HasColumnName("dish_id");
+            entity.Property(e => e.FavoriteDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("favorite_date");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Dish).WithMany(p => p.FavoriteDishes)
+                .HasForeignKey(d => d.DishId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Favorite___dish___477199F1");
+
+            entity.HasOne(d => d.User).WithMany(p => p.FavoriteDishes)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Favorite___user___467D75B8");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
@@ -587,9 +611,7 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.DeliveryFee)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("delivery_fee");
-            entity.Property(e => e.Note)
-                .HasColumnType("text")
-                .HasColumnName("note");
+            entity.Property(e => e.Note).HasColumnName("note");
             entity.Property(e => e.OrderDate)
                 .HasColumnType("datetime")
                 .HasColumnName("order_date");
@@ -617,6 +639,9 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.Amount)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("amount");
+            entity.Property(e => e.CancelUrl)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.PaymentDate)
                 .HasColumnType("datetime")
@@ -632,6 +657,9 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.RefundAmount)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("refund_amount");
+            entity.Property(e => e.ReturnUrl)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.TransactionId)
                 .HasMaxLength(100)
                 .IsUnicode(false)

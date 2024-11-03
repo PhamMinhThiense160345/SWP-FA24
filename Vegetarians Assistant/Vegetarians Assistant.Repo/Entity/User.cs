@@ -53,6 +53,8 @@ public partial class User
 
     public virtual DietaryPreference? DietaryPreference { get; set; }
 
+    public virtual ICollection<FavoriteDish> FavoriteDishes { get; set; } = new List<FavoriteDish>();
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<Follower> FollowerFollowerUsers { get; set; } = new List<Follower>();

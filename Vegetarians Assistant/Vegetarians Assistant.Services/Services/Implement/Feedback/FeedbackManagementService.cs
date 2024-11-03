@@ -30,9 +30,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                 var dishIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
                 {
-                    if (feedback.DishId.HasValue)
+                    if (feedback.DishId > 0)
                     {
-                        dishIds.Add(feedback.DishId.Value);
+                        dishIds.Add(feedback.DishId);
                     }
                 }
 
@@ -47,9 +47,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                 var userIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
                 {
-                    if (feedback.UserId.HasValue)
+                    if (feedback.UserId > 0)
                     {
-                        userIds.Add(feedback.UserId.Value);
+                        userIds.Add(feedback.UserId);
                     }
                 }
 
@@ -67,13 +67,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                     {
                         FeedbackId  =  feedback.FeedbackId,
                         DishId = feedback.DishId,
-                        DishName = feedback.DishId.HasValue && preferenceDictionary1.ContainsKey(feedback.DishId.Value)
-                    ? preferenceDictionary1[feedback.DishId.Value]
-                    : null,
+                        DishName = preferenceDictionary1.ContainsKey(feedback.DishId) ? preferenceDictionary1[feedback.DishId] : null,
                         UserId = feedback.UserId,
-                        Username = feedback.UserId.HasValue && preferenceDictionary2.ContainsKey(feedback.UserId.Value)
-                    ? preferenceDictionary2[feedback.UserId.Value]
-                    : null,
+                        Username = preferenceDictionary2.ContainsKey(feedback.UserId) ? preferenceDictionary2[feedback.UserId] : null,
                         OrderId = feedback.OrderId,
                         Rating = feedback.Rating,
                         FeedbackContent = feedback.FeedbackContent,
@@ -100,9 +96,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                 var dishIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
                 {
-                    if (feedback.DishId.HasValue)
+                    if (feedback.DishId > 0)
                     {
-                        dishIds.Add(feedback.DishId.Value);
+                        dishIds.Add(feedback.DishId);
                     }
                 }
 
@@ -117,9 +113,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                 var userIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
                 {
-                    if (feedback.UserId.HasValue)
+                    if (feedback.UserId > 0)
                     {
-                        userIds.Add(feedback.UserId.Value);
+                        userIds.Add(feedback.UserId);
                     }
                 }
 
@@ -137,13 +133,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
                     {
                         FeedbackId = feedback.FeedbackId,
                         DishId = feedback.DishId,
-                        DishName = feedback.DishId.HasValue && preferenceDictionary1.ContainsKey(feedback.DishId.Value)
-                    ? preferenceDictionary1[feedback.DishId.Value]
-                    : null,
+                        DishName = preferenceDictionary2.ContainsKey(feedback.UserId) ? preferenceDictionary2[feedback.UserId] : null,
                         UserId = feedback.UserId,
-                        Username = feedback.UserId.HasValue && preferenceDictionary2.ContainsKey(feedback.UserId.Value)
-                    ? preferenceDictionary2[feedback.UserId.Value]
-                    : null,
+                        Username = preferenceDictionary2.ContainsKey(feedback.UserId) ? preferenceDictionary2[feedback.UserId] : null,
                         OrderId = feedback.OrderId,
                         Rating = feedback.Rating,
                         FeedbackContent = feedback.FeedbackContent,

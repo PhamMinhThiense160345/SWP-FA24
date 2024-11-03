@@ -20,6 +20,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<FixedMenu> FixedMenuRepository { get; }
         IGenericRepository<FixedMenuItem> FixedMenuItemRepository { get; }
         IGenericRepository<Follow> FollowRepository { get; }
+        IGenericRepository<Follower> FollowerRepository { get; }
+        IGenericRepository<Following> FollowingRepository { get; }
         IGenericRepository<HealthRecord> HealthRecordRepository { get; }
         IGenericRepository<MembershipTier> MembershipTierRepository { get; }
         IGenericRepository<Notification> NotificationRepository { get; }

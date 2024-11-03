@@ -21,5 +21,9 @@ public partial class PaymentDetail
 
     public decimal? RefundAmount { get; set; }
 
+    public string? ReturnUrl { get; set; }
+
+    public string? CancelUrl { get; set; }
+
     public virtual Order? Order { get; set; }
 }

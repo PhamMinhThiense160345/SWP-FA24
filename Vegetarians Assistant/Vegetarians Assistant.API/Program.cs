@@ -20,6 +20,8 @@ using Vegetarians_Assistant.Services.Services.Interface.CartImp;
 using Vegetarians_Assistant.Services.Services.Interface.ICart;
 using Vegetarians_Assistant.Services.Services.Interface.IOrder;
 using Vegetarians_Assistant.Services.Services.Implement.OrderImp;
+using Vegetarians_Assistant.Services.Services.Interface.IFollowImp;
+using Vegetarians_Assistant.Services.Services.Implement.FollowImp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,7 +43,9 @@ builder.Services.AddScoped<CartRepository>();
 
 //Add service to the container
 builder.Services.AddScoped<ILoginAService, LoginAService>();
+
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+
 builder.Services.AddScoped<IDishManagementService, DishManagementService>();
 
 builder.Services.AddScoped<ICustomerManagementService, CustomerManagementService>();
@@ -59,6 +63,8 @@ builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IUsermembershipService, UserMembershipService>();
 
 builder.Services.AddScoped<IOrderManagementService, OrderManagementService>();
+
+builder.Services.AddScoped<IFollowManagementService, FollowManagementService>();
 
 
 // Add AutoMapper

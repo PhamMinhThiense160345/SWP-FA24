@@ -7,9 +7,9 @@ public partial class Feedback
 {
     public int FeedbackId { get; set; }
 
-    public int? DishId { get; set; }
+    public int DishId { get; set; }
 
-    public int? UserId { get; set; }
+    public int UserId { get; set; }
 
     public int OrderId { get; set; }
 

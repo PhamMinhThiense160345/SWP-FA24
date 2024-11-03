@@ -23,6 +23,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<FixedMenu> _fixedMenuRepository;
         private GenericRepository<FixedMenuItem> _fixedMenuItemRepository;
         private GenericRepository<Follow> _followRepository;
+        private GenericRepository<Following> _followingRepository;
+        private GenericRepository<Follower> _followerRepository;
         private GenericRepository<HealthRecord> _healthRecordRepository;
         private GenericRepository<MembershipTier> _membershipTierRepository;
         private GenericRepository<Notification> _notificationRepository;
@@ -61,6 +63,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<FixedMenu> FixedMenuRepository => _fixedMenuRepository ?? new GenericRepository<FixedMenu>(context);
         public IGenericRepository<FixedMenuItem> FixedMenuItemRepository => _fixedMenuItemRepository ?? new GenericRepository<FixedMenuItem>(context);
         public IGenericRepository<Follow> FollowRepository => _followRepository ?? new GenericRepository<Follow>(context);
+        public IGenericRepository<Follower> FollowerRepository => _followerRepository ?? new GenericRepository<Follower>(context);
+        public IGenericRepository<Following> FollowingRepository => _followingRepository ?? new GenericRepository<Following>(context);
         public IGenericRepository<HealthRecord> HealthRecordRepository => _healthRecordRepository ?? new GenericRepository<HealthRecord>(context);
         public IGenericRepository<MembershipTier> MembershipTierRepository => _membershipTierRepository ?? new GenericRepository<MembershipTier>(context);
         public IGenericRepository<Notification> NotificationRepository => _notificationRepository ?? new GenericRepository<Notification>(context);
