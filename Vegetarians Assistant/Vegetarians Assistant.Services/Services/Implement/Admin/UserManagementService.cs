@@ -59,6 +59,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
                         Profession = user.Profession,
+                        Goal = user.Goal,
+                        IsPhoneVerified = user.IsPhoneVerified,
+                        DietaryPreferenceId = user.DietaryPreferenceId,
                         Status = user.Status,
                         RoleId = user.RoleId,
                         RoleName = user.RoleId.HasValue && preferenceDictionary.ContainsKey(user.RoleId.Value)
@@ -114,6 +117,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
                         Profession = user.Profession,
+                        Goal = user.Goal,
+                        IsPhoneVerified = user.IsPhoneVerified,
+                        DietaryPreferenceId = user.DietaryPreferenceId,
                         Status = user.Status,
                         RoleId = user.RoleId,
                         RoleName = user.RoleId.HasValue && preferenceDictionary.ContainsKey(user.RoleId.Value)
@@ -155,6 +161,9 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                         Password = user.Password,
                         PhoneNumber = user.PhoneNumber,
                         Profession = user.Profession,
+                        Goal = user.Goal,
+                        IsPhoneVerified = user.IsPhoneVerified,
+                        DietaryPreferenceId = user.DietaryPreferenceId,
                         Status = user.Status,
                         RoleId = user.RoleId,
                         RoleName = roleName
