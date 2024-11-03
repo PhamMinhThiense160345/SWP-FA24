@@ -11,5 +11,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IFollowImp
     {
         Task<List<FollowerView?>> GetAllFollowerByUserId(int userId);
         Task<List<FollowingView?>> GetAllFollowingByUserId(int userId);
+
+        Task<bool> FollowingUserByCustomer(FollowingView newFollow);
+        Task<bool> FollowerUserByCustomer(FollowerView newFollow);
     }
 }

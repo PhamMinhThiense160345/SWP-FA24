@@ -478,6 +478,38 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FollowController",
+    "Method": "FollowerUserByCustomer",
+    "RelativePath": "api/v1/follows/followerUserByCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFollow",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FollowerView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FollowController",
+    "Method": "FollowingUserByCustomer",
+    "RelativePath": "api/v1/follows/followingUserByCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFollow",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FollowingView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FollowController",
     "Method": "GetAllFollowerByUserId",
     "RelativePath": "api/v1/follows/getAllFollowerByUserId/{id}",
     "HttpMethod": "GET",
