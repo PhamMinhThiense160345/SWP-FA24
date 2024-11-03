@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "changeStatusArticle",
+    "RelativePath": "api/Article/changeStatus/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "postComment",
     "RelativePath": "api/Article/comment",
     "HttpMethod": "POST",
@@ -199,6 +215,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "GetDeliveryInformationByUserId",
+    "RelativePath": "api/v1/customers/getDeliveryInformationByUserId /{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.DeliveryView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",

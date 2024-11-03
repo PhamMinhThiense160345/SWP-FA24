@@ -51,6 +51,17 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpGet("/api/v1/customers/getDeliveryInformationByUserId /{id}")]
+        public async Task<ActionResult<DeliveryView>> GetDeliveryInformationByUserId(int id)
+        {
+            var deliveryDetail = await _customerManagementService.GetDeliveryInformationByUserId(id);
+            if (deliveryDetail == null)
+            {
+                return NotFound("Deliverys not found");
+            }
+            return Ok(deliveryDetail);
+        }
+
         [HttpPut("/api/v1/customers/EditCustomer")]
         public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
         {

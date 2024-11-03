@@ -142,7 +142,31 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                 throw new Exception(ex.Message);
             }
         }
-         public async Task<UserView?> EditUser(UserView view)
+
+        public async Task<DeliveryView?> GetDeliveryInformationByUserId(int id)
+        {
+            try
+            {
+                var delivery = await _unitOfWork.UserRepository.GetByIDAsync(id);
+                if (delivery != null)
+                {
+                    var deliveryView = new DeliveryView()
+                    {
+                        UserId = delivery.UserId,
+                        Address = delivery.Address,
+                        PhoneNumber = delivery.PhoneNumber,
+                        Username = delivery.Username
+                    };
+                    return deliveryView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public async Task<UserView?> EditUser(UserView view)
  {
      var user = _mapper.Map<User>(view);
      if (user != null)
