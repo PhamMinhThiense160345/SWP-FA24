@@ -16,6 +16,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<CommentImage> CommentImageRepository { get; }
         IGenericRepository<DietaryPreference> DietaryPreferenceRepository { get; }
         IGenericRepository<Dish> DishRepository { get; }
+        IGenericRepository<FavoriteDish> FavoriteDishRepository { get; }
         IGenericRepository<Feedback> FeedbackRepository { get; }
         IGenericRepository<FixedMenu> FixedMenuRepository { get; }
         IGenericRepository<FixedMenuItem> FixedMenuItemRepository { get; }

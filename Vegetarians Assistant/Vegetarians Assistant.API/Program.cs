@@ -27,6 +27,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vegetarians_Assistant.Services.Services.Implement;
+using Vegetarians_Assistant.Services.Services.Interface.Favorite;
+using Vegetarians_Assistant.Services.Services.Implement.Favorite;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +72,8 @@ builder.Services.AddScoped<IUsermembershipService, UserMembershipService>();
 builder.Services.AddScoped<IOrderManagementService, OrderManagementService>();
 
 builder.Services.AddScoped<IFollowManagementService, FollowManagementService>();
+
+builder.Services.AddScoped<IFavoriteManagementService, FavoriteManagementService>();
 
 builder.Services.AddScoped<AuthService>();
 

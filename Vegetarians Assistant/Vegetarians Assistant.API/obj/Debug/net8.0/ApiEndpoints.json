@@ -431,6 +431,32 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "GetAllDishFavoriteByUserId",
+    "RelativePath": "api/v1/favorites/getAllDishFavoriteByUserId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.FavoriteDishView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FeedbackController",
     "Method": "GetFeedbacks",
     "RelativePath": "api/v1/feedbacks/allfeedback",

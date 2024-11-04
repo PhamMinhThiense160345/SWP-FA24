@@ -19,6 +19,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<CommentImage> _commentImageRepository;
         private GenericRepository<DietaryPreference> _dietaryPreferenceRepository;
         private GenericRepository<Dish> _dishRepository;
+        private GenericRepository<FavoriteDish> _favoriteDishRepository;
         private GenericRepository<Feedback> _feedbackRepository;
         private GenericRepository<FixedMenu> _fixedMenuRepository;
         private GenericRepository<FixedMenuItem> _fixedMenuItemRepository;
@@ -59,6 +60,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<CommentImage> CommentImageRepository => _commentImageRepository ?? new GenericRepository<CommentImage>(context);
         public IGenericRepository<DietaryPreference> DietaryPreferenceRepository => _dietaryPreferenceRepository ?? new GenericRepository<DietaryPreference>(context);
         public IGenericRepository<Dish> DishRepository => _dishRepository ?? new GenericRepository<Dish>(context);
+        public IGenericRepository<FavoriteDish> FavoriteDishRepository => _favoriteDishRepository ?? new GenericRepository<FavoriteDish>(context);
         public IGenericRepository<Feedback> FeedbackRepository => _feedbackRepository ?? new GenericRepository<Feedback>(context);
         public IGenericRepository<FixedMenu> FixedMenuRepository => _fixedMenuRepository ?? new GenericRepository<FixedMenu>(context);
         public IGenericRepository<FixedMenuItem> FixedMenuItemRepository => _fixedMenuItemRepository ?? new GenericRepository<FixedMenuItem>(context);
