@@ -56,5 +56,26 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(dishDetail);
         }
+        [HttpPut("/api/v1/dishs/updateDishDetailByDishId")]
+        public async Task<IActionResult> UpdateDishDetailByDishId([FromBody] DishView updateDish)
+        {
+            try
+            {
+                var success = await _dishManagementService.UpdateDishDetailByDishId(updateDish);
+
+                if (success)
+                {
+                    return Ok("Dish detail updated successfully");
+                }
+                else
+                {
+                    return NotFound("Dish not found or failed to update dish detail");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

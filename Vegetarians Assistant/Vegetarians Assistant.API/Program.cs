@@ -7,7 +7,6 @@ using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
 using Vegetarians_Assistant.Services.Services.Implement.Admin;
 using Vegetarians_Assistant.Services.Services.Implement.Customer;
-using Vegetarians_Assistant.Services.Services.Implement.Dish;
 using Vegetarians_Assistant.Services.Services.Interface.Admin;
 using Vegetarians_Assistant.Services.Services.Interface.ArticleImp;
 using Vegetarians_Assistant.Services.Services.Interface.Customer;
@@ -29,6 +28,7 @@ using System.Text;
 using Vegetarians_Assistant.Services.Services.Implement;
 using Vegetarians_Assistant.Services.Services.Interface.Favorite;
 using Vegetarians_Assistant.Services.Services.Implement.Favorite;
+using Vegetarians_Assistant.Services.Services.Implement.DishImp;
 
 var builder = WebApplication.CreateBuilder(args);
 

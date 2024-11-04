@@ -431,6 +431,22 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "UpdateDishDetailByDishId",
+    "RelativePath": "api/v1/dishs/updateDishDetailByDishId",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateDish",
+        "Type": "Vegetarians_Assistant.Services.ModelView.DishView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
     "Method": "CreateFavoriteDish",
     "RelativePath": "api/v1/favorites/createFavoriteDish",

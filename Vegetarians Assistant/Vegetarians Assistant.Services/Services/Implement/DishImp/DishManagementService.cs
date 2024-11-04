@@ -9,7 +9,7 @@ using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Dish;
 
-namespace Vegetarians_Assistant.Services.Services.Implement.Dish
+namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
 {
     public class DishManagementService : IDishManagementService
     {
@@ -36,10 +36,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                     }
                 }
 
-                // Lấy danh sách DietaryPreferences từ repository
                 var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
 
-                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
                 var preferenceDictionary = new Dictionary<int, string>();
                 foreach (var preference in dietaryPreferences)
                 {
@@ -89,11 +87,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
                     }
                 }
-
-                // Lấy danh sách DietaryPreferences từ repository
                 var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
 
-                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
                 var preferenceDictionary = new Dictionary<int, string>();
                 foreach (var preference in dietaryPreferences)
                 {
@@ -141,11 +136,8 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                         dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
                     }
                 }
-
-                // Lấy danh sách DietaryPreferences từ repository
                 var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
 
-                // Tạo dictionary để tra cứu PreferenceName theo DietaryPreferenceId
                 var preferenceDictionary = new Dictionary<int, string>();
                 foreach (var preference in dietaryPreferences)
                 {
@@ -214,5 +206,41 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Dish
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<bool> UpdateDishDetailByDishId(DishView updateDish)
+        {
+            try
+            {
+                bool status = false;
+                var dish = _mapper.Map<Dish>(updateDish);
+                await _unitOfWork.DishRepository.UpdateAsync(dish);
+                await _unitOfWork.SaveAsync();
+                var exsitDish = (await _unitOfWork.DishRepository.FindAsync(c => c.DishId == updateDish.DishId)).FirstOrDefault();
+
+                if (exsitDish != null)
+                {
+                    var favo = new Dish
+                    {
+                        DishId = updateDish.DishId,
+                        Description = exsitDish.Description,
+                        DietaryPreferenceId = exsitDish.DietaryPreferenceId,
+                        DishType = exsitDish.DishType,
+                        ImageUrl = exsitDish.ImageUrl,
+                        Name = exsitDish.Name,
+                        Price = exsitDish.Price,
+                        Recipe = exsitDish.Recipe,
+                        Status = exsitDish.Status,
+                    };
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
