@@ -14,13 +14,13 @@ namespace Vegetarians_Assistant.API.Controllers
     {
         private readonly ILoginAService _loginAService;
         private readonly IUserManagementService _userManagementService;
-        private readonly AuthService _authService;
+        //private readonly AuthService _authService;
 
-        public UserController(ILoginAService loginAService, IUserManagementService userManagementService, AuthService authService)
+        public UserController(ILoginAService loginAService, IUserManagementService userManagementService)//, AuthService authService
         {
             _loginAService = loginAService;
             _userManagementService = userManagementService;
-            _authService = authService;
+            //_authService = authService;
         }
 
         //[HttpPost("/api/v1/users/login")]

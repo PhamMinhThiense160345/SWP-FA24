@@ -18,14 +18,13 @@ namespace Vegetarians_Assistant.API.Controllers
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishs()
         {
 
-            var dishsList = await _dishManagementService.GetAllDish();
-            if (dishsList.IsNullOrEmpty())
+            var dishsList = await _dishManagementService.GetAllDish();//test
+            if (dishsList == null || !dishsList.Any())
             {
                 return NotFound("No dishs found on the system");
             }
             return Ok(dishsList);
         }
-
         [HttpGet("/api/v1/dishs/getDishByName/{name}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByNameDish(string name)
         {
