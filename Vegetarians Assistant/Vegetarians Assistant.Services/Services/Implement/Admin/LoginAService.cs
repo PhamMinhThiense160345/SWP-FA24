@@ -28,7 +28,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
         {
             try
             {
-                // Bỏ mã hóa mật khẩu vì mật khẩu trong cơ sở dữ liệu là văn bản thuần
+            
                 User? user = (await _unitOfWork.UserRepository.FindAsync(
                     a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
 
@@ -54,7 +54,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                     PhoneNumber = user.PhoneNumber,
                     Profession = user.Profession,
                     Weight = user.Weight,
-                    //  Token = token // Gán token vào UserView
+
                 };
 
                 return userView;
