@@ -19,7 +19,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [HttpPost("/api/v1/carts/addToCart")]
-        public async Task<IActionResult> addToCart([FromBody] CartView view)
+        public async Task<IActionResult> addToCart([FromBody] CartInfoView view)
         {
             try
             {

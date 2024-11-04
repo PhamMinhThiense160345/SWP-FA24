@@ -9,7 +9,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ICart
 {
     public interface ICartService
     {
-        Task addToCart(CartView view);
+        Task addToCart(CartInfoView view);
         Task deleteFromCart(int cartId);
         Task<List<CartView?>> GetCartByUserId(int id);
 

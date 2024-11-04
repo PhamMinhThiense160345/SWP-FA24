@@ -26,7 +26,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             _cartRepository = cartRepository;
         }
 
-        public async Task addToCart(CartView view)
+        public async Task addToCart(CartInfoView view)
         {
             var cart = _mapper.Map<Cart>(view);
             var isCartExist = await _cartRepository.getCartByUserIdAndDishId(view.UserId, view.DishId);
@@ -36,7 +36,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             }
             else
             {
-                isCartExist.Quantity = view.Quantity;
+                isCartExist.Quantity += view.Quantity;
                 await _unitOfWork.CartRepository.UpdateAsync(isCartExist);
             }
             

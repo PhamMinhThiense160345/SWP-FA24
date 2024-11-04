@@ -173,7 +173,7 @@
     "Parameters": [
       {
         "Name": "view",
-        "Type": "Vegetarians_Assistant.Services.ModelView.CartView",
+        "Type": "Vegetarians_Assistant.Services.ModelView.CartInfoView",
         "IsRequired": true
       }
     ],
