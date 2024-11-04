@@ -3,6 +3,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text.RegularExpressions;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Admin;
+using Vegetarians_Assistant.Services.Services.Implement;
+using Vegetarians_Assistant.Repo.Entity;
 
 namespace Vegetarians_Assistant.API.Controllers
 {
@@ -12,23 +14,34 @@ namespace Vegetarians_Assistant.API.Controllers
     {
         private readonly ILoginAService _loginAService;
         private readonly IUserManagementService _userManagementService;
-        public UserController(ILoginAService loginAService, IUserManagementService userManagementService)
+        private readonly AuthService _authService;
+
+        public UserController(ILoginAService loginAService, IUserManagementService userManagementService, AuthService authService)
         {
             _loginAService = loginAService;
             _userManagementService = userManagementService;
+            _authService = authService;
         }
+
         [HttpPost("/api/v1/users/login")]
         public async Task<IActionResult> Login([FromBody] LoginView loginInfo)
         {
-            if (loginInfo.Email.IsNullOrEmpty())
+            if (loginInfo == null)
+            {
+                return BadRequest("Login information is required.");
+            }
+
+            if (string.IsNullOrEmpty(loginInfo.Email))
             {
                 return BadRequest("Email is required");
             }
+
             if (!IsValidEmail(loginInfo.Email))
             {
                 return BadRequest("Invalid email address");
             }
-            else if (loginInfo.Password.IsNullOrEmpty())
+
+            if (string.IsNullOrEmpty(loginInfo.Password))
             {
                 return BadRequest("Password is required");
             }
@@ -38,31 +51,37 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return NotFound("No account found");
             }
-            else if (user_.Status.Equals("banned"))
+
+            if (user_.Status != null && user_.Status.Equals("banned", StringComparison.OrdinalIgnoreCase))
             {
                 return BadRequest("Your account is banned");
             }
-            else
-            {
-                return Ok(user_);
-            }
-        }
 
+            // Chuyển đổi từ UserView sang User và tạo token
+            var userEntity = new User
+            {
+                UserId = user_.UserId,
+                Username = user_.Username,
+                // Thêm các thuộc tính khác nếu cần
+            };
+
+            var token = _authService.GenerateToken(userEntity);
+
+            // Trả về token và thông tin người dùng, nhưng không bao gồm token trong `UserView`
+            return Ok(new { Token = token, User = user_ });
+        }
 
 
         [HttpGet("/api/v1/users/alluser")]
         public async Task<ActionResult<IEnumerable<UserView>>> GetUsers()
         {
-
             var usersList = await _userManagementService.GetAllUser();
-            if (usersList.IsNullOrEmpty())
+            if (usersList == null || !usersList.Any())
             {
                 return NotFound("No users found on the system");
             }
             return Ok(usersList);
         }
-
-
 
         [HttpGet("/api/v1/users/getUserByUsername/{username}")]
         public async Task<ActionResult<UserView>> GetUserByUserName(string username)
@@ -75,22 +94,16 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
-
         [HttpGet("/api/v1/users/GetUserByID/{id}")]
         public async Task<ActionResult<UserView>> GetUserByID(int id)
         {
             var userDetail = await _userManagementService.GetUserByUserId(id);
             if (userDetail == null)
             {
-                return NotFound("Users not found");
+                return NotFound("User not found");
             }
             return Ok(userDetail);
         }
-
-
-
-
-
 
         [HttpPost("/api/v1/users/CreateStaff")]
         public async Task<IActionResult> RegisterStaff([FromBody] StaffView newUser)
@@ -107,17 +120,17 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest("Username you entered has already existed");
             }
-                bool checkRegister = await _userManagementService.CreateUserStaff(newUser);
-                if (checkRegister)
-                {
-                    return Ok("Create success");
-                }
-                else
-                {
-                    return BadRequest("Not correct role");
-                }
-        }
 
+            bool checkRegister = await _userManagementService.CreateUserStaff(newUser);
+            if (checkRegister)
+            {
+                return Ok("Create success");
+            }
+            else
+            {
+                return BadRequest("Not correct role");
+            }
+        }
 
         private bool IsValidEmail(string email)
         {

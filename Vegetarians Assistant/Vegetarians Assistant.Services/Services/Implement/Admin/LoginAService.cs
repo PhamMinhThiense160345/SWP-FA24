@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Admin;
+using Vegetarians_Assistant.Services.Services.Implement; // Thêm tham chiếu đến AuthService
 
 namespace Vegetarians_Assistant.Services.Services.Implement.Admin
 {
@@ -15,27 +15,36 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        public LoginAService(IUnitOfWork unitOfWOrk, IMapper mapper)
+        private readonly AuthService _authService;
+
+        public LoginAService(IUnitOfWork unitOfWork, IMapper mapper, AuthService authService)
         {
-            this._unitOfWork = unitOfWOrk;
+            this._unitOfWork = unitOfWork;
             this._mapper = mapper;
+            this._authService = authService;
         }
 
         public async Task<UserView?> AuthenticateUser(LoginView loginInfo)
         {
-
             try
             {
-                User? user = (await _unitOfWork.UserRepository.FindAsync(a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
+                // Bỏ mã hóa mật khẩu vì mật khẩu trong cơ sở dữ liệu là văn bản thuần
+                User? user = (await _unitOfWork.UserRepository.FindAsync(
+                    a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
+
                 if (user == null)
                 {
                     return null;
                 }
-                UserView? userView = new UserView()
+
+                // Tạo token
+                string token = _authService.GenerateToken(user);
+
+                // Tạo UserView và gán token
+                UserView userView = new UserView()
                 {
                     UserId = user.UserId,
                     Email = user.Email,
-                    Password = user.Password,
                     Username = user.Username,
                     ActivityLevel = user.ActivityLevel,
                     Address = user.Address,
@@ -44,13 +53,15 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
                     Height = user.Height,
                     PhoneNumber = user.PhoneNumber,
                     Profession = user.Profession,
-                    Weight = user.Weight
+                    Weight = user.Weight,
+                    //  Token = token // Gán token vào UserView
                 };
+
                 return userView;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"Lỗi khi xác thực người dùng: {ex.Message}", ex);
             }
         }
 
@@ -58,19 +69,23 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
         {
             try
             {
-                bool status = true;
                 var existed = (await _unitOfWork.UserRepository.FindAsync(e => e.Email == email)).FirstOrDefault();
-                if (existed == null)
-                {
-                    status = false;
-                }
-                return status;
+                return existed != null;
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"Lỗi khi kiểm tra email tồn tại: {ex.Message}", ex);
             }
+        }
 
+        // Phương thức mã hóa mật khẩu
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(bytes);
+            }
         }
     }
 }

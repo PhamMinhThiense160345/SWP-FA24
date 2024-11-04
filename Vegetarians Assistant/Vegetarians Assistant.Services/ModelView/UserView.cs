@@ -41,5 +41,6 @@ namespace Vegetarians_Assistant.Services.ModelView
 
         public string? ActivityLevel { get; set; }
         public bool? IsPhoneVerified { get; set; }
+
     }
 }

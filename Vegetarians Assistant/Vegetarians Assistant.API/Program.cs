@@ -22,6 +22,11 @@ using Vegetarians_Assistant.Services.Services.Interface.IOrder;
 using Vegetarians_Assistant.Services.Services.Implement.OrderImp;
 using Vegetarians_Assistant.Services.Services.Interface.IFollowImp;
 using Vegetarians_Assistant.Services.Services.Implement.FollowImp;
+using Vegetarians_Assistant.API.Config;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Vegetarians_Assistant.Services.Services.Implement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +71,9 @@ builder.Services.AddScoped<IOrderManagementService, OrderManagementService>();
 
 builder.Services.AddScoped<IFollowManagementService, FollowManagementService>();
 
+builder.Services.AddScoped<AuthService>();
+
+
 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
@@ -75,7 +83,27 @@ builder.Services.AddMemoryCache();
 
 //Addcors
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
+
+// Configure JWT Authentication
+var jwtConfig = builder.Configuration.GetSection("JwtConfig").Get<JwtConfig>();
+builder.Services.AddSingleton(jwtConfig);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Secret)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
