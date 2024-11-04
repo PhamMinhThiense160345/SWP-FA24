@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
+using Vegetarians_Assistant.Repo.Repositories.Implement;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Favorite;
+using static Vegetarians_Assistant.Services.Enum.Enum;
 
 namespace Vegetarians_Assistant.Services.Services.Implement.Favorite
 {
@@ -72,5 +74,66 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Favorite
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<bool> CreateFavoriteDish(FavoriteView newFavorite)
+        {
+            try
+            {
+                bool status = false;
+                
+                var favorite = _mapper.Map<FavoriteDish>(newFavorite);
+                await _unitOfWork.FavoriteDishRepository.InsertAsync(favorite);
+                await _unitOfWork.SaveAsync();
+                var insertedFavorite = (await _unitOfWork.FavoriteDishRepository.FindAsync(a => a.DishId == newFavorite.DishId)).FirstOrDefault();
+
+                if (insertedFavorite != null)
+                {
+                    var favo = new FavoriteDish
+                    {
+                        FavoriteId = insertedFavorite.FavoriteId,
+                        DishId= newFavorite.DishId,
+                        FavoriteDate = DateTime.Now,
+                        UserId = newFavorite.DishId
+                    };
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                var insertedFavorite = (await _unitOfWork.FavoriteDishRepository.FindAsync(a => a.FavoriteId == newFavorite.FavoriteId)).FirstOrDefault();
+                if (insertedFavorite != null)
+                {
+                    await _unitOfWork.FavoriteDishRepository.DeleteAsync(insertedFavorite);
+                    await _unitOfWork.SaveAsync();
+                }
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteFavoriteDish(FavoriteView deleteFavorite)
+        {
+            try
+            {
+                bool status = false;
+                var favorite = _mapper.Map<FavoriteDish>(deleteFavorite);
+                var insertedFavorite = (await _unitOfWork.FavoriteDishRepository.FindAsync(a => a.DishId == deleteFavorite.DishId && a.UserId == deleteFavorite.UserId)).FirstOrDefault();
+                if (insertedFavorite != null)
+                {
+                    await _unitOfWork.FavoriteDishRepository.DeleteAsync(insertedFavorite);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

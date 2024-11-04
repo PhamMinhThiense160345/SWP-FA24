@@ -432,6 +432,38 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "CreateFavoriteDish",
+    "RelativePath": "api/v1/favorites/createFavoriteDish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFavorite",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FavoriteView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "DeleteFavoriteDish",
+    "RelativePath": "api/v1/favorites/deleteFavoriteDish",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFavorite",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FavoriteView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
     "Method": "GetAllDishFavoriteByUserId",
     "RelativePath": "api/v1/favorites/getAllDishFavoriteByUserId/{id}",
     "HttpMethod": "GET",

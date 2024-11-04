@@ -10,5 +10,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Favorite
     public interface IFavoriteManagementService
     {
         Task<List<FavoriteDishView?>> GetAllDishFavoriteByUserId(int id);
+        Task<bool> CreateFavoriteDish(FavoriteView newFavorite);
+        Task<bool> DeleteFavoriteDish(FavoriteView deleteFavorite);
     }
 }
