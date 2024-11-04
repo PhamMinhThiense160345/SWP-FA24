@@ -35,7 +35,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1), // Thời gian hết hạn
+                expires: DateTime.Now.AddDays(1), 
                 signingCredentials: creds
             );
 
