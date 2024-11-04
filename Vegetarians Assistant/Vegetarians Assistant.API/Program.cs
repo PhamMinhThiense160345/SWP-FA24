@@ -81,29 +81,29 @@ builder.Services.AddAutoMapper(typeof(Program), typeof(Mapping));
 //Memory cache
 builder.Services.AddMemoryCache();
 
-//Addcors
+////Addcors
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
-// Configure JWT Authentication
-var jwtConfig = builder.Configuration.GetSection("JwtConfig").Get<JwtConfig>();
-builder.Services.AddSingleton(jwtConfig);
+//// Configure JWT Authentication
+//var jwtConfig = builder.Configuration.GetSection("JwtConfig").Get<JwtConfig>();
+//builder.Services.AddSingleton(jwtConfig);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Secret)),
-            ValidateIssuer = false,
-            ValidateAudience = false
-        };
-    });
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuerSigningKey = true,
+//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Secret)),
+//            ValidateIssuer = false,
+//            ValidateAudience = false
+//        };
+//    });
 
 var app = builder.Build();
 
-app.UseAuthentication();
-app.UseAuthorization();
+//app.UseAuthentication();
+//app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();

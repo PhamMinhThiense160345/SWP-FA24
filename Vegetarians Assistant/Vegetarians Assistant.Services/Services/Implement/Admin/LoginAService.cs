@@ -15,55 +15,55 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly AuthService _authService;
+        //private readonly AuthService _authService;
 
-        public LoginAService(IUnitOfWork unitOfWork, IMapper mapper, AuthService authService)
+        public LoginAService(IUnitOfWork unitOfWork, IMapper mapper)//, AuthService authService
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
-            this._authService = authService;
+            //this._authService = authService;
         }
 
-        public async Task<UserView?> AuthenticateUser(LoginView loginInfo)
-        {
-            try
-            {
+        //public async Task<UserView?> AuthenticateUser(LoginView loginInfo)
+        //{
+        //    try
+        //    {
             
-                User? user = (await _unitOfWork.UserRepository.FindAsync(
-                    a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
+        //        User? user = (await _unitOfWork.UserRepository.FindAsync(
+        //            a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
 
-                if (user == null)
-                {
-                    return null;
-                }
+        //        if (user == null)
+        //        {
+        //            return null;
+        //        }
 
-                // Tạo token
-                string token = _authService.GenerateToken(user);
+        //        // Tạo token
+        //        string token = _authService.GenerateToken(user);
 
-                // Tạo UserView và gán token
-                UserView userView = new UserView()
-                {
-                    UserId = user.UserId,
-                    Email = user.Email,
-                    Username = user.Username,
-                    ActivityLevel = user.ActivityLevel,
-                    Address = user.Address,
-                    Age = user.Age,
-                    Gender = user.Gender,
-                    Height = user.Height,
-                    PhoneNumber = user.PhoneNumber,
-                    Profession = user.Profession,
-                    Weight = user.Weight,
+        //        // Tạo UserView và gán token
+        //        UserView userView = new UserView()
+        //        {
+        //            UserId = user.UserId,
+        //            Email = user.Email,
+        //            Username = user.Username,
+        //            ActivityLevel = user.ActivityLevel,
+        //            Address = user.Address,
+        //            Age = user.Age,
+        //            Gender = user.Gender,
+        //            Height = user.Height,
+        //            PhoneNumber = user.PhoneNumber,
+        //            Profession = user.Profession,
+        //            Weight = user.Weight,
 
-                };
+        //        };
 
-                return userView;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Lỗi khi xác thực người dùng: {ex.Message}", ex);
-            }
-        }
+        //        return userView;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Lỗi khi xác thực người dùng: {ex.Message}", ex);
+        //    }
+        //}
 
         public async Task<bool> IsExistedEmail(string email)
         {
