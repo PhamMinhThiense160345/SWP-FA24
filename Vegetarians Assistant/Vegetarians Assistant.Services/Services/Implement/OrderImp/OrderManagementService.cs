@@ -86,6 +86,38 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
+        public async Task<List<OrderView?>> GetOrderByUserId(int id)
+        {
+
+            try
+            {
+                var orders = await _unitOfWork.OrderRepository.FindAsync(c => c.UserId == id);
+                var orderViews = new List<OrderView>();
+
+                foreach (var order in orders)
+                {
+                    orderViews.Add(new OrderView
+                    {
+                        OrderId = order.OrderId,
+                        Status = order.Status,
+                        CompletedTime = order.CompletedTime,
+                        DeliveryAddress = order.DeliveryAddress,
+                        DeliveryFailedFee = order.DeliveryFailedFee,
+                        DeliveryFee = order.DeliveryFee,
+                        Note = order.Note,
+                        OrderDate = order.OrderDate,
+                        TotalPrice = order.TotalPrice,
+                        UserId = order.UserId
+                    });
+                }
+                return orderViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<OrderView>> GetAllOrder()
         {
             try

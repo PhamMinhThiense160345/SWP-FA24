@@ -37,6 +37,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(orderDetail);
         }
+        [HttpGet("/api/v1/orders/getOrderByUserId/{id}")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByUserId(int id)
+        {
+            var orderDetail = await _orderManagementService.GetOrderByUserId(id);
+            if (orderDetail == null)
+            {
+                return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
         [HttpGet("/api/v1/orders/allOrder")]
         public async Task<ActionResult<IEnumerable<OrderView>>> AllOrder()
         {

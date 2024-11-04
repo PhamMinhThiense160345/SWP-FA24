@@ -11,6 +11,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IOrder
     {
         Task<bool> CreateOrderByCustomer(OrderView newOrder);
         Task<List<OrderView?>> GetOrderByStatus(string Status);
+        Task<List<OrderView?>> GetOrderByUserId(int id);
         Task<List<OrderView>> GetAllOrder();
         Task<bool> ChangeOrderStatus(int orderId, string newStatus);
 
