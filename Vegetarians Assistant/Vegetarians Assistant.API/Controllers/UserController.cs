@@ -57,7 +57,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Your account is banned");
             }
 
-            // Chuyển đổi từ UserView sang User và tạo token
             var userEntity = new User
             {
                 UserId = user_.UserId,
@@ -67,7 +66,6 @@ namespace Vegetarians_Assistant.API.Controllers
 
             var token = _authService.GenerateToken(userEntity);
 
-            // Trả về token và thông tin người dùng, nhưng không bao gồm token trong `UserView`
             return Ok(new { Token = token, User = user_ });
         }
 
