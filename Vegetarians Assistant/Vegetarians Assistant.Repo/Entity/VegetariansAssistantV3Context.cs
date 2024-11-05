@@ -57,6 +57,8 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<Order> Orders { get; set; }
 
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+
     public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
@@ -629,6 +631,29 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasConstraintName("FK__Orders__user_id__6EC0713C");
         });
 
+        modelBuilder.Entity<OrderDetail>(entity =>
+        {
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__Order_De__3C5A40800B09F237");
+
+            entity.ToTable("Order_Detail");
+
+            entity.Property(e => e.OrderDetailId).HasColumnName("order_detail_id");
+            entity.Property(e => e.DishId).HasColumnName("dish_id");
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.Price)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("price");
+            entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+            entity.HasOne(d => d.Dish).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.DishId)
+                .HasConstraintName("FK__Order_Det__dish___4F12BBB9");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
+                .HasForeignKey(d => d.OrderId)
+                .HasConstraintName("FK__Order_Det__order__4E1E9780");
+        });
+
         modelBuilder.Entity<PaymentDetail>(entity =>
         {
             entity.HasKey(e => e.PaymentId).HasName("PK__Payment___ED1FC9EA244909CF");
@@ -691,7 +716,6 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasColumnName("activity_level");
             entity.Property(e => e.Address)
                 .HasMaxLength(255)
-                .IsUnicode(false)
                 .HasColumnName("address");
             entity.Property(e => e.Age).HasColumnName("age");
             entity.Property(e => e.DietaryPreferenceId).HasColumnName("dietary_preference_id");
