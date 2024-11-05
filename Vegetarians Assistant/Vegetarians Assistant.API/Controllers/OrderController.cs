@@ -79,5 +79,26 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut("/api/v1/orders/{id}/change-DeliveryFailedFee")]
+        public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromBody] decimal newDeliveryFailedFee)
+        {
+            try
+            {
+                var success = await _orderManagementService.ChangeOrderDeliveryFailedFee(id, newDeliveryFailedFee);
+
+                if (success)
+                {
+                    return Ok("Order Delivery Failed Fee updated successfully");
+                }
+                else
+                {
+                    return NotFound("Order not found or failed to update Delivery Failed Fee");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

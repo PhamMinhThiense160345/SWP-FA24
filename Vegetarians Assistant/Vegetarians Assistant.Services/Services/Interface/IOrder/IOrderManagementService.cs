@@ -14,6 +14,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IOrder
         Task<List<OrderView?>> GetOrderByUserId(int id);
         Task<List<OrderView>> GetAllOrder();
         Task<bool> ChangeOrderStatus(int orderId, string newStatus);
+        Task<bool> ChangeOrderDeliveryFailedFee(int orderId, decimal newDeliveryFailedFee);
 
     }
 }

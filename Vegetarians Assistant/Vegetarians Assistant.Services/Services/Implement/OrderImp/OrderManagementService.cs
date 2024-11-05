@@ -173,5 +173,27 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<bool> ChangeOrderDeliveryFailedFee(int orderId, decimal newDeliveryFailedFee)
+        {
+            try
+            {
+                var order = await _unitOfWork.OrderRepository.GetByIDAsync(orderId);
+
+                if (order == null)
+                {
+                    return false;
+                }
+
+                order.DeliveryFailedFee = newDeliveryFailedFee;
+                await _unitOfWork.OrderRepository.UpdateAsync(order);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

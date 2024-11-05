@@ -636,6 +636,27 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "ChangeOrderDeliveryFailedFee",
+    "RelativePath": "api/v1/orders/{id}/change-DeliveryFailedFee",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newDeliveryFailedFee",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "ChangeOrderStatus",
     "RelativePath": "api/v1/orders/{id}/change-status",
     "HttpMethod": "PUT",
