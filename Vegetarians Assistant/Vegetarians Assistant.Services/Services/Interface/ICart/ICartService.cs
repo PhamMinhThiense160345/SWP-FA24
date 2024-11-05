@@ -14,5 +14,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ICart
         Task<List<CartView?>> GetCartByUserId(int id);
 
         Task<bool> RemoveCartByUserId(int id);
+
+        Task<bool> UpdateDishQuantityByCartId(int id, int newQuantity);
     }
 }

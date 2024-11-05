@@ -57,5 +57,27 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPut("/api/v1/carts/updateDishQuantityByCartId/{id}")]
+        public async Task<IActionResult> UpdateDishQuantityByCartId(int id, [FromBody] int newQuantity)
+        {
+            try
+            {
+                var success = await _cartService.UpdateDishQuantityByCartId(id, newQuantity);
+
+                if (success)
+                {
+                    return Ok("Cart quantity updated successfully");
+                }
+                else
+                {
+                    return NotFound("Cart not found or failed to update quantity");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

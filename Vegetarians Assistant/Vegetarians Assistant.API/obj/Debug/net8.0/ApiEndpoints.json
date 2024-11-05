@@ -222,6 +222,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "UpdateDishQuantityByCartId",
+    "RelativePath": "api/v1/carts/updateDishQuantityByCartId/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newQuantity",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "EditCustomer",
     "RelativePath": "api/v1/customers/EditCustomer",

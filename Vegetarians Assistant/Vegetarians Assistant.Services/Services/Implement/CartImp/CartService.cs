@@ -128,6 +128,30 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
                 throw;
             }
         }
+
+        public async Task<bool> UpdateDishQuantityByCartId(int id, int newQuantity)
+        {
+            try
+            {
+                var cart = await _unitOfWork.CartRepository.GetByIDAsync(id);
+
+                if (cart == null)
+                {
+                    return false; 
+                }
+
+                cart.Quantity = newQuantity;
+                await _unitOfWork.CartRepository.UpdateAsync(cart);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public Task deleteFromCart(int cartId)
         {
             throw new NotImplementedException();
