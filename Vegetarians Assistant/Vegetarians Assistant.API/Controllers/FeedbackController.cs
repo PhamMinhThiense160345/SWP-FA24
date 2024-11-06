@@ -26,6 +26,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(feedbacksList);
         }
+
         [HttpGet("/api/v1/feedbacks/getFeedbackByDishID/{id}")]
         public async Task<ActionResult<FeedbackView>> GetFeedbackByID(int id)
         {
@@ -36,5 +37,6 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(feedbackDetail);
         }
+
     }
 }

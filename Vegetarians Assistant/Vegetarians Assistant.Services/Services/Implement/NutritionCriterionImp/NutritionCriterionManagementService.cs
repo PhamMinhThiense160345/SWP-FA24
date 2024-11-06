@@ -193,5 +193,29 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
             }
         }
 
+        public async Task<bool> DeleteNutritionCriteriaByCriteriaId(int id)
+        {
+            try
+            {
+                var nutritions = await _unitOfWork.NutritionCriterionRepository.GetByIDAsync(id);
+
+                if (nutritions != null)
+                {
+                    
+                    await _unitOfWork.NutritionCriterionRepository.DeleteAsync(nutritions);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

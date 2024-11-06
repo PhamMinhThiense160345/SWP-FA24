@@ -14,6 +14,7 @@ namespace Vegetarians_Assistant.API.Controllers
         {
             _dishManagementService = dishManagementService;
         }
+
         [HttpGet("/api/v1/dishs/allDish")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishs()
         {
@@ -25,6 +26,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(dishsList);
         }
+
         [HttpGet("/api/v1/dishs/getDishByName/{name}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByNameDish(string name)
         {
@@ -46,6 +48,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(dishDetail);
         }
+
         [HttpGet("/api/v1/dishs/GetDishByID/{id}")]
         public async Task<ActionResult<DishView>> GetDishByID(int id)
         {
@@ -56,6 +59,26 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(dishDetail);
         }
+
+        [HttpGet("dishs/calculateNutrition/{dishId}")]
+        public async Task<IActionResult> CalculateNutrition(int dishId)
+        {
+            var response = await _dishManagementService.CalculateNutrition(dishId);
+            if (response is null)
+            {
+                return NotFound("Not found dish with id = " + dishId);
+            }
+            return Ok(response);
+
+        }
+
+        [HttpPost("addIngredient")]
+        public async Task<IActionResult> AddIngredientToDish([FromBody] AddIngredientView request)
+        {
+            var response = await _dishManagementService.AddIngredientAsync(request);
+            return Ok(response);
+        }
+
         [HttpPut("/api/v1/dishs/updateDishDetailByDishId")]
         public async Task<IActionResult> UpdateDishDetailByDishId([FromBody] DishView updateDish)
         {
@@ -78,23 +101,5 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-            [HttpGet("dishs/calculateNutrition/{dishId}")]
-
-            public async Task<IActionResult> CalculateNutrition(int dishId)
-            {
-                var response = await _dishManagementService.CalculateNutrition(dishId);
-                if (response is null)
-                {
-                    return NotFound("Not found dish with id = " + dishId);
-                }
-                return Ok(response);
-
-            }
-
-        [HttpPost("addIngredient")]
-        public async Task<IActionResult> AddIngredientToDish([FromBody] AddIngredientView request)
-        {
-            var response = await _dishManagementService.AddIngredientAsync(request);
-            return Ok(response);
-        }
-    } }
+    }
+}

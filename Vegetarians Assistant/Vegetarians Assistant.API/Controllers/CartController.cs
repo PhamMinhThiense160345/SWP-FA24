@@ -18,19 +18,6 @@ namespace Vegetarians_Assistant.API.Controllers
             _cartService = cartService;
         }
 
-        [HttpPost("/api/v1/carts/addToCart")]
-        public async Task<IActionResult> addToCart([FromBody] CartInfoView view)
-        {
-            try
-            {
-                await _cartService.addToCart(view);
-                return StatusCode(StatusCodes.Status201Created);
-            }catch (Exception ex)
-            {
-                return BadRequest("Thêm dish vào giỏ hàng thất bại");
-            }
-        }
-
         [HttpGet("/api/v1/carts/getCartByUserId/{id}")]
         public async Task<ActionResult<IEnumerable<CartView>>> GetCartByUserId(int id)
         {
@@ -42,18 +29,17 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(cartDetail);
         }
 
-        [HttpDelete("/api/v1/carts/removeCartByUserId/{id}")]
-        public async Task<IActionResult> RemoveCartByUserId(int id)
+        [HttpPost("/api/v1/carts/addToCart")]
+        public async Task<IActionResult> addToCart([FromBody] CartInfoView view)
         {
-            var success = await _cartService.RemoveCartByUserId(id);
-
-            if (success)
+            try
             {
-                return Ok("Cart deleted successfully");
+                await _cartService.addToCart(view);
+                return StatusCode(StatusCodes.Status201Created);
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound("Cart not found or failed to delete");
+                return BadRequest("Thêm dish vào giỏ hàng thất bại");
             }
         }
 
@@ -76,6 +62,21 @@ namespace Vegetarians_Assistant.API.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("/api/v1/carts/removeCartByUserId/{id}")]
+        public async Task<IActionResult> RemoveCartByUserId(int id)
+        {
+            var success = await _cartService.RemoveCartByUserId(id);
+
+            if (success)
+            {
+                return Ok("Cart deleted successfully");
+            }
+            else
+            {
+                return NotFound("Cart not found or failed to delete");
             }
         }
 

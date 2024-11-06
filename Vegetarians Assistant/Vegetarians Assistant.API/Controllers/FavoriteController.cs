@@ -18,7 +18,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        [HttpGet("/api/v1/favorites/getAllDishFavoriteByUserId/{id}")]
+        [HttpGet("/api/v1/favorites/allDishFavoriteByUserId/{id}")]
         public async Task<ActionResult<FavoriteDishView>> GetAllDishFavoriteByUserId(int id)
         {
             var favoriteDetail = await _favoriteManagementService.GetAllDishFavoriteByUserId(id);
@@ -28,6 +28,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(favoriteDetail);
         }
+
         [HttpPost("/api/v1/favorites/createFavoriteDish")]
         public async Task<IActionResult> CreateFavoriteDish([FromBody] FavoriteView newFavorite)
         {
@@ -49,6 +50,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Dish had favorite");
             }
         }
+
         [HttpDelete("/api/v1/favorites/deleteFavoriteDish")]
         public async Task<IActionResult> DeleteFavoriteDish([FromBody] FavoriteView newFavorite)
         {
@@ -70,5 +72,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("The dish has not been added to your favorites list.");
             }
         }
+
     }
 }

@@ -11,7 +11,8 @@ namespace Vegetarians_Assistant.API.Controllers
         {
             _nutritionCriterionManagementService = nutritionCriterionManagementService;
         }
-        [HttpGet("/api/v1/nutritionCriterions/getAllNutritionCriteria")]
+
+        [HttpGet("/api/v1/nutritionCriterions/allNutritionCriteria")]
         public async Task<ActionResult<IEnumerable<NutritionCriterionView>>> GetAllNutritionCriteria()
         {
 
@@ -22,6 +23,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(nutritionCriterionsList);
         }
+
         [HttpGet("/api/v1/nutritionCriterions/getNutritionCriteriaDetailByCriteriaId/{id}")]
         public async Task<ActionResult<NutritionCriterionView>> GetNutritionCriteriaDetailByCriteriaId(int id)
         {
@@ -32,6 +34,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(nutritionCriterionsList);
         }
+
         [HttpPost("/api/v1/nutritionCriterions/createNutritionCriteria")]
         public async Task<IActionResult> CreateNutritionCriteria([FromBody] NutritionCriterionView newNutritionCriteria)
         {
@@ -45,6 +48,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create nutrition criteria fail");
             }
         }
+
         [HttpPut("/api/v1/nutritionCriterions/updateNutritionCriteriaByCriteriaId")]
         public async Task<IActionResult> UpdateNutritionCriteriaByCriteriaId([FromBody] NutritionCriterionView updateNutritionCriterion)
         {
@@ -66,5 +70,21 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("/api/v1/nutritionCriterions/deleteNutritionCriteriaByCriteriaId/{id}")]
+        public async Task<IActionResult> DeleteNutritionCriteriaByCriteriaId(int id)
+        {
+            var success = await _nutritionCriterionManagementService.DeleteNutritionCriteriaByCriteriaId(id);
+
+            if (success)
+            {
+                return Ok("Delete nutrition criteria successfully");
+            }
+            else
+            {
+                return NotFound("Nutrition criteria not found or failed to delete");
+            }
+        }
+
     }
 }

@@ -19,7 +19,46 @@ namespace Vegetarians_Assistant.API.Controllers
             _membershipTierService = membershipTierService;
             _usermembershipService = usermembershipService;
         
-    }
+        }
+
+        [HttpGet("/api/v1/customers/getDeliveryInformationByUserId /{id}")]
+        public async Task<ActionResult<DeliveryView>> GetDeliveryInformationByUserId(int id)
+        {
+            var deliveryDetail = await _customerManagementService.GetDeliveryInformationByUserId(id);
+            if (deliveryDetail == null)
+            {
+                return NotFound("Deliverys not found");
+            }
+            return Ok(deliveryDetail);
+        }
+
+        [HttpGet("/api/v1/customers/membership/{id}")]
+        public async Task<IActionResult> GetCustomerMembership(int id)
+        {
+            try
+            {
+                var view = await _usermembershipService.getCustomerMembership(id);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("/api/v1/customers/membershipTier/{id}")]
+        public async Task<IActionResult> GetCustomerMembershipTier(int id)
+        {
+            try
+            {
+                var view = await _membershipTierService.getCustomerMembershipTier(id);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost("/api/v1/customers/RegisterCustomer")]
         public async Task<IActionResult> RegisterCustomer([FromBody] UserView newUser)
@@ -51,59 +90,6 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [HttpGet("/api/v1/customers/getDeliveryInformationByUserId /{id}")]
-        public async Task<ActionResult<DeliveryView>> GetDeliveryInformationByUserId(int id)
-        {
-            var deliveryDetail = await _customerManagementService.GetDeliveryInformationByUserId(id);
-            if (deliveryDetail == null)
-            {
-                return NotFound("Deliverys not found");
-            }
-            return Ok(deliveryDetail);
-        }
-
-        [HttpPut("/api/v1/customers/EditCustomer")]
-        public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
-        {
-            try
-            {
-                var view = await _customerManagementService.EditUser(newUser);
-                return Ok(view);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
-            }
-        }
-
-        [HttpGet("/api/v1/customers/membership/{id}")]
-        public async Task<IActionResult> GetCustomerMembership(int id)
-        {
-            try
-            {
-                var view = await _usermembershipService.getCustomerMembership(id);
-                return Ok(view);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpGet("/api/v1/customers/membershipTier/{id}")]
-        public async Task<IActionResult> GetCustomerMembershipTier(int id)
-        {
-            try
-            {
-                var view = await _membershipTierService.getCustomerMembershipTier(id);
-                return Ok(view);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [HttpPut("/api/v1/customers/EditCustomer/membership/changePoint/{userId}/{points}")]
         public async Task<IActionResult> changePoint(int userId, int points)
         {
@@ -131,5 +117,20 @@ namespace Vegetarians_Assistant.API.Controllers
                 return false;
             }
         }
+
+        [HttpPut("/api/v1/customers/EditCustomer")]
+        public async Task<IActionResult> EditCustomer([FromBody] UserView newUser)
+        {
+            try
+            {
+                var view = await _customerManagementService.EditUser(newUser);
+                return Ok(view);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Chỉnh sửa thông tin khách hàng thất bại");
+            }
+        }
+
     }
 }

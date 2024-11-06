@@ -14,6 +14,52 @@ namespace Vegetarians_Assistant.API.Controllers
         {
             _orderManagementService = orderManagementService;
         }
+
+        [HttpGet("/api/v1/orders/allOrder")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> AllOrder()
+        {
+
+            var ordersList = await _orderManagementService.GetAllOrder();
+            if (ordersList == null || !ordersList.Any())
+            {
+                return NotFound("No orders found on the system");
+            }
+            return Ok(ordersList);
+        }
+
+        [HttpGet("/api/v1/orders/getOrderByStatus/{Status}")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByStatus(string Status)
+        {
+            var orderDetail = await _orderManagementService.GetOrderByStatus(Status);
+            if (orderDetail == null)
+            {
+                return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
+
+        [HttpGet("/api/v1/orders/getOrderByUserId/{id}")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByUserId(int id)
+        {
+            var orderDetail = await _orderManagementService.GetOrderByUserId(id);
+            if (orderDetail == null)
+            {
+                return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
+
+        [HttpGet("/api/v1/orders/getOrderDetailOrderId/{id}")]
+        public async Task<ActionResult<OrderDetailInfo>> GetOrderDetailOrderId(int id)
+        {
+            var orderDetail = await _orderManagementService.GetOrderDetailOrderId(id);
+            if (orderDetail == null)
+            {
+                return NotFound("Order detail not found");
+            }
+            return Ok(orderDetail);
+        }
+
         [HttpPost("/api/v1/orders/createOrderByCustomer")]
         public async Task<IActionResult> CreateOrderByCustomer([FromBody] OrderView newOrder)
         {
@@ -27,6 +73,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create order fail");
             }
         }
+
         [HttpPost("/api/v1/orders/createOrderDetail")]
         public async Task<IActionResult> CreateOrderDetail([FromBody] OrderDetailView newOrder)
         {
@@ -40,47 +87,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create order detail fail");
             }
         }
-        [HttpGet("/api/v1/orders/getOrderByStatus/{Status}")]
-        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByStatus(string Status)
-        {
-            var orderDetail = await _orderManagementService.GetOrderByStatus(Status);
-            if (orderDetail == null)
-            {
-                return NotFound("Order not found");
-            }
-            return Ok(orderDetail);
-        }
-        [HttpGet("/api/v1/orders/getOrderByUserId/{id}")]
-        public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByUserId(int id)
-        {
-            var orderDetail = await _orderManagementService.GetOrderByUserId(id);
-            if (orderDetail == null)
-            {
-                return NotFound("Order not found");
-            }
-            return Ok(orderDetail);
-        }
-        [HttpGet("/api/v1/orders/getOrderDetailOrderId/{id}")]
-        public async Task<ActionResult<OrderDetailInfo>> GetOrderDetailOrderId(int id)
-        {
-            var orderDetail = await _orderManagementService.GetOrderDetailOrderId(id);
-            if (orderDetail == null)
-            {
-                return NotFound("Order detail not found");
-            }
-            return Ok(orderDetail);
-        }
-        [HttpGet("/api/v1/orders/allOrder")]
-        public async Task<ActionResult<IEnumerable<OrderView>>> AllOrder()
-        {
-
-            var ordersList = await _orderManagementService.GetAllOrder();
-            if (ordersList == null || !ordersList.Any())
-            {
-                return NotFound("No orders found on the system");
-            }
-            return Ok(ordersList);
-        }
+        
         [HttpPut("/api/v1/orders/{id}/change-status")]
         public async Task<IActionResult> ChangeOrderStatus(int id, [FromBody] string newStatus)
         {
@@ -102,6 +109,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPut("/api/v1/orders/changeOrderDeliveryFailedFee/{id}")]
         public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromBody] decimal newDeliveryFailedFee)
         {
@@ -123,5 +131,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }

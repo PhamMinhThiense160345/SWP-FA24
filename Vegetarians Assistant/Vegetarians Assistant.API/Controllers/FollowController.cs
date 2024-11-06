@@ -16,7 +16,8 @@ namespace Vegetarians_Assistant.API.Controllers
             _followManagementService = followManagementService;
             _unitOfWork = unitOfWork;
         }
-        [HttpGet("/api/v1/follows/getAllFollowerByUserId/{id}")]
+
+        [HttpGet("/api/v1/follows/allFollowerByUserId/{id}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetAllFollowerByUserId(int id)
         {
             var followerDetail = await _followManagementService.GetAllFollowerByUserId(id);
@@ -25,6 +26,17 @@ namespace Vegetarians_Assistant.API.Controllers
                 return NotFound("Follower not found");
             }
             return Ok(followerDetail);
+        }
+
+        [HttpGet("/api/v1/follows/allFollowingByUserId/{id}")]
+        public async Task<ActionResult<IEnumerable<DishView>>> GetAllFollowingByUserId(int id)
+        {
+            var followingDetail = await _followManagementService.GetAllFollowingByUserId(id);
+            if (followingDetail == null)
+            {
+                return NotFound("Following not found");
+            }
+            return Ok(followingDetail);
         }
 
         [HttpPost("/api/v1/follows/followerUserByCustomer")]
@@ -55,17 +67,6 @@ namespace Vegetarians_Assistant.API.Controllers
                     return BadRequest("Unfollow fail");
                 }
             }
-        }
-
-        [HttpGet("/api/v1/follows/getAllFollowingByUserId/{id}")]
-        public async Task<ActionResult<IEnumerable<DishView>>> GetAllFollowingByUserId(int id)
-        {
-            var followingDetail = await _followManagementService.GetAllFollowingByUserId(id);
-            if (followingDetail == null)
-            {
-                return NotFound("Following not found");
-            }
-            return Ok(followingDetail);
         }
 
         [HttpPost("/api/v1/follows/followingUserByCustomer")]

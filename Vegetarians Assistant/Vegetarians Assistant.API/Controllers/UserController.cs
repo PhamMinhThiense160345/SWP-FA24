@@ -92,7 +92,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
-        [HttpGet("/api/v1/users/GetUserByID/{id}")]
+        [HttpGet("/api/v1/users/getUserByID/{id}")]
         public async Task<ActionResult<UserView>> GetUserByID(int id)
         {
             var userDetail = await _userManagementService.GetUserByUserId(id);
@@ -103,7 +103,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
-        [HttpPost("/api/v1/users/CreateStaff")]
+        [HttpPost("/api/v1/users/createStaff")]
         public async Task<IActionResult> RegisterStaff([FromBody] StaffView newUser)
         {
             if (await _userManagementService.IsExistedEmail(newUser.Email))

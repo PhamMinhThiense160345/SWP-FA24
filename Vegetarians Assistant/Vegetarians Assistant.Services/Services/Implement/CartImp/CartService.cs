@@ -106,15 +106,11 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
         {
             try
             {
-                var cartes = (await _unitOfWork.CartRepository.FindAsync(c => c.UserId == id)).ToList();
+                var cartes = (await _unitOfWork.CartRepository.GetByIDAsync(id));
 
-                if (cartes.Any())
+                if (cartes != null)
                 {
-                    foreach (var cart in cartes)
-                    {
-                        await _unitOfWork.CartRepository.DeleteAsync(cart);
-                    }
-
+                    await _unitOfWork.CartRepository.DeleteAsync(cartes);
                     await _unitOfWork.SaveAsync();
                     return true;
                 }
