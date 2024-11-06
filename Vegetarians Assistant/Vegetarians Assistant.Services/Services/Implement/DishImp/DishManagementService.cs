@@ -274,8 +274,37 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 return new ResponseView(false, ex.Message);
             }
         }
+        public async Task<ResponseView> UpdateIngredientAsync(UpdateIngredientView request)
+        {
+            try
+            {
+                if (request.NewWeight <= 0) throw new Exception("Weight must be greater than 0");
 
-      
+                var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(request.IngredientId);
+                if (ingredient is null) throw new Exception("Not found ingredient with id = " + request.IngredientId);
+
+                var dish = await _unitOfWork.DishRepository.GetByIDAsync(request.DishId);
+                if (dish is null) throw new Exception("Not found dish with id = " + request.DishId);
+
+
+                var searchResult = await _unitOfWork.DishIngredientRepository
+                  .FindAsync(x => x.DishId == request.DishId && x.IngredientId == request.IngredientId);
+
+                var current = searchResult.FirstOrDefault();
+                if (current is null) throw new Exception("Not found dish ingredient");
+
+                current.Weight = request.NewWeight;
+
+                await _unitOfWork.DishIngredientRepository.UpdateAsync(current);
+                return new ResponseView(true, "Update ingredient weight in dish successfully");
+            }
+            catch (Exception ex)
+            {
+                return new ResponseView(false, ex.Message);
+            }
+        }
+
+
         public async Task<DishNutritionalView?> CalculateNutrition(int dishId)
         {
             var dish = await _unitOfWork.DishRepository.GetByIDAsync(dishId);

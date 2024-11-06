@@ -79,6 +79,13 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(response);
         }
 
+        [HttpPut("dishs/updateIngredient")]
+        public async Task<IActionResult> UpdateIngredientInDish([FromBody] UpdateIngredientView request)
+        {
+            var response = await _dishManagementService.UpdateIngredientAsync(request);
+            return Ok(response);
+        }
+
         [HttpPut("/api/v1/dishs/updateDishDetailByDishId")]
         public async Task<IActionResult> UpdateDishDetailByDishId([FromBody] DishView updateDish)
         {
