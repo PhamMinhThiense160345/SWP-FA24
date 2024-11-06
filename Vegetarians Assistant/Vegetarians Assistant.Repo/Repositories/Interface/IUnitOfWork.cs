@@ -28,6 +28,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<NotificationSetting> NotificationSettingRepository { get; }
         IGenericRepository<NotificationType> NotificationTypeRepository { get; }
         IGenericRepository<NutritionalInfo> NutritionalInfoRepository { get; }
+        IGenericRepository<NutritionCriterion> NutritionCriterionRepository { get; }
         IGenericRepository<Order> OrderRepository { get; }
         IGenericRepository<OrderDetail> OrderDetailRepository { get; }
         IGenericRepository<PaymentDetail> PaymentDetailRepository { get; }

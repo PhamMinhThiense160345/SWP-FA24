@@ -31,6 +31,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<NotificationSetting> _notificationSettingRepository;
         private GenericRepository<NotificationType> _notificationTypeRepository;
         private GenericRepository<NutritionalInfo> _nutritionalInfoRepository;
+        private GenericRepository<NutritionCriterion> _nutritionCriterionRepository;
         private GenericRepository<Order> _orderRepository;
         private GenericRepository<OrderDetail> _orderDetailRepository;
         private GenericRepository<PaymentDetail> _paymentDetailRepository;
@@ -74,6 +75,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<NotificationSetting> NotificationSettingRepository => _notificationSettingRepository ?? new GenericRepository<NotificationSetting>(context);
         public IGenericRepository<NotificationType> NotificationTypeRepository => _notificationTypeRepository ?? new GenericRepository<NotificationType>(context);
         public IGenericRepository<NutritionalInfo> NutritionalInfoRepository => _nutritionalInfoRepository ?? new GenericRepository<NutritionalInfo>(context);
+        public IGenericRepository<NutritionCriterion> NutritionCriterionRepository => _nutritionCriterionRepository ?? new GenericRepository<NutritionCriterion>(context);
         public IGenericRepository<Order> OrderRepository => _orderRepository ?? new GenericRepository<Order>(context);
         public IGenericRepository<OrderDetail> OrderDetailRepository => _orderDetailRepository ?? new GenericRepository<OrderDetail>(context);
         public IGenericRepository<PaymentDetail> PaymentDetailRepository => _paymentDetailRepository ?? new GenericRepository<PaymentDetail>(context);

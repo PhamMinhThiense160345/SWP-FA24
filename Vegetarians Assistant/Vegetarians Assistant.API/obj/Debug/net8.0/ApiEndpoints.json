@@ -688,6 +688,42 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionCriterionController",
+    "Method": "CreateNutritionCriteria",
+    "RelativePath": "api/v1/nutritionCriterions/createNutritionCriteria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newNutritionCriteria",
+        "Type": "Vegetarians_Assistant.Services.ModelView.NutritionCriterionView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionCriterionController",
+    "Method": "GetAllNutritionCriteria",
+    "RelativePath": "api/v1/nutritionCriterions/getAllNutritionCriteria",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.NutritionCriterionView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "ChangeOrderStatus",
     "RelativePath": "api/v1/orders/{id}/change-status",
