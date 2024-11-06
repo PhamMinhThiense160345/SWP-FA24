@@ -77,5 +77,16 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-    }
-}
+
+            [HttpGet("/api/v1/dishs/calculateNutrition/{dishId}")]
+
+            public async Task<IActionResult> CalculateNutrition(int dishId)
+            {
+                var response = await _dishManagementService.CalculateNutrition(dishId);
+                if (response is null)
+                {
+                    return NotFound("Not found dish with id = " + dishId);
+                }
+                return Ok(response);
+            }
+        } }
