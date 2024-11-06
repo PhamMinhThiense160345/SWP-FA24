@@ -78,7 +78,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-            [HttpGet("/api/v1/dishs/calculateNutrition/{dishId}")]
+            [HttpGet("dishs/calculateNutrition/{dishId}")]
 
             public async Task<IActionResult> CalculateNutrition(int dishId)
             {
@@ -88,5 +88,13 @@ namespace Vegetarians_Assistant.API.Controllers
                     return NotFound("Not found dish with id = " + dishId);
                 }
                 return Ok(response);
+
             }
-        } }
+
+        [HttpPost("addIngredient")]
+        public async Task<IActionResult> AddIngredientToDish([FromBody] AddIngredientView request)
+        {
+            var response = await _dishManagementService.AddIngredientAsync(request);
+            return Ok(response);
+        }
+    } }

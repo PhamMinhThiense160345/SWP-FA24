@@ -169,7 +169,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 throw new Exception(ex.Message);
             }
         }
-        
+
         public async Task<DishView?> GetDishByDishId(int id)
         {
             try
@@ -241,53 +241,86 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 throw new Exception(ex.Message);
             }
         }
-
-            public async Task<DishNutritionalView?> CalculateNutrition(int dishId)
+        public async Task<ResponseView> AddIngredientAsync(AddIngredientView request)
+        {
+            try
             {
-                var dish = await _unitOfWork.DishRepository.GetByIDAsync(dishId);
-                if (dish is null) return null;
+                if (request.Weight <= 0) throw new Exception("Weight must be greater than 0");
 
-                // Fetch all ingredient IDs and their corresponding weights for the specified dish
-                var query = await _unitOfWork.DishIngredientRepository
-                    .FindAsync(x => x.DishId == dishId);
+                var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(request.IngredientId);
+                if (ingredient is null) throw new Exception("Not found ingredient with id = " + request.IngredientId);
 
-                var dishIngredients = query.ToList();
+                var dish = await _unitOfWork.DishRepository.GetByIDAsync(request.DishId);
+                if (dish is null) throw new Exception("Not found dish with id = " + request.DishId);
 
-                // Initialize totals
-                var nutritionalInfo = new DishNutritionalView { Name = dish.Name };
+                var searchResult = await _unitOfWork.DishIngredientRepository
+                  .FindAsync(x => x.DishId == request.DishId && x.IngredientId == request.IngredientId);
 
-                foreach (var dishIngredient in dishIngredients)
+                var current = searchResult.FirstOrDefault();
+                if (current is not null) throw new Exception("Ingredient is already exist in the dish");
+
+                var dishIngredient = new DishIngredient()
                 {
-                    var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(dishIngredient.IngredientId!);
+                    DishId = request.DishId,
+                    IngredientId = request.IngredientId,
+                    Weight = request.Weight,
+                };
 
-                    if (ingredient != null)
-                    {
-                        // Calculate nutritional values based on the weight of the ingredient in the dish
-                        var weightRatio = dishIngredient.Weight / ingredient.Weight;
-
-                        nutritionalInfo.TotalCalories += ingredient.Calories * weightRatio;
-                        nutritionalInfo.TotalProtein += ingredient.Protein * weightRatio;
-                        nutritionalInfo.TotalCarbs += ingredient.Carbs * weightRatio;
-                        nutritionalInfo.TotalFat += ingredient.Fat * weightRatio;
-                        nutritionalInfo.TotalFiber += ingredient.Fiber * weightRatio;
-                        nutritionalInfo.TotalVitaminA += ingredient.VitaminA * weightRatio;
-                        nutritionalInfo.TotalVitaminB += ingredient.VitaminB * weightRatio;
-                        nutritionalInfo.TotalVitaminC += ingredient.VitaminC * weightRatio;
-                        nutritionalInfo.TotalVitaminD += ingredient.VitaminD * weightRatio;
-                        nutritionalInfo.TotalVitaminE += ingredient.VitaminE * weightRatio;
-                        nutritionalInfo.TotalCalcium += ingredient.Calcium * weightRatio;
-                        nutritionalInfo.TotalIron += ingredient.Iron * weightRatio;
-                        nutritionalInfo.TotalMagnesium += ingredient.Magnesium * weightRatio;
-                        nutritionalInfo.TotalOmega3 += ingredient.Omega3 * weightRatio;
-                        nutritionalInfo.TotalSugars += ingredient.Sugars * weightRatio;
-                        nutritionalInfo.TotalCholesterol += ingredient.Cholesterol * weightRatio;
-                        nutritionalInfo.TotalSodium += ingredient.Sodium * weightRatio;
-                    }
-                }
-
-                return nutritionalInfo;
+                await _unitOfWork.DishIngredientRepository.InsertAsync(dishIngredient);
+                return new ResponseView(true, "Add new ingredient to dish successfully");
             }
-        
+            catch (Exception ex)
+            {
+                return new ResponseView(false, ex.Message);
+            }
+        }
+
+      
+        public async Task<DishNutritionalView?> CalculateNutrition(int dishId)
+        {
+            var dish = await _unitOfWork.DishRepository.GetByIDAsync(dishId);
+            if (dish is null) return null;
+
+            // Fetch all ingredient IDs and their corresponding weights for the specified dish
+            var query = await _unitOfWork.DishIngredientRepository
+                .FindAsync(x => x.DishId == dishId);
+
+            var dishIngredients = query.ToList();
+
+            // Initialize totals
+            var nutritionalInfo = new DishNutritionalView { Name = dish.Name };
+
+            foreach (var dishIngredient in dishIngredients)
+            {
+                var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(dishIngredient.IngredientId!);
+
+                if (ingredient != null)
+                {
+                    // Calculate nutritional values based on the weight of the ingredient in the dish
+                    var weightRatio = dishIngredient.Weight / ingredient.Weight;
+
+                    nutritionalInfo.TotalCalories += ingredient.Calories * weightRatio;
+                    nutritionalInfo.TotalProtein += ingredient.Protein * weightRatio;
+                    nutritionalInfo.TotalCarbs += ingredient.Carbs * weightRatio;
+                    nutritionalInfo.TotalFat += ingredient.Fat * weightRatio;
+                    nutritionalInfo.TotalFiber += ingredient.Fiber * weightRatio;
+                    nutritionalInfo.TotalVitaminA += ingredient.VitaminA * weightRatio;
+                    nutritionalInfo.TotalVitaminB += ingredient.VitaminB * weightRatio;
+                    nutritionalInfo.TotalVitaminC += ingredient.VitaminC * weightRatio;
+                    nutritionalInfo.TotalVitaminD += ingredient.VitaminD * weightRatio;
+                    nutritionalInfo.TotalVitaminE += ingredient.VitaminE * weightRatio;
+                    nutritionalInfo.TotalCalcium += ingredient.Calcium * weightRatio;
+                    nutritionalInfo.TotalIron += ingredient.Iron * weightRatio;
+                    nutritionalInfo.TotalMagnesium += ingredient.Magnesium * weightRatio;
+                    nutritionalInfo.TotalOmega3 += ingredient.Omega3 * weightRatio;
+                    nutritionalInfo.TotalSugars += ingredient.Sugars * weightRatio;
+                    nutritionalInfo.TotalCholesterol += ingredient.Cholesterol * weightRatio;
+                    nutritionalInfo.TotalSodium += ingredient.Sodium * weightRatio;
+                }
+            }
+
+            return nutritionalInfo;
+        }
 
     }
 }
