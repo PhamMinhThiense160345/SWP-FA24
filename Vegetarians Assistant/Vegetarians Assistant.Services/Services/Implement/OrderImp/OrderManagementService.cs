@@ -54,6 +54,37 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
+        public async Task<bool> CreateOrderDetail(OrderDetailView newOrder)
+        {
+            try
+            {
+                bool status = false;
+                var order = _mapper.Map<OrderDetail>(newOrder);
+                var insertedOrder = (await _unitOfWork.OrderDetailRepository.GetAsync(c => c.OrderId == newOrder.OrderId && c.DishId == newOrder.DishId)).FirstOrDefault();
+
+                if (insertedOrder == null)
+                {
+                    await _unitOfWork.OrderDetailRepository.InsertAsync(order);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                else
+                {
+                    insertedOrder.Price = newOrder.Price;
+                    insertedOrder.Quantity = newOrder.Quantity;
+                    await _unitOfWork.OrderDetailRepository.UpdateAsync(insertedOrder);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public async Task<List<OrderView?>> GetOrderByStatus(string Status)
         {
 
@@ -108,6 +139,53 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                         OrderDate = order.OrderDate,
                         TotalPrice = order.TotalPrice,
                         UserId = order.UserId
+                    });
+                }
+                return orderViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<OrderDetailInfo?>> GetOrderDetailOrderId(int id)
+        {
+
+            try
+            {
+                var orders = await _unitOfWork.OrderDetailRepository.FindAsync(c => c.OrderId == id);
+                var orderViews = new List<OrderDetailInfo>();
+
+                var dishIds = new HashSet<int>();
+                foreach (var order in orders)
+                {
+                    if (order.DishId.HasValue)
+                    {
+                        dishIds.Add(order.DishId.Value);
+                    }
+                }
+
+                var dishes = await _unitOfWork.DishRepository.GetAsync(dp => dishIds.Contains(dp.DishId));
+
+                var preferenceDictionary2 = new Dictionary<int, string>();
+                foreach (var preferences in dishes)
+                {
+                    preferenceDictionary2[preferences.DishId] = preferences.Name;
+                }
+                foreach (var order in orders)
+                {
+                    orderViews.Add(new OrderDetailInfo
+                    {
+                        OrderDetailId = order.OrderDetailId,
+                        OrderId= order.OrderId,
+                        DishId = order.DishId,
+                        DishName = order.DishId.HasValue && preferenceDictionary2.ContainsKey(order.DishId.Value)
+                    ? preferenceDictionary2[order.DishId.Value]
+                    : null,
+                        Price = order.Price,
+                        Quantity = order.Quantity
+
                     });
                 }
                 return orderViews;

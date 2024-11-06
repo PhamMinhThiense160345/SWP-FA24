@@ -20,11 +20,24 @@ namespace Vegetarians_Assistant.API.Controllers
             bool checkOrder = await _orderManagementService.CreateOrderByCustomer(newOrder);
             if (checkOrder)
             {
-                return Ok("Create success");
+                return Ok("Create order success");
             }
             else
             {
-                return BadRequest("Not correct role");
+                return BadRequest("Create order fail");
+            }
+        }
+        [HttpPost("/api/v1/orders/CreateOrderDetail")]
+        public async Task<IActionResult> CreateOrderDetail([FromBody] OrderDetailView newOrder)
+        {
+            bool checkOrder = await _orderManagementService.CreateOrderDetail(newOrder);
+            if (checkOrder)
+            {
+                return Ok("Create order detail success");
+            }
+            else
+            {
+                return BadRequest("Create order detail fail");
             }
         }
         [HttpGet("/api/v1/orders/getOrderByStatus/{Status}")]
@@ -44,6 +57,16 @@ namespace Vegetarians_Assistant.API.Controllers
             if (orderDetail == null)
             {
                 return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
+        [HttpGet("/api/v1/orders/getOrderDetailOrderId/{id}")]
+        public async Task<ActionResult<IEnumerable<OrderDetailInfo>>> GetOrderDetailOrderId(int id)
+        {
+            var orderDetail = await _orderManagementService.GetOrderDetailOrderId(id);
+            if (orderDetail == null)
+            {
+                return NotFound("Order detail not found");
             }
             return Ok(orderDetail);
         }
@@ -79,7 +102,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPut("/api/v1/orders/{id}/change-DeliveryFailedFee")]
+        [HttpPut("/api/v1/orders/changeOrderDeliveryFailedFee/{id}")]
         public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromBody] decimal newDeliveryFailedFee)
         {
             try

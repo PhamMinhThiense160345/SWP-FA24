@@ -23,7 +23,6 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<Feedback> _feedbackRepository;
         private GenericRepository<FixedMenu> _fixedMenuRepository;
         private GenericRepository<FixedMenuItem> _fixedMenuItemRepository;
-        private GenericRepository<Follow> _followRepository;
         private GenericRepository<Following> _followingRepository;
         private GenericRepository<Follower> _followerRepository;
         private GenericRepository<HealthRecord> _healthRecordRepository;
@@ -33,7 +32,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<NotificationType> _notificationTypeRepository;
         private GenericRepository<NutritionalInfo> _nutritionalInfoRepository;
         private GenericRepository<Order> _orderRepository;
-        private GenericRepository<OrderItem> _orderItemRepository;
+        private GenericRepository<OrderDetail> _orderDetailRepository;
         private GenericRepository<PaymentDetail> _paymentDetailRepository;
         private GenericRepository<PaymentMethod> _paymentMethodRepository;
         private GenericRepository<Restaurant> _restaurantRepository;
@@ -64,7 +63,6 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<Feedback> FeedbackRepository => _feedbackRepository ?? new GenericRepository<Feedback>(context);
         public IGenericRepository<FixedMenu> FixedMenuRepository => _fixedMenuRepository ?? new GenericRepository<FixedMenu>(context);
         public IGenericRepository<FixedMenuItem> FixedMenuItemRepository => _fixedMenuItemRepository ?? new GenericRepository<FixedMenuItem>(context);
-        public IGenericRepository<Follow> FollowRepository => _followRepository ?? new GenericRepository<Follow>(context);
         public IGenericRepository<Follower> FollowerRepository => _followerRepository ?? new GenericRepository<Follower>(context);
         public IGenericRepository<Following> FollowingRepository => _followingRepository ?? new GenericRepository<Following>(context);
         public IGenericRepository<HealthRecord> HealthRecordRepository => _healthRecordRepository ?? new GenericRepository<HealthRecord>(context);
@@ -74,7 +72,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<NotificationType> NotificationTypeRepository => _notificationTypeRepository ?? new GenericRepository<NotificationType>(context);
         public IGenericRepository<NutritionalInfo> NutritionalInfoRepository => _nutritionalInfoRepository ?? new GenericRepository<NutritionalInfo>(context);
         public IGenericRepository<Order> OrderRepository => _orderRepository ?? new GenericRepository<Order>(context);
-        public IGenericRepository<OrderItem> OrderItemRepository => _orderItemRepository ?? new GenericRepository<OrderItem>(context);
+        public IGenericRepository<OrderDetail> OrderDetailRepository => _orderDetailRepository ?? new GenericRepository<OrderDetail>(context);
         public IGenericRepository<PaymentDetail> PaymentDetailRepository => _paymentDetailRepository ?? new GenericRepository<PaymentDetail>(context);
         public IGenericRepository<PaymentMethod> PaymentMethodRepository => _paymentMethodRepository ?? new GenericRepository<PaymentMethod>(context);
         public IGenericRepository<Restaurant> RestaurantRepository => _restaurantRepository ?? new GenericRepository<Restaurant>(context);

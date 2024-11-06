@@ -657,27 +657,6 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
-    "Method": "ChangeOrderDeliveryFailedFee",
-    "RelativePath": "api/v1/orders/{id}/change-DeliveryFailedFee",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "newDeliveryFailedFee",
-        "Type": "System.Decimal",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "ChangeOrderStatus",
     "RelativePath": "api/v1/orders/{id}/change-status",
     "HttpMethod": "PUT",
@@ -719,6 +698,27 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "ChangeOrderDeliveryFailedFee",
+    "RelativePath": "api/v1/orders/changeOrderDeliveryFailedFee/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newDeliveryFailedFee",
+        "Type": "System.Decimal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "CreateOrderByCustomer",
     "RelativePath": "api/v1/orders/createOrderByCustomer",
     "HttpMethod": "POST",
@@ -728,6 +728,22 @@
       {
         "Name": "newOrder",
         "Type": "Vegetarians_Assistant.Services.ModelView.OrderView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "CreateOrderDetail",
+    "RelativePath": "api/v1/orders/CreateOrderDetail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newOrder",
+        "Type": "Vegetarians_Assistant.Services.ModelView.OrderDetailView",
         "IsRequired": true
       }
     ],
@@ -776,6 +792,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.OrderView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "GetOrderDetailOrderId",
+    "RelativePath": "api/v1/orders/getOrderDetailOrderId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.OrderDetailInfo, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

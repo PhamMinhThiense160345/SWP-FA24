@@ -20,7 +20,6 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Feedback> FeedbackRepository { get; }
         IGenericRepository<FixedMenu> FixedMenuRepository { get; }
         IGenericRepository<FixedMenuItem> FixedMenuItemRepository { get; }
-        IGenericRepository<Follow> FollowRepository { get; }
         IGenericRepository<Follower> FollowerRepository { get; }
         IGenericRepository<Following> FollowingRepository { get; }
         IGenericRepository<HealthRecord> HealthRecordRepository { get; }
@@ -30,7 +29,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<NotificationType> NotificationTypeRepository { get; }
         IGenericRepository<NutritionalInfo> NutritionalInfoRepository { get; }
         IGenericRepository<Order> OrderRepository { get; }
-        IGenericRepository<OrderItem> OrderItemRepository { get; }
+        IGenericRepository<OrderDetail> OrderDetailRepository { get; }
         IGenericRepository<PaymentDetail> PaymentDetailRepository { get; }
         IGenericRepository<PaymentMethod> PaymentMethodRepository { get; }
         IGenericRepository<Restaurant> RestaurantRepository { get; }

@@ -27,6 +27,8 @@ namespace Vegetarians_Assistant.API.Mapper
             CreateMap<Following, FollowingView>().ReverseMap();
             CreateMap<FavoriteDish, FavoriteDishView>().ReverseMap();
             CreateMap<FavoriteDish, FavoriteView>().ReverseMap();
+            CreateMap<OrderDetail, OrderDetailView>().ReverseMap();
+            CreateMap<OrderDetail, OrderDetailInfo>().ReverseMap();
         }
     }
 }
