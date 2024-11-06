@@ -40,7 +40,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 }
                 else
                 {
-                    return BadRequest("Not correct role");
+                    return BadRequest("Follow fail");
                 }
             }
             else
@@ -52,7 +52,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 }
                 else
                 {
-                    return BadRequest("Not correct role");
+                    return BadRequest("Unfollow fail");
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 }
                 else
                 {
-                    return BadRequest("Not correct role");
+                    return BadRequest("Follow fail");
                 }
             }
             else
@@ -93,7 +93,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 }
                 else
                 {
-                    return BadRequest("Not correct role");
+                    return BadRequest("Unfollow fail");
                 }
             }
         }

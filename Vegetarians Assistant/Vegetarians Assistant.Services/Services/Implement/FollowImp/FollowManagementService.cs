@@ -80,7 +80,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.FollowImp
                 bool status = false;
 
                 var follow = _mapper.Map<Following>(newFollow);
-                var isFollowExist = (await _unitOfWork.FollowingRepository.FindAsync(c => c.FollowingUserId == newFollow.FollowingUserId)).ToList();
+                var isFollowExist = (await _unitOfWork.FollowingRepository.FindAsync(c => c.FollowingUserId == newFollow.FollowingUserId && c.UserId == newFollow.UserId)).ToList();
                 if (isFollowExist.Any())
                 {
                     foreach (var isFollowExists in isFollowExist)
@@ -88,16 +88,12 @@ namespace Vegetarians_Assistant.Services.Services.Implement.FollowImp
                         await _unitOfWork.FollowingRepository.DeleteAsync(isFollowExists);
                     }
                     await _unitOfWork.SaveAsync();
+                    status = true;
                 }
                 else
                 {
                     await _unitOfWork.FollowingRepository.InsertAsync(follow);
                     await _unitOfWork.SaveAsync();
-                }
-                var insertedArticle = await _unitOfWork.FollowingRepository.GetByIDAsync(follow.FollowingUserId);
-
-                if (insertedArticle != null)
-                {
                     status = true;
                 }
 
@@ -122,7 +118,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.FollowImp
             {
                 bool status = false;
                 var follow = _mapper.Map<Follower>(newFollow);
-                var isFollowExist = (await _unitOfWork.FollowerRepository.FindAsync(c => c.FollowerUserId == newFollow.FollowerUserId)).ToList();
+                var isFollowExist = (await _unitOfWork.FollowerRepository.FindAsync(c => c.FollowerUserId == newFollow.FollowerUserId && c.UserId == newFollow.UserId)).ToList();
                 if (isFollowExist.Any())
                 {
                     foreach (var isFollowExists in isFollowExist)
@@ -130,18 +126,12 @@ namespace Vegetarians_Assistant.Services.Services.Implement.FollowImp
                         await _unitOfWork.FollowerRepository.DeleteAsync(isFollowExists);
                     }
                     await _unitOfWork.SaveAsync();
+                    status = true;
                 }
                 else
                 {
                     await _unitOfWork.FollowerRepository.InsertAsync(follow);
                     await _unitOfWork.SaveAsync();
-                }
-                
-
-                var insertedArticle = await _unitOfWork.FollowerRepository.GetByIDAsync(follow.FollowerUserId);
-
-                if (insertedArticle != null)
-                {
                     status = true;
                 }
 
