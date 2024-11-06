@@ -45,5 +45,26 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create nutrition criteria fail");
             }
         }
+        [HttpPut("/api/v1/nutritionCriterions/updateNutritionCriteriaByCriteriaId")]
+        public async Task<IActionResult> UpdateNutritionCriteriaByCriteriaId([FromBody] NutritionCriterionView updateNutritionCriterion)
+        {
+            try
+            {
+                var success = await _nutritionCriterionManagementService.UpdateNutritionCriteriaByCriteriaId(updateNutritionCriterion);
+
+                if (success)
+                {
+                    return Ok("Nutrition criterion detail updated successfully");
+                }
+                else
+                {
+                    return NotFound("Nutrition criterion not found or failed to update nutrition criterion detail");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

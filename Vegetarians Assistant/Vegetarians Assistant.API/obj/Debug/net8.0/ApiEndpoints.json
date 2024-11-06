@@ -750,6 +750,22 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionCriterionController",
+    "Method": "UpdateNutritionCriteriaByCriteriaId",
+    "RelativePath": "api/v1/nutritionCriterions/updateNutritionCriteriaByCriteriaId",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateNutritionCriterion",
+        "Type": "Vegetarians_Assistant.Services.ModelView.NutritionCriterionView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "ChangeOrderStatus",
     "RelativePath": "api/v1/orders/{id}/change-status",

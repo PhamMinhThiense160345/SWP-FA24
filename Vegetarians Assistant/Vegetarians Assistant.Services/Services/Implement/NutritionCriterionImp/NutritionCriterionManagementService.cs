@@ -143,5 +143,55 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
             }
         }
 
+        public async Task<bool> UpdateNutritionCriteriaByCriteriaId(NutritionCriterionView updateNutritionCriterion)
+        {
+            try
+            {
+                bool status = false;
+                var nutrition = _mapper.Map<NutritionCriterion>(updateNutritionCriterion);
+                await _unitOfWork.NutritionCriterionRepository.UpdateAsync(nutrition);
+                await _unitOfWork.SaveAsync();
+                var exsitNutrition = (await _unitOfWork.NutritionCriterionRepository.FindAsync(c => c.CriteriaId == updateNutritionCriterion.CriteriaId)).FirstOrDefault();
+
+                if (exsitNutrition != null)
+                {
+                    var nutri = new NutritionCriterion
+                    {
+                        CriteriaId = nutrition.CriteriaId,
+                        Gender = nutrition.Gender,
+                        AgeRange = nutrition.AgeRange,
+                        BmiRange = nutrition.BmiRange,
+                        Profession = nutrition.Profession,
+                        ActivityLevel = nutrition.ActivityLevel,
+                        Goal = nutrition.Goal,
+                        Calcium = nutrition.Calcium,
+                        Calories = nutrition.Calories,
+                        Carbs = nutrition.Carbs,
+                        Cholesterol = nutrition.Cholesterol,
+                        Fat = nutrition.Fat,
+                        Fiber = nutrition.Fiber,
+                        Iron = nutrition.Iron,
+                        Magnesium = nutrition.Magnesium,
+                        Omega3 = nutrition.Omega3,
+                        Protein = nutrition.Protein,
+                        Sodium = nutrition.Sodium,
+                        Sugars = nutrition.Sugars,
+                        VitaminA = nutrition.VitaminA,
+                        VitaminB = nutrition.VitaminB,
+                        VitaminC = nutrition.VitaminC,
+                        VitaminD = nutrition.VitaminD,
+                        VitaminE = nutrition.VitaminE
+                    };
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }
