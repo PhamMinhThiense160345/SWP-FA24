@@ -69,6 +69,51 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
             }
         }
 
+        public async Task<NutritionCriterionView?> GetNutritionCriteriaDetailByCriteriaId(int id)
+        {
+
+            try
+            {
+                var nutrition = await _unitOfWork.NutritionCriterionRepository.GetByIDAsync(id);
+                if (nutrition != null)
+                {
+                    var nutritionCriteriaView = new NutritionCriterionView()
+                    {
+                        CriteriaId = nutrition.CriteriaId,
+                        Gender = nutrition.Gender,
+                        AgeRange = nutrition.AgeRange,
+                        BmiRange = nutrition.BmiRange,
+                        Profession = nutrition.Profession,
+                        ActivityLevel = nutrition.ActivityLevel,
+                        Goal = nutrition.Goal,
+                        Calcium = nutrition.Calcium,
+                        Calories = nutrition.Calories,
+                        Carbs = nutrition.Carbs,
+                        Cholesterol = nutrition.Cholesterol,
+                        Fat = nutrition.Fat,
+                        Fiber = nutrition.Fiber,
+                        Iron = nutrition.Iron,
+                        Magnesium = nutrition.Magnesium,
+                        Omega3 = nutrition.Omega3,
+                        Protein = nutrition.Protein,
+                        Sodium = nutrition.Sodium,
+                        Sugars = nutrition.Sugars,
+                        VitaminA = nutrition.VitaminA,
+                        VitaminB = nutrition.VitaminB,
+                        VitaminC = nutrition.VitaminC,
+                        VitaminD = nutrition.VitaminD,
+                        VitaminE = nutrition.VitaminE
+                    };
+                    return nutritionCriteriaView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<bool> CreateNutritionCriteria(NutritionCriterionView newNutritionCriteria)
         {
             try

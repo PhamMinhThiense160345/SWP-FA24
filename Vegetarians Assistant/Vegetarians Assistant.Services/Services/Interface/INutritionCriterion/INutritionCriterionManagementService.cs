@@ -10,6 +10,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.INutritionCriterion
     public interface INutritionCriterionManagementService
     {
         Task<List<NutritionCriterionView>> GetAllNutritionCriteria();
+        Task<NutritionCriterionView?> GetNutritionCriteriaDetailByCriteriaId(int id);
         Task<bool> CreateNutritionCriteria(NutritionCriterionView newNutritionCriteria);
+
     }
 }

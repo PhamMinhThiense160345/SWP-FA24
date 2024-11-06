@@ -22,6 +22,16 @@ namespace Vegetarians_Assistant.API.Controllers
             }
             return Ok(nutritionCriterionsList);
         }
+        [HttpGet("/api/v1/nutritionCriterions/getNutritionCriteriaDetailByCriteriaId/{id}")]
+        public async Task<ActionResult<NutritionCriterionView>> GetNutritionCriteriaDetailByCriteriaId(int id)
+        {
+            var nutritionCriterionsList = await _nutritionCriterionManagementService.GetNutritionCriteriaDetailByCriteriaId(id);
+            if (nutritionCriterionsList == null)
+            {
+                return NotFound("Nutrition Criteria detail not found");
+            }
+            return Ok(nutritionCriterionsList);
+        }
         [HttpPost("/api/v1/nutritionCriterions/createNutritionCriteria")]
         public async Task<IActionResult> CreateNutritionCriteria([FromBody] NutritionCriterionView newNutritionCriteria)
         {
