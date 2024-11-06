@@ -27,7 +27,7 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create order fail");
             }
         }
-        [HttpPost("/api/v1/orders/CreateOrderDetail")]
+        [HttpPost("/api/v1/orders/createOrderDetail")]
         public async Task<IActionResult> CreateOrderDetail([FromBody] OrderDetailView newOrder)
         {
             bool checkOrder = await _orderManagementService.CreateOrderDetail(newOrder);
@@ -75,7 +75,7 @@ namespace Vegetarians_Assistant.API.Controllers
         {
 
             var ordersList = await _orderManagementService.GetAllOrder();
-            if (ordersList.IsNullOrEmpty())
+            if (ordersList == null || !ordersList.Any())
             {
                 return NotFound("No orders found on the system");
             }

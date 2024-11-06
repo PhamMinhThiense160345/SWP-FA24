@@ -80,6 +80,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "AddIngredientToDish",
+    "RelativePath": "api/Dish/addIngredient",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.Services.ModelView.AddIngredientView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "CalculateNutrition",
+    "RelativePath": "api/Dish/dishs/calculateNutrition/{dishId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dishId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "createArticleByCustomer",
     "RelativePath": "api/v1/articles/createArticleByCustomer",
@@ -736,7 +768,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "CreateOrderDetail",
-    "RelativePath": "api/v1/orders/CreateOrderDetail",
+    "RelativePath": "api/v1/orders/createOrderDetail",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
