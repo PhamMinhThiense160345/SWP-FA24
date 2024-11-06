@@ -15,5 +15,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Dish
         Task<DishView?> GetDishByDishId(int id);
         Task<bool> UpdateDishDetailByDishId(DishView updateDish);
         Task<DishNutritionalView?> CalculateNutrition(int dishId);
+        Task<ResponseView> AddIngredientAsync(AddIngredientView request);
     }
 }
