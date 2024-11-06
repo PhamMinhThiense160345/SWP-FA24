@@ -242,5 +242,52 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
             }
         }
 
+            public async Task<DishNutritionalView?> CalculateNutrition(int dishId)
+            {
+                var dish = await _unitOfWork.DishRepository.GetByIDAsync(dishId);
+                if (dish is null) return null;
+
+                // Fetch all ingredient IDs and their corresponding weights for the specified dish
+                var query = await _unitOfWork.DishIngredientRepository
+                    .FindAsync(x => x.DishId == dishId);
+
+                var dishIngredients = query.ToList();
+
+                // Initialize totals
+                var nutritionalInfo = new DishNutritionalView { Name = dish.Name };
+
+                foreach (var dishIngredient in dishIngredients)
+                {
+                    var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(dishIngredient.IngredientId!);
+
+                    if (ingredient != null)
+                    {
+                        // Calculate nutritional values based on the weight of the ingredient in the dish
+                        var weightRatio = dishIngredient.Weight / ingredient.Weight;
+
+                        nutritionalInfo.TotalCalories += ingredient.Calories * weightRatio;
+                        nutritionalInfo.TotalProtein += ingredient.Protein * weightRatio;
+                        nutritionalInfo.TotalCarbs += ingredient.Carbs * weightRatio;
+                        nutritionalInfo.TotalFat += ingredient.Fat * weightRatio;
+                        nutritionalInfo.TotalFiber += ingredient.Fiber * weightRatio;
+                        nutritionalInfo.TotalVitaminA += ingredient.VitaminA * weightRatio;
+                        nutritionalInfo.TotalVitaminB += ingredient.VitaminB * weightRatio;
+                        nutritionalInfo.TotalVitaminC += ingredient.VitaminC * weightRatio;
+                        nutritionalInfo.TotalVitaminD += ingredient.VitaminD * weightRatio;
+                        nutritionalInfo.TotalVitaminE += ingredient.VitaminE * weightRatio;
+                        nutritionalInfo.TotalCalcium += ingredient.Calcium * weightRatio;
+                        nutritionalInfo.TotalIron += ingredient.Iron * weightRatio;
+                        nutritionalInfo.TotalMagnesium += ingredient.Magnesium * weightRatio;
+                        nutritionalInfo.TotalOmega3 += ingredient.Omega3 * weightRatio;
+                        nutritionalInfo.TotalSugars += ingredient.Sugars * weightRatio;
+                        nutritionalInfo.TotalCholesterol += ingredient.Cholesterol * weightRatio;
+                        nutritionalInfo.TotalSodium += ingredient.Sodium * weightRatio;
+                    }
+                }
+
+                return nutritionalInfo;
+            }
+        
+
     }
 }

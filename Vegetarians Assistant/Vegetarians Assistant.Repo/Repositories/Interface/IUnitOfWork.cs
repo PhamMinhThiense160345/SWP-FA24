@@ -38,6 +38,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<User> UserRepository { get; }
         IGenericRepository<UserMembership> UserMembershipRepository { get; }
         IGenericRepository<Cart> CartRepository { get; }
+        IGenericRepository<Ingredient> IngredientRepository { get; }
+        IGenericRepository<DishIngredient> DishIngredientRepository { get; }
         Task SaveAsync();
     }
 }

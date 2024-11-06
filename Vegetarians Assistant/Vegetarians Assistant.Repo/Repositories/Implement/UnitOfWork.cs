@@ -41,6 +41,9 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<User> _userRepository;
         private GenericRepository<UserMembership> _userMembershipRepository;
         private GenericRepository<Cart> _cartRepository;
+        private GenericRepository<Ingredient> _ingredientRepository;
+        private GenericRepository<DishIngredient> _dishIngredientRepository;
+
         public UnitOfWork(VegetariansAssistantV3Context context)
         {
             this.context = context;
@@ -81,6 +84,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<User> UserRepository => _userRepository ?? new GenericRepository<User>(context);
         public IGenericRepository<UserMembership> UserMembershipRepository => _userMembershipRepository ?? new GenericRepository<UserMembership>(context);
         public IGenericRepository<Cart> CartRepository => _cartRepository ?? new GenericRepository<Cart>(context);
+        public IGenericRepository<Ingredient> IngredientRepository => _ingredientRepository ?? new GenericRepository<Ingredient>(context);
+        public IGenericRepository<DishIngredient> DishIngredientRepository => _dishIngredientRepository ?? new GenericRepository<DishIngredient>(context);
 
         protected virtual void Dispose(bool disposing)
         {
