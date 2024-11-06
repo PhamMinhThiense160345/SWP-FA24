@@ -303,7 +303,32 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 return new ResponseView(false, ex.Message);
             }
         }
+         public async Task<ResponseView> RemoveIngredientAsync(int dishId, int ingredientId)
+ {
+     try
+     {
+         var ingredient = await _unitOfWork.IngredientRepository.GetByIDAsync(ingredientId);
+         if (ingredient is null) throw new Exception("Not found ingredient with id = " + ingredientId);
 
+         var dish = await _unitOfWork.DishRepository.GetByIDAsync(dishId);
+         if (dish is null) throw new Exception("Not found dish with id = " + dishId);
+
+
+         var searchResult = await _unitOfWork.DishIngredientRepository
+             .FindAsync(x => x.DishId == dishId && x.IngredientId == ingredientId);
+
+         var current = searchResult.FirstOrDefault();
+         if (current is null) throw new Exception("Not found dish ingredient");
+
+
+         await _unitOfWork.DishIngredientRepository.DeleteAsync(current);
+         return new ResponseView(true, "Remove ingredient from dish successfully");
+     }
+     catch (Exception ex)
+     {
+         return new ResponseView(false, ex.Message);
+     }
+ }
 
         public async Task<DishNutritionalView?> CalculateNutrition(int dishId)
         {
