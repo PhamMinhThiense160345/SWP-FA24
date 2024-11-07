@@ -8,6 +8,7 @@ using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IOrder;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
 {
@@ -148,33 +149,43 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
-        public async Task<OrderDetailInfo?> GetOrderDetailOrderId(int id)
+        public async Task<List<OrderDetailInfo?>> GetOrderDetailOrderId(int id)
         {
 
             try
             {
-                var order = (await _unitOfWork.OrderDetailRepository.FindAsync(c => c.OrderId == id)).FirstOrDefault();
-                if (order != null)
+                var orders = await _unitOfWork.OrderDetailRepository.FindAsync(c => c.OrderId == id);
+                var orderViews = new List<OrderDetailInfo>();
+                var dishIds = new HashSet<int>();
+                foreach (var order in orders)
                 {
-                    string? dishName = null;
                     if (order.DishId.HasValue)
                     {
-                        var dish = await _unitOfWork.DishRepository.GetByIDAsync(order.DishId.Value);
-                        dishName = dish?.Name;
+                        dishIds.Add(order.DishId.Value);
                     }
+                }
+                var dishs = await _unitOfWork.DishRepository.GetAsync(dp => dishIds.Contains(dp.DishId));
 
-                    var orderView = new OrderDetailInfo()
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in dishs)
+                {
+                    preferenceDictionary[preference.DishId] = preference.Name;
+                }
+                foreach (var order in orders)
+                {
+                    orderViews.Add(new OrderDetailInfo
                     {
                         OrderDetailId = order.OrderDetailId,
-                        OrderId = order.OrderId,
                         DishId = order.DishId,
-                        DishName = dishName,
+                        DishName = order.DishId.HasValue && preferenceDictionary.ContainsKey(order.DishId.Value)
+                    ? preferenceDictionary[order.DishId.Value]
+                    : null,
+                        OrderId = order.OrderId,
                         Price = order.Price,
                         Quantity = order.Quantity
-                    };
-                    return orderView;
+                    });
                 }
-                return null;
+                return orderViews;
             }
             catch (Exception ex)
             {

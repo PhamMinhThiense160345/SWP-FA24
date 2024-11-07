@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\2\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\feedbackimp\\feedbackmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\feedbackimp\\feedbackmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\2\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\interface\\feedback\\ifeedbackmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\interface\\feedback\\ifeedbackmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\2\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\feedbackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -43,45 +30,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FeedbackController.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FeedbackController.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FeedbackController.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FeedbackController.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FeedbackController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwB0AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T17:44:41.043Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FeedbackManagementService.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\FeedbackImp\\FeedbackManagementService.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\FeedbackImp\\FeedbackManagementService.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\FeedbackImp\\FeedbackManagementService.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\FeedbackImp\\FeedbackManagementService.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAgwEEAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T17:39:32.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IFeedbackManagementService.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Feedback\\IFeedbackManagementService.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Feedback\\IFeedbackManagementService.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Feedback\\IFeedbackManagementService.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Feedback\\IFeedbackManagementService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T17:39:31.129Z",
-              "EditorCaption": ""
             }
           ]
         },

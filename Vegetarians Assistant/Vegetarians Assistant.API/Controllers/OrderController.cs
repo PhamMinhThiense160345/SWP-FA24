@@ -50,7 +50,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [HttpGet("/api/v1/orders/getOrderDetailByOrderId/{id}")]
-        public async Task<ActionResult<OrderDetailInfo>> GetOrderDetailOrderId(int id)
+        public async Task<ActionResult<IEnumerable<OrderDetailInfo>>> GetOrderDetailOrderId(int id)
         {
             var orderDetail = await _orderManagementService.GetOrderDetailOrderId(id);
             if (orderDetail == null)

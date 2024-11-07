@@ -1075,7 +1075,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Vegetarians_Assistant.Services.ModelView.OrderDetailInfo",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.OrderDetailInfo, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

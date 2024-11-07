@@ -13,7 +13,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IOrder
         Task<bool> CreateOrderDetail(OrderDetailView newOrder);
         Task<List<OrderView?>> GetOrderByStatus(string Status);
         Task<List<OrderView?>> GetOrderByUserId(int id);
-        Task<OrderDetailInfo?> GetOrderDetailOrderId(int id);
+        Task<List<OrderDetailInfo?>> GetOrderDetailOrderId(int id);
         Task<List<OrderView>> GetAllOrder();
         Task<bool> ChangeOrderStatus(int orderId, string newStatus);
         Task<bool> ChangeOrderDeliveryFailedFee(int orderId, decimal newDeliveryFailedFee);
