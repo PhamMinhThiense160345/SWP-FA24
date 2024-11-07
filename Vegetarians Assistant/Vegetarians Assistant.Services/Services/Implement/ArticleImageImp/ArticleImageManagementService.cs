@@ -75,6 +75,52 @@ namespace Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp
             }
         }
 
+        public async Task<bool> UpdateArticleImageByArticleImageId(int articleImageId, string newImage)
+        {
+            try
+            {
+                var image = await _unitOfWork.ArticleImageRepository.GetByIDAsync(articleImageId);
+
+                if (image == null)
+                {
+                    return false;
+                }
+
+                image.ImageUrl = newImage;
+                await _unitOfWork.ArticleImageRepository.UpdateAsync(image);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteArticleImageByArticleImageId(int id)
+        {
+            try
+            {
+                var images = await _unitOfWork.ArticleImageRepository.GetByIDAsync(id);
+
+                if (images != null)
+                {
+
+                    await _unitOfWork.ArticleImageRepository.DeleteAsync(images);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

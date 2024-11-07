@@ -11,5 +11,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticleImage
     {
         Task<List<ArticleImageView?>> GetArticleImageByArticleId(int id);
         Task<bool> CreateArticleImage(ArticleImageView newArticleImage);
+        Task<bool> UpdateArticleImageByArticleImageId(int articleImageId, string newImage);
+        Task<bool> DeleteArticleImageByArticleImageId(int id);
     }
 }

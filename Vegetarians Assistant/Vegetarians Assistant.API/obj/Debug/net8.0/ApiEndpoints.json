@@ -166,6 +166,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleImageController",
+    "Method": "DeleteArticleImageByArticleImageId",
+    "RelativePath": "api/v1/articleImages/deleteArticleImageByArticleImageId/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleImageController",
     "Method": "GetArticleImageByArticleId",
     "RelativePath": "api/v1/articleImages/getArticleImageByArticleId/{id}",
     "HttpMethod": "GET",
@@ -189,6 +205,27 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleImageController",
+    "Method": "UpdateArticleImageByArticleImageId",
+    "RelativePath": "api/v1/articleImages/updateArticleImageByArticleImageId/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newImage",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",

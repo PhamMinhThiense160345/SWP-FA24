@@ -37,5 +37,42 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPut("/api/v1/articleImages/updateArticleImageByArticleImageId/{id}")]
+        public async Task<IActionResult> UpdateArticleImageByArticleImageId(int id, [FromBody] string newImage)
+        {
+            try
+            {
+                var success = await _articleImageManagementService.UpdateArticleImageByArticleImageId(id, newImage);
+
+                if (success)
+                {
+                    return Ok("Article image detail updated successfully");
+                }
+                else
+                {
+                    return NotFound("Article image not found or failed to update article image detail");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("/api/v1/articleImages/deleteArticleImageByArticleImageId/{id}")]
+        public async Task<IActionResult> DeleteArticleImageByArticleImageId(int id)
+        {
+            var success = await _articleImageManagementService.DeleteArticleImageByArticleImageId(id);
+
+            if (success)
+            {
+                return Ok("Delete article image successfully");
+            }
+            else
+            {
+                return NotFound("Article image not found or failed to delete");
+            }
+        }
+
     }
 }
