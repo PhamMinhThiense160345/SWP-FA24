@@ -9,6 +9,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticleImage
 {
     public interface IArticleImageManagementService
     {
+        Task<List<ArticleImageView?>> GetArticleImageByArticleId(int id);
         Task<bool> CreateArticleImage(ArticleImageView newArticleImage);
     }
 }

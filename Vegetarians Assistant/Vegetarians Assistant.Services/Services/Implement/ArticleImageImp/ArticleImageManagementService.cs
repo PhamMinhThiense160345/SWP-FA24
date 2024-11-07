@@ -21,6 +21,31 @@ namespace Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp
             _mapper = mapper;
         }
 
+        public async Task<List<ArticleImageView?>> GetArticleImageByArticleId(int id)
+        {
+
+            try
+            {
+                var images = await _unitOfWork.ArticleImageRepository.FindAsync(c => c.ArticleId == id);
+                var articleImageViews = new List<ArticleImageView>();
+
+                foreach (var image in images)
+                {
+                    articleImageViews.Add(new ArticleImageView
+                    {
+                        ArticleImageId = image.ArticleImageId,
+                        ArticleId = image.ArticleId,
+                        ImageUrl = image.ImageUrl
+                    });
+                }
+                return articleImageViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<bool> CreateArticleImage(ArticleImageView newArticleImage)
         {
             try

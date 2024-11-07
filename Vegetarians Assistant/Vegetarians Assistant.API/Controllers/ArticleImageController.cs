@@ -12,7 +12,16 @@ namespace Vegetarians_Assistant.API.Controllers
             _articleImageManagementService = articleImageManagementService;
         }
 
-
+        [HttpGet("/api/v1/articleImages/getArticleImageByArticleId/{id}")]
+        public async Task<ActionResult<IEnumerable<ArticleImageView>>> GetArticleImageByArticleId(int id)
+        {
+            var articleImagesList = await _articleImageManagementService.GetArticleImageByArticleId(id);
+            if (articleImagesList == null)
+            {
+                return NotFound("Article Images not found");
+            }
+            return Ok(articleImagesList);
+        }
 
         [HttpPost("/api/v1/articleImages/createArticleImage")]
         public async Task<IActionResult> CreateArticleImage([FromBody] ArticleImageView newArticleImage)
