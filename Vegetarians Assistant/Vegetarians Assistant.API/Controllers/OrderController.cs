@@ -49,7 +49,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
-        [HttpGet("/api/v1/orders/getOrderDetailOrderId/{id}")]
+        [HttpGet("/api/v1/orders/getOrderDetailByOrderId/{id}")]
         public async Task<ActionResult<OrderDetailInfo>> GetOrderDetailOrderId(int id)
         {
             var orderDetail = await _orderManagementService.GetOrderDetailOrderId(id);

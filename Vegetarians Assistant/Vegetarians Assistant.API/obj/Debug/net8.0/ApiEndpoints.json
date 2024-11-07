@@ -112,6 +112,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "RemoveIngredientFromDish",
+    "RelativePath": "api/Dish/dishs/removeIngredient/{dishId}/{ingredientId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ingredientId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dishId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "UpdateIngredientInDish",
+    "RelativePath": "api/Dish/dishs/updateIngredient",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.Services.ModelView.UpdateIngredientView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByRoleId",
     "RelativePath": "api/v1/articles/allArticleByRoleId/{id}",
@@ -930,7 +967,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "GetOrderDetailOrderId",
-    "RelativePath": "api/v1/orders/getOrderDetailOrderId/{id}",
+    "RelativePath": "api/v1/orders/getOrderDetailByOrderId/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -976,7 +1013,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "RegisterStaff",
-    "RelativePath": "api/v1/users/CreateStaff",
+    "RelativePath": "api/v1/users/createStaff",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -992,7 +1029,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUserByID",
-    "RelativePath": "api/v1/users/GetUserByID/{id}",
+    "RelativePath": "api/v1/users/getUserByID/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

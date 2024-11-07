@@ -153,7 +153,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
 
             try
             {
-                var order = await _unitOfWork.OrderDetailRepository.GetByIDAsync(id);
+                var order = (await _unitOfWork.OrderDetailRepository.FindAsync(c => c.OrderId == id)).FirstOrDefault();
                 if (order != null)
                 {
                     string? dishName = null;

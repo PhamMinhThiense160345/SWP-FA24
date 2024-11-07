@@ -86,13 +86,6 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(response);
         }
         
-        [HttpDelete("dishs/removeIngredient/{dishId}/{ingredientId}")]
-        public async Task<IActionResult> RemoveIngredientFromDish(int ingredientId, int dishId)
-        {
-            var response = await _dishManagementService.RemoveIngredientAsync(dishId, ingredientId);
-            return Ok(response);
-        }
-
         [HttpPut("/api/v1/dishs/updateDishDetailByDishId")]
         public async Task<IActionResult> UpdateDishDetailByDishId([FromBody] DishView updateDish)
         {
@@ -113,6 +106,14 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+
+        [HttpDelete("dishs/removeIngredient/{dishId}/{ingredientId}")]
+        public async Task<IActionResult> RemoveIngredientFromDish(int ingredientId, int dishId)
+        {
+            var response = await _dishManagementService.RemoveIngredientAsync(dishId, ingredientId);
+            return Ok(response);
         }
 
     }
