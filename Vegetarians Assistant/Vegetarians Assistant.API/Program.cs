@@ -31,6 +31,8 @@ using Vegetarians_Assistant.Services.Services.Implement.Favorite;
 using Vegetarians_Assistant.Services.Services.Implement.DishImp;
 using Vegetarians_Assistant.Services.Services.Interface.INutritionCriterion;
 using Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionManagementService;
+using Vegetarians_Assistant.Services.Services.Interface.IArticleImage;
+using Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,6 +80,8 @@ builder.Services.AddScoped<IFollowManagementService, FollowManagementService>();
 builder.Services.AddScoped<IFavoriteManagementService, FavoriteManagementService>();
 
 builder.Services.AddScoped<INutritionCriterionManagementService, NutritionCriterionManagementService>();
+
+builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagementService>();
 
 builder.Services.AddScoped<AuthService>();
 

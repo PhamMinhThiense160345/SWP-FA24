@@ -122,7 +122,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
                 var nutrition = _mapper.Map<NutritionCriterion>(newNutritionCriteria);
                 await _unitOfWork.NutritionCriterionRepository.InsertAsync(nutrition);
                 await _unitOfWork.SaveAsync();
-                var insertedNutritionCriteria = await _unitOfWork.OrderRepository.GetByIDAsync(nutrition.CriteriaId);
+                var insertedNutritionCriteria = await _unitOfWork.NutritionCriterionRepository.GetByIDAsync(nutrition.CriteriaId);
 
                 if (insertedNutritionCriteria != null)
                 {

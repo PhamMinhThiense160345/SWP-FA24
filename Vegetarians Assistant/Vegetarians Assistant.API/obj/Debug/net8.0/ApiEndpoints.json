@@ -149,6 +149,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleImageController",
+    "Method": "CreateArticleImage",
+    "RelativePath": "api/v1/articleImages/createArticleImage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newArticleImage",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleImageView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByRoleId",
     "RelativePath": "api/v1/articles/allArticleByRoleId/{id}",
