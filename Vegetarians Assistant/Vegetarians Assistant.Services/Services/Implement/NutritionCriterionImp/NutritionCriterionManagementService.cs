@@ -136,7 +136,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
                 var insertedNutritionCriteria = (await _unitOfWork.NutritionCriterionRepository.FindAsync(a => a.CriteriaId == newNutritionCriteria.CriteriaId)).FirstOrDefault();
                 if (insertedNutritionCriteria != null)
                 {
-                    await _unitOfWork.OrderRepository.DeleteAsync(insertedNutritionCriteria);
+                    await _unitOfWork.NutritionCriterionRepository.DeleteAsync(insertedNutritionCriteria);
                     await _unitOfWork.SaveAsync();
                 }
                 throw new Exception(ex.Message);

@@ -13,7 +13,7 @@ using Vegetarians_Assistant.Services.Services.Interface.Customer;
 using Vegetarians_Assistant.Services.Services.Interface.IArticle;
 using Vegetarians_Assistant.Services.Services.Interface.Dish;
 using Vegetarians_Assistant.Services.Services.Interface.Feedback;
-using Vegetarians_Assistant.Services.Services.Implement.Feedback;
+using Vegetarians_Assistant.Services.Services.Implement.FeedbackImp;
 using Vegetarians_Assistant.Services.Services.Interface.Membership;
 using Vegetarians_Assistant.Services.Services.Interface.CartImp;
 using Vegetarians_Assistant.Services.Services.Interface.ICart;

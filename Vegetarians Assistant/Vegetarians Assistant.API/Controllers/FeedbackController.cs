@@ -16,7 +16,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [HttpGet("/api/v1/feedbacks/allfeedback")]
-        public async Task<ActionResult<IEnumerable<FeedbackView>>> GetFeedbacks()
+        public async Task<ActionResult<IEnumerable<FeedbackInfoView>>> GetFeedbacks()
         {
 
             var feedbacksList = await _feedbackManagementService.GetAllFeedback();
@@ -28,7 +28,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [HttpGet("/api/v1/feedbacks/getFeedbackByDishID/{id}")]
-        public async Task<ActionResult<FeedbackView>> GetFeedbackByID(int id)
+        public async Task<ActionResult<FeedbackInfoView>> GetFeedbackByID(int id)
         {
             var feedbackDetail = await _feedbackManagementService.GetFeedbackByDishId(id);
             if (feedbackDetail == null)
@@ -36,6 +36,20 @@ namespace Vegetarians_Assistant.API.Controllers
                 return NotFound("Feedbacks not found");
             }
             return Ok(feedbackDetail);
+        }
+
+        [HttpPost("/api/v1/feedbacks/createFeedback")]
+        public async Task<IActionResult> CreateFeedback([FromBody] FeedbackView newFeedback)
+        {
+            bool checkFeedback = await _feedbackManagementService.CreateFeedback(newFeedback);
+            if (checkFeedback)
+            {
+                return Ok("Create feedback success");
+            }
+            else
+            {
+                return BadRequest("Create feedback fail");
+            }
         }
 
     }

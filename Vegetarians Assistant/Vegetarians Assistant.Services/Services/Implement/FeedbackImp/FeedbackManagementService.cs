@@ -9,7 +9,7 @@ using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Feedback;
 
-namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
+namespace Vegetarians_Assistant.Services.Services.Implement.FeedbackImp
 {
     public class FeedbackManagementService : IFeedbackManagementService
     {
@@ -20,12 +20,12 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<List<FeedbackView>> GetAllFeedback()
+        public async Task<List<FeedbackInfoView>> GetAllFeedback()
         {
             try
             {
                 var feedbacks = (await _unitOfWork.FeedbackRepository.GetAsync()).ToList();
-                List<FeedbackView> feedbackViews = new List<FeedbackView>();
+                List<FeedbackInfoView> feedbackViews = new List<FeedbackInfoView>();
 
                 var dishIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
@@ -63,7 +63,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
 
                 foreach (var feedback in feedbacks)
                 {
-                    var feedbackView = new FeedbackView()
+                    var feedbackView = new FeedbackInfoView()
                     {
                         FeedbackId  =  feedback.FeedbackId,
                         DishId = feedback.DishId,
@@ -86,12 +86,12 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
             }
         }
 
-        public async Task<List<FeedbackView?>> GetFeedbackByDishId(int id)
+        public async Task<List<FeedbackInfoView?>> GetFeedbackByDishId(int id)
         {
             try
             {
                 var feedbacks = await _unitOfWork.FeedbackRepository.GetAsync(c => c.DishId == id);
-                List<FeedbackView> feedbackViews = new List<FeedbackView>();
+                List<FeedbackInfoView> feedbackViews = new List<FeedbackInfoView>();
 
                 var dishIds = new HashSet<int>();
                 foreach (var feedback in feedbacks)
@@ -129,7 +129,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
 
                 foreach (var feedback in feedbacks)
                 {
-                    var feedbackView = new FeedbackView()
+                    var feedbackView = new FeedbackInfoView()
                     {
                         FeedbackId = feedback.FeedbackId,
                         DishId = feedback.DishId,
@@ -152,5 +152,33 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Feedback
             }
         }
 
+        public async Task<bool> CreateFeedback(FeedbackView newFeedback)
+        {
+            try
+            {
+                bool status = false;
+                var feedback = _mapper.Map<Feedback>(newFeedback);
+                await _unitOfWork.FeedbackRepository.InsertAsync(feedback);
+                await _unitOfWork.SaveAsync();
+                var insertedFeedback = await _unitOfWork.FeedbackRepository.GetByIDAsync(feedback.FeedbackId);
+
+                if (insertedFeedback != null)
+                {
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                var insertedFeedback = (await _unitOfWork.FeedbackRepository.FindAsync(a => a.FeedbackId == newFeedback.FeedbackId)).FirstOrDefault();
+                if (insertedFeedback != null)
+                {
+                    await _unitOfWork.FeedbackRepository.DeleteAsync(insertedFeedback);
+                    await _unitOfWork.SaveAsync();
+                }
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

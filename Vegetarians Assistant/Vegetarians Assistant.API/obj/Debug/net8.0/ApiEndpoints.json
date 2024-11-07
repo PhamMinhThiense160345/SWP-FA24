@@ -683,7 +683,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.FeedbackView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.FeedbackInfoView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -692,6 +692,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FeedbackController",
+    "Method": "CreateFeedback",
+    "RelativePath": "api/v1/feedbacks/createFeedback",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFeedback",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FeedbackView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FeedbackController",
@@ -709,7 +725,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Vegetarians_Assistant.Services.ModelView.FeedbackView",
+        "Type": "Vegetarians_Assistant.Services.ModelView.FeedbackInfoView",
         "MediaTypes": [
           "text/plain",
           "application/json",

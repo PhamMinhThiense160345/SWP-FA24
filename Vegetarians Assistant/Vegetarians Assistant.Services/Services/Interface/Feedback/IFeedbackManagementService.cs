@@ -9,7 +9,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Feedback
 {
     public interface IFeedbackManagementService
     {
-        Task<List<FeedbackView>> GetAllFeedback();
-        Task<List<FeedbackView?>> GetFeedbackByDishId(int id);
+        Task<List<FeedbackInfoView>> GetAllFeedback();
+        Task<List<FeedbackInfoView?>> GetFeedbackByDishId(int id);
+        Task<bool> CreateFeedback(FeedbackView newFeedback);
     }
 }
