@@ -52,7 +52,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
         public async Task<CommentView> postComment(CommentView view)
         {
             var comment = _mapper.Map<Comment>(view);
-            await _unitOfWork.CommentRepository.UpdateAsync(comment);
+            await _unitOfWork.CommentRepository.InsertAsync(comment);
             await _unitOfWork.SaveAsync();
             return view;
         }
