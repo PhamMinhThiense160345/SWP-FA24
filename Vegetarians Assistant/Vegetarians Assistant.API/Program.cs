@@ -33,6 +33,7 @@ using Vegetarians_Assistant.Services.Services.Interface.INutritionCriterion;
 using Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionManagementService;
 using Vegetarians_Assistant.Services.Services.Interface.IArticleImage;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp;
+using Vegetarians_Assistant.API.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -84,6 +85,8 @@ builder.Services.AddScoped<INutritionCriterionManagementService, NutritionCriter
 builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagementService>();
 
 builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<ICommentHelper, CommentHelper>();
+
 
 
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Vegetarians_Assistant.API.Helpers;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.ArticleImp;
@@ -12,9 +13,11 @@ namespace Vegetarians_Assistant.API.Controllers
     public class ArticleController : ControllerBase
     {
         private readonly IArticleService _articleService;
-        public ArticleController(IArticleService articleService)
+        private readonly ICommentHelper _commentHelper;
+        public ArticleController(IArticleService articleService, ICommentHelper commentHelper)
         {
             _articleService = articleService;
+            _commentHelper = commentHelper;
         }
 
         [HttpGet("/api/v1/articles/allArticleByRoleId/{id}")]
@@ -147,6 +150,11 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Not correct role");
             }
         }
-        
+
+            [HttpPost("checkCommentContent")]
+            public IActionResult CheckCommentContent([FromBody] CheckCommentContentView request)
+           => Ok(_commentHelper.CheckContent(request.Content));
+        }
     }
-}
+        
+    
