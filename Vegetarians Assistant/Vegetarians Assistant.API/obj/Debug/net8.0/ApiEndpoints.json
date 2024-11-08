@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "CheckCommentContent",
+    "RelativePath": "api/Article/checkCommentContent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.Services.ModelView.CheckCommentContentView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "postComment",
     "RelativePath": "api/Article/comment",
     "HttpMethod": "POST",
