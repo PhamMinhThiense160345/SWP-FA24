@@ -34,6 +34,9 @@ using Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionManage
 using Vegetarians_Assistant.Services.Services.Interface.IArticleImage;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp;
 using Vegetarians_Assistant.API.Helpers;
+using Vegetarians_Assistant.API.Helpers.AesEncryption;
+using Vegetarians_Assistant.API.Helpers.PayOs;
+using Vegetarians_Assistant.API.Helpers.Encryption;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -86,8 +89,8 @@ builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagemen
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();
-
-
+builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
+builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
 
 
 // Add AutoMapper
