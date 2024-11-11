@@ -36,6 +36,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Restaurant> RestaurantRepository { get; }
         IGenericRepository<Role> RoleRepository { get; }
         IGenericRepository<Status> StatusRepository { get; }
+        IGenericRepository<TotalNutritionDish> TotalNutritionDishRepository { get; }
         IGenericRepository<UsersNutritionCriterion> UsersNutritionCriterionRepository { get; }
         IGenericRepository<User> UserRepository { get; }
         IGenericRepository<UserMembership> UserMembershipRepository { get; }

@@ -36,4 +36,6 @@ public partial class Dish
     public virtual ICollection<FixedMenuItem> FixedMenuItems { get; set; } = new List<FixedMenuItem>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
+
+    public virtual TotalNutritionDish? TotalNutritionDish { get; set; }
 }
