@@ -345,6 +345,54 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "CancelPayment",
+    "RelativePath": "api/v1/carts/cancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "Checkout",
+    "RelativePath": "api/v1/carts/checkout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.CheckoutRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "CompletePayment",
+    "RelativePath": "api/v1/carts/complete",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "paymentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
     "Method": "GetCartByUserId",
     "RelativePath": "api/v1/carts/getCartByUserId/{id}",
     "HttpMethod": "GET",

@@ -93,6 +93,8 @@ namespace Vegetarians_Assistant.API.Controllers
                 return NotFound("Cart not found or failed to delete");
             }
         }
+
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/checkout")]
         public async Task<IActionResult> Checkout([FromBody] CheckoutRequest request)
         {
@@ -126,6 +128,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/carts/cancel")]
         public async Task<IActionResult> CancelPayment([FromQuery] int paymentId)
         {
