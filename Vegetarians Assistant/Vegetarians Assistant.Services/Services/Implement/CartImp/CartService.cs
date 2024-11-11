@@ -19,7 +19,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly CartRepository _cartRepository;
-        public CartService( IMapper mapper, IUnitOfWork unitOfWork, CartRepository cartRepository)
+        public CartService(IMapper mapper, IUnitOfWork unitOfWork, CartRepository cartRepository)
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
@@ -39,7 +39,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
                 isCartExist.Quantity += view.Quantity;
                 await _unitOfWork.CartRepository.UpdateAsync(isCartExist);
             }
-            
+
             await _unitOfWork.SaveAsync();
         }
 
@@ -133,7 +133,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
 
                 if (cart == null)
                 {
-                    return false; 
+                    return false;
                 }
 
                 cart.Quantity = newQuantity;
@@ -153,6 +153,51 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             throw new NotImplementedException();
         }
 
+        public async Task<int?> AddPaymentAysnc(AddPaymentView payment)
+        {
+            try
+            {
+                var newPayment = new PaymentDetail()
+                {
+                    OrderId = payment.OrderId,
+                    Amount = payment.Amount,
+                    PaymentMethod = payment.PaymentMethod,
+                    PaymentStatus = payment.PaymentStatus,
+                    PaymentDate = payment.PaymentDate,
+                    RefundAmount = payment.RefundAmount,
+                    ReturnUrl = payment.ReturnUrl,
+                    CancelUrl = payment.CancelUrl,
+                    TransactionId = payment.TransactionId,
+                };
 
+                await _unitOfWork.PaymentDetailRepository.InsertAsync(newPayment);
+                await _unitOfWork.SaveAsync();
+
+                return newPayment.PaymentId;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> UpdatePaymentStatusAsync(int paymentId, string status)
+        {
+            try
+            {
+                var payment = await _unitOfWork.PaymentDetailRepository.GetByIDAsync(paymentId);
+
+                if (payment is null) return false;
+                payment.PaymentStatus = status;
+
+                await _unitOfWork.PaymentDetailRepository.UpdateAsync(payment);
+                await _unitOfWork.SaveAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

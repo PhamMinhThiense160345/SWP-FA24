@@ -35,6 +35,9 @@ using Vegetarians_Assistant.API.Helpers;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Vegetarians_Assistant.API.Helpers.AesEncryption;
+using Vegetarians_Assistant.API.Helpers.PayOs;
+using Vegetarians_Assistant.API.Helpers.Encryption;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +86,8 @@ builder.Services.AddScoped<ILoginCService, LoginCService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();
+builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
+builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
 
 
 // Add AutoMapper
