@@ -852,6 +852,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "MatchUserNutritionCriteria",
+    "RelativePath": "api/v1/nutrition/matchCriteria/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionCriterionController",
     "Method": "GetAllNutritionCriteria",
     "RelativePath": "api/v1/nutritionCriterions/allNutritionCriteria",

@@ -180,5 +180,119 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
 
      return null;
  }
+
+        public async Task<bool> MatchUserNutritionCriteria(int userId)
+        {
+            try
+            {
+                // Lấy thông tin của người dùng
+                var user = await _unitOfWork.UserRepository.GetByIDAsync(userId);
+                if (user == null)
+                {
+                    throw new Exception("User not found");
+                }
+
+                // Tính BMI của người dùng (nếu có chiều cao và cân nặng)
+                double? userBmi = null;
+                if (user.Height.HasValue && user.Weight.HasValue && user.Height > 0)
+                {
+                    double heightInMeters = user.Height.Value / 100.0;
+                    userBmi = user.Weight.Value / (heightInMeters * heightInMeters);
+                }
+
+                // Lấy danh sách tất cả các tiêu chí dinh dưỡng
+                var allCriteria = await _unitOfWork.NutritionCriterionRepository.GetAllAsync();
+
+                NutritionCriterion? bestMatchCriterion = null;
+                int maxMatchCount = 0;
+
+                // So sánh từng tiêu chí dinh dưỡng
+                foreach (var criterion in allCriteria)
+                {
+                    int matchCount = 0;
+
+                    // So sánh các thuộc tính
+                    if (!string.IsNullOrEmpty(criterion.Gender) && criterion.Gender.Equals(user.Gender, StringComparison.OrdinalIgnoreCase))
+                        matchCount++;
+                    if (!string.IsNullOrEmpty(criterion.AgeRange) && IsInRange(user.Age, criterion.AgeRange))
+                        matchCount++;
+                    if (!string.IsNullOrEmpty(criterion.BmiRange) && userBmi.HasValue && IsInRange(userBmi.Value, criterion.BmiRange))
+                        matchCount++;
+                    if (!string.IsNullOrEmpty(criterion.Profession) && criterion.Profession.Equals(user.Profession, StringComparison.OrdinalIgnoreCase))
+                        matchCount++;
+                    if (!string.IsNullOrEmpty(criterion.ActivityLevel) && criterion.ActivityLevel.Equals(user.ActivityLevel, StringComparison.OrdinalIgnoreCase))
+                        matchCount++;
+                    if (!string.IsNullOrEmpty(criterion.Goal) && criterion.Goal.Equals(user.Goal, StringComparison.OrdinalIgnoreCase))
+                        matchCount++;
+
+                    // Lưu lại tiêu chí tốt nhất
+                    if (matchCount > maxMatchCount)
+                    {
+                        maxMatchCount = matchCount;
+                        bestMatchCriterion = criterion;
+                    }
+                }
+
+                // Nếu tìm thấy tiêu chí phù hợp nhất
+                if (bestMatchCriterion != null)
+                {
+                    // Kiểm tra xem userId đã tồn tại trong bảng UsersNutritionCriterion hay chưa
+                    var existingRecord = (await _unitOfWork.UsersNutritionCriterionRepository.FindAsync(x => x.UserId == user.UserId)).FirstOrDefault();
+
+                    if (existingRecord != null)
+                    {
+                        // Nếu tồn tại, cập nhật lại criteria_id
+                        existingRecord.CriteriaId = bestMatchCriterion.CriteriaId;
+                        await _unitOfWork.UsersNutritionCriterionRepository.UpdateAsync(existingRecord);
+                    }
+                    else
+                    {
+                        // Nếu chưa tồn tại, thêm mới
+                        var userNutritionCriterion = new UsersNutritionCriterion
+                        {
+                            UserId = user.UserId,
+                            CriteriaId = bestMatchCriterion.CriteriaId
+                        };
+
+                        await _unitOfWork.UsersNutritionCriterionRepository.InsertAsync(userNutritionCriterion);
+                    }
+
+                    // Lưu thay đổi vào database
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+
+                return false; // Không tìm thấy tiêu chí phù hợp
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error matching user nutrition criteria: {ex.Message}");
+            }
+        }
+
+        // Hàm kiểm tra giá trị nằm trong khoảng
+        private bool IsInRange(int? value, string range)
+        {
+            if (!value.HasValue || string.IsNullOrEmpty(range)) return false;
+            var parts = range.Split('-');
+            if (parts.Length != 2) return false;
+            if (int.TryParse(parts[0], out var min) && int.TryParse(parts[1], out var max))
+            {
+                return value.Value >= min && value.Value <= max;
+            }
+            return false;
+        }
+
+        private bool IsInRange(double value, string range)
+        {
+            if (string.IsNullOrEmpty(range)) return false;
+            var parts = range.Split('-');
+            if (parts.Length != 2) return false;
+            if (double.TryParse(parts[0], out var min) && double.TryParse(parts[1], out var max))
+            {
+                return value >= min && value <= max;
+            }
+            return false;
+        }
     }
 }

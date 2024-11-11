@@ -21,7 +21,7 @@ namespace Vegetarians_Assistant.API.Controllers
         private readonly ILoginCService _loginCService;
         private readonly IUnitOfWork _unitOfWork;
 
-        public CustomerController(ICustomerManagementService customerManagementService, IMembershipTierService membershipTierService, 
+        public CustomerController(ICustomerManagementService customerManagementService, IMembershipTierService membershipTierService,
             IUsermembershipService usermembershipService, IConfiguration configuration, ILoginCService loginCService, IUnitOfWork unitOfWork)
         {
             _customerManagementService = customerManagementService;
@@ -42,7 +42,7 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return NotFound("No account found");
             }
-            else if(check.Status.Equals("inactive"))
+            else if (check.Status.Equals("inactive"))
             {
                 return BadRequest("Your account is baned");
             }
@@ -83,26 +83,26 @@ namespace Vegetarians_Assistant.API.Controllers
                         check.IsPhoneVerified
                     }
                 });
-            //if (check.RoleId.Equals(1))
-            //{
-            //    return Ok(new { token = jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Admin"), check.UserId});
-            //}
-            //else if(check.RoleId.Equals(2))
-            //{
-            //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Staff"));
-            //}
-            //else if (check.RoleId.Equals(3))
-            //{
-            //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Customer"));
-            //}
-            //else if(check.RoleId.Equals(4))
-            //{
-            //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Moderator"));
-            //}
-            //else if(check.RoleId.Equals(5))
-            //{
-            //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Nutritionist"));
-            //}
+                //if (check.RoleId.Equals(1))
+                //{
+                //    return Ok(new { token = jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Admin"), check.UserId});
+                //}
+                //else if(check.RoleId.Equals(2))
+                //{
+                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Staff"));
+                //}
+                //else if (check.RoleId.Equals(3))
+                //{
+                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Customer"));
+                //}
+                //else if(check.RoleId.Equals(4))
+                //{
+                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Moderator"));
+                //}
+                //else if(check.RoleId.Equals(5))
+                //{
+                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Nutritionist"));
+                //}
             }
             return BadRequest("Login Failed");
         }
@@ -224,5 +224,23 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        //[Authorize(Roles = "Customer, Nutritionist")]
+        [HttpPost("/api/v1/nutrition/matchCriteria/{userId}")]
+        public async Task<IActionResult> MatchUserNutritionCriteria(int userId)
+        {
+            try
+            {
+                var result = await _customerManagementService.MatchUserNutritionCriteria(userId);
+                if (result)
+                {
+                    return Ok("User's nutrition criteria matched successfully.");
+                }
+                return NotFound("No matching nutrition criteria found for the user.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
     }
 }

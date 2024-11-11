@@ -39,6 +39,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<Restaurant> _restaurantRepository;
         private GenericRepository<Role> _roleRepository;
         private GenericRepository<Status> _statusRepository;
+        private GenericRepository<UsersNutritionCriterion> _usersNutritionCriterionRepository;
         private GenericRepository<User> _userRepository;
         private GenericRepository<UserMembership> _userMembershipRepository;
         private GenericRepository<Cart> _cartRepository;
@@ -83,6 +84,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<Restaurant> RestaurantRepository => _restaurantRepository ?? new GenericRepository<Restaurant>(context);
         public IGenericRepository<Role> RoleRepository => _roleRepository ?? new GenericRepository<Role>(context);
         public IGenericRepository<Status> StatusRepository => _statusRepository ?? new GenericRepository<Status>(context);
+        public IGenericRepository<UsersNutritionCriterion> UsersNutritionCriterionRepository => _usersNutritionCriterionRepository ?? new GenericRepository<UsersNutritionCriterion>(context);
         public IGenericRepository<User> UserRepository => _userRepository ?? new GenericRepository<User>(context);
         public IGenericRepository<UserMembership> UserMembershipRepository => _userMembershipRepository ?? new GenericRepository<UserMembership>(context);
         public IGenericRepository<Cart> CartRepository => _cartRepository ?? new GenericRepository<Cart>(context);
