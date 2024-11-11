@@ -122,7 +122,12 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+  [HttpGet("/api/v1/carts/cancel")]
+  public async Task<IActionResult> CancelPayment([FromQuery] int paymentId)
+  {
+      await _cartService.UpdatePaymentStatusAsync(paymentId, "failed");
+      return Ok("Payment failed");
+  }
       
 
 
