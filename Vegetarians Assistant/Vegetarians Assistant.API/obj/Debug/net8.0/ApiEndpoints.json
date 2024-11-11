@@ -567,6 +567,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RecommendDishes",
+    "RelativePath": "api/v1/customers/recommendDishes/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "RegisterCustomer",
     "RelativePath": "api/v1/customers/RegisterCustomer",
     "HttpMethod": "POST",

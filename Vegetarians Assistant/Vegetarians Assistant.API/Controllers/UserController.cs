@@ -24,52 +24,6 @@ namespace Vegetarians_Assistant.API.Controllers
             //_authService = authService;
         }
 
-        //[HttpPost("/api/v1/users/login")]
-        //public async Task<IActionResult> Login([FromBody] LoginView loginInfo)
-        //{
-        //    if (loginInfo == null)
-        //    {
-        //        return BadRequest("Login information is required.");
-        //    }
-
-        //    if (string.IsNullOrEmpty(loginInfo.Email))
-        //    {
-        //        return BadRequest("Email is required");
-        //    }
-
-        //    if (!IsValidEmail(loginInfo.Email))
-        //    {
-        //        return BadRequest("Invalid email address");
-        //    }
-
-        //    if (string.IsNullOrEmpty(loginInfo.Password))
-        //    {
-        //        return BadRequest("Password is required");
-        //    }
-
-        //    var user_ = await _loginAService.AuthenticateUser(loginInfo);
-        //    if (user_ == null)
-        //    {
-        //        return NotFound("No account found");
-        //    }
-
-        //    if (user_.Status != null && user_.Status.Equals("banned", StringComparison.OrdinalIgnoreCase))
-        //    {
-        //        return BadRequest("Your account is banned");
-        //    }
-
-        //    var userEntity = new User
-        //    {
-        //        UserId = user_.UserId,
-        //        Username = user_.Username,
-        //        // Thêm các thuộc tính khác nếu cần
-        //    };
-
-        //    var token = _authService.GenerateToken(userEntity);
-
-        //    return Ok(new { Token = token, User = user_ });
-        //}
-
         [Authorize(Roles = "Admin, Customer")]
         [HttpGet("/api/v1/users/alluser")]
         public async Task<ActionResult<IEnumerable<UserView>>> GetUsers()

@@ -294,5 +294,108 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
             }
             return false;
         }
+
+        public async Task<List<TotalNutritionDish>> RecommendDishesForUser(int userId)
+        {
+            try
+            {
+                // 1. Lấy CriteriaId từ bảng UsersNutritionCriterion dựa vào userId
+                var userCriteria = (await _unitOfWork.UsersNutritionCriterionRepository.FindAsync(x => x.UserId == userId))
+                    .FirstOrDefault();
+                if (userCriteria == null)
+                {
+                    throw new Exception("No nutrition criteria found for the user.");
+                }
+
+                int criteriaId = userCriteria.CriteriaId ?? 0;
+
+                // 2. Lấy thông tin dinh dưỡng từ bảng NutritionCriterion dựa trên CriteriaId
+                var nutritionCriteria = await _unitOfWork.NutritionCriterionRepository.GetByIDAsync(criteriaId);
+                if (nutritionCriteria == null)
+                {
+                    throw new Exception("No nutrition details found for the criteria.");
+                }
+
+                // 3. Lấy danh sách tất cả các món ăn từ bảng TotalNutritionDish
+                var allDishes = await _unitOfWork.TotalNutritionDishRepository.GetAllAsync();
+
+                // 4. So sánh món ăn với tiêu chí dinh dưỡng để tính điểm tương đồng
+                var rankedDishes = allDishes.Select(dish =>
+                {
+                    double similarityScore = 0;
+
+                    // So sánh từng thuộc tính dinh dưỡng
+                    if (nutritionCriteria.Calories.HasValue && dish.Calories.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calories.Value - dish.Calories.Value)));
+
+                    if (nutritionCriteria.Protein.HasValue && dish.Protein.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Protein.Value - dish.Protein.Value)));
+
+                    if (nutritionCriteria.Carbs.HasValue && dish.Carbs.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Carbs.Value - dish.Carbs.Value)));
+
+                    if (nutritionCriteria.Fat.HasValue && dish.Fat.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fat.Value - dish.Fat.Value)));
+
+                    if (nutritionCriteria.Fiber.HasValue && dish.Fiber.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fiber.Value - dish.Fiber.Value)));
+
+                    if (nutritionCriteria.VitaminA.HasValue && dish.VitaminA.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminA.Value - dish.VitaminA.Value)));
+
+                    if (nutritionCriteria.VitaminB.HasValue && dish.VitaminB.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminB.Value - dish.VitaminB.Value)));
+
+                    if (nutritionCriteria.VitaminC.HasValue && dish.VitaminC.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminC.Value - dish.VitaminC.Value)));
+
+                    if (nutritionCriteria.VitaminD.HasValue && dish.VitaminD.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminD.Value - dish.VitaminD.Value)));
+
+                    if (nutritionCriteria.VitaminE.HasValue && dish.VitaminE.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminE.Value - dish.VitaminE.Value)));
+
+                    if (nutritionCriteria.Calcium.HasValue && dish.Calcium.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calcium.Value - dish.Calcium.Value)));
+
+                    if (nutritionCriteria.Iron.HasValue && dish.Iron.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Iron.Value - dish.Iron.Value)));
+
+                    if (nutritionCriteria.Magnesium.HasValue && dish.Magnesium.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Magnesium.Value - dish.Magnesium.Value)));
+
+                    if (nutritionCriteria.Omega3.HasValue && dish.Omega3.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Omega3.Value - dish.Omega3.Value)));
+
+                    if (nutritionCriteria.Sugars.HasValue && dish.Sugars.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sugars.Value - dish.Sugars.Value)));
+
+                    if (nutritionCriteria.Cholesterol.HasValue && dish.Cholesterol.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Cholesterol.Value - dish.Cholesterol.Value)));
+
+                    if (nutritionCriteria.Sodium.HasValue && dish.Sodium.HasValue)
+                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sodium.Value - dish.Sodium.Value)));
+
+
+
+                    return new { Dish = dish, Score = similarityScore };
+                })
+                .OrderByDescending(x => x.Score) // Sắp xếp theo điểm số giảm dần
+                .Take(20) // Chọn 20 món có điểm cao nhất
+                .Select(x => x.Dish)
+                .ToList();
+
+                // 5. Random 10 món từ danh sách 20 món đã chọn
+                var random = new Random();
+                var recommendedDishes = rankedDishes.OrderBy(x => random.Next()).Take(10).ToList();
+
+                return recommendedDishes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error recommending dishes for user: {ex.Message}");
+            }
+        }
+
     }
 }

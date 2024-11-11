@@ -149,7 +149,6 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/customers/RegisterCustomer")]
         public async Task<IActionResult> RegisterCustomer([FromBody] UserView newUser)
         {
@@ -225,7 +224,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Customer, Nutritionist")]
-        [HttpPost("/api/v1/nutrition/matchCriteria/{userId}")]
+        [HttpPost("/api/v1/customers/matchCriteria/{userId}")]
         public async Task<IActionResult> MatchUserNutritionCriteria(int userId)
         {
             try
@@ -236,6 +235,21 @@ namespace Vegetarians_Assistant.API.Controllers
                     return Ok("User's nutrition criteria matched successfully.");
                 }
                 return NotFound("No matching nutrition criteria found for the user.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/recommendDishes/{userId}")]
+        public async Task<IActionResult> RecommendDishes(int userId)
+        {
+            try
+            {
+                var recommendedDishes = await _customerManagementService.RecommendDishesForUser(userId);
+                return Ok(recommendedDishes);
             }
             catch (Exception ex)
             {

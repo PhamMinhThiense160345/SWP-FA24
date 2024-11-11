@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Services.ModelView;
 
 namespace Vegetarians_Assistant.Services.Services.Interface.Customer
@@ -15,6 +16,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Customer
         Task<UserView?> GetUserByUsername(string userName);
         Task<UserView?> EditUser(UserView view);
         Task<DeliveryView?> GetDeliveryInformationByUserId(int id);
-        Task<bool> MatchUserNutritionCriteria(int userId); 
+        Task<bool> MatchUserNutritionCriteria(int userId);
+        Task<List<TotalNutritionDish>> RecommendDishesForUser(int userId);
     }
 }
