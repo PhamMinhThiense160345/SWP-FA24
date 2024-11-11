@@ -29,5 +29,9 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         Task<int> CountAsync(Expression<Func<TEntity, bool>> filter = null);
        
             Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IEnumerable<TEntity>> FindAsync(
+    Expression<Func<TEntity, bool>> filter,
+    params Expression<Func<TEntity, object>>[] includes);
+
         }
     }

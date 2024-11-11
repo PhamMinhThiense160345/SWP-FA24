@@ -113,5 +113,25 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
 
             return await query.CountAsync();
         }
+
+        public async Task<IEnumerable<TEntity>> FindAsync(
+    Expression<Func<TEntity, bool>> filter,
+    params Expression<Func<TEntity, object>>[] includes)
+        {
+            IQueryable<TEntity> query = dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            // Thêm Include cho các bảng liên kết
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

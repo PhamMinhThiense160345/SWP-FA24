@@ -239,12 +239,14 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
         }
         public async Task<List<ArticleView?>> GetArticleByAuthorId(int id)
         {
-
             try
             {
-                var articles = await _unitOfWork.ArticleRepository.FindAsync(c => c.AuthorId == id);
+                // Nạp trước ArticleImages và ArticleLikes bằng Include
+                var articles = await _unitOfWork.ArticleRepository.FindAsync(c => c.AuthorId == id, a => a.ArticleImages, a => a.ArticleLikes);
+
                 var articleViews = new List<ArticleView>();
 
+                // Lấy danh sách các UserId từ bài viết để map với AuthorName
                 var authorIds = new HashSet<int>();
                 foreach (var article in articles)
                 {
@@ -262,6 +264,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                     preferenceDictionary[preference.UserId] = preference.Username;
                 }
 
+                // Tạo danh sách ArticleView
                 foreach (var article in articles)
                 {
                     articleViews.Add(new ArticleView
@@ -271,13 +274,14 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                         Content = article.Content,
                         Status = article.Status,
                         ArticleImages = article.ArticleImages.Select(img => img.ImageUrl).ToList(),
-                        Likes = article.ArticleLikes.Count(),
+                        Likes = article.ArticleLikes.Count(), // Đếm số lượng Likes
                         AuthorId = article.AuthorId,
                         AuthorName = article.AuthorId.HasValue && preferenceDictionary.ContainsKey(article.AuthorId.Value)
-                    ? preferenceDictionary[article.AuthorId.Value]
-                    : null
+                            ? preferenceDictionary[article.AuthorId.Value]
+                            : null
                     });
                 }
+
                 return articleViews;
             }
             catch (Exception ex)

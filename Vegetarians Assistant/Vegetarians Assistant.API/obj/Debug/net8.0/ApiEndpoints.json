@@ -535,6 +535,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "MatchUserNutritionCriteria",
+    "RelativePath": "api/v1/customers/matchCriteria/{userId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "GetCustomerMembership",
     "RelativePath": "api/v1/customers/membership/{id}",
     "HttpMethod": "GET",
@@ -910,22 +926,6 @@
       {
         "Name": "newFollow",
         "Type": "Vegetarians_Assistant.Services.ModelView.FollowingView",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
-    "Method": "MatchUserNutritionCriteria",
-    "RelativePath": "api/v1/nutrition/matchCriteria/{userId}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
