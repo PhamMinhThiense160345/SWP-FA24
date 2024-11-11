@@ -128,7 +128,13 @@ namespace Vegetarians_Assistant.API.Controllers
       await _cartService.UpdatePaymentStatusAsync(paymentId, "failed");
       return Ok("Payment failed");
   }
-      
+    [HttpGet("/api/v1/carts/complete")]
+public async Task<IActionResult> CompletePayment([FromQuery] int paymentId)
+{
+    await _cartService.UpdatePaymentStatusAsync(paymentId, "completed");
+    return Ok("Completed payment");
+}
+  
 
 
         private PayOSModel GetPayOSModel(string key)
