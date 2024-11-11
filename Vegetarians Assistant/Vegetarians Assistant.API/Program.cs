@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Vegetarians_Assistant.API.Mapper;
 using Vegetarians_Assistant.Repo.Entity;
@@ -22,8 +22,6 @@ using Vegetarians_Assistant.Services.Services.Implement.OrderImp;
 using Vegetarians_Assistant.Services.Services.Interface.IFollowImp;
 using Vegetarians_Assistant.Services.Services.Implement.FollowImp;
 using Vegetarians_Assistant.API.Config;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Vegetarians_Assistant.Services.Services.Implement;
 using Vegetarians_Assistant.Services.Services.Interface.Favorite;
@@ -34,9 +32,9 @@ using Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionManage
 using Vegetarians_Assistant.Services.Services.Interface.IArticleImage;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleImageImp;
 using Vegetarians_Assistant.API.Helpers;
-using Vegetarians_Assistant.API.Helpers.AesEncryption;
-using Vegetarians_Assistant.API.Helpers.PayOs;
-using Vegetarians_Assistant.API.Helpers.Encryption;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,12 +42,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-//Add connection string
-builder.Services.AddDbContext<VegetariansAssistantV3Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //add Repo
@@ -86,11 +79,10 @@ builder.Services.AddScoped<IFavoriteManagementService, FavoriteManagementService
 builder.Services.AddScoped<INutritionCriterionManagementService, NutritionCriterionManagementService>();
 
 builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagementService>();
+builder.Services.AddScoped<ILoginCService, LoginCService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();
-builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
-builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
 
 
 // Add AutoMapper
@@ -102,22 +94,55 @@ builder.Services.AddMemoryCache();
 ////Addcors
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
-//// Configure JWT Authentication
-//var jwtConfig = builder.Configuration.GetSection("JwtConfig").Get<JwtConfig>();
-//builder.Services.AddSingleton(jwtConfig);
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Vegetarians_Assistant", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
 
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//    .AddJwtBearer(options =>
-//    {
-//        options.TokenValidationParameters = new TokenValidationParameters
-//        {
-//            ValidateIssuerSigningKey = true,
-//            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Secret)),
-//            ValidateIssuer = false,
-//            ValidateAudience = false
-//        };
-//    });
+// Cấu hình xác thực JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["JWT:Key"] ?? throw new ArgumentNullException("JWT:Key is null"))),
+            ValidIssuer = builder.Configuration["JWT:Issure"],
+            ValidAudience = builder.Configuration["JWT:Audience"],
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+builder.Services.AddAuthorization();
 
+// Thêm HttpContextAccessor
+builder.Services.AddHttpContextAccessor();
+string connection_string = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+//Add connection string
+builder.Services.AddDbContext<VegetariansAssistantV3Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 var app = builder.Build();
 
 //app.UseAuthentication();
@@ -125,14 +150,16 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
+
 app.UseSwaggerUI();
 
+app.UseAuthentication();
+
 app.UseHttpsRedirection();
+
 app.UseCors();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.MapControllers();
 

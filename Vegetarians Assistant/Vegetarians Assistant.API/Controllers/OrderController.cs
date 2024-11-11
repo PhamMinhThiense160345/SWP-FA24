@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IOrder;
@@ -15,6 +16,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _orderManagementService = orderManagementService;
         }
 
+        [Authorize(Roles = "Staff, Customer")]
         [HttpGet("/api/v1/orders/allOrder")]
         public async Task<ActionResult<IEnumerable<OrderView>>> AllOrder()
         {
@@ -27,6 +29,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(ordersList);
         }
 
+        [Authorize(Roles = "Staff, Customer")]
         [HttpGet("/api/v1/orders/getOrderByStatus/{Status}")]
         public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByStatus(string Status)
         {
@@ -38,6 +41,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
+        [Authorize(Roles = "Staff, Customer")]
         [HttpGet("/api/v1/orders/getOrderByUserId/{id}")]
         public async Task<ActionResult<IEnumerable<OrderView>>> GetOrderByUserId(int id)
         {
@@ -49,6 +53,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
+        [Authorize(Roles = "Staff, Customer")]
         [HttpGet("/api/v1/orders/getOrderDetailByOrderId/{id}")]
         public async Task<ActionResult<IEnumerable<OrderDetailInfo>>> GetOrderDetailOrderId(int id)
         {
@@ -60,6 +65,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/orders/createOrderByCustomer")]
         public async Task<IActionResult> CreateOrderByCustomer([FromBody] OrderView newOrder)
         {
@@ -74,6 +80,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/orders/createOrderDetail")]
         public async Task<IActionResult> CreateOrderDetail([FromBody] OrderDetailView newOrder)
         {
@@ -87,7 +94,8 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest("Create order detail fail");
             }
         }
-        
+
+        [Authorize(Roles = "Staff, Customer")]
         [HttpPut("/api/v1/orders/{id}/change-status")]
         public async Task<IActionResult> ChangeOrderStatus(int id, [FromBody] string newStatus)
         {
@@ -110,6 +118,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Staff")]
         [HttpPut("/api/v1/orders/changeOrderDeliveryFailedFee/{id}")]
         public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromBody] decimal newDeliveryFailedFee)
         {

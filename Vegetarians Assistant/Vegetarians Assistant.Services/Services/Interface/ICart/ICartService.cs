@@ -1,4 +1,9 @@
-﻿using Vegetarians_Assistant.Services.ModelView;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Vegetarians_Assistant.Services.ModelView;
 
 namespace Vegetarians_Assistant.Services.Services.Interface.ICart
 {
@@ -11,9 +16,5 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ICart
         Task<bool> RemoveCartByUserId(int id);
 
         Task<bool> UpdateDishQuantityByCartId(int id, int newQuantity);
-
-        Task<int?> AddPaymentAysnc(AddPaymentView payment);
-
-        Task<bool> UpdatePaymentStatusAsync(int paymentId, string status);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Favorite;
@@ -18,6 +19,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/favorites/allDishFavoriteByUserId/{id}")]
         public async Task<ActionResult<FavoriteDishView>> GetAllDishFavoriteByUserId(int id)
         {
@@ -29,6 +31,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(favoriteDetail);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/favorites/createFavoriteDish")]
         public async Task<IActionResult> CreateFavoriteDish([FromBody] FavoriteView newFavorite)
         {
@@ -51,6 +54,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpDelete("/api/v1/favorites/deleteFavoriteDish")]
         public async Task<IActionResult> DeleteFavoriteDish([FromBody] FavoriteView newFavorite)
         {

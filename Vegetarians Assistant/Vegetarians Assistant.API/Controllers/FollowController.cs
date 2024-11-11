@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IFollowImp;
@@ -17,6 +18,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/follows/allFollowerByUserId/{id}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetAllFollowerByUserId(int id)
         {
@@ -28,6 +30,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(followerDetail);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/follows/allFollowingByUserId/{id}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetAllFollowingByUserId(int id)
         {
@@ -39,6 +42,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(followingDetail);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/follows/followerUserByCustomer")]
         public async Task<IActionResult> FollowerUserByCustomer([FromBody] FollowerView newFollow)
         {
@@ -69,6 +73,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/follows/followingUserByCustomer")]
         public async Task<IActionResult> FollowingUserByCustomer([FromBody] FollowingView newFollow)
         {
@@ -98,7 +103,6 @@ namespace Vegetarians_Assistant.API.Controllers
                 }
             }
         }
-
 
     }
 }

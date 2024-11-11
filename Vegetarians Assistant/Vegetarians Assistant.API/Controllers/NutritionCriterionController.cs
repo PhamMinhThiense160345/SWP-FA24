@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.INutritionCriterion;
 
@@ -12,6 +13,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _nutritionCriterionManagementService = nutritionCriterionManagementService;
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpGet("/api/v1/nutritionCriterions/allNutritionCriteria")]
         public async Task<ActionResult<IEnumerable<NutritionCriterionView>>> GetAllNutritionCriteria()
         {
@@ -24,6 +26,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(nutritionCriterionsList);
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpGet("/api/v1/nutritionCriterions/getNutritionCriteriaDetailByCriteriaId/{id}")]
         public async Task<ActionResult<NutritionCriterionView>> GetNutritionCriteriaDetailByCriteriaId(int id)
         {
@@ -35,6 +38,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(nutritionCriterionsList);
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPost("/api/v1/nutritionCriterions/createNutritionCriteria")]
         public async Task<IActionResult> CreateNutritionCriteria([FromBody] NutritionCriterionView newNutritionCriteria)
         {
@@ -49,6 +53,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPut("/api/v1/nutritionCriterions/updateNutritionCriteriaByCriteriaId")]
         public async Task<IActionResult> UpdateNutritionCriteriaByCriteriaId([FromBody] NutritionCriterionView updateNutritionCriterion)
         {
@@ -71,6 +76,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpDelete("/api/v1/nutritionCriterions/deleteNutritionCriteriaByCriteriaId/{id}")]
         public async Task<IActionResult> DeleteNutritionCriteriaByCriteriaId(int id)
         {

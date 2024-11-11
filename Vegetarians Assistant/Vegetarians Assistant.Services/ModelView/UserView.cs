@@ -9,7 +9,7 @@ namespace Vegetarians_Assistant.Services.ModelView
     public class UserView
     {
         public int UserId { get; set; }
-        public string Username { get; set; } = null!;
+        public string? Username { get; set; } = null!;
 
         public string Password { get; set; } = null!;
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IArticleImage;
 
@@ -12,6 +13,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _articleImageManagementService = articleImageManagementService;
         }
 
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articleImages/getArticleImageByArticleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleImageView>>> GetArticleImageByArticleId(int id)
         {
@@ -23,6 +25,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(articleImagesList);
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpPost("/api/v1/articleImages/createArticleImage")]
         public async Task<IActionResult> CreateArticleImage([FromBody] ArticleImageView newArticleImage)
         {
@@ -37,6 +40,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPut("/api/v1/articleImages/updateArticleImageByArticleImageId/{id}")]
         public async Task<IActionResult> UpdateArticleImageByArticleImageId(int id, [FromBody] string newImage)
         {
@@ -59,6 +63,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpDelete("/api/v1/articleImages/deleteArticleImageByArticleImageId/{id}")]
         public async Task<IActionResult> DeleteArticleImageByArticleImageId(int id)
         {

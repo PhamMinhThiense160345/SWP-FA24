@@ -5,6 +5,7 @@ using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Admin;
 using Vegetarians_Assistant.Services.Services.Implement;
 using Vegetarians_Assistant.Repo.Entity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Vegetarians_Assistant.API.Controllers
 {
@@ -69,7 +70,7 @@ namespace Vegetarians_Assistant.API.Controllers
         //    return Ok(new { Token = token, User = user_ });
         //}
 
-
+        [Authorize(Roles = "Admin, Customer")]
         [HttpGet("/api/v1/users/alluser")]
         public async Task<ActionResult<IEnumerable<UserView>>> GetUsers()
         {
@@ -81,6 +82,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(usersList);
         }
 
+        [Authorize(Roles = "Admin, Customer")]
         [HttpGet("/api/v1/users/getUserByUsername/{username}")]
         public async Task<ActionResult<UserView>> GetUserByUserName(string username)
         {
@@ -92,6 +94,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
+        [Authorize(Roles = "Admin, Customer")]
         [HttpGet("/api/v1/users/getUserByID/{id}")]
         public async Task<ActionResult<UserView>> GetUserByID(int id)
         {
@@ -103,6 +106,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("/api/v1/users/createStaff")]
         public async Task<IActionResult> RegisterStaff([FromBody] StaffView newUser)
         {

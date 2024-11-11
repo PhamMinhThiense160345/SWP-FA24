@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.API.Helpers;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
@@ -20,6 +21,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _commentHelper = commentHelper;
         }
 
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articles/allArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByRoleId(int id)
 
@@ -32,6 +34,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(articleDetail);
         }
 
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("{id}")]
         public async Task<IActionResult> getArticleDetail(int id)
         {
@@ -46,6 +49,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpGet("comment/{id}")]
         public async Task<IActionResult> getArticleComment(int id)
         {
@@ -60,6 +64,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer,Moderator")]
         [HttpGet("/api/v1/articles/getArticleByAuthorId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
         {
@@ -71,6 +76,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(articleDetail);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/articles/createArticleByCustomer")]
         public async Task<IActionResult> createArticleByCustomer([FromBody] ArticleView newArticle)
         {
@@ -85,6 +91,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPost("editArticle")]
         public async Task<IActionResult> editArticle([FromBody] ArticleView view)
         {
@@ -104,6 +111,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Moderator")]
         [HttpPost("changeStatus/{id}")]
         public async Task<IActionResult> changeStatusArticle(int id)
         {
@@ -123,6 +131,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("comment")]
         public async Task<IActionResult> postComment(CommentView view)
         {
@@ -137,6 +146,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPost("/api/v1/articles/createArticleByNutritionist")]
         public async Task<IActionResult> createArticleByNutritionist([FromBody] ArticleView newArticle)
         {

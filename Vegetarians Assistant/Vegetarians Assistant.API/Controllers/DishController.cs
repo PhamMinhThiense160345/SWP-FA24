@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Dish;
@@ -15,6 +16,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _dishManagementService = dishManagementService;
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("/api/v1/dishs/allDish")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishs()
         {
@@ -27,6 +29,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishsList);
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("/api/v1/dishs/getDishByName/{name}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByNameDish(string name)
         {
@@ -38,6 +41,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishDetail);
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("/api/v1/dishs/getDishByDishType/{dishType}")]
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByDishType(string dishType)
         {
@@ -49,6 +53,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishDetail);
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("/api/v1/dishs/GetDishByID/{id}")]
         public async Task<ActionResult<DishView>> GetDishByID(int id)
         {
@@ -60,6 +65,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(dishDetail);
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("dishs/calculateNutrition/{dishId}")]
         public async Task<IActionResult> CalculateNutrition(int dishId)
         {
@@ -72,6 +78,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPost("addIngredient")]
         public async Task<IActionResult> AddIngredientToDish([FromBody] AddIngredientView request)
         {
@@ -79,13 +86,15 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(response);
         }
 
+        [Authorize(Roles = "Nutritionist")]
         [HttpPut("dishs/updateIngredient")]
         public async Task<IActionResult> UpdateIngredientInDish([FromBody] UpdateIngredientView request)
         {
             var response = await _dishManagementService.UpdateIngredientAsync(request);
             return Ok(response);
         }
-        
+
+        [Authorize(Roles = "Nutritionist")]
         [HttpPut("/api/v1/dishs/updateDishDetailByDishId")]
         public async Task<IActionResult> UpdateDishDetailByDishId([FromBody] DishView updateDish)
         {
@@ -108,7 +117,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Nutritionist")]
         [HttpDelete("dishs/removeIngredient/{dishId}/{ingredientId}")]
         public async Task<IActionResult> RemoveIngredientFromDish(int ingredientId, int dishId)
         {

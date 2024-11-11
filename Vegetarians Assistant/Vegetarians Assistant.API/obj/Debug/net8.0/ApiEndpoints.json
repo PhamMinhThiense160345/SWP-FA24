@@ -471,6 +471,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "Login",
+    "RelativePath": "api/v1/customers/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginInfo",
+        "Type": "Vegetarians_Assistant.Services.ModelView.LoginView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "GetCustomerMembership",
     "RelativePath": "api/v1/customers/membership/{id}",
     "HttpMethod": "GET",

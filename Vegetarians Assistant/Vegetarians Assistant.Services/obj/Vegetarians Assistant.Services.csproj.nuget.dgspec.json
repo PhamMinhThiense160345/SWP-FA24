@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {}
+    "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {}
   },
   "projects": {
-    "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
+    "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+        "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
         "projectName": "Vegetarians Assistant.Repo",
-        "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+        "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
         "packagesPath": "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
+        "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pham Huu Tri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -69,6 +69,18 @@
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.IdentityModel.Protocols": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "Microsoft.IdentityModel.Protocols.OpenIdConnect": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.1.2, )"
             }
           },
           "imports": [
@@ -91,14 +103,14 @@
         }
       }
     },
-    "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {
+    "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
+        "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
         "projectName": "Vegetarians Assistant.Services",
-        "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
+        "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
         "packagesPath": "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\",
-        "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\obj\\",
+        "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pham Huu Tri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -116,8 +128,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
-                "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj"
+              "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
+                "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj"
               }
             }
           }
@@ -140,6 +152,18 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )"
+            },
+            "Microsoft.IdentityModel.Protocols": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "Microsoft.IdentityModel.Protocols.OpenIdConnect": {
+              "target": "Package",
+              "version": "[7.1.2, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[7.1.2, )"
             }
           },
           "imports": [
