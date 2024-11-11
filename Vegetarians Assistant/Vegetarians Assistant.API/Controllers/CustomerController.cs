@@ -224,7 +224,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Customer, Nutritionist")]
+        [Authorize(Roles = "Customer, Nutritionist")]
         [HttpPost("/api/v1/nutrition/matchCriteria/{userId}")]
         public async Task<IActionResult> MatchUserNutritionCriteria(int userId)
         {
