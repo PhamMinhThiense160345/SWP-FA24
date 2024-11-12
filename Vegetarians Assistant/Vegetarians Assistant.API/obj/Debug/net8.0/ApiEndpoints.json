@@ -1095,27 +1095,6 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
-    "Method": "ChangeOrderStatus",
-    "RelativePath": "api/v1/orders/{id}/change-status",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "newStatus",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
     "Method": "AllOrder",
     "RelativePath": "api/v1/orders/allOrder",
     "HttpMethod": "GET",
@@ -1264,6 +1243,27 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.OrderController",
+    "Method": "ChangeOrderStatus",
+    "RelativePath": "api/v1/orders/updateStatusOrderByOrderId/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "newStatus",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",

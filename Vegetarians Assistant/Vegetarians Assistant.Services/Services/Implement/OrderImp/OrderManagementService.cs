@@ -28,7 +28,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             try
             {
                 bool status = false;
-                newOrder.Status = "pending";
+                newOrder.Status = "pending_payment";
                 newOrder.CompletedTime = null;
                 var order = _mapper.Map<Order>(newOrder);
                 await _unitOfWork.OrderRepository.InsertAsync(order);

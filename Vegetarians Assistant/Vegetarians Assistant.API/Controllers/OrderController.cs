@@ -96,7 +96,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Staff, Customer")]
-        [HttpPut("/api/v1/orders/{id}/change-status")]
+        [HttpPut("/api/v1/orders/updateStatusOrderByOrderId/{id}")]
         public async Task<IActionResult> ChangeOrderStatus(int id, [FromBody] string newStatus)
         {
             try
