@@ -129,7 +129,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/customers/getUserNutritionCriteriaByUserId/{id}")]
         public async Task<ActionResult<UsersNutritionCriterionView>> GetUserNutritionCriteriaByUserId(int id)
         {
