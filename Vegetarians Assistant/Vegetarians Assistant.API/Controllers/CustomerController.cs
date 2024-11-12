@@ -83,26 +83,6 @@ namespace Vegetarians_Assistant.API.Controllers
                         check.IsPhoneVerified
                     }
                 });
-                //if (check.RoleId.Equals(1))
-                //{
-                //    return Ok(new { token = jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Admin"), check.UserId});
-                //}
-                //else if(check.RoleId.Equals(2))
-                //{
-                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Staff"));
-                //}
-                //else if (check.RoleId.Equals(3))
-                //{
-                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Customer"));
-                //}
-                //else if(check.RoleId.Equals(4))
-                //{
-                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Moderator"));
-                //}
-                //else if(check.RoleId.Equals(5))
-                //{
-                //    return Ok(jwt.GenerateJwtToken(loginInfo.PhoneNumber, "Nutritionist"));
-                //}
             }
             return BadRequest("Login Failed");
         }
@@ -147,6 +127,18 @@ namespace Vegetarians_Assistant.API.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        //[Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/getUserNutritionCriteriaByUserId/{id}")]
+        public async Task<ActionResult<UsersNutritionCriterionView>> GetUserNutritionCriteriaByUserId(int id)
+        {
+            var usersNutritionCriterionsList = await _customerManagementService.GetUserNutritionCriteriaByUserId(id);
+            if (usersNutritionCriterionsList == null)
+            {
+                return NotFound("User Nutrition Criteria not found");
+            }
+            return Ok(usersNutritionCriterionsList);
         }
 
         [HttpPost("/api/v1/customers/RegisterCustomer")]

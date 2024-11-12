@@ -63,90 +63,21 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
+    public virtual DbSet<TotalNutritionDish> TotalNutritionDishes { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     public virtual DbSet<UserMembership> UserMemberships { get; set; }
 
     public virtual DbSet<UsersNutritionCriterion> UsersNutritionCriteria { get; set; }
 
-    public virtual DbSet<TotalNutritionDish> TotalNutritionDishes { get; set; }
-
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("Vietnamese_CI_AS");
-
-        modelBuilder.Entity<TotalNutritionDish>(entity =>
-        {
-            entity.HasKey(e => e.DishId).HasName("PK__Total_Nu__9F2B4CF9787A8647");
-
-            entity.ToTable("Total_Nutrition_Dish");
-
-            entity.Property(e => e.DishId)
-                .ValueGeneratedNever()
-                .HasColumnName("dish_id");
-            entity.Property(e => e.Calcium)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("calcium");
-            entity.Property(e => e.Calories)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("calories");
-            entity.Property(e => e.Carbs)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("carbs");
-            entity.Property(e => e.Cholesterol)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("cholesterol");
-            entity.Property(e => e.DishName)
-                .HasMaxLength(100)
-                .HasColumnName("dish_name");
-            entity.Property(e => e.Fat)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("fat");
-            entity.Property(e => e.Fiber)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("fiber");
-            entity.Property(e => e.Iron)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("iron");
-            entity.Property(e => e.Magnesium)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("magnesium");
-            entity.Property(e => e.Omega3)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("omega_3");
-            entity.Property(e => e.Protein)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("protein");
-            entity.Property(e => e.Sodium)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("sodium");
-            entity.Property(e => e.Sugars)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("sugars");
-            entity.Property(e => e.TotalWeight)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("total_weight");
-            entity.Property(e => e.VitaminA)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("vitamin_A");
-            entity.Property(e => e.VitaminB)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("vitamin_B");
-            entity.Property(e => e.VitaminC)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("vitamin_C");
-            entity.Property(e => e.VitaminD)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("vitamin_D");
-            entity.Property(e => e.VitaminE)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("vitamin_E");
-        });
 
         modelBuilder.Entity<Article>(entity =>
         {
@@ -775,6 +706,79 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("role_name");
+        });
+
+        modelBuilder.Entity<TotalNutritionDish>(entity =>
+        {
+            entity.HasKey(e => e.DishId).HasName("PK__Total_Nu__9F2B4CF9787A8647");
+
+            entity.ToTable("Total_Nutrition_Dish");
+
+            entity.Property(e => e.DishId)
+                .ValueGeneratedNever()
+                .HasColumnName("dish_id");
+            entity.Property(e => e.Calcium)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("calcium");
+            entity.Property(e => e.Calories)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("calories");
+            entity.Property(e => e.Carbs)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("carbs");
+            entity.Property(e => e.Cholesterol)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("cholesterol");
+            entity.Property(e => e.DishName)
+                .HasMaxLength(100)
+                .HasColumnName("dish_name");
+            entity.Property(e => e.Fat)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("fat");
+            entity.Property(e => e.Fiber)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("fiber");
+            entity.Property(e => e.Iron)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("iron");
+            entity.Property(e => e.Magnesium)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("magnesium");
+            entity.Property(e => e.Omega3)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("omega_3");
+            entity.Property(e => e.Protein)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("protein");
+            entity.Property(e => e.Sodium)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("sodium");
+            entity.Property(e => e.Sugars)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("sugars");
+            entity.Property(e => e.TotalWeight)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("total_weight");
+            entity.Property(e => e.VitaminA)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("vitamin_A");
+            entity.Property(e => e.VitaminB)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("vitamin_B");
+            entity.Property(e => e.VitaminC)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("vitamin_C");
+            entity.Property(e => e.VitaminD)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("vitamin_D");
+            entity.Property(e => e.VitaminE)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("vitamin_E");
+
+            entity.HasOne(d => d.Dish).WithOne(p => p.TotalNutritionDish)
+                .HasForeignKey<TotalNutritionDish>(d => d.DishId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Total_Nut__dish___54CB950F");
         });
 
         modelBuilder.Entity<User>(entity =>

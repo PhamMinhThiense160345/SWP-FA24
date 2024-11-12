@@ -145,6 +145,30 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
             }
         }
 
+        public async Task<UsersNutritionCriterionView?> GetUserNutritionCriteriaByUserId(int id)
+        {
+
+            try
+            {
+                var user = (await _unitOfWork.UsersNutritionCriterionRepository.FindAsync(c => c.UserId == id)).FirstOrDefault();
+                if (user != null)
+                {
+                    var usersNutritionCriterionView = new UsersNutritionCriterionView()
+                    {
+                        UserNutritionCriteriaId = user.UserNutritionCriteriaId,
+                        CriteriaId = user.CriteriaId,
+                        UserId = user.UserId
+                    };
+                    return usersNutritionCriterionView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<DeliveryView?> GetDeliveryInformationByUserId(int id)
         {
             try
