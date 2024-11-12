@@ -147,7 +147,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             {
                 throw new Exception(ex.Message);
             }
-
         }
 
         public async Task<ArticleView> changeStatus(int id)
@@ -237,6 +236,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                 throw new Exception($"Lỗi khi tạo bài viết: {ex.Message}");
             }
         }
+
         public async Task<List<ArticleView?>> GetArticleByAuthorId(int id)
         {
             try

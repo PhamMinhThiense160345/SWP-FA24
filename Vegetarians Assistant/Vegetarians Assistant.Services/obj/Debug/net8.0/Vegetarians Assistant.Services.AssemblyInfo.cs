@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vegetarians Assistant.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af82e5bb17a3be7adb997dc707d9c9e3fc4889c2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+884ace5a3b06b6855ad531f72dbe1bbd56dcbcac")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vegetarians Assistant.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vegetarians Assistant.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

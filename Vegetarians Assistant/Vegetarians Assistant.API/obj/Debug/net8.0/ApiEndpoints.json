@@ -302,6 +302,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleLikeController",
+    "Method": "CreateArticleLike",
+    "RelativePath": "api/v1/articles/createArticleLike",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newArticleLike",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleLikeView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByAuthorId",
     "RelativePath": "api/v1/articles/getArticleByAuthorId/{id}",
@@ -318,6 +334,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.ArticleView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleLikeController",
+    "Method": "GetArticleLikeByArticleId",
+    "RelativePath": "api/v1/articles/getArticleLikeByArticleId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.ArticleLikeView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

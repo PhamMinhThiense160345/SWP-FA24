@@ -38,6 +38,8 @@ using Microsoft.IdentityModel.Tokens;
 using Vegetarians_Assistant.API.Helpers.AesEncryption;
 using Vegetarians_Assistant.API.Helpers.PayOs;
 using Vegetarians_Assistant.API.Helpers.Encryption;
+using Vegetarians_Assistant.Services.Services.Interface.IArticleLike;
+using Vegetarians_Assistant.Services.Services.Implement.ArticleLikeImp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,7 +84,10 @@ builder.Services.AddScoped<IFavoriteManagementService, FavoriteManagementService
 builder.Services.AddScoped<INutritionCriterionManagementService, NutritionCriterionManagementService>();
 
 builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagementService>();
+
 builder.Services.AddScoped<ILoginCService, LoginCService>();
+
+builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();

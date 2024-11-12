@@ -34,7 +34,7 @@ namespace Vegetarians_Assistant.API.Controllers
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByNameDish(string name)
         {
             var dishDetail = await _dishManagementService.GetDishByname(name);
-            if (dishDetail == null)
+            if (dishDetail == null || !dishDetail.Any())
             {
                 return NotFound("Dish not found");
             }
@@ -46,7 +46,7 @@ namespace Vegetarians_Assistant.API.Controllers
         public async Task<ActionResult<IEnumerable<DishView>>> GetDishByDishType(string dishType)
         {
             var dishDetail = await _dishManagementService.GetDishByDishType(dishType);
-            if (dishDetail == null)
+            if (dishDetail == null || !dishDetail.Any())
             {
                 return NotFound("Dish not found");
             }

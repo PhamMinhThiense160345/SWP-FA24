@@ -27,7 +27,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         {
             var articleDetail = await _articleService.GetArticleByRoleId(id);
-            if (articleDetail == null)
+            if (articleDetail == null || !articleDetail.Any())
             {
                 return NotFound("Article not found");
             }
@@ -80,8 +80,8 @@ namespace Vegetarians_Assistant.API.Controllers
         [HttpPost("/api/v1/articles/createArticleByCustomer")]
         public async Task<IActionResult> createArticleByCustomer([FromBody] ArticleView newArticle)
         {
-            bool checkRegister = await _articleService.CreateArticleByCustomer(newArticle);
-            if (checkRegister)
+            bool checkArticle = await _articleService.CreateArticleByCustomer(newArticle);
+            if (checkArticle)
             {
                 return Ok("Create success");
             }
