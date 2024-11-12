@@ -44,6 +44,4 @@ public partial class TotalNutritionDish
     public decimal? Cholesterol { get; set; }
 
     public decimal? Sodium { get; set; }
-
-    public virtual Dish Dish { get; set; } = null!;
 }

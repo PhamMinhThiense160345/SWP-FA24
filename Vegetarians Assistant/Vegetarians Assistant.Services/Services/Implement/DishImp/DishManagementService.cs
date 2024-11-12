@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
+using Vegetarians_Assistant.Repo.Repositories.Implement;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Dish;
@@ -353,6 +354,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                     // Calculate nutritional values based on the weight of the ingredient in the dish
                     var weightRatio = dishIngredient.Weight / ingredient.Weight;
 
+                    nutritionalInfo.TotalWeights += dishIngredient.Weight;
                     nutritionalInfo.TotalCalories += ingredient.Calories * weightRatio;
                     nutritionalInfo.TotalProtein += ingredient.Protein * weightRatio;
                     nutritionalInfo.TotalCarbs += ingredient.Carbs * weightRatio;
@@ -373,8 +375,50 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 }
             }
 
+
+            var exist = await _unitOfWork.TotalNutritionDishRepository.GetByIDAsync(dishId);
+            var record = MapViewModelToEntity(nutritionalInfo, dishId);
+
+            if (exist is null)
+            {
+                await _unitOfWork.TotalNutritionDishRepository.InsertAsync(record);
+            }
+            else
+            {
+                await _unitOfWork.TotalNutritionDishRepository.DeleteAsync(exist);
+                await _unitOfWork.TotalNutritionDishRepository.InsertAsync(record);
+            }
+
+
             return nutritionalInfo;
         }
+        public TotalNutritionDish MapViewModelToEntity(DishNutritionalView viewModel, int dishId)
+        {
+            return new TotalNutritionDish
+            {
+                DishId = dishId,
+                TotalWeight = viewModel.TotalWeights,
+                DishName = viewModel.Name,
+                Calories = viewModel.TotalCalories,
+                Protein = viewModel.TotalProtein,
+                Carbs = viewModel.TotalCarbs,
+                Fat = viewModel.TotalFat,
+                Fiber = viewModel.TotalFiber,
+                VitaminA = viewModel.TotalVitaminA,
+                VitaminB = viewModel.TotalVitaminB,
+                VitaminC = viewModel.TotalVitaminC,
+                VitaminD = viewModel.TotalVitaminD,
+                VitaminE = viewModel.TotalVitaminE,
+                Calcium = viewModel.TotalCalcium,
+                Iron = viewModel.TotalIron,
+                Magnesium = viewModel.TotalMagnesium,
+                Omega3 = viewModel.TotalOmega3,
+                Sugars = viewModel.TotalSugars,
+                Cholesterol = viewModel.TotalCholesterol,
+                Sodium = viewModel.TotalSodium,
+            };
+        }
+
 
     }
 }

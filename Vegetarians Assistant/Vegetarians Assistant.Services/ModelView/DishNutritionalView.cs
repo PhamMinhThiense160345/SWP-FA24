@@ -1,7 +1,10 @@
 ﻿namespace Vegetarians_Assistant.Services.ModelView;
 public class DishNutritionalView
 {
-    public string Name { get; set; } 
+    public string Name { get; set; }
+
+    public decimal? TotalWeights { get; set; } = 0;
+
     public decimal? TotalCalories { get; set; } = 0;
     public decimal? TotalProtein { get; set; } = 0;
     public decimal? TotalCarbs { get; set; } = 0;
