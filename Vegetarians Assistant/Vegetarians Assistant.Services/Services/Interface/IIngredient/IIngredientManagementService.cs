@@ -13,5 +13,8 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IIngredient
         Task<List<IngredientInfoView>> GetAllIngredient();
         Task<IngredientInfoView?> GetIngredientByIngredientId(int id);
         Task<List<DishIngredientView?>> GetIngredientByDishId(int id);
+        Task<bool> CreateIngredient(IngredientInfoView newIngredient);
+        Task<bool> UpdateIngredient(IngredientInfoView updateIngredient);
+        Task<bool> DeleteIngredient(int id);
     }
 }

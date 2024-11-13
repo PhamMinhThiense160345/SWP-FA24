@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IIngredient;
@@ -129,6 +130,83 @@ namespace Vegetarians_Assistant.Services.Services.Implement.IngredientImp
             }
         }
 
+        public async Task<bool> CreateIngredient(IngredientInfoView newIngredient)
+        {
+            try
+            {
+                bool status = false;
 
+                var ingredient = _mapper.Map<Ingredient>(newIngredient);
+
+                var exitsIngredient = (await _unitOfWork.IngredientRepository.FindAsync(a => a.Name == newIngredient.Name)).FirstOrDefault();
+
+                if (exitsIngredient == null)
+                {
+                    await _unitOfWork.IngredientRepository.InsertAsync(ingredient);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                else
+                {
+                    return false;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                var exitsIngredient = (await _unitOfWork.IngredientRepository.FindAsync(a => a.IngredientId == newIngredient.IngredientId)).FirstOrDefault();
+                if (exitsIngredient != null)
+                {
+                    await _unitOfWork.IngredientRepository.DeleteAsync(exitsIngredient);
+                    await _unitOfWork.SaveAsync();
+                }
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> UpdateIngredient(IngredientInfoView updateIngredient)
+        {
+            try
+            {
+                var exitsIngredient = (await _unitOfWork.IngredientRepository.FindAsync(c => c.IngredientId == updateIngredient.IngredientId)).FirstOrDefault();
+                if (exitsIngredient == null)
+                {
+                    return false;
+                }
+
+                _mapper.Map(updateIngredient, exitsIngredient);
+                await _unitOfWork.IngredientRepository.UpdateAsync(exitsIngredient);
+                await _unitOfWork.SaveAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteIngredient(int id)
+        {
+            try
+            {
+                var ingredients = await _unitOfWork.IngredientRepository.GetByIDAsync(id);
+
+                if (ingredients != null)
+                {
+
+                    await _unitOfWork.IngredientRepository.DeleteAsync(ingredients);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
