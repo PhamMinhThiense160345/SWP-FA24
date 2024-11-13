@@ -1,4 +1,4 @@
-﻿using Net.payOS;
+using Net.payOS;
 using Net.payOS.Types;
 using Vegetarians_Assistant.Services.ModelView;
 
@@ -30,8 +30,8 @@ public class PayOSHelper : IPayOSHelper
             total,
             "Thanh toan don hang",
            items,
-            cancelUrl: "https://localhost:7157/api/v1/carts/cancel?paymentId=" + paymentId,
-            returnUrl: "https://localhost:7157/api/v1/carts/complete?paymentId=" + paymentId);
+            cancelUrl: "https://vegetariansassistant-behjaxfhfkeqhbhk.southeastasia-01.azurewebsites.net/api/v1/carts/cancel?paymentId=" + paymentId,
+            returnUrl: "https://vegetariansassistant-behjaxfhfkeqhbhk.southeastasia-01.azurewebsites.net/api/v1/carts/complete?paymentId=" + paymentId);
 
         var createPayment = await payOS.createPaymentLink(paymentData);
         return createPayment.checkoutUrl;
