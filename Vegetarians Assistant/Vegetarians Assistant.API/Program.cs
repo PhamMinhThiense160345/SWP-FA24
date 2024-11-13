@@ -40,6 +40,8 @@ using Vegetarians_Assistant.API.Helpers.PayOs;
 using Vegetarians_Assistant.API.Helpers.Encryption;
 using Vegetarians_Assistant.Services.Services.Interface.IArticleLike;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleLikeImp;
+using Vegetarians_Assistant.Services.Services.Interface.IIngredient;
+using Vegetarians_Assistant.Services.Services.Implement.IngredientImp;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,6 +90,8 @@ builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagemen
 builder.Services.AddScoped<ILoginCService, LoginCService>();
 
 builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementService>();
+
+builder.Services.AddScoped<IIngredientManagementService, IngredientManagementService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();
