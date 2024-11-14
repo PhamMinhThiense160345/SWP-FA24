@@ -11,6 +11,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.INutritionCriterion
     {
         Task<List<NutritionCriterionView>> GetAllNutritionCriteria();
         Task<NutritionCriterionView?> GetNutritionCriteriaDetailByCriteriaId(int id);
+        Task<List<UserDetailNutritionCriterionView>> GetUserNutritionCriteriaByUserId(int userId);
         Task<bool> CreateNutritionCriteria(NutritionCriterionView newNutritionCriteria);
         Task<bool> UpdateNutritionCriteriaByCriteriaId(NutritionCriterionView updateNutritionCriterion);
         Task<bool> DeleteNutritionCriteriaByCriteriaId(int id);

@@ -87,6 +87,28 @@ namespace Vegetarians_Assistant.API.Controllers
             return BadRequest("Login Failed");
         }
 
+        [HttpGet("/api/v1/customers/checkPhoneExisted/{phone}")]
+        public async Task<IActionResult> IsPhoneExisted(string phone)
+        {
+            try
+            {
+                bool isExisted = await _customerManagementService.IsExistedPhone(phone);
+
+                if (isExisted)
+                {
+                    return Ok("Phone number already exists");
+                }
+                else
+                {
+                    return Ok("Phone number does not exist");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
         [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/customers/getDeliveryInformationByUserId /{id}")]
         public async Task<ActionResult<DeliveryView>> GetDeliveryInformationByUserId(int id)

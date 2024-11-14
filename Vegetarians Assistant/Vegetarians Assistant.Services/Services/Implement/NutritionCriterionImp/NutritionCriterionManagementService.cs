@@ -114,6 +114,68 @@ namespace Vegetarians_Assistant.Services.Services.Implement.NutritionCriterionMa
             }
         }
 
+        public async Task<List<UserDetailNutritionCriterionView>> GetUserNutritionCriteriaByUserId(int userId)
+        {
+            try
+            {
+                // Lấy danh sách UsersNutritionCriterion theo UserId
+                var userNutritionCriteriaList = await _unitOfWork.UsersNutritionCriterionRepository
+                    .FindAsync(u => u.UserId == userId);
+
+                if (!userNutritionCriteriaList.Any())
+                {
+                    return new List<UserDetailNutritionCriterionView>(); // Trả về danh sách rỗng nếu không có dữ liệu
+                }
+
+                // Khởi tạo danh sách kết quả
+                List<UserDetailNutritionCriterionView> userDetailNutritionCriteriaViews = new List<UserDetailNutritionCriterionView>();
+
+                foreach (var userNutrition in userNutritionCriteriaList)
+                {
+                    // Lấy thông tin NutritionCriterion từ bảng NutritionCriterion theo CriteriaId
+                    var nutrition = await _unitOfWork.NutritionCriterionRepository
+                        .GetByIDAsync(userNutrition.CriteriaId.GetValueOrDefault());
+
+                    if (nutrition != null)
+                    {
+                        // Tạo UserDetailNutritionCriterionView và gán giá trị
+                        var userDetailNutritionCriterionView = new UserDetailNutritionCriterionView()
+                        {
+                            UserNutritionCriteriaId = userNutrition.UserNutritionCriteriaId,
+                            UserId = userNutrition.UserId,
+                            CriteriaId = nutrition.CriteriaId,
+                            Calories = nutrition.Calories,
+                            Protein = nutrition.Protein,
+                            Carbs = nutrition.Carbs,
+                            Fat = nutrition.Fat,
+                            Fiber = nutrition.Fiber,
+                            VitaminA = nutrition.VitaminA,
+                            VitaminB = nutrition.VitaminB,
+                            VitaminC = nutrition.VitaminC,
+                            VitaminD = nutrition.VitaminD,
+                            VitaminE = nutrition.VitaminE,
+                            Calcium = nutrition.Calcium,
+                            Iron = nutrition.Iron,
+                            Magnesium = nutrition.Magnesium,
+                            Omega3 = nutrition.Omega3,
+                            Sugars = nutrition.Sugars,
+                            Cholesterol = nutrition.Cholesterol,
+                            Sodium = nutrition.Sodium
+                        };
+
+                        // Thêm vào danh sách kết quả
+                        userDetailNutritionCriteriaViews.Add(userDetailNutritionCriterionView);
+                    }
+                }
+
+                return userDetailNutritionCriteriaViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<bool> CreateNutritionCriteria(NutritionCriterionView newNutritionCriteria)
         {
             try

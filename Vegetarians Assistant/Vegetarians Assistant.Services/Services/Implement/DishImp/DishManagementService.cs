@@ -121,6 +121,99 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<List<DishView?>> GetDishByDietaryPreferenceId(int id)
+        {
+
+            try
+            {
+                var dishes = await _unitOfWork.DishRepository.FindAsync(c => c.DietaryPreferenceId == id);
+                var dishViews = new List<DishView>();
+
+                var dietaryPreferenceIds = new HashSet<int>();
+                foreach (var dish in dishes)
+                {
+                    if (dish.DietaryPreferenceId.HasValue)
+                    {
+                        dietaryPreferenceIds.Add(dish.DietaryPreferenceId.Value);
+                    }
+                }
+                var dietaryPreferences = await _unitOfWork.DietaryPreferenceRepository.GetAsync(dp => dietaryPreferenceIds.Contains(dp.Id));
+
+                var preferenceDictionary = new Dictionary<int, string>();
+                foreach (var preference in dietaryPreferences)
+                {
+                    preferenceDictionary[preference.Id] = preference.PreferenceName;
+                }
+
+                foreach (var dish in dishes)
+                {
+                    dishViews.Add(new DishView
+                    {
+                        DishId = dish.DishId,
+                        Name = dish.Name,
+                        Description = dish.Description,
+                        DishType = dish.DishType,
+                        ImageUrl = dish.ImageUrl,
+                        Price = dish.Price,
+                        Recipe = dish.Recipe,
+                        Status = dish.Status,
+                        DietaryPreferenceId = dish.DietaryPreferenceId,
+                        PreferenceName = dish.DietaryPreferenceId.HasValue && preferenceDictionary.ContainsKey(dish.DietaryPreferenceId.Value)
+                    ? preferenceDictionary[dish.DietaryPreferenceId.Value]
+                    : null
+                    });
+                }
+                return dishViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<List<TotalNutritionDishView?>> GetTotalNutritionDishByDishId(int id)
+        {
+
+            try
+            {
+                var dishes = await _unitOfWork.TotalNutritionDishRepository.FindAsync(c => c.DishId == id);
+                var dishViews = new List<TotalNutritionDishView>();
+                
+                foreach (var dish in dishes)
+                {
+                    dishViews.Add(new TotalNutritionDishView
+                    {
+                        DishId = dish.DishId,
+                        DishName = dish.DishName,
+                        TotalWeight = dish.TotalWeight,
+                        Calories = dish.Calories,
+                        Protein = dish.Protein,
+                        Carbs = dish.Carbs,
+                        Fat = dish.Fat,
+                        Fiber = dish.Fiber,
+                        VitaminA = dish.VitaminA,
+                        VitaminB = dish.VitaminB,
+                        VitaminC = dish.VitaminC,
+                        VitaminD = dish.VitaminD,
+                        VitaminE = dish.VitaminE,
+                        Calcium = dish.Calcium,
+                        Iron = dish.Iron,
+                        Magnesium = dish.Magnesium,
+                        Omega3 = dish.Omega3,
+                        Sugars = dish.Sugars,
+                        Cholesterol = dish.Cholesterol,
+                        Sodium = dish.Sodium
+                    });
+                }
+                return dishViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<DishView?>> GetDishByname(string name)
         {
 

@@ -78,6 +78,30 @@ namespace Vegetarians_Assistant.API.Controllers
 
         }
 
+        [Authorize(Roles = "Customer,Nutritionist")]
+        [HttpGet("/api/v1/dishs/getDishByDietaryPreferenceId/{id}")]
+        public async Task<ActionResult<IEnumerable<DishView>>> GetDishByDietaryPreferenceId(int id)
+        {
+            var dishDetail = await _dishManagementService.GetDishByDietaryPreferenceId(id);
+            if (dishDetail == null || !dishDetail.Any())
+            {
+                return NotFound("Dish not found");
+            }
+            return Ok(dishDetail);
+        }
+
+        [Authorize(Roles = "Customer,Nutritionist")]
+        [HttpGet("/api/v1/dishs/getTotalNutritionDishByDishId/{id}")]
+        public async Task<ActionResult<IEnumerable<TotalNutritionDishView>>> GetTotalNutritionDishByDishId(int id)
+        {
+            var dishDetail = await _dishManagementService.GetTotalNutritionDishByDishId(id);
+            if (dishDetail == null || !dishDetail.Any())
+            {
+                return NotFound("Total nutrition dish not found");
+            }
+            return Ok(dishDetail);
+        }
+
         [Authorize(Roles = "Nutritionist")]
         [HttpPost("addIngredient")]
         public async Task<IActionResult> AddIngredientToDish([FromBody] AddIngredientView request)

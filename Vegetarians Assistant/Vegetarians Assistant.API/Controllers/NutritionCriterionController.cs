@@ -38,6 +38,20 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(nutritionCriterionsList);
         }
 
+        [Authorize(Roles = "User, Nutritionist")]
+        [HttpGet("/api/v1/nutritionCriterions/getUserNutritionCriteriaDetailByUserId/{userId}")]
+        public async Task<ActionResult<IEnumerable<UserDetailNutritionCriterionView>>> GetUserNutritionCriteriaByUserId(int userId)
+        {
+            var userNutritionCriteriaList = await _nutritionCriterionManagementService.GetUserNutritionCriteriaByUserId(userId);
+
+            if (userNutritionCriteriaList == null || !userNutritionCriteriaList.Any())
+            {
+                return NotFound("No nutrition criteria found for this user.");
+            }
+
+            return Ok(userNutritionCriteriaList);
+        }
+
         [Authorize(Roles = "Nutritionist")]
         [HttpPost("/api/v1/nutritionCriterions/createNutritionCriteria")]
         public async Task<IActionResult> CreateNutritionCriteria([FromBody] NutritionCriterionView newNutritionCriteria)
