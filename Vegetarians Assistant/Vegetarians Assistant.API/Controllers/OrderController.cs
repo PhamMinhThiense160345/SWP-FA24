@@ -65,6 +65,18 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
+        [Authorize(Roles = "Staff, Customer")]
+        [HttpGet("/api/v1/orders/getPaymentDetailByOrderId/{id}")]
+        public async Task<ActionResult<IEnumerable<OrderView>>> GetPaymentDetailByOrderId(int id)
+        {
+            var orderDetail = await _orderManagementService.GetPaymentDetailByOrderId(id);
+            if (orderDetail == null)
+            {
+                return NotFound("Order not found");
+            }
+            return Ok(orderDetail);
+        }
+
         [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/orders/createOrderByCustomer")]
         public async Task<IActionResult> CreateOrderByCustomer([FromBody] OrderView newOrder)

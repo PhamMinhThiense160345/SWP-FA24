@@ -159,6 +159,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             {
                 var newPayment = new PaymentDetail()
                 {
+                    PaymentId = payment.PaymentId,
                     OrderId = payment.OrderId,
                     Amount = payment.Amount,
                     PaymentMethod = payment.PaymentMethod,

@@ -149,6 +149,38 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
+        public async Task<List<AddPaymentView?>> GetPaymentDetailByOrderId(int id)
+        {
+
+            try
+            {
+                var payments = await _unitOfWork.PaymentDetailRepository.FindAsync(c => c.OrderId == id);
+                var paymentDetailViews = new List<AddPaymentView>();
+
+                foreach (var payment in payments)
+                {
+                    paymentDetailViews.Add(new AddPaymentView
+                    {
+                        PaymentId = payment.PaymentId,
+                        OrderId = payment.OrderId,
+                        Amount = payment.Amount,
+                        CancelUrl = payment.CancelUrl,
+                        PaymentDate = payment.PaymentDate,
+                        PaymentMethod = payment.PaymentMethod,
+                        PaymentStatus = payment.PaymentStatus,
+                        RefundAmount = payment.RefundAmount,
+                        ReturnUrl = payment.ReturnUrl,
+                        TransactionId = payment.TransactionId
+                    });
+                }
+                return paymentDetailViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<List<OrderDetailInfo?>> GetOrderDetailOrderId(int id)
         {
 

@@ -1,6 +1,8 @@
 ﻿namespace Vegetarians_Assistant.Services.ModelView;
 public class AddPaymentView
 {
+    public int PaymentId { get; set; }
+
     public int? OrderId { get; set; }
 
     public string? PaymentMethod { get; set; }
