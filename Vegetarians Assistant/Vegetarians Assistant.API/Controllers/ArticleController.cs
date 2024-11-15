@@ -21,7 +21,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _commentHelper = commentHelper;
         }
 
-        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
+        //[Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articles/allArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByRoleId(int id)
 
@@ -111,19 +111,22 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Moderator")]
-        [HttpPost("changeStatus/{id}")]
-        public async Task<IActionResult> changeStatusArticle(int id)
+        //[Authorize(Roles = "Nutritionist")]
+        [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
+        public async Task<IActionResult> UpdateArticleStatusByArticleId(int id, [FromBody] string newStatus)
         {
             try
             {
-                var article = await _articleService.changeStatus(id);
-                if (article == null)
-                {
-                    return BadRequest("Cập nhập trạng thái bài viết thất bại");
-                }
+                var success = await _articleService.UpdateArticleStatusByArticleId(id, newStatus);
 
-                return Ok(article);
+                if (success)
+                {
+                    return Ok("Article status updated successfully");
+                }
+                else
+                {
+                    return NotFound("Article status not found or failed to update status");
+                }
             }
             catch (Exception ex)
             {

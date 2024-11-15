@@ -65,9 +65,9 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(orderDetail);
         }
 
-        [Authorize(Roles = "Staff, Customer")]
+        //[Authorize(Roles = "Staff, Customer")]
         [HttpGet("/api/v1/orders/getPaymentDetailByOrderId/{id}")]
-        public async Task<ActionResult<IEnumerable<OrderView>>> GetPaymentDetailByOrderId(int id)
+        public async Task<ActionResult<IEnumerable<AddPaymentView>>> GetPaymentDetailByOrderId(int id)
         {
             var orderDetail = await _orderManagementService.GetPaymentDetailByOrderId(id);
             if (orderDetail == null)

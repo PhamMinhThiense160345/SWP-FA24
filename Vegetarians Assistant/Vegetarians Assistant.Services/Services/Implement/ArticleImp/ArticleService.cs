@@ -149,22 +149,27 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             }
         }
 
-        public async Task<ArticleView> changeStatus(int id)
+        public async Task<bool> UpdateArticleStatusByArticleId(int articleId, string newStatus)
         {
-            var view = await GetById(id);
-            if(view != null)
+            try
             {
-                view.Status = view.Status == Enum.Enum.STATUS.INACTIVE?
-                    Enum.Enum.STATUS.ACTIVE : 
-                    view.Status == Enum.Enum.STATUS.ACTIVE? Enum.Enum.STATUS.INACTIVE 
-                    : Enum.Enum.STATUS.ACTIVE;
+                var article = await _unitOfWork.ArticleRepository.GetByIDAsync(articleId);
 
-                await Edit(view);
+                if (article == null)
+                {
+                    return false;
+                }
 
-                return view;
+                article.Status = newStatus;
+                await _unitOfWork.ArticleRepository.UpdateAsync(article);
+                await _unitOfWork.SaveAsync();
+
+                return true;
             }
-
-            return null;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<bool> CreateArticleByCustomer(ArticleView newArticle)
