@@ -1160,3 +1160,5 @@ D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegeta
 D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\obj\Debug\net8.0\ref\Vegetarians Assistant.API.dll
 D:\FPT\Learning\Capstone Project\project\1\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\FPT\Learning\Capstone Project\project\1\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\payos-lib-dotnet-5.0.dll
+D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\payos-lib-dotnet-5.0.dll

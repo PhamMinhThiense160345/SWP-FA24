@@ -163,7 +163,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(usersNutritionCriterionsList);
         }
 
-        [Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer, Nutritionist")]
         [HttpGet("/api/v1/customers/recommendDishes/{userId}")]
         public async Task<IActionResult> RecommendDishes(int userId)
         {

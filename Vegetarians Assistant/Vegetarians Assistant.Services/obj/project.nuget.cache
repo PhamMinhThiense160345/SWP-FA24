@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oQqM4I2iq3g=",
+  "dgSpecHash": "tNfM0gJFPTM=",
   "success": true,
-  "projectFilePath": "D:\\FPT\\Learning\\Capstone Project\\project\\1\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
+  "projectFilePath": "D:\\FPT\\Learning\\Capstone Project\\project\\2\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

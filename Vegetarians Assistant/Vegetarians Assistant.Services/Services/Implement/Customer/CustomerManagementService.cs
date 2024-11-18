@@ -329,16 +329,44 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                     .FirstOrDefault();
                 if (userCriteria == null)
                 {
-                    throw new Exception("No nutrition criteria found for the user.");
+                    bool matched = await MatchUserNutritionCriteria(userId);
+
+                    if (!matched)
+                    {
+                        throw new Exception("Unable to generate nutrition criteria for the user.");
+                    }
+
+                    // Lấy lại tiêu chí sau khi tạo
+                    userCriteria = (await _unitOfWork.UsersNutritionCriterionRepository.FindAsync(x => x.UserId == userId))
+                        .FirstOrDefault();
+
+                    if (userCriteria == null)
+                    {
+                        throw new Exception("Failed to retrieve nutrition criteria after generating.");
+                    }
                 }
 
                 int criteriaId = userCriteria.CriteriaId ?? 0;
 
                 // 2. Lấy thông tin dinh dưỡng từ bảng NutritionCriterion dựa trên CriteriaId
                 var nutritionCriteria = await _unitOfWork.NutritionCriterionRepository.GetByIDAsync(criteriaId);
-                if (nutritionCriteria == null)
+                if (userCriteria == null)
                 {
-                    throw new Exception("No nutrition details found for the criteria.");
+                    bool matched = await MatchUserNutritionCriteria(userId);
+
+                    if (!matched)
+                    {
+                        throw new Exception("Unable to generate nutrition criteria for the user.");
+                    }
+
+                    // Lấy lại tiêu chí sau khi tạo
+                    userCriteria = (await _unitOfWork.UsersNutritionCriterionRepository.FindAsync(x => x.UserId == userId))
+                        .FirstOrDefault();
+
+                    if (userCriteria == null)
+                    {
+                        throw new Exception("Failed to retrieve nutrition criteria after generating.");
+                    }
                 }
 
                 // 3. Lấy danh sách tất cả các món ăn từ bảng TotalNutritionDish
