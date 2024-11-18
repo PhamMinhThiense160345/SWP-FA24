@@ -42,6 +42,8 @@ using Vegetarians_Assistant.Services.Services.Interface.IArticleLike;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleLikeImp;
 using Vegetarians_Assistant.Services.Services.Interface.IIngredient;
 using Vegetarians_Assistant.Services.Services.Implement.IngredientImp;
+using Vegetarians_Assistant.API.Helpers.GoogleMap;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -97,6 +99,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();
 builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
 builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
+builder.Services.AddScoped<IGoogleMapHelper, GoogleMapHelper>();
 
 
 // Add AutoMapper

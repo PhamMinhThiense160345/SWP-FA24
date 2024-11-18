@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Vegetarians_Assistant.API.Helpers.AesEncryption;
+using Vegetarians_Assistant.API.Helpers.GoogleMap;
 using Vegetarians_Assistant.API.Helpers.PayOs;
 using Vegetarians_Assistant.API.Requests;
 using Vegetarians_Assistant.Services.ModelView;
@@ -19,6 +20,7 @@ namespace Vegetarians_Assistant.API.Controllers
     IEncryptionHelper encryptionHelper,
     IOrderManagementService orderManagementService,
     IPayOSHelper payOSHelper,
+    IGoogleMapHelper googleMapHelper,
     IConfiguration config) : ControllerBase
     {
         private readonly ICartService _cartService = cartService;
@@ -26,7 +28,10 @@ namespace Vegetarians_Assistant.API.Controllers
         private readonly IPayOSHelper _payOSHelper = payOSHelper;
         private readonly IConfiguration _config = config;
         private readonly IOrderManagementService _orderManagementService = orderManagementService;
-    
+        private readonly IGoogleMapHelper _googleMapHelper = googleMapHelper;
+
+
+
 
         [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/carts/getCartByUserId/{id}")]
@@ -55,7 +60,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok("Completed payment");
         }
 
-        [Authorize(Roles = "Customer")]
+        //[Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/checkout")]
         public async Task<IActionResult> Checkout([FromBody] CheckoutRequest request)
         {
@@ -65,13 +70,16 @@ namespace Vegetarians_Assistant.API.Controllers
                 var orderDetail = await _orderManagementService.GetOrderDetailOrderId((int)request.OrderId);
                 if (orderDetail.Count == 0) throw new Exception($"Order {request.OrderId} not exist");
 
+                var distance = _googleMapHelper.CalculateDistance(request.ShopLocation, request.CustomerLocation);
+                var shippingFee = (decimal)distance* request.ShippingFeeUnit;
+
                 var payment = new AddPaymentView()
                 {
                     OrderId = request.OrderId,
                     PaymentMethod = "PayOS",
                     PaymentStatus = "pending",
                     PaymentDate = DateTime.Now,
-                    Amount = orderDetail.Sum(x => x!.Price * x.Quantity),
+                    Amount = orderDetail.Sum(x => x!.Price * x.Quantity) + shippingFee,
                     CancelUrl = "https://localhost:7157/api/v1/carts/cancel?orderId=" + request.OrderId,
                     ReturnUrl = "https://localhost:7157/api/v1/carts/complete?orderId=" + request.OrderId,
                 };
@@ -80,7 +88,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
                 if (paymentId is null) throw new Exception("Add payment failed");
 
-                var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel);
+                var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel, shippingFee);
                 return Ok(paymentLink);
             }
             catch (Exception ex)
