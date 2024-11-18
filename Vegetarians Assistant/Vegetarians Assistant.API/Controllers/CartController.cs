@@ -60,7 +60,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok("Completed payment");
         }
 
-        //[Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/checkout")]
         public async Task<IActionResult> Checkout([FromBody] CheckoutRequest request)
         {
