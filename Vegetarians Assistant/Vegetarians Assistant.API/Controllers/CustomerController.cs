@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Text.RegularExpressions;
+using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Customer;
@@ -135,6 +136,22 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        //[Authorize(Roles = "Admin, Customer")]
+        [HttpPost("/api/v1/customers/membership")]
+        public async Task<IActionResult> InsertCustomerMembership([FromBody] UserMembershipView request)
+        {
+            try
+            {
+                var response = await _usermembershipService.insertCustomerMembership(request);
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
 
         [Authorize(Roles = "Admin, Customer")]
         [HttpGet("/api/v1/customers/membershipTier/{id}")]
