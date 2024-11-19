@@ -11,5 +11,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticleLike
     {
         Task<bool> CreateArticleLike(ArticleLikeView newArticleLike);
         Task<List<ArticleLikeView?>> GetArticleLikeByArticleId(int id);
+        Task<bool> DeleteArticleLikeByUserId(ArticleLikeView deleteArticleLike);
     }
 }

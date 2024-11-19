@@ -302,6 +302,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleLikeController",
+    "Method": "DeleteArticleLikeByUserId",
+    "RelativePath": "api/v1/articles/deleteArticleLikeByUserId",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deleteArticleLike",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleLikeView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "DeleteCommentByUserId",
+    "RelativePath": "api/v1/articles/deleteCommentByUserId",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "deleteComment",
+        "Type": "Vegetarians_Assistant.Services.ModelView.CommentView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByAuthorId",
     "RelativePath": "api/v1/articles/getArticleByAuthorId/{id}",

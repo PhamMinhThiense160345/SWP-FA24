@@ -83,6 +83,27 @@ namespace Vegetarians_Assistant.Services.Services.Implement.ArticleLikeImp
             }
         }
 
+        public async Task<bool> DeleteArticleLikeByUserId(ArticleLikeView deleteArticleLike)
+        {
+            try
+            {
+                bool status = false;
+                var like = _mapper.Map<ArticleLike>(deleteArticleLike);
+                var existLike = (await _unitOfWork.ArticleLikeRepository.FindAsync(a => a.ArticleId == deleteArticleLike.ArticleId && a.UserId == deleteArticleLike.UserId)).FirstOrDefault();
+                if (existLike != null)
+                {
+                    await _unitOfWork.ArticleLikeRepository.DeleteAsync(existLike);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

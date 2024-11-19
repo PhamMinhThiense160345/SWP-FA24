@@ -294,5 +294,28 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<bool> DeleteCommentByUserId(CommentView deleteComment)
+        {
+            try
+            {
+                bool status = false;
+                var comment = _mapper.Map<Comment>(deleteComment);
+                var existComment = (await _unitOfWork.CommentRepository.FindAsync(a => a.ArticleId == deleteComment.ArticleId && a.UserId == deleteComment.UserId)).FirstOrDefault();
+                if (existComment != null)
+                {
+                    await _unitOfWork.CommentRepository.DeleteAsync(existComment);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.API.Helpers;
+using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.ArticleImp;
@@ -15,13 +16,15 @@ namespace Vegetarians_Assistant.API.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly ICommentHelper _commentHelper;
-        public ArticleController(IArticleService articleService, ICommentHelper commentHelper)
+        private readonly IUnitOfWork _unitOfWork;
+        public ArticleController(IArticleService articleService, ICommentHelper commentHelper, IUnitOfWork unitOfWork)
         {
             _articleService = articleService;
             _commentHelper = commentHelper;
+            _unitOfWork = unitOfWork;
         }
 
-        //[Authorize(Roles = "Customer,Moderator,Nutritionist")]
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articles/allArticleByRoleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByRoleId(int id)
 
@@ -111,29 +114,6 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Nutritionist")]
-        [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
-        public async Task<IActionResult> UpdateArticleStatusByArticleId(int id, [FromBody] string newStatus)
-        {
-            try
-            {
-                var success = await _articleService.UpdateArticleStatusByArticleId(id, newStatus);
-
-                if (success)
-                {
-                    return Ok("Article status updated successfully");
-                }
-                else
-                {
-                    return NotFound("Article status not found or failed to update status");
-                }
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
         [Authorize(Roles = "Customer")]
         [HttpPost("comment")]
         public async Task<IActionResult> postComment(CommentView view)
@@ -164,10 +144,57 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-            [HttpPost("checkCommentContent")]
-            public IActionResult CheckCommentContent([FromBody] CheckCommentContentView request)
-           => Ok(_commentHelper.CheckContent(request.Content));
+        [HttpPost("checkCommentContent")]
+        public IActionResult CheckCommentContent([FromBody] CheckCommentContentView request)
+       => Ok(_commentHelper.CheckContent(request.Content));
+
+        [Authorize(Roles = "Nutritionist")]
+        [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
+        public async Task<IActionResult> UpdateArticleStatusByArticleId(int id, [FromBody] string newStatus)
+        {
+            try
+            {
+                var success = await _articleService.UpdateArticleStatusByArticleId(id, newStatus);
+
+                if (success)
+                {
+                    return Ok("Article status updated successfully");
+                }
+                else
+                {
+                    return NotFound("Article status not found or failed to update status");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+        [Authorize(Roles = "Customer")]
+        [HttpDelete("/api/v1/articles/deleteCommentByUserId")]
+        public async Task<IActionResult> DeleteCommentByUserId([FromBody] CommentView deleteComment)
+        {
+            var isCommetExist = (await _unitOfWork.CommentRepository.FindAsync(c => c.ArticleId == deleteComment.ArticleId && c.UserId == deleteComment.UserId)).FirstOrDefault();
+            if (isCommetExist != null)
+            {
+                bool checkComment = await _articleService.DeleteCommentByUserId(deleteComment);
+                if (checkComment)
+                {
+                    return Ok("Delete comment success");
+                }
+                else
+                {
+                    return BadRequest("Delete comment fail");
+                }
+            }
+            else
+            {
+                return BadRequest("This comment no exist.");
+            }
+        }
+
     }
+}
         
     
