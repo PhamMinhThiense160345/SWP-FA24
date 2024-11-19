@@ -640,6 +640,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "InsertCustomerMembership",
+    "RelativePath": "api/v1/customers/membership",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.Repo.Entity.UserMembershipView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
     "Method": "GetCustomerMembership",
     "RelativePath": "api/v1/customers/membership/{id}",
     "HttpMethod": "GET",
@@ -1187,6 +1203,22 @@
       {
         "Name": "updateIngredient",
         "Type": "Vegetarians_Assistant.Services.ModelView.IngredientInfoView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NotificationController",
+    "Method": "SendNotification",
+    "RelativePath": "api/v1/Notification/send",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.NotificationRequest",
         "IsRequired": true
       }
     ],
