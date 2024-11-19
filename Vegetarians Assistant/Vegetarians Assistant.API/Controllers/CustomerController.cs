@@ -180,13 +180,19 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(usersNutritionCriterionsList);
         }
 
-        [Authorize(Roles = "Customer, Nutritionist")]
+        //[Authorize(Roles = "Customer, Nutritionist")]
         [HttpGet("/api/v1/customers/recommendDishes/{userId}")]
-        public async Task<IActionResult> RecommendDishes(int userId)
+        public async Task<IActionResult> RecommendDishes(int userId, [FromQuery] string dishType)
         {
             try
             {
-                var recommendedDishes = await _customerManagementService.RecommendDishesForUser(userId);
+                var recommendedDishes = await _customerManagementService.RecommendDishesForUser(userId, dishType);
+
+                if (recommendedDishes == null || !recommendedDishes.Any())
+                {
+                    return NotFound("No dishes found for the given user and dish type.");
+                }
+
                 return Ok(recommendedDishes);
             }
             catch (Exception ex)
@@ -195,7 +201,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer, Nutritionist")]
+        //[Authorize(Roles = "Customer, Nutritionist")]
         [HttpPost("/api/v1/customers/matchCriteria/{userId}")]
         public async Task<IActionResult> MatchUserNutritionCriteria(int userId)
         {

@@ -320,7 +320,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
             return false;
         }
 
-        public async Task<List<TotalNutritionDish>> RecommendDishesForUser(int userId)
+        public async Task<List<TotalNutritionDish>> RecommendDishesForUser(int userId, string dishType)
         {
             try
             {
@@ -370,7 +370,22 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                 }
 
                 // 3. Lấy danh sách tất cả các món ăn từ bảng TotalNutritionDish
-                var allDishes = await _unitOfWork.TotalNutritionDishRepository.GetAllAsync();
+                var dishesByType = await _unitOfWork.DishRepository.FindAsync(d => d.DishType != null && d.DishType.ToLower() == dishType.ToLower());
+                if (dishesByType == null || !dishesByType.Any())
+                {
+                    throw new Exception("No dishes found for the specified DishType.");
+                }
+
+                // Lấy danh sách DishId từ các món ăn thuộc DishType
+                var dishIds = dishesByType.Select(d => d.DishId).ToList();
+
+                // 4. Lấy danh sách các món ăn từ bảng TotalNutritionDish chỉ thuộc DishType
+                var allDishes = (await _unitOfWork.TotalNutritionDishRepository.FindAsync(d => dishIds.Contains(d.DishId))).ToList();
+
+                if (!allDishes.Any())
+                {
+                    throw new Exception("No nutritional information found for the specified dishes.");
+                }
 
                 // 4. So sánh món ăn với tiêu chí dinh dưỡng để tính điểm tương đồng
                 var rankedDishes = allDishes.Select(dish =>
