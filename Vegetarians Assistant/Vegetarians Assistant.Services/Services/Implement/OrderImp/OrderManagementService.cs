@@ -302,5 +302,57 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                 throw new Exception(ex.Message);
             }
         }
+        public async Task<OrderView?> GetOrderById(int id)
+        {
+            try
+            {
+                var order = await _unitOfWork.OrderRepository.GetByIDAsync(id);
+                if (order is null) throw new Exception();
+
+                var orderView = new OrderView()
+                {
+                    OrderId = order.OrderId,
+                    Status = order.Status,
+                    CompletedTime = order.CompletedTime,
+                    DeliveryAddress = order.DeliveryAddress,
+                    DeliveryFailedFee = order.DeliveryFailedFee,
+                    DeliveryFee = order.DeliveryFee,
+                    Note = order.Note,
+                    OrderDate = order.OrderDate,
+                    TotalPrice = order.TotalPrice,
+                    UserId = order.UserId
+                };
+
+                return orderView;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> UpdateDeliveryFee(int id, decimal newDeliveryFee)
+        {
+            try
+            {
+                var order = await _unitOfWork.OrderRepository.GetByIDAsync(id);
+
+                if (order == null)
+                {
+                    return false;
+                }
+
+                order.DeliveryFee = newDeliveryFee;
+                await _unitOfWork.OrderRepository.UpdateAsync(order);
+                await _unitOfWork.SaveAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

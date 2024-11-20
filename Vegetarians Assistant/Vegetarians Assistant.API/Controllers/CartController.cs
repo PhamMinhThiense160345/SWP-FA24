@@ -67,11 +67,10 @@ namespace Vegetarians_Assistant.API.Controllers
             try
             {
                 var payOSModel = GetPayOSModel(request.DecryptionKey);
-                var orderDetail = await _orderManagementService.GetOrderDetailOrderId((int)request.OrderId);
-                if (orderDetail.Count == 0) throw new Exception($"Order {request.OrderId} not exist");
-
-                var distance = _googleMapHelper.CalculateDistance(request.ShopLocation, request.CustomerLocation);
-                var shippingFee = (decimal)distance* request.ShippingFeeUnit;
+                var orderDetail = await _orderManagementService.GetOrderDetailOrderId(request.OrderId);
+                var order = await _orderManagementService.GetOrderById(request.OrderId);
+                if (orderDetail.Count == 0
+                    || order is null) throw new Exception($"Order {request.OrderId} not exist");
 
                 var payment = new AddPaymentView()
                 {
@@ -79,7 +78,7 @@ namespace Vegetarians_Assistant.API.Controllers
                     PaymentMethod = "PayOS",
                     PaymentStatus = "pending",
                     PaymentDate = DateTime.Now,
-                    Amount = orderDetail.Sum(x => x!.Price * x.Quantity) + shippingFee,
+                    Amount = order.TotalPrice + order.DeliveryFee,
                     CancelUrl = "https://localhost:7157/api/v1/carts/cancel?orderId=" + request.OrderId,
                     ReturnUrl = "https://localhost:7157/api/v1/carts/complete?orderId=" + request.OrderId,
                 };
@@ -88,7 +87,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
                 if (paymentId is null) throw new Exception("Add payment failed");
 
-                var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel, shippingFee);
+                var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel, order.DeliveryFee ?? 0);
                 return Ok(paymentLink);
             }
             catch (Exception ex)
