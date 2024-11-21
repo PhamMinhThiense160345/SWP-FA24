@@ -97,27 +97,15 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer")]
+        //[Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/calculate-shipping-fee")]
-        public async Task<IActionResult> CalculateShippingFee([FromBody] CalculateShippingFeeRequest request)
+        public IActionResult CalculateShippingFee([FromBody] CalculateShippingFeeRequest request)
         {
             try
             {
-                var order = await _orderManagementService.GetOrderById(request.OrderId);
-                if (order is null) throw new Exception($"Order {request.OrderId} not exist");
-
                 var distance = _googleMapHelper.CalculateDistance(request.ShopLocation, request.CustomerLocation);
                 var shippingFee = (decimal)distance * request.ShippingFeeUnit;
-
-                var success = await _orderManagementService.UpdateDeliveryFee(request.OrderId, shippingFee);
-                if (success)
-                {
-                    return Ok(shippingFee);
-                }
-                else
-                {
-                    throw new Exception($"Update order delivery fee failed");
-                }
+                return Ok(shippingFee);
             }
             catch (Exception ex)
             {
