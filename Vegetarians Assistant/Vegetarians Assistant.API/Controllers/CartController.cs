@@ -5,6 +5,7 @@ using Vegetarians_Assistant.API.Helpers.AesEncryption;
 using Vegetarians_Assistant.API.Helpers.GoogleMap;
 using Vegetarians_Assistant.API.Helpers.PayOs;
 using Vegetarians_Assistant.API.Requests;
+using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.Customer;
 using Vegetarians_Assistant.Services.Services.Interface.ICart;
@@ -89,6 +90,34 @@ namespace Vegetarians_Assistant.API.Controllers
 
                 var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel, order.DeliveryFee ?? 0);
                 return Ok(paymentLink);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpPost("/api/v1/carts/calculate-shipping-fee")]
+        public async Task<IActionResult> CalculateShippingFee([FromBody] CalculateShippingFeeRequest request)
+        {
+            try
+            {
+                var order = await _orderManagementService.GetOrderById(request.OrderId);
+                if (order is null) throw new Exception($"Order {request.OrderId} not exist");
+
+                var distance = _googleMapHelper.CalculateDistance(request.ShopLocation, request.CustomerLocation);
+                var shippingFee = (decimal)distance * request.ShippingFeeUnit;
+
+                var success = await _orderManagementService.UpdateDeliveryFee(request.OrderId, shippingFee);
+                if (success)
+                {
+                    return Ok(shippingFee);
+                }
+                else
+                {
+                    throw new Exception($"Update order delivery fee failed");
+                }
             }
             catch (Exception ex)
             {
