@@ -424,6 +424,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "CalculateShippingFee",
+    "RelativePath": "api/v1/carts/calculate-shipping-fee",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.CalculateShippingFeeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
     "Method": "CancelPayment",
     "RelativePath": "api/v1/carts/cancel",
     "HttpMethod": "GET",
@@ -735,6 +751,22 @@
         "Name": "dishType",
         "Type": "System.String",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RecommendMenu",
+    "RelativePath": "api/v1/customers/recommendMenu/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

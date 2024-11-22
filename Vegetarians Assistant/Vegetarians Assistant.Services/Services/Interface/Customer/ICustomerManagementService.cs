@@ -19,5 +19,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Customer
         Task<bool> MatchUserNutritionCriteria(int userId);
         Task<List<TotalNutritionDish>> RecommendDishesForUser(int userId, string dishType);
         Task<UsersNutritionCriterionView?> GetUserNutritionCriteriaByUserId(int id);
+        Task<List<TotalNutritionDish>> RecommendMenuForUser(int userId);
     }
 }

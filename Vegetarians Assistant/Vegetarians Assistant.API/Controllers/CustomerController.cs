@@ -180,7 +180,29 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(usersNutritionCriterionsList);
         }
 
-        //[Authorize(Roles = "Customer, Nutritionist")]
+        [Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/recommendMenu/{userId}")]
+        public async Task<IActionResult> RecommendMenu(int userId)
+        {
+            try
+            {
+                // Gọi hàm RecommendMenuForUser từ service
+                var menu = await _customerManagementService.RecommendMenuForUser(userId);
+
+                if (menu == null || !menu.Any())
+                {
+                    return NotFound("Không tìm thấy món ăn phù hợp cho người dùng.");
+                }
+
+                return Ok(menu);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi khi đề xuất menu cho người dùng: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Customer, Nutritionist")]
         [HttpGet("/api/v1/customers/recommendDishes/{userId}")]
         public async Task<IActionResult> RecommendDishes(int userId, [FromQuery] string dishType)
         {
@@ -201,7 +223,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Customer, Nutritionist")]
+        [Authorize(Roles = "Customer, Nutritionist")]
         [HttpPost("/api/v1/customers/matchCriteria/{userId}")]
         public async Task<IActionResult> MatchUserNutritionCriteria(int userId)
         {
