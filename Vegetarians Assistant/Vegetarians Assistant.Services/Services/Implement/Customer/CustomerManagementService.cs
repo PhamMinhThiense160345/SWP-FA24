@@ -394,55 +394,55 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
 
                     // So sánh từng thuộc tính dinh dưỡng
                     if (nutritionCriteria.Calories.HasValue && dish.Calories.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calories.Value - dish.Calories.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Calories.Value) / 3 - dish.Calories.Value)));
 
                     if (nutritionCriteria.Protein.HasValue && dish.Protein.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Protein.Value - dish.Protein.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Protein.Value) / 3 - dish.Protein.Value)));
 
                     if (nutritionCriteria.Carbs.HasValue && dish.Carbs.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Carbs.Value - dish.Carbs.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Carbs.Value) / 3 - dish.Carbs.Value)));
 
                     if (nutritionCriteria.Fat.HasValue && dish.Fat.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fat.Value - dish.Fat.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Fat.Value) / 3 - dish.Fat.Value)));
 
                     if (nutritionCriteria.Fiber.HasValue && dish.Fiber.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fiber.Value - dish.Fiber.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Fiber.Value) / 3 - dish.Fiber.Value)));
 
                     if (nutritionCriteria.VitaminA.HasValue && dish.VitaminA.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminA.Value - dish.VitaminA.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminA.Value) / 3 - dish.VitaminA.Value)));
 
                     if (nutritionCriteria.VitaminB.HasValue && dish.VitaminB.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminB.Value - dish.VitaminB.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminB.Value) / 3 - dish.VitaminB.Value)));
 
                     if (nutritionCriteria.VitaminC.HasValue && dish.VitaminC.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminC.Value - dish.VitaminC.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminC.Value) / 3 - dish.VitaminC.Value)));
 
                     if (nutritionCriteria.VitaminD.HasValue && dish.VitaminD.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminD.Value - dish.VitaminD.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminD.Value) / 3 - dish.VitaminD.Value)));
 
                     if (nutritionCriteria.VitaminE.HasValue && dish.VitaminE.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminE.Value - dish.VitaminE.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminE.Value) / 3 - dish.VitaminE.Value)));
 
                     if (nutritionCriteria.Calcium.HasValue && dish.Calcium.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calcium.Value - dish.Calcium.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Calcium.Value) / 3 - dish.Calcium.Value)));
 
                     if (nutritionCriteria.Iron.HasValue && dish.Iron.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Iron.Value - dish.Iron.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Iron.Value) / 3 - dish.Iron.Value)));
 
                     if (nutritionCriteria.Magnesium.HasValue && dish.Magnesium.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Magnesium.Value - dish.Magnesium.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Magnesium.Value) / 3 - dish.Magnesium.Value)));
 
                     if (nutritionCriteria.Omega3.HasValue && dish.Omega3.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Omega3.Value - dish.Omega3.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Omega3.Value) / 3 - dish.Omega3.Value)));
 
                     if (nutritionCriteria.Sugars.HasValue && dish.Sugars.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sugars.Value - dish.Sugars.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Sugars.Value) / 3 - dish.Sugars.Value)));
 
                     if (nutritionCriteria.Cholesterol.HasValue && dish.Cholesterol.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Cholesterol.Value - dish.Cholesterol.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Cholesterol.Value) / 3 - dish.Cholesterol.Value)));
 
                     if (nutritionCriteria.Sodium.HasValue && dish.Sodium.HasValue)
-                        similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sodium.Value - dish.Sodium.Value)));
+                        similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Sodium.Value) / 3 - dish.Sodium.Value)));
 
 
 
@@ -528,55 +528,55 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
                         double similarityScore = 0;
 
                         if (nutritionCriteria.Calories.HasValue && dish.Calories.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calories.Value - dish.Calories.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Calories.Value) / 15 - dish.Calories.Value)));
 
                         if (nutritionCriteria.Protein.HasValue && dish.Protein.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Protein.Value - dish.Protein.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Protein.Value) / 15 - dish.Protein.Value)));
 
                         if (nutritionCriteria.Carbs.HasValue && dish.Carbs.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Carbs.Value - dish.Carbs.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Carbs.Value) / 15 - dish.Carbs.Value)));
 
                         if (nutritionCriteria.Fat.HasValue && dish.Fat.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fat.Value - dish.Fat.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Fat.Value) / 15 - dish.Fat.Value)));
 
                         if (nutritionCriteria.Fiber.HasValue && dish.Fiber.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Fiber.Value - dish.Fiber.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Fiber.Value) / 15 - dish.Fiber.Value)));
 
                         if (nutritionCriteria.VitaminA.HasValue && dish.VitaminA.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminA.Value - dish.VitaminA.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminA.Value) / 15 - dish.VitaminA.Value)));
 
                         if (nutritionCriteria.VitaminB.HasValue && dish.VitaminB.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminB.Value - dish.VitaminB.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminB.Value) / 15 - dish.VitaminB.Value)));
 
                         if (nutritionCriteria.VitaminC.HasValue && dish.VitaminC.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminC.Value - dish.VitaminC.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminC.Value) / 15 - dish.VitaminC.Value)));
 
                         if (nutritionCriteria.VitaminD.HasValue && dish.VitaminD.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminD.Value - dish.VitaminD.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminD.Value) / 15 - dish.VitaminD.Value)));
 
                         if (nutritionCriteria.VitaminE.HasValue && dish.VitaminE.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.VitaminE.Value - dish.VitaminE.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.VitaminE.Value) / 15 - dish.VitaminE.Value)));
 
                         if (nutritionCriteria.Calcium.HasValue && dish.Calcium.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Calcium.Value - dish.Calcium.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Calcium.Value) / 15 - dish.Calcium.Value)));
 
                         if (nutritionCriteria.Iron.HasValue && dish.Iron.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Iron.Value - dish.Iron.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Iron.Value) / 15 - dish.Iron.Value)));
 
                         if (nutritionCriteria.Magnesium.HasValue && dish.Magnesium.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Magnesium.Value - dish.Magnesium.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Magnesium.Value) / 15 - dish.Magnesium.Value)));
 
                         if (nutritionCriteria.Omega3.HasValue && dish.Omega3.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Omega3.Value - dish.Omega3.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Omega3.Value) / 15 - dish.Omega3.Value)));
 
                         if (nutritionCriteria.Sugars.HasValue && dish.Sugars.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sugars.Value - dish.Sugars.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Sugars.Value) / 15 - dish.Sugars.Value)));
 
                         if (nutritionCriteria.Cholesterol.HasValue && dish.Cholesterol.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Cholesterol.Value - dish.Cholesterol.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Cholesterol.Value) / 15 - dish.Cholesterol.Value)));
 
                         if (nutritionCriteria.Sodium.HasValue && dish.Sodium.HasValue)
-                            similarityScore += 1 / (1 + Math.Abs((double)(nutritionCriteria.Sodium.Value - dish.Sodium.Value)));
+                            similarityScore += 1 / (1 + Math.Abs((double)((nutritionCriteria.Sodium.Value) / 15 - dish.Sodium.Value)));
 
                         return new { Dish = dish, Score = similarityScore };
                     })
