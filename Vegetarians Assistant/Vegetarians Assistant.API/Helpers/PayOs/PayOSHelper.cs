@@ -8,12 +8,11 @@ namespace Vegetarians_Assistant.API.Helpers.PayOs;
 public class PayOSHelper : IPayOSHelper
 {
 
-    public async Task<string> CreatePaymentLink(int paymentId, List<OrderDetailInfo?> orderDetails, PayOSModel m, decimal shippingFee)
+    public async Task<string> CreatePaymentLink(int paymentId, List<OrderDetailInfo?> orderDetails, PayOSModel m, decimal shippingFee, decimal amount)
     {
-
         var items = new List<ItemData>();
 
-        foreach (var details in orderDetails)
+        foreach (var details in orderDetails ?? new List<OrderDetailInfo?>())
         {
             items.Add(
                 new ItemData(
@@ -24,12 +23,12 @@ public class PayOSHelper : IPayOSHelper
 
         items.Add(new ItemData("Phí Giao Hàng", 1, (int)shippingFee));
 
+        // Sử dụng biến amount thay cho total
         var payOS = new PayOS(m.ClientId, m.ApiKey, m.ChecksumKey);
-        var total = items.Sum(x => x.quantity * x.price);
 
         var paymentData = new PaymentData(
             paymentId,
-            total,
+            (int)amount, // Dùng amount được truyền vào
             $"Thanh toán đơn hàng #{paymentId}",
             items,
             cancelUrl: "https://vegetariansassistant-behjaxfhfkeqhbhk.southeastasia-01.azurewebsites.net/api/v1/carts/cancel?paymentId=" + paymentId,

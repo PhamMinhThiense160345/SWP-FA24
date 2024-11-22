@@ -70,25 +70,34 @@ namespace Vegetarians_Assistant.API.Controllers
                 var payOSModel = GetPayOSModel(request.DecryptionKey);
                 var orderDetail = await _orderManagementService.GetOrderDetailOrderId(request.OrderId);
                 var order = await _orderManagementService.GetOrderById(request.OrderId);
-                if (orderDetail.Count == 0
-                    || order is null) throw new Exception($"Order {request.OrderId} not exist");
-
+                if (orderDetail.Count == 0 || order == null)
+                {
+                    throw new Exception($"Order {request.OrderId} does not exist");
+                }
                 var payment = new AddPaymentView()
                 {
                     OrderId = request.OrderId,
                     PaymentMethod = "PayOS",
                     PaymentStatus = "pending",
                     PaymentDate = DateTime.Now,
-                    Amount = order.TotalPrice + order.DeliveryFee,
-                    CancelUrl = "https://localhost:7157/api/v1/carts/cancel?orderId=" + request.OrderId,
-                    ReturnUrl = "https://localhost:7157/api/v1/carts/complete?orderId=" + request.OrderId,
+                    Amount = order.TotalPrice,
+                    CancelUrl = $"https://localhost:7157/api/v1/carts/cancel?orderId={request.OrderId}",
+                    ReturnUrl = $"https://localhost:7157/api/v1/carts/complete?orderId={request.OrderId}",
                 };
 
                 var paymentId = await _cartService.AddPaymentAysnc(payment);
+                if (paymentId == null)
+                {
+                    throw new Exception("Add payment failed");
+                }
+                var paymentLink = await _payOSHelper.CreatePaymentLink(
+                    paymentId ?? 0,
+                    orderDetail,
+                    payOSModel,
+                    0,
+                    order.TotalPrice ??0
+                );
 
-                if (paymentId is null) throw new Exception("Add payment failed");
-
-                var paymentLink = await _payOSHelper.CreatePaymentLink(paymentId ?? 0, orderDetail, payOSModel, order.DeliveryFee ?? 0);
                 return Ok(paymentLink);
             }
             catch (Exception ex)
@@ -97,7 +106,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/calculate-shipping-fee")]
         public IActionResult CalculateShippingFee([FromBody] CalculateShippingFeeRequest request)
         {

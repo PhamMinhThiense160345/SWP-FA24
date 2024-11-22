@@ -5,6 +5,5 @@ namespace Vegetarians_Assistant.API.Helpers.PayOs;
 
 public interface IPayOSHelper
 {
-    Task<string> CreatePaymentLink(int paymentId, List<OrderDetailInfo?> orderDetails, PayOSModel model, decimal shippingFee);
-
+    Task<string> CreatePaymentLink(int paymentId, List<OrderDetailInfo?> orderDetails, PayOSModel model, decimal shippingFee, decimal amount);
 }
