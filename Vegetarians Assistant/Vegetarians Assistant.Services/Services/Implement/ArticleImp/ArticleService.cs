@@ -161,6 +161,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                 }
 
                 article.Status = newStatus;
+                article.ModerateDate = DateOnly.FromDateTime(DateTime.Now);
                 await _unitOfWork.ArticleRepository.UpdateAsync(article);
                 await _unitOfWork.SaveAsync();
 
