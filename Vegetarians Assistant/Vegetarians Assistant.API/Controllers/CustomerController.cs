@@ -137,7 +137,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Admin, Customer")]
+        [Authorize(Roles = "Admin, Customer")]
         [HttpPost("/api/v1/customers/membership")]
         public async Task<IActionResult> InsertCustomerMembership([FromBody] UserMembershipView request)
         {
