@@ -101,6 +101,7 @@ builder.Services.AddScoped<ILoginCService, LoginCService>();
 builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementService>();
 
 builder.Services.AddScoped<IIngredientManagementService, IngredientManagementService>();
+builder.Services.AddScoped<IInvalidWordService, InvalidWordService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();

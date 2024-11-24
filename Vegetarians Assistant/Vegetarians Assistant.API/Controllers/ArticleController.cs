@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.API.Helpers;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
 using Vegetarians_Assistant.Repo.Repositories.Repo;
 using Vegetarians_Assistant.Services.ModelView;
+using Vegetarians_Assistant.Services.Services.Interface.Admin;
 using Vegetarians_Assistant.Services.Services.Interface.ArticleImp;
 using Vegetarians_Assistant.Services.Services.Interface.IArticle;
 
@@ -17,11 +19,13 @@ namespace Vegetarians_Assistant.API.Controllers
         private readonly IArticleService _articleService;
         private readonly ICommentHelper _commentHelper;
         private readonly IUnitOfWork _unitOfWork;
-        public ArticleController(IArticleService articleService, ICommentHelper commentHelper, IUnitOfWork unitOfWork)
+        private readonly IInvalidWordService _invalidWordService;
+        public ArticleController(IArticleService articleService, ICommentHelper commentHelper, IUnitOfWork unitOfWork, IInvalidWordService invalidWordService)
         {
             _articleService = articleService;
             _commentHelper = commentHelper;
             _unitOfWork = unitOfWork;
+            _invalidWordService = invalidWordService;
         }
 
         [Authorize(Roles = "Customer,Moderator,Nutritionist")]
@@ -144,9 +148,19 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [HttpPost("checkCommentContent")]
-        public IActionResult CheckCommentContent([FromBody] CheckCommentContentView request)
-       => Ok(_commentHelper.CheckContent(request.Content));
+        [HttpGet("/api/v1/articles/check-comment-content")]
+        public async Task<IActionResult> CheckCommentContent([FromQuery] CheckCommentContentView request)
+        {
+            var valid = await _invalidWordService.IsValidAsync(request.Content);
+            return Ok(new ResponseView(valid, valid ? "Content is valid." : "Invalid content."));
+        }
+
+        [HttpGet("/api/v1/articles/add-invalid-word")]
+        public async Task<IActionResult> AddInvalidWord([FromQuery] string content)
+        {
+            var result = await _invalidWordService.AddAsync(content);
+            return Ok(new ResponseView(result.Item1, result.Item2));
+        }
 
         [Authorize(Roles = "Nutritionist")]
         [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
@@ -196,5 +210,5 @@ namespace Vegetarians_Assistant.API.Controllers
 
     }
 }
-        
-    
+
+
