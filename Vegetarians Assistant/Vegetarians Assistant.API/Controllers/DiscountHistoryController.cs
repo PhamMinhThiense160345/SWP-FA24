@@ -17,8 +17,15 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
         var result = await _discountHistoryService.AddAsync(discount);
         return Ok(new ResponseView(result.Item1, result.Item2));
     }
+    [HttpGet("/api/v1/discount-history/inactive/{userId}/{tierId}")]
+    public async Task<IActionResult> InactiveAsync([FromRoute] int userId, int tierId)
+    {
+        var result = await _discountHistoryService.UpdateStatusAsync(userId, tierId, "inactive");
+        return Ok(new ResponseView(result.Item1, result.Item2));
+    }
 
- 
+
+
 }
 
 
