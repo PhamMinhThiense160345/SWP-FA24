@@ -99,6 +99,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
             try
             {
                 bool status = false;
+                newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
                 newUser.Status = "active";
                 newUser.RoleId = 3;
                 var user = _mapper.Map<User>(newUser);

@@ -1170,3 +1170,4 @@ D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegeta
 D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\Google.Apis.Core.dll
 D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\System.Management.dll
 D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\FPT\Learning\Capstone Project\project\2\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.API\bin\Debug\net8.0\BCrypt.Net-Next.dll

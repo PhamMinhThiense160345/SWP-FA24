@@ -33,7 +33,7 @@ public partial class Dish
 
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
-    public virtual ICollection<FixedMenuItem> FixedMenuItems { get; set; } = new List<FixedMenuItem>();
+    public virtual ICollection<MenuDish> MenuDishes { get; set; } = new List<MenuDish>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 

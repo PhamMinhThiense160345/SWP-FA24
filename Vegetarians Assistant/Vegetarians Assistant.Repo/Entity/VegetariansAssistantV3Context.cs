@@ -35,17 +35,19 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
-    public virtual DbSet<FixedMenu> FixedMenus { get; set; }
-
-    public virtual DbSet<FixedMenuItem> FixedMenuItems { get; set; }
-
     public virtual DbSet<Follower> Followers { get; set; }
 
     public virtual DbSet<Following> Followings { get; set; }
 
     public virtual DbSet<Ingredient> Ingredients { get; set; }
 
+    public virtual DbSet<InvalidWord> InvalidWords { get; set; }
+
     public virtual DbSet<MembershipTier> MembershipTiers { get; set; }
+
+    public virtual DbSet<Menu> Menus { get; set; }
+
+    public virtual DbSet<MenuDish> MenuDishes { get; set; }
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
@@ -66,6 +68,8 @@ public partial class VegetariansAssistantV3Context : DbContext
     public virtual DbSet<TotalNutritionDish> TotalNutritionDishes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<UserDeviceToken> UserDeviceTokens { get; set; }
 
     public virtual DbSet<UserMembership> UserMemberships { get; set; }
 
@@ -306,39 +310,6 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasConstraintName("FK__Feedbacks__user___10216507");
         });
 
-        modelBuilder.Entity<FixedMenu>(entity =>
-        {
-            entity.HasKey(e => e.FixedMenuId).HasName("PK__Fixed_Me__88C89FD101B46C0E");
-
-            entity.ToTable("Fixed_Menus");
-
-            entity.Property(e => e.FixedMenuId).HasColumnName("fixed_menu_id");
-            entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.Name)
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("name");
-        });
-
-        modelBuilder.Entity<FixedMenuItem>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Fixed_Me__3213E83F6A6D2E21");
-
-            entity.ToTable("Fixed_Menu_Items");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DishId).HasColumnName("dish_id");
-            entity.Property(e => e.FixedMenuId).HasColumnName("fixed_menu_id");
-
-            entity.HasOne(d => d.Dish).WithMany(p => p.FixedMenuItems)
-                .HasForeignKey(d => d.DishId)
-                .HasConstraintName("FK__Fixed_Men__dish___7D0E9093");
-
-            entity.HasOne(d => d.FixedMenu).WithMany(p => p.FixedMenuItems)
-                .HasForeignKey(d => d.FixedMenuId)
-                .HasConstraintName("FK__Fixed_Men__fixed__7C1A6C5A");
-        });
-
         modelBuilder.Entity<Follower>(entity =>
         {
             entity.HasKey(e => e.FollowerId).HasName("PK__Follower__444E322FBF495676");
@@ -443,6 +414,18 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasColumnName("weight");
         });
 
+        modelBuilder.Entity<InvalidWord>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Invalid___3213E83F5AA924AB");
+
+            entity.ToTable("Invalid_Words");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Content)
+                .HasMaxLength(200)
+                .HasColumnName("content");
+        });
+
         modelBuilder.Entity<MembershipTier>(entity =>
         {
             entity.HasKey(e => e.TierId).HasName("PK__Membersh__9D52AF9C977091A4");
@@ -461,16 +444,54 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasColumnName("tier_name");
         });
 
+        modelBuilder.Entity<Menu>(entity =>
+        {
+            entity.HasKey(e => e.MenuId).HasName("PK__Menus__4CA0FADC812EE5BE");
+
+            entity.Property(e => e.MenuId).HasColumnName("menu_id");
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.MenuDescription)
+                .HasColumnType("text")
+                .HasColumnName("menu_description");
+            entity.Property(e => e.MenuName)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("menu_name");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Menus)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Menus__user_id__6225902D");
+        });
+
+        modelBuilder.Entity<MenuDish>(entity =>
+        {
+            entity.HasKey(e => e.MenuDishId).HasName("PK__Menu_Dis__0F122B047E8CB098");
+
+            entity.ToTable("Menu_Dishes");
+
+            entity.Property(e => e.MenuDishId).HasColumnName("menu_dish_id");
+            entity.Property(e => e.DishId).HasColumnName("dish_id");
+            entity.Property(e => e.MenuId).HasColumnName("menu_id");
+
+            entity.HasOne(d => d.Dish).WithMany(p => p.MenuDishes)
+                .HasForeignKey(d => d.DishId)
+                .HasConstraintName("FK__Menu_Dish__dish___65F62111");
+
+            entity.HasOne(d => d.Menu).WithMany(p => p.MenuDishes)
+                .HasForeignKey(d => d.MenuId)
+                .HasConstraintName("FK__Menu_Dish__menu___6501FCD8");
+        });
+
         modelBuilder.Entity<Notification>(entity =>
         {
             entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__E059842F5FD696DA");
 
             entity.Property(e => e.NotificationId).HasColumnName("notification_id");
             entity.Property(e => e.Content).HasColumnName("content");
-            entity.Property(e => e.DeviceToken)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("device_token");
             entity.Property(e => e.NotificationTypeId).HasColumnName("notification_type_id");
             entity.Property(e => e.SentDate)
                 .HasDefaultValueSql("(getdate())")
@@ -817,7 +838,7 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasDefaultValue(false)
                 .HasColumnName("is_phone_verified");
             entity.Property(e => e.Password)
-                .HasMaxLength(50)
+                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.PhoneNumber)
@@ -843,6 +864,24 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
                 .HasConstraintName("FK__Users__role_id__5E8A0973");
+        });
+
+        modelBuilder.Entity<UserDeviceToken>(entity =>
+        {
+            entity.HasKey(e => e.TokenId).HasName("PK__User_Dev__CB3C9E1705DA60F7");
+
+            entity.ToTable("User_Device_Tokens");
+
+            entity.Property(e => e.TokenId).HasColumnName("token_id");
+            entity.Property(e => e.DeviceToken)
+                .HasMaxLength(255)
+                .HasColumnName("device_token");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.User).WithMany(p => p.UserDeviceTokens)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__User_Devi__user___5B78929E");
         });
 
         modelBuilder.Entity<UserMembership>(entity =>

@@ -134,12 +134,13 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                             ArticleImages = article.ArticleImages.Select(img => img.ImageUrl).ToList(),
                             Likes = article.ArticleLikes.Count(),
                             AuthorId = article.AuthorId,
+                            ModerateDate = article.ModerateDate,
                             AuthorName = article.AuthorId.HasValue && preferenceDictionary.ContainsKey(article.AuthorId.Value)
                         ? preferenceDictionary[article.AuthorId.Value]
                         : null
                         });
                     }
-                    return articleViews;
+                    return articleViews.OrderByDescending(article => article.ModerateDate).ToList();
                 }
                 return null;
             }
@@ -282,13 +283,14 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                         ArticleImages = article.ArticleImages.Select(img => img.ImageUrl).ToList(),
                         Likes = article.ArticleLikes.Count(), // Đếm số lượng Likes
                         AuthorId = article.AuthorId,
+                        ModerateDate = article.ModerateDate,
                         AuthorName = article.AuthorId.HasValue && preferenceDictionary.ContainsKey(article.AuthorId.Value)
                             ? preferenceDictionary[article.AuthorId.Value]
                             : null
                     });
                 }
 
-                return articleViews;
+                return articleViews.OrderByDescending(article => article.ModerateDate).ToList();
             }
             catch (Exception ex)
             {

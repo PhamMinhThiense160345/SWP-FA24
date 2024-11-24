@@ -185,6 +185,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             try
             {
                 bool status = false;
+                newUser.Password = BCrypt.Net.BCrypt.HashPassword(newUser.Password);
                 newUser.Status = "active";
                 var user = _mapper.Map<User>(newUser);
                 await _unitOfWork.UserRepository.InsertAsync(user);

@@ -24,11 +24,17 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
         {
             try
             {
-                User? user = (await _unitOfWork.UserRepository.GetAsync(a => a.PhoneNumber == loginInfo.PhoneNumber && a.Password == loginInfo.Password)).FirstOrDefault();
-                if (user == null)
+                User? user = (await _unitOfWork.UserRepository.GetAsync(a => a.PhoneNumber == loginInfo.PhoneNumber)).FirstOrDefault();
+                if (user == null || !BCrypt.Net.BCrypt.Verify(loginInfo.Password, user.Password))
                 {
+                    // Trả về null nếu không tìm thấy hoặc mật khẩu không khớp
                     return null;
                 }
+                //User? user = (await _unitOfWork.UserRepository.GetAsync(a => a.PhoneNumber == loginInfo.PhoneNumber && a.Password == loginInfo.Password)).FirstOrDefault();
+                //if (user == null)
+                //{
+                //    return null;
+                //}
                 var userExisted = (await _unitOfWork.UserRepository.GetAsync(c => c.UserId == user.UserId)).FirstOrDefault();
                 if (userExisted == null)
                 {

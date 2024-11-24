@@ -9,7 +9,7 @@ public partial class User
 
     public string? Username { get; set; }
 
-    public string Password { get; set; } = null!;
+    public string? Password { get; set; }
 
     public string? Email { get; set; }
 
@@ -65,6 +65,8 @@ public partial class User
 
     public virtual ICollection<Following> FollowingUsers { get; set; } = new List<Following>();
 
+    public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();
+
     public virtual ICollection<NotificationSetting> NotificationSettings { get; set; } = new List<NotificationSetting>();
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
@@ -72,6 +74,8 @@ public partial class User
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     public virtual Role? Role { get; set; }
+
+    public virtual ICollection<UserDeviceToken> UserDeviceTokens { get; set; } = new List<UserDeviceToken>();
 
     public virtual UserMembership? UserMembership { get; set; }
 
