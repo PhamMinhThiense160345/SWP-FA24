@@ -14,6 +14,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Dish
         Task<List<DishView?>> GetDishByDishType(string dishType);
         Task<List<DishView?>> GetDishByDietaryPreferenceId(int id);
         Task<List<TotalNutritionDishView?>> GetTotalNutritionDishByDishId(int id);
+        Task<List<DishView>> GetDishByIngredientName(string ingredientName);
         Task<DishView?> GetDishByDishId(int id);
         Task<bool> UpdateDishDetailByDishId(DishView updateDish);
         Task<DishNutritionalView?> CalculateNutrition(int dishId);

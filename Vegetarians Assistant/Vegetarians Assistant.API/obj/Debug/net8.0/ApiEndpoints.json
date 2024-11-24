@@ -17,22 +17,6 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
-    "Method": "CheckCommentContent",
-    "RelativePath": "api/Article/checkCommentContent",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "Vegetarians_Assistant.Services.ModelView.CheckCommentContentView",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "postComment",
     "RelativePath": "api/Article/comment",
     "HttpMethod": "POST",
@@ -229,6 +213,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "AddInvalidWord",
+    "RelativePath": "api/v1/articles/add-invalid-word",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "content",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByRoleId",
     "RelativePath": "api/v1/articles/allArticleByRoleId/{id}",
     "HttpMethod": "GET",
@@ -252,6 +252,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "CheckCommentContent",
+    "RelativePath": "api/v1/articles/check-comment-content",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Content",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
@@ -488,6 +504,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "CreatePayment",
+    "RelativePath": "api/v1/carts/create-payment-detail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "payment",
+        "Type": "Vegetarians_Assistant.Services.ModelView.AddPaymentView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
     "Method": "GetCartByUserId",
     "RelativePath": "api/v1/carts/getCartByUserId/{id}",
     "HttpMethod": "GET",
@@ -523,6 +555,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CartController",
+    "Method": "UpdatePayment",
+    "RelativePath": "api/v1/carts/update-payment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "payment",
+        "Type": "Vegetarians_Assistant.Services.ModelView.PaymentView",
         "IsRequired": true
       }
     ],
@@ -788,6 +836,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
+    "Method": "AddAsync",
+    "RelativePath": "api/v1/discount-history",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.Services.ModelView.DiscountHistoryView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
+    "Method": "DeactiveAsync",
+    "RelativePath": "api/v1/discount-history/deactive/{userId}/{tierId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tierId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
+    "Method": "InactiveAsync",
+    "RelativePath": "api/v1/discount-history/inactive/{userId}/{tierId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "tierId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishs",
     "RelativePath": "api/v1/dishs/allDish",
@@ -876,6 +982,32 @@
     "ReturnTypes": [
       {
         "Type": "Vegetarians_Assistant.Services.ModelView.DishView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "GetDishByIngredientName",
+    "RelativePath": "api/v1/dishs/getDishByIngredientName/{ingredientName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ingredientName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Services.ModelView.DishView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

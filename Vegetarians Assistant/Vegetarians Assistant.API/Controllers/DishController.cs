@@ -91,6 +91,27 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Customer,Nutritionist")]
+        [HttpGet("/api/v1/dishs/getDishByIngredientName/{ingredientName}")]
+        public async Task<ActionResult<IEnumerable<DishView>>> GetDishByIngredientName(string ingredientName)
+        {
+            try
+            {
+                var dishes = await _dishManagementService.GetDishByIngredientName(ingredientName);
+
+                if (dishes == null || !dishes.Any())
+                {
+                    return NotFound($"No dishes found containing the ingredient: {ingredientName}");
+                }
+
+                return Ok(dishes);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpGet("/api/v1/dishs/getTotalNutritionDishByDishId/{id}")]
         public async Task<ActionResult<IEnumerable<TotalNutritionDishView>>> GetTotalNutritionDishByDishId(int id)
         {

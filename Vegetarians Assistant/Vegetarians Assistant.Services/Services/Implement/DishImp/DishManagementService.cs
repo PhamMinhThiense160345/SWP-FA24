@@ -512,6 +512,52 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
             };
         }
 
+        public async Task<List<DishView>> GetDishByIngredientName(string ingredientName)
+        {
+            try
+            {
+                // Tìm nguyên liệu theo tên
+                var ingredient = (await _unitOfWork.IngredientRepository.FindAsync(i => i.Name.ToLower() == ingredientName.ToLower())).FirstOrDefault();
+
+                if (ingredient == null)
+                {
+                    // Nếu không tìm thấy nguyên liệu, trả về danh sách rỗng
+                    return new List<DishView>();
+                }
+
+                // Tìm các DishIngredient liên quan đến IngredientId
+                var dishIngredients = await _unitOfWork.DishIngredientRepository.FindAsync(di => di.IngredientId == ingredient.IngredientId);
+
+                if (!dishIngredients.Any())
+                {
+                    // Nếu không tìm thấy DishIngredient nào liên quan, trả về danh sách rỗng
+                    return new List<DishView>();
+                }
+
+                // Lấy danh sách món ăn (Dish) từ DishId trong DishIngredient
+                var dishIds = dishIngredients.Select(di => di.DishId).Distinct();
+                var dishes = await _unitOfWork.DishRepository.FindAsync(d => dishIds.Contains(d.DishId));
+
+                // Map danh sách món ăn sang DishView
+                var dishViews = dishes.Select(dish => new DishView
+                {
+                    DishId = dish.DishId,
+                    Name = dish.Name,
+                    DishType = dish.DishType,
+                    Description = dish.Description,
+                    Recipe = dish.Recipe,
+                    ImageUrl = dish.ImageUrl,
+                    Status = dish.Status,
+                    Price = dish.Price
+                }).ToList();
+
+                return dishViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
 
     }
 }
