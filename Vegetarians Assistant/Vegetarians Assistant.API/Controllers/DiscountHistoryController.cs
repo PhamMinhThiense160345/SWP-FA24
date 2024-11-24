@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.DiscountHistories;
 
@@ -10,6 +11,7 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
 {
     private readonly IDiscountHistoryService _discountHistoryService = discountHistoryService;
 
+    [Authorize(Roles = "Customer")]
     [HttpPost("/api/v1/discount-history")]
     public async Task<IActionResult> AddAsync([FromBody] DiscountHistoryView request)
     {
@@ -17,6 +19,8 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
         var result = await _discountHistoryService.AddAsync(discount);
         return Ok(new ResponseView(result.Item1, result.Item2));
     }
+
+    [Authorize(Roles = "Customer")]
     [HttpPut("/api/v1/discount-history/inactive/{userId}/{tierId}")]
     public async Task<IActionResult> InactiveAsync([FromRoute] int userId, int tierId)
     {
@@ -24,6 +28,7 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
         return Ok(new ResponseView(result.Item1, result.Item2));
     }
 
+    [Authorize(Roles = "Customer")]
     [HttpPut("/api/v1/discount-history/deactive/{userId}/{tierId}")]
     public async Task<IActionResult> DeactiveAsync([FromRoute] int userId, int tierId)
     {
@@ -31,6 +36,7 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
         return Ok(new ResponseView(result.Item1, result.Item2));
     }
 
+    [Authorize(Roles = "Customer")]
     [HttpGet("/api/v1/discount-history/{userId}")]
     public async Task<IActionResult> GetByUserIdAsync([FromRoute] int userId)
     {
