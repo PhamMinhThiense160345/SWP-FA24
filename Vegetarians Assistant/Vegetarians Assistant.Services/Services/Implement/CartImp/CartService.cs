@@ -159,7 +159,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             {
                 var newPayment = new PaymentDetail()
                 {
-                    PaymentId = payment.PaymentId,
+                    
                     OrderId = payment.OrderId,
                     Amount = payment.Amount,
                     PaymentMethod = payment.PaymentMethod,
@@ -179,6 +179,34 @@ namespace Vegetarians_Assistant.Services.Services.Interface.CartImp
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+        public async Task<(bool, string)> UpdatePaymentAysnc(PaymentView payment)
+        {
+            try
+            {
+                var exist = await _unitOfWork.PaymentDetailRepository.GetByIDAsync(payment.PaymentId);
+                if (exist is null) throw new Exception($"Payment with id {payment.PaymentId} is not exist");
+
+                exist.PaymentId = payment.PaymentId;
+                exist.OrderId = payment.OrderId;
+                exist.Amount = payment.Amount;
+                exist.PaymentMethod = payment.PaymentMethod;
+                exist.PaymentStatus = payment.PaymentStatus;
+                exist.PaymentDate = payment.PaymentDate;
+                exist.RefundAmount = payment.RefundAmount;
+                exist.ReturnUrl = payment.ReturnUrl;
+                exist.CancelUrl = payment.CancelUrl;
+                exist.TransactionId = payment.TransactionId;
+
+                await _unitOfWork.PaymentDetailRepository.UpdateAsync(exist);
+                await _unitOfWork.SaveAsync();
+
+                return (true, "Update payment successful");
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
             }
         }
 

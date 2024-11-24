@@ -106,6 +106,14 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [HttpPost("/api/v1/carts/update-payment")]
+        public async Task<IActionResult> UpdatePayment([FromBody] PaymentView payment)
+        {
+            var result = await _cartService.UpdatePaymentAysnc(payment);
+            return Ok(new ResponseView(result.Item1, result.Item2));
+        }
+
+
         [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/calculate-shipping-fee")]
         public IActionResult CalculateShippingFee([FromBody] CalculateShippingFeeRequest request)

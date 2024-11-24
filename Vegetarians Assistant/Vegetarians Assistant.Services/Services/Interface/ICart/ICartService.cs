@@ -15,5 +15,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ICart
         Task<int?> AddPaymentAysnc(AddPaymentView payment);
 
         Task<bool> UpdatePaymentStatusAsync(int paymentId, string status);
+        Task<(bool, string)> UpdatePaymentAysnc(PaymentView payment);
     }
 }
