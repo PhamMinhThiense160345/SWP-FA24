@@ -31,6 +31,13 @@ public class DiscountHistoryController(IDiscountHistoryService discountHistorySe
         return Ok(new ResponseView(result.Item1, result.Item2));
     }
 
+    [HttpGet("/api/v1/discount-history/{userId}")]
+    public async Task<IActionResult> GetByUserIdAsync([FromRoute] int userId)
+    {
+        var result = await _discountHistoryService.GetByUserIdAsync(userId);
+        return Ok(result);
+    }
+
 }
 
 

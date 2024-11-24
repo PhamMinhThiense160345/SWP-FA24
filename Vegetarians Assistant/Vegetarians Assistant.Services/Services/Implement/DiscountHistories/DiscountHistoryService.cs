@@ -1,5 +1,6 @@
 ﻿using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
+using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.DiscountHistories;
 
 namespace Vegetarians_Assistant.Services.Services.Implement.DiscountHistories;
@@ -15,7 +16,7 @@ public class DiscountHistoryService(IUnitOfWork unitOfWork) : IDiscountHistorySe
                 x => x.UserId == discountHistory.UserId && x.TierId == discountHistory.TierId);
             if (exist.Any()) throw new Exception("Discount history is already exist");
 
-            if(discountHistory.ExpirationDate <= discountHistory.GrantedDate)
+            if (discountHistory.ExpirationDate <= discountHistory.GrantedDate)
                 throw new Exception("Expiration date must be after granted date");
 
             await _unitOfWork.DiscountHistoryRepository.InsertAsync(discountHistory);
@@ -26,6 +27,12 @@ public class DiscountHistoryService(IUnitOfWork unitOfWork) : IDiscountHistorySe
         {
             return (false, ex.Message);
         }
+    }
+
+    public async Task<List<DiscountHistoryView>> GetByUserIdAsync(int userId)
+    {
+        var data = await _unitOfWork.DiscountHistoryRepository.GetAllAsync();
+        return data.Where(x => x.UserId == userId).Select(x => MapToDiscountHistoryView(x)).ToList();
     }
 
     public async Task<(bool, string)> UpdateStatusAsync(int userId, int tierId, string status)
@@ -47,4 +54,14 @@ public class DiscountHistoryService(IUnitOfWork unitOfWork) : IDiscountHistorySe
             return (false, ex.Message);
         }
     }
+
+    private static DiscountHistoryView MapToDiscountHistoryView(DiscountHistory history) => new()
+    {
+        UserId = history.UserId,
+        TierId = history.TierId,
+        Status = history.Status,
+        DiscountRate = history.DiscountRate,
+        ExpirationDate = history.ExpirationDate,
+        GrantedDate = history.GrantedDate
+    };
 }
