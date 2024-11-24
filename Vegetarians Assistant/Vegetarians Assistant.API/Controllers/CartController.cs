@@ -105,14 +105,14 @@ namespace Vegetarians_Assistant.API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+         [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/update-payment")]
         public async Task<IActionResult> UpdatePayment([FromBody] PaymentView payment)
         {
             var result = await _cartService.UpdatePaymentAysnc(payment);
             return Ok(new ResponseView(result.Item1, result.Item2));
         }
-
+        [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/create-payment-detail")]
         public async Task<IActionResult> CreatePayment([FromBody] AddPaymentView payment)
         {
