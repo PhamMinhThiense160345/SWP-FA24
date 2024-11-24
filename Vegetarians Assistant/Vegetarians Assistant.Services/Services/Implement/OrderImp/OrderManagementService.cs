@@ -149,17 +149,17 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
             }
         }
 
-        public async Task<List<AddPaymentView?>> GetPaymentDetailByOrderId(int id)
+        public async Task<List<PaymentView?>> GetPaymentDetailByOrderId(int id)
         {
 
             try
             {
                 var payments = await _unitOfWork.PaymentDetailRepository.FindAsync(c => c.OrderId == id);
-                var paymentDetailViews = new List<AddPaymentView>();
+                var paymentDetailViews = new List<PaymentView>();
 
                 foreach (var payment in payments)
                 {
-                    paymentDetailViews.Add(new AddPaymentView
+                    paymentDetailViews.Add(new PaymentView
                     {
                         PaymentId = payment.PaymentId,
                         OrderId = payment.OrderId,
@@ -302,6 +302,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                 throw new Exception(ex.Message);
             }
         }
+
         public async Task<OrderView?> GetOrderById(int id)
         {
             try
@@ -354,5 +355,6 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                 return false;
             }
         }
+
     }
 }

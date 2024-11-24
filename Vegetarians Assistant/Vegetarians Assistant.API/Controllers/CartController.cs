@@ -113,6 +113,22 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(new ResponseView(result.Item1, result.Item2));
         }
 
+        [HttpPost("/api/v1/carts/create-payment-detail")]
+        public async Task<IActionResult> CreatePayment([FromBody] AddPaymentView payment)
+        {
+            try
+            {
+                var paymentId = await _cartService.AddPaymentAysnc(payment);
+                if (paymentId is null) throw new Exception("Create payment details failed");
+
+                return Ok(new ResponseView(true, "Create payment details successful"));
+            }
+            catch (Exception ex)
+            {
+                return Ok(new ResponseView(false, ex.Message));
+            }
+        }
+
 
         [Authorize(Roles = "Customer")]
         [HttpPost("/api/v1/carts/calculate-shipping-fee")]
