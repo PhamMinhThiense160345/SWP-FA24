@@ -44,6 +44,8 @@ using Vegetarians_Assistant.Services.Services.Interface.IIngredient;
 using Vegetarians_Assistant.Services.Services.Implement.IngredientImp;
 using Vegetarians_Assistant.API.Helpers.GoogleMap;
 using Vegetarians_Assistant.API.Helpers.Firebase;
+using Vegetarians_Assistant.Services.Services.Interface.DiscountHistories;
+using Vegetarians_Assistant.Services.Services.Implement.DiscountHistories;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -102,6 +104,7 @@ builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementS
 
 builder.Services.AddScoped<IIngredientManagementService, IngredientManagementService>();
 builder.Services.AddScoped<IInvalidWordService, InvalidWordService>();
+builder.Services.AddScoped<IDiscountHistoryService, DiscountHistoryService>();
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ICommentHelper, CommentHelper>();

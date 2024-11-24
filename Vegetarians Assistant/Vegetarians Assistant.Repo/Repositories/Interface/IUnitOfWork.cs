@@ -44,6 +44,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Ingredient> IngredientRepository { get; }
         IGenericRepository<DishIngredient> DishIngredientRepository { get; }
         IGenericRepository<InvalidWord> InvalidWordRepository { get; }
+        IGenericRepository<DiscountHistory> DiscountHistoryRepository { get; }
         Task SaveAsync();
     }
 }

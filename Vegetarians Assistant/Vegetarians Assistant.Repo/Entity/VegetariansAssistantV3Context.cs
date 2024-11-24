@@ -74,13 +74,40 @@ public partial class VegetariansAssistantV3Context : DbContext
     public virtual DbSet<UserMembership> UserMemberships { get; set; }
 
     public virtual DbSet<UsersNutritionCriterion> UsersNutritionCriteria { get; set; }
+    public virtual DbSet<DiscountHistory> DiscountHistories { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-
+    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+    //        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("Vietnamese_CI_AS");
+
+
+        modelBuilder.Entity<DiscountHistory>(entity =>
+        {
+            entity.HasKey(e => e.DiscountHistoryId).HasName("PK__Discount__ECB254A73D9BC062");
+
+            entity.ToTable("Discount_History");
+
+            entity.Property(e => e.DiscountHistoryId).HasColumnName("discount_history_id");
+            entity.Property(e => e.DiscountRate)
+                .HasColumnType("decimal(3, 2)")
+                .HasColumnName("discount_rate");
+            entity.Property(e => e.ExpirationDate)
+                .HasColumnType("datetime")
+                .HasColumnName("expiration_date");
+            entity.Property(e => e.GrantedDate)
+                .HasColumnType("datetime")
+                .HasColumnName("granted_date");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .HasDefaultValue("inactive")
+                .HasColumnName("status");
+            entity.Property(e => e.TierId).HasColumnName("tier_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+        });
+  
         modelBuilder.UseCollation("Vietnamese_CI_AS");
 
         modelBuilder.Entity<Article>(entity =>
