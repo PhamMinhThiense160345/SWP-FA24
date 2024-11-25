@@ -278,14 +278,23 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
 
                 if (order == null)
                 {
-                    return false; // Order not found
+                    return false; 
                 }
-
-                order.Status = newStatus;
-                await _unitOfWork.OrderRepository.UpdateAsync(order);
-                await _unitOfWork.SaveAsync();
-
-                return true;
+                if(newStatus == "completed")
+                {
+                    order.CompletedTime = DateTime.Now;
+                    order.Status = newStatus;
+                    await _unitOfWork.OrderRepository.UpdateAsync(order);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    order.Status = newStatus;
+                    await _unitOfWork.OrderRepository.UpdateAsync(order);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
             }
             catch (Exception ex)
             {

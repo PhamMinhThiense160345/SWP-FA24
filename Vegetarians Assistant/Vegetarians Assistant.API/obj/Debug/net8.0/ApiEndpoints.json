@@ -206,7 +206,7 @@
       {
         "Name": "newImage",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -417,7 +417,7 @@
       {
         "Name": "newStatus",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -592,7 +592,7 @@
       {
         "Name": "newQuantity",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1597,7 +1597,7 @@
       {
         "Name": "newDeliveryFailedFee",
         "Type": "System.Decimal",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -1754,7 +1754,7 @@
       {
         "Name": "newStatus",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

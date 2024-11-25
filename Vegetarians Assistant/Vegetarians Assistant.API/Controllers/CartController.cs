@@ -163,7 +163,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         [Authorize(Roles = "Customer")]
         [HttpPut("/api/v1/carts/updateDishQuantityByCartId/{id}")]
-        public async Task<IActionResult> UpdateDishQuantityByCartId(int id, [FromBody] int newQuantity)
+        public async Task<IActionResult> UpdateDishQuantityByCartId(int id, [FromQuery] int newQuantity)
         {
             try
             {

@@ -42,7 +42,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         [Authorize(Roles = "Nutritionist")]
         [HttpPut("/api/v1/articleImages/updateArticleImageByArticleImageId/{id}")]
-        public async Task<IActionResult> UpdateArticleImageByArticleImageId(int id, [FromBody] string newImage)
+        public async Task<IActionResult> UpdateArticleImageByArticleImageId(int id, [FromQuery] string newImage)
         {
             try
             {

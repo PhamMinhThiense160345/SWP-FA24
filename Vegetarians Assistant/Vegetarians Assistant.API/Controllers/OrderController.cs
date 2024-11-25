@@ -109,7 +109,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         [Authorize(Roles = "Staff, Customer")]
         [HttpPut("/api/v1/orders/updateStatusOrderByOrderId/{id}")]
-        public async Task<IActionResult> ChangeOrderStatus(int id, [FromBody] string newStatus)
+        public async Task<IActionResult> ChangeOrderStatus(int id, [FromQuery] string newStatus)
         {
             try
             {
@@ -132,7 +132,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
         [Authorize(Roles = "Staff")]
         [HttpPut("/api/v1/orders/changeOrderDeliveryFailedFee/{id}")]
-        public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromBody] decimal newDeliveryFailedFee)
+        public async Task<IActionResult> ChangeOrderDeliveryFailedFee(int id, [FromQuery] decimal newDeliveryFailedFee)
         {
             try
             {
