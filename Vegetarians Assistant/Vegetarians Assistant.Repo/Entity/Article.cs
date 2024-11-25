@@ -17,6 +17,8 @@ public partial class Article
 
     public DateOnly? ModerateDate { get; set; }
 
+    public virtual ICollection<ArticleBody> ArticleBodies { get; set; } = new List<ArticleBody>();
+
     public virtual ICollection<ArticleImage> ArticleImages { get; set; } = new List<ArticleImage>();
 
     public virtual ICollection<ArticleLike> ArticleLikes { get; set; } = new List<ArticleLike>();

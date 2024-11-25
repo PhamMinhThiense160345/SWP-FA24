@@ -13,5 +13,7 @@ public partial class MembershipTier
 
     public decimal? DiscountRate { get; set; }
 
+    public virtual ICollection<DiscountHistory> DiscountHistories { get; set; } = new List<DiscountHistory>();
+
     public virtual ICollection<UserMembership> UserMemberships { get; set; } = new List<UserMembership>();
 }

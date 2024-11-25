@@ -25,6 +25,14 @@ public partial class Order
 
     public string? Note { get; set; }
 
+    public string? PhoneNumber { get; set; }
+
+    public string? ReceiverName { get; set; }
+
+    public decimal? DiscountRate { get; set; }
+
+    public decimal? DiscountPrice { get; set; }
+
     public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();

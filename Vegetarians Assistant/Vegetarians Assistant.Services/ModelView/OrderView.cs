@@ -27,5 +27,13 @@ namespace Vegetarians_Assistant.Services.ModelView
         public DateTime? OrderDate { get; set; }
         
         public string? Status { get; set; }
+
+        public string? PhoneNumber { get; set; }
+
+        public string? ReceiverName { get; set; }
+
+        public decimal? DiscountRate { get; set; }
+
+        public decimal? DiscountPrice { get; set; }
     }
 }

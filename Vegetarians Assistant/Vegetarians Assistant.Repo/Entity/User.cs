@@ -43,6 +43,8 @@ public partial class User
 
     public bool? IsEmailVerified { get; set; }
 
+    public virtual ICollection<ArticleBody> ArticleBodies { get; set; } = new List<ArticleBody>();
+
     public virtual ICollection<ArticleLike> ArticleLikes { get; set; } = new List<ArticleLike>();
 
     public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
@@ -52,6 +54,8 @@ public partial class User
     public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
     public virtual DietaryPreference? DietaryPreference { get; set; }
+
+    public virtual ICollection<DiscountHistory> DiscountHistories { get; set; } = new List<DiscountHistory>();
 
     public virtual ICollection<FavoriteDish> FavoriteDishes { get; set; } = new List<FavoriteDish>();
 

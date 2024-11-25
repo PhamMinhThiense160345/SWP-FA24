@@ -17,6 +17,8 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<Article> Articles { get; set; }
 
+    public virtual DbSet<ArticleBody> ArticleBodies { get; set; }
+
     public virtual DbSet<ArticleImage> ArticleImages { get; set; }
 
     public virtual DbSet<ArticleLike> ArticleLikes { get; set; }
@@ -26,6 +28,8 @@ public partial class VegetariansAssistantV3Context : DbContext
     public virtual DbSet<Comment> Comments { get; set; }
 
     public virtual DbSet<DietaryPreference> DietaryPreferences { get; set; }
+
+    public virtual DbSet<DiscountHistory> DiscountHistories { get; set; }
 
     public virtual DbSet<Dish> Dishes { get; set; }
 
@@ -74,40 +78,13 @@ public partial class VegetariansAssistantV3Context : DbContext
     public virtual DbSet<UserMembership> UserMemberships { get; set; }
 
     public virtual DbSet<UsersNutritionCriterion> UsersNutritionCriteria { get; set; }
-    public virtual DbSet<DiscountHistory> DiscountHistories { get; set; }
 
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-    //        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Server=tcp:vegetarianserver.database.windows.net,1433;Initial Catalog=VegetariansAssistantV3;User ID=tripro3214;Password=Kuroko1769;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.UseCollation("Vietnamese_CI_AS");
-
-
-        modelBuilder.Entity<DiscountHistory>(entity =>
-        {
-            entity.HasKey(e => e.DiscountHistoryId).HasName("PK__Discount__ECB254A73D9BC062");
-
-            entity.ToTable("Discount_History");
-
-            entity.Property(e => e.DiscountHistoryId).HasColumnName("discount_history_id");
-            entity.Property(e => e.DiscountRate)
-                .HasColumnType("decimal(3, 2)")
-                .HasColumnName("discount_rate");
-            entity.Property(e => e.ExpirationDate)
-                .HasColumnType("datetime")
-                .HasColumnName("expiration_date");
-            entity.Property(e => e.GrantedDate)
-                .HasColumnType("datetime")
-                .HasColumnName("granted_date");
-            entity.Property(e => e.Status)
-                .HasMaxLength(20)
-                .HasDefaultValue("inactive")
-                .HasColumnName("status");
-            entity.Property(e => e.TierId).HasColumnName("tier_id");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-        });
-  
         modelBuilder.UseCollation("Vietnamese_CI_AS");
 
         modelBuilder.Entity<Article>(entity =>
@@ -128,6 +105,32 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.HasOne(d => d.Author).WithMany(p => p.Articles)
                 .HasForeignKey(d => d.AuthorId)
                 .HasConstraintName("FK__Articles__author__00DF2177");
+        });
+
+        modelBuilder.Entity<ArticleBody>(entity =>
+        {
+            entity.HasKey(e => e.BodyId).HasName("PK__Article___AFB9E73BADBC04D3");
+
+            entity.ToTable("Article_Body");
+
+            entity.Property(e => e.BodyId).HasColumnName("body_id");
+            entity.Property(e => e.ArticleId).HasColumnName("article_id");
+            entity.Property(e => e.Content).HasColumnName("content");
+            entity.Property(e => e.ImageUrl)
+                .HasMaxLength(255)
+                .HasColumnName("image_url");
+            entity.Property(e => e.Position).HasColumnName("position");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Article).WithMany(p => p.ArticleBodies)
+                .HasForeignKey(d => d.ArticleId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Article_B__artic__6F7F8B4B");
+
+            entity.HasOne(d => d.User).WithMany(p => p.ArticleBodies)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Article_B__user___7073AF84");
         });
 
         modelBuilder.Entity<ArticleImage>(entity =>
@@ -222,6 +225,38 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.PreferenceName)
                 .HasMaxLength(50)
                 .HasColumnName("preference_name");
+        });
+
+        modelBuilder.Entity<DiscountHistory>(entity =>
+        {
+            entity.HasKey(e => e.DiscountHistoryId).HasName("PK__Discount__ECB254A73D9BC062");
+
+            entity.ToTable("Discount_History");
+
+            entity.Property(e => e.DiscountHistoryId).HasColumnName("discount_history_id");
+            entity.Property(e => e.DiscountRate)
+                .HasColumnType("decimal(3, 2)")
+                .HasColumnName("discount_rate");
+            entity.Property(e => e.ExpirationDate)
+                .HasColumnType("datetime")
+                .HasColumnName("expiration_date");
+            entity.Property(e => e.GrantedDate)
+                .HasColumnType("datetime")
+                .HasColumnName("granted_date");
+            entity.Property(e => e.Status)
+                .HasMaxLength(20)
+                .HasDefaultValue("inactive")
+                .HasColumnName("status");
+            entity.Property(e => e.TierId).HasColumnName("tier_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+
+            entity.HasOne(d => d.Tier).WithMany(p => p.DiscountHistories)
+                .HasForeignKey(d => d.TierId)
+                .HasConstraintName("FK__Discount___tier___6CA31EA0");
+
+            entity.HasOne(d => d.User).WithMany(p => p.DiscountHistories)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__Discount___user___6BAEFA67");
         });
 
         modelBuilder.Entity<Dish>(entity =>
@@ -663,10 +698,23 @@ public partial class VegetariansAssistantV3Context : DbContext
             entity.Property(e => e.DeliveryFee)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("delivery_fee");
+            entity.Property(e => e.DiscountPrice)
+                .HasColumnType("decimal(10, 2)")
+                .HasColumnName("discount_price");
+            entity.Property(e => e.DiscountRate)
+                .HasColumnType("decimal(5, 2)")
+                .HasColumnName("discount_rate");
             entity.Property(e => e.Note).HasColumnName("note");
             entity.Property(e => e.OrderDate)
                 .HasColumnType("datetime")
                 .HasColumnName("order_date");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("phone_number");
+            entity.Property(e => e.ReceiverName)
+                .HasMaxLength(100)
+                .HasColumnName("receiver_name");
             entity.Property(e => e.Status)
                 .HasMaxLength(255)
                 .IsUnicode(false)

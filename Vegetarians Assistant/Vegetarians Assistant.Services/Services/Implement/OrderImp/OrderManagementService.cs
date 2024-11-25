@@ -106,6 +106,10 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                         Note = order.Note,
                         OrderDate = order.OrderDate,
                         TotalPrice = order.TotalPrice,
+                        DiscountPrice = order.DiscountPrice,
+                        DiscountRate = order.DiscountRate,
+                        PhoneNumber = order.PhoneNumber,
+                        ReceiverName = order.ReceiverName,
                         UserId = order.UserId
                     });
                 }
@@ -138,6 +142,10 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                         Note = order.Note,
                         OrderDate = order.OrderDate,
                         TotalPrice = order.TotalPrice,
+                        DiscountPrice = order.DiscountPrice,
+                        DiscountRate = order.DiscountRate,
+                        PhoneNumber = order.PhoneNumber,
+                        ReceiverName = order.ReceiverName,
                         UserId = order.UserId
                     });
                 }
@@ -245,6 +253,10 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                         Note = order.Note,
                         OrderDate = order.OrderDate,
                         TotalPrice = order.TotalPrice,
+                        DiscountPrice = order.DiscountPrice,
+                        DiscountRate = order.DiscountRate,
+                        PhoneNumber = order.PhoneNumber,
+                        ReceiverName = order.ReceiverName,
                         UserId = order.UserId
                     };
                     orderViews.Add(orderView);
@@ -321,6 +333,10 @@ namespace Vegetarians_Assistant.Services.Services.Implement.OrderImp
                     Note = order.Note,
                     OrderDate = order.OrderDate,
                     TotalPrice = order.TotalPrice,
+                    DiscountPrice = order.DiscountPrice,
+                    DiscountRate = order.DiscountRate,
+                    PhoneNumber = order.PhoneNumber,
+                    ReceiverName = order.ReceiverName,
                     UserId = order.UserId
                 };
 

@@ -853,9 +853,25 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
+    "Method": "GetByUserIdAsync",
+    "RelativePath": "api/v1/discount-history/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
     "Method": "DeactiveAsync",
     "RelativePath": "api/v1/discount-history/deactive/{userId}/{tierId}",
-    "HttpMethod": "GET",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -876,7 +892,7 @@
     "ContainingType": "Vegetarians_Assistant.API.Controllers.DiscountHistoryController",
     "Method": "InactiveAsync",
     "RelativePath": "api/v1/discount-history/inactive/{userId}/{tierId}",
-    "HttpMethod": "GET",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
