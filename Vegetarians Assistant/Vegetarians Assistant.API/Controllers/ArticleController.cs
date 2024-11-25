@@ -162,7 +162,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(new ResponseView(result.Item1, result.Item2));
         }
 
-      //  [Authorize(Roles = "Moderator")]
+        [Authorize(Roles = "Moderator")]
         [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
         public async Task<IActionResult> UpdateArticleStatusByArticleId(int id, [FromQuery] string newStatus)
         {
