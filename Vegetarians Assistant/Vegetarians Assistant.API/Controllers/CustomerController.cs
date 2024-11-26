@@ -272,7 +272,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer")]
+        [Authorize(Roles = "Customer,Moderator")]
         [HttpPut("/api/v1/customers/EditCustomer/membership/changePoint/{userId}/{points}")]
         public async Task<IActionResult> changePoint(int userId, int points)
         {

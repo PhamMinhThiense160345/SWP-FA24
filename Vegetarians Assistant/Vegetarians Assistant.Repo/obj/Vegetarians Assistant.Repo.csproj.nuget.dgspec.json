@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {}
+    "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {}
   },
   "projects": {
-    "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
+    "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+        "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
         "projectName": "Vegetarians Assistant.Repo",
-        "projectPath": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
+        "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj",
+        "packagesPath": "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\",
+        "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Pham Huu Tri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -106,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

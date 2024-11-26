@@ -15,7 +15,7 @@ namespace Vegetarians_Assistant.API.Controllers
             _articleBodyManagementService = articleBodyManagementService;
         }
 
-        //[Authorize(Roles = "Customer,Moderator,Nutritionist")]
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articleBodies/getArticleBodyByArticleId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleBodyView>>> GetArticleBodyByArticleId(int id)
         {
@@ -27,7 +27,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(articleBodyList);
         }
 
-        //[Authorize(Roles = "Customer,Nutritionist")]
+        [Authorize(Roles = "Customer,Nutritionist")]
         [HttpPost("/api/v1/articleBodies/createArticleBody")]
         public async Task<IActionResult> CreateArticleBody([FromBody] ArticleBodyView newArticleBody)
         {
@@ -56,7 +56,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        //[Authorize(Roles = "Nutritionist")]
+        [Authorize(Roles = "Nutritionist")]
         [HttpDelete("/api/v1/articleBodies/deleteArticleBodyByBodyId/{id}")]
         public async Task<IActionResult> DeleteArticleBodyByBodyId(int id)
         {
