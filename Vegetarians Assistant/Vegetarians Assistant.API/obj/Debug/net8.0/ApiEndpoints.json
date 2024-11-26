@@ -133,6 +133,85 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
+    "Method": "CreateArticleBody",
+    "RelativePath": "api/v1/articleBodies/createArticleBody",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newArticleBody",
+        "Type": "Vegetarians_Assistant.Repo.Entity.ArticleBodyView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
+    "Method": "DeleteArticleBodyByBodyId",
+    "RelativePath": "api/v1/articleBodies/deleteArticleBodyByBodyId/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
+    "Method": "GetArticleBodyByArticleId",
+    "RelativePath": "api/v1/articleBodies/getArticleBodyByArticleId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Repo.Entity.ArticleBodyView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
+    "Method": "UpdateArticleBodyByBodyId",
+    "RelativePath": "api/v1/articleBodies/updateArticleBodyByBodyId/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedArticleBody",
+        "Type": "Vegetarians_Assistant.Repo.Entity.ArticleBodyView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleImageController",
     "Method": "CreateArticleImage",
     "RelativePath": "api/v1/articleImages/createArticleImage",

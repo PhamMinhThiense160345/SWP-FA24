@@ -12,6 +12,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Article> ArticleRepository { get; }
         IGenericRepository<ArticleImage> ArticleImageRepository { get; }
         IGenericRepository<ArticleLike> ArticleLikeRepository { get; }
+        IGenericRepository<ArticleBody> ArticleBodyRepository { get; }
         IGenericRepository<Comment> CommentRepository { get; }
         IGenericRepository<CommentImage> CommentImageRepository { get; }
         IGenericRepository<DietaryPreference> DietaryPreferenceRepository { get; }

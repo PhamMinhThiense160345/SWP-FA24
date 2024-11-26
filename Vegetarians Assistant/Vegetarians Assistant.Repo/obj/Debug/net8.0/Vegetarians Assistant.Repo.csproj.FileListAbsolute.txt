@@ -148,3 +148,18 @@ D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegeta
 D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.pdb
 D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.genruntimeconfig.cache
 D:\FPT\Learning\Capstone Project\project\4\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\ref\Vegetarians Assistant.Repo.dll
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\bin\Debug\net8.0\Vegetarians Assistant.Repo.deps.json
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\bin\Debug\net8.0\Vegetarians Assistant.Repo.runtimeconfig.json
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\bin\Debug\net8.0\Vegetarians Assistant.Repo.dll
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\bin\Debug\net8.0\Vegetarians Assistant.Repo.pdb
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.csproj.AssemblyReference.cache
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.GeneratedMSBuildEditorConfig.editorconfig
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.AssemblyInfoInputs.cache
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.AssemblyInfo.cs
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.csproj.CoreCompileInputs.cache
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.sourcelink.json
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.dll
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\refint\Vegetarians Assistant.Repo.dll
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.pdb
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\Vegetarians Assistant.Repo.genruntimeconfig.cache
+C:\FA-24\SWP-FA24\Vegetarians Assistant\Vegetarians Assistant.Repo\obj\Debug\net8.0\ref\Vegetarians Assistant.Repo.dll

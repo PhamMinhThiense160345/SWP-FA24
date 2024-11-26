@@ -15,6 +15,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<Article> _articleRepository;
         private GenericRepository<ArticleImage> _articleImageRepository;
         private GenericRepository<ArticleLike> _articleLikeRepository;
+        private GenericRepository<ArticleBody> _articleBodyRepository;
         private GenericRepository<Comment> _commentRepository;
         private GenericRepository<CommentImage> _commentImageRepository;
         private GenericRepository<DietaryPreference> _dietaryPreferenceRepository;
@@ -62,6 +63,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<Article> ArticleRepository => _articleRepository ?? new GenericRepository<Article>(context);
         public IGenericRepository<ArticleImage> ArticleImageRepository => _articleImageRepository ?? new GenericRepository<ArticleImage>(context);
         public IGenericRepository<ArticleLike> ArticleLikeRepository => _articleLikeRepository ?? new GenericRepository<ArticleLike>(context);
+        public IGenericRepository<ArticleBody> ArticleBodyRepository => _articleBodyRepository ?? new GenericRepository<ArticleBody>(context);
         public IGenericRepository<Comment> CommentRepository => _commentRepository ?? new GenericRepository<Comment>(context);
         public IGenericRepository<CommentImage> CommentImageRepository => _commentImageRepository ?? new GenericRepository<CommentImage>(context);
         public IGenericRepository<DietaryPreference> DietaryPreferenceRepository => _dietaryPreferenceRepository ?? new GenericRepository<DietaryPreference>(context);

@@ -39,6 +39,8 @@ using Vegetarians_Assistant.API.Helpers.AesEncryption;
 using Vegetarians_Assistant.API.Helpers.PayOs;
 using Vegetarians_Assistant.API.Helpers.Encryption;
 using Vegetarians_Assistant.Services.Services.Interface.IArticleLike;
+using Vegetarians_Assistant.Services.Services.Interface.IArticleBody;
+using Vegetarians_Assistant.Services.Services.Implement.ArticleBodyImp;
 using Vegetarians_Assistant.Services.Services.Implement.ArticleLikeImp;
 using Vegetarians_Assistant.Services.Services.Interface.IIngredient;
 using Vegetarians_Assistant.Services.Services.Implement.IngredientImp;
@@ -101,6 +103,7 @@ builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagemen
 builder.Services.AddScoped<ILoginCService, LoginCService>();
 
 builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementService>();
+builder.Services.AddScoped<IArticleBodyManagementService, ArticleBodyManagementService>();
 
 builder.Services.AddScoped<IIngredientManagementService, IngredientManagementService>();
 builder.Services.AddScoped<IInvalidWordService, InvalidWordService>();
