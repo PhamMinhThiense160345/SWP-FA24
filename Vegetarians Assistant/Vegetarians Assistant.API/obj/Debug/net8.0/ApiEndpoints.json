@@ -150,6 +150,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
+    "Method": "DeleteArticleBodyByBodyId",
+    "RelativePath": "api/v1/articleBodies/deleteArticleBodyByBodyId/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleBodyController",
     "Method": "GetArticleBodyByArticleId",
     "RelativePath": "api/v1/articleBodies/getArticleBodyByArticleId/{id}",
     "HttpMethod": "GET",
