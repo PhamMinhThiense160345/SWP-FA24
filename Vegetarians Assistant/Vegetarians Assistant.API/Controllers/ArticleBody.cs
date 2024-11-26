@@ -42,6 +42,21 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-     
+        [HttpPut("/api/v1/articleBodies/updateArticleBodyByBodyId/{id}")]
+        public async Task<IActionResult> UpdateArticleBodyByBodyId(int id, [FromBody] ArticleBodyView updatedArticleBody)
+        {
+            var result = await _articleBodyManagementService.UpdateArticleBodyByBodyId(id, updatedArticleBody);
+            if (result)
+            {
+                return Ok("Update article body success");
+            }
+            else
+            {
+                return NotFound("Article body not found or update failed");
+            }
+        }
+
+        
+
     }
 }
