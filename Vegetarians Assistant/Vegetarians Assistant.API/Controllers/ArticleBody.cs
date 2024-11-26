@@ -42,34 +42,6 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-       // [Authorize(Roles = "Nutritionist")]
-        [HttpPut("/api/v1/articleBodies/updateArticleBodyByBodyId/{id}")]
-        public async Task<IActionResult> UpdateArticleBodyByBodyId(int id, [FromBody] ArticleBodyView updatedArticleBody)
-        {
-            var result = await _articleBodyManagementService.UpdateArticleBodyByBodyId(id, updatedArticleBody);
-            if (result)
-            {
-                return Ok("Update article body success");
-            }
-            else
-            {
-                return NotFound("Article body not found or update failed");
-            }
-        }
-
-        //[Authorize(Roles = "Nutritionist")]
-        [HttpDelete("/api/v1/articleBodies/deleteArticleBodyByBodyId/{id}")]
-        public async Task<IActionResult> DeleteArticleBodyByBodyId(int id)
-        {
-            var result = await _articleBodyManagementService.DeleteArticleBodyByBodyId(id);
-            if (result)
-            {
-                return Ok("Delete article body success");
-            }
-            else
-            {
-                return NotFound("Article body not found or delete failed");
-            }
-        }
+     
     }
 }
