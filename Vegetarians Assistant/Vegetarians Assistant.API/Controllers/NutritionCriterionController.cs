@@ -26,7 +26,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(nutritionCriterionsList);
         }
 
-        [Authorize(Roles = "Nutritionist")]
+        [Authorize(Roles = "Nutritionist, Customer")]
         [HttpGet("/api/v1/nutritionCriterions/getNutritionCriteriaDetailByCriteriaId/{id}")]
         public async Task<ActionResult<NutritionCriterionView>> GetNutritionCriteriaDetailByCriteriaId(int id)
         {
@@ -38,7 +38,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(nutritionCriterionsList);
         }
 
-        [Authorize(Roles = "User, Nutritionist")]
+        [Authorize(Roles = "Customer, Nutritionist")]
         [HttpGet("/api/v1/nutritionCriterions/getUserNutritionCriteriaDetailByUserId/{userId}")]
         public async Task<ActionResult<IEnumerable<UserDetailNutritionCriterionView>>> GetUserNutritionCriteriaByUserId(int userId)
         {
