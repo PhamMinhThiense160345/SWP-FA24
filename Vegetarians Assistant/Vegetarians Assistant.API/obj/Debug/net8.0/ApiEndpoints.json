@@ -1929,6 +1929,27 @@
     ]
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "UpdateShippingByOrderId",
+    "RelativePath": "api/v1/Shipping/updateShipping/{orderId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedShipping",
+        "Type": "Vegetarians_Assistant.Repo.Entity.ShippingView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",

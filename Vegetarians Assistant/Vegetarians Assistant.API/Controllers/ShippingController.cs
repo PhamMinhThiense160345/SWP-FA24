@@ -48,5 +48,22 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
      
+       
+       // [Authorize(Roles = "Admin")]
+        [HttpPut("updateShipping/{orderId}")]
+        public async Task<IActionResult> UpdateShippingByOrderId(int orderId, [FromBody] ShippingView updatedShipping)
+        {
+            var result = await _shippingManagementService.UpdateShippingByOrderId(orderId, updatedShipping);
+            if (result)
+            {
+                return Ok("Update shipping success");
+            }
+            else
+            {
+                return NotFound("Shipping not found or update failed");
+            }
+        }
+
+
     }
 }
