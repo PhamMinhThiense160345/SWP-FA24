@@ -1903,6 +1903,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "GetShippingByOrderId",
+    "RelativePath": "api/v1/Shipping/getShippingByOrderId/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Repo.Entity.ShippingView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",

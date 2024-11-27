@@ -35,5 +35,18 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
 
+        // [Authorize(Roles = "Customer,Admin")]
+        [HttpGet("getShippingByOrderId/{orderId}")]
+        public async Task<ActionResult<ShippingView>> GetShippingByOrderId(int orderId)
+        {
+            var shipping = await _shippingManagementService.GetShippingByOrderId(orderId);
+            if (shipping == null)
+            {
+                return NotFound("Shipping not found");
+            }
+            return Ok(shipping);
+        }
+
+     
     }
 }
