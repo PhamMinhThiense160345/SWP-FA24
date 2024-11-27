@@ -71,7 +71,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer,Moderator")]
+        [Authorize(Roles = "Customer,Moderator,Nutritionist")]
         [HttpGet("/api/v1/articles/getArticleByAuthorId/{id}")]
         public async Task<ActionResult<IEnumerable<ArticleView>>> GetArticleByAuthorId(int id)
         {

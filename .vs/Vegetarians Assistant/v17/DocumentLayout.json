@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\customer\\customermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\customer\\customermanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\articlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\articlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,28 +38,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "ViewState": "AgIAADgBAAAAAAAAAAAcwFIBAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T06:29:01.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CustomerManagementService.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Customer\\CustomerManagementService.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Customer\\CustomerManagementService.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Customer\\CustomerManagementService.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Customer\\CustomerManagementService.cs",
-              "ViewState": "AgIAAO8EAAAAAAAAAAAAAPYEAAAXAAAAAAAAAA==",
+              "Title": "ArticleController.cs",
+              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAEkAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T06:25:05.871Z",
+              "WhenOpened": "2024-11-27T11:30:28.222Z",
               "EditorCaption": ""
             }
           ]
