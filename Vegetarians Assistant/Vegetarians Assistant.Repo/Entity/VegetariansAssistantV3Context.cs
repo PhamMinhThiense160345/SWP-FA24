@@ -69,6 +69,8 @@ public partial class VegetariansAssistantV3Context : DbContext
 
     public virtual DbSet<Role> Roles { get; set; }
 
+    public virtual DbSet<Shipping> Shippings { get; set; }
+
     public virtual DbSet<TotalNutritionDish> TotalNutritionDishes { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -802,6 +804,36 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("role_name");
+        });
+
+        modelBuilder.Entity<Shipping>(entity =>
+        {
+            entity.HasKey(e => e.ShippingId).HasName("PK__Shipping__059B15A92CC167A8");
+
+            entity.Property(e => e.ShippingId).HasColumnName("shipping_id");
+            entity.Property(e => e.DeliveryTime)
+                .HasColumnType("datetime")
+                .HasColumnName("delivery_time");
+            entity.Property(e => e.FailureReason).HasColumnName("failure_reason");
+            entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.PhoneNumber)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("phone_number");
+            entity.Property(e => e.PickupTime)
+                .HasColumnType("datetime")
+                .HasColumnName("pickup_time");
+            entity.Property(e => e.ShipperName)
+                .HasMaxLength(100)
+                .HasColumnName("shipper_name");
+            entity.Property(e => e.TransportCompany)
+                .HasMaxLength(100)
+                .HasColumnName("transport_company");
+
+            entity.HasOne(d => d.Order).WithMany(p => p.Shippings)
+                .HasForeignKey(d => d.OrderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Shippings__order__762C88DA");
         });
 
         modelBuilder.Entity<TotalNutritionDish>(entity =>
