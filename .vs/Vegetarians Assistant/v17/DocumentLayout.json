@@ -1,7 +1,120 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\FA-24\\SWP-FA24\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\shippingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\shippingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\shipping\\shippingmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\shipping\\shippingmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\interface\\shipping\\ishippingmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\interface\\shipping\\ishippingmanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\mapper\\mapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\mapper\\mapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articlebody\\articlebodymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articlebody\\articlebodymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\nutritioncriterioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\nutritioncriterioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\interface\\articlebody\\iarticlebodymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\interface\\articlebody\\iarticlebodymanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\articlebody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\articlebody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\repositories\\implement\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\repositories\\implement\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\repositories\\interface\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\repositories\\interface\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\modelview\\shippingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\modelview\\shippingview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articleimageimp\\articleimagemanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articleimageimp\\articleimagemanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\followcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\articlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\articlecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\enum\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\enum\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\repositories\\interface\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\repositories\\interface\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articlelikeimp\\articlelikemanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\articlelikeimp\\articlelikemanagementservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\repositories\\implement\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\repositories\\implement\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\entity\\shipping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\entity\\shipping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\articlelikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\articlelikecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\articleimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\articleimagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\entity\\vegetariansassistantv3context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\entity\\vegetariansassistantv3context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.repo\\entity\\usersnutritioncriterion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9800254C-4B14-4DAF-A254-B7EEE89E1483}|Vegetarians Assistant\\Vegetarians Assistant.Repo\\Vegetarians Assistant.Repo.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.repo\\entity\\usersnutritioncriterion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|c:\\fa-24\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,15 +122,99 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 31,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{873151d0-cf2e-48cc-b4bf-ad0394f6a3c3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:6:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{2456bd12-ecf7-4988-a4a6-67d49173f565}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:141:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:143:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:144:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:145:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:146:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:147:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
               "$type": "Bookmark",
@@ -25,11 +222,411 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:5:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ShippingController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ShippingController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ShippingController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ShippingController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ShippingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:15:02.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShippingManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Shipping\\ShippingManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Shipping\\ShippingManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Shipping\\ShippingManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Shipping\\ShippingManagementService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwB8AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:19:08.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IShippingManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Shipping\\IShippingManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Shipping\\IShippingManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Shipping\\IShippingManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\Shipping\\IShippingManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:18:51.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Program.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAHsAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:18:08.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ArticleBodyManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleBody\\ArticleBodyManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleBody\\ArticleBodyManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleBody\\ArticleBodyManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleBody\\ArticleBodyManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:43:23.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NutritionCriterionController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionCriterionController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionCriterionController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionCriterionController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NutritionCriterionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:00:58.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Mapping.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Mapper\\Mapping.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Mapper\\Mapping.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Mapper\\Mapping.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Mapper\\Mapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:16:47.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IArticleBodyManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\ArticleBody\\IArticleBodyManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\ArticleBody\\IArticleBodyManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\ArticleBody\\IArticleBodyManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Interface\\ArticleBody\\IArticleBodyManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:55:22.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ArticleBody.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleBody.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleBody.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleBody.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleBody.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:11:24.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\GenericRepository.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\GenericRepository.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\GenericRepository.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAmwIkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:21:24.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IGenericRepository.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IGenericRepository.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:25:50.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ShippingView.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\ModelView\\ShippingView.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\ModelView\\ShippingView.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\ModelView\\ShippingView.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\ModelView\\ShippingView.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:15:41.286Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ArticleImageManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleImageImp\\ArticleImageManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleImageImp\\ArticleImageManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleImageImp\\ArticleImageManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleImageImp\\ArticleImageManagementService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:55:40.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "FollowController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FollowController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FollowController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FollowController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\FollowController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:54:34.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NotificationController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:54:33.295Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:54:26.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Enum.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Enum\\Enum.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Enum\\Enum.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Enum\\Enum.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Enum\\Enum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:22:11.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IUnitOfWork.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IUnitOfWork.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Interface\\IUnitOfWork.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswCsAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:21:28.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowBgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:00:49.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ArticleController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:11:23.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ArticleLikeManagementService.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleLikeImp\\ArticleLikeManagementService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleLikeImp\\ArticleLikeManagementService.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleLikeImp\\ArticleLikeManagementService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\ArticleLikeImp\\ArticleLikeManagementService.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAADwv1wAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T16:13:00.371Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c93a910a-0fa6-4307-93a4-f2bd61ec7828}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\UnitOfWork.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\UnitOfWork.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Repositories\\Implement\\UnitOfWork.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAYwDMAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:20:49.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Shipping.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\Shipping.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\Shipping.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\Shipping.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\Shipping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:13:38.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ArticleLikeController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleLikeController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleLikeController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleLikeController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleLikeController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:11:27.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ArticleImageController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleImageController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleImageController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleImageController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\ArticleImageController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAuwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:11:21.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "VegetariansAssistantV3Context.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\VegetariansAssistantV3Context.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\VegetariansAssistantV3Context.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\VegetariansAssistantV3Context.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\VegetariansAssistantV3Context.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:31:36.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UsersNutritionCriterion.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\UsersNutritionCriterion.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\UsersNutritionCriterion.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\UsersNutritionCriterion.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Repo\\Entity\\UsersNutritionCriterion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:31:42.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\FA-24\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-27T15:22:15.251Z"
             }
           ]
         },
@@ -39,7 +636,77 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 114,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{f2e84780-2af1-11d1-a7fa-00a0c9110051}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{4a18f9d0-b838-11d0-93eb-00a0c90f2734}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{90243340-bd7a-11d0-93ef-00a0c90f2734}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0504ff91-9d61-11d0-a794-00a0c9110051}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{be4d7042-ba3f-11d2-840e-00c04f9902c1}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{28836128-fc2c-11d2-a433-00c04f72d18a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ecb7191a-597b-41f5-9843-03a4cf275dde}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:8:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:9:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:11:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:10:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             }
           ]
         }

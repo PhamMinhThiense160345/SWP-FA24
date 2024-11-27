@@ -1887,6 +1887,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "CreateShipping",
+    "RelativePath": "api/v1/Shipping/createShipping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newShipping",
+        "Type": "Vegetarians_Assistant.Repo.Entity.ShippingView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
     "Method": "GetUsers",
     "RelativePath": "api/v1/users/alluser",

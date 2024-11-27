@@ -37,6 +37,7 @@ namespace Vegetarians_Assistant.API.Mapper
             CreateMap<ArticleLike, ArticleLikeView>().ReverseMap();
             CreateMap<Ingredient, IngredientInfoView>().ReverseMap();
             CreateMap<DishIngredient, DishIngredientView>().ReverseMap();
+            CreateMap<Shipping, ShippingView>().ReverseMap();
         }
     }
 }

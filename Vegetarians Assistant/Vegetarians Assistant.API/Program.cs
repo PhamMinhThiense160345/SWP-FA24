@@ -48,6 +48,11 @@ using Vegetarians_Assistant.API.Helpers.GoogleMap;
 using Vegetarians_Assistant.API.Helpers.Firebase;
 using Vegetarians_Assistant.Services.Services.Interface.DiscountHistories;
 using Vegetarians_Assistant.Services.Services.Implement.DiscountHistories;
+using Vegetarians_Assistant.Services.Services.Interface;
+
+using Vegetarians_Assistant.Services.Services.Interface.IShipping;
+using Vegetarians_Assistant.Services.Services.Implement.ShippingImp;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -115,6 +120,10 @@ builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
 builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
 builder.Services.AddScoped<IGoogleMapHelper, GoogleMapHelper>();
 builder.Services.AddScoped<IFirebaseHelper, FirebaseHelper>();
+
+builder.Services.AddScoped<IShippingManagementService, ShippingManagementService>();
+
+builder.Services.AddScoped<IGenericRepository<Shipping>, GenericRepository<Shipping>>();
 
 
 // Add AutoMapper

@@ -49,6 +49,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<DishIngredient> _dishIngredientRepository;
         private GenericRepository<InvalidWord> _invalidWordRepository;
         private GenericRepository<DiscountHistory> _discountHistoryRepository;
+        private GenericRepository<Shipping> _shippingRepository;
         public UnitOfWork(VegetariansAssistantV3Context context)
         {
             this.context = context;
@@ -97,6 +98,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<DishIngredient> DishIngredientRepository => _dishIngredientRepository ?? new GenericRepository<DishIngredient>(context);
         public IGenericRepository<InvalidWord> InvalidWordRepository => _invalidWordRepository ?? new GenericRepository<InvalidWord>(context);
         public IGenericRepository<DiscountHistory> DiscountHistoryRepository => _discountHistoryRepository ?? new GenericRepository<DiscountHistory>(context);
+        public IGenericRepository<Shipping> ShippingRepository => _shippingRepository ?? new GenericRepository<Shipping>(context);
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
