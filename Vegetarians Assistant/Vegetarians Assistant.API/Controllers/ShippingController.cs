@@ -19,7 +19,7 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
 
-        // [Authorize(Roles = "Admin,Customer")]
+         [Authorize(Roles = "Admin,Customer")]
         [HttpPost("createShipping")]
         public async Task<IActionResult> CreateShipping([FromBody] ShippingView newShipping)
         {
@@ -49,7 +49,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
      
        
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("updateShipping/{orderId}")]
         public async Task<IActionResult> UpdateShippingByOrderId(int orderId, [FromBody] ShippingView updatedShipping)
         {
@@ -66,7 +66,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
 
         
-     //   [Authorize(Roles = "Admin")]
+       [Authorize(Roles = "Admin")]
         [HttpGet("getAllShippings")]
         public async Task<ActionResult<IEnumerable<ShippingView>>> GetAllShippings()
         {
