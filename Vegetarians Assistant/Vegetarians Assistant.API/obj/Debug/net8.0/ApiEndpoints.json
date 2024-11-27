@@ -884,8 +884,56 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
-    "Method": "RecommendMenu",
-    "RelativePath": "api/v1/customers/recommendMenu/{userId}",
+    "Method": "RecommendMenuAfternoonSnackForUser",
+    "RelativePath": "api/v1/customers/recommendMenuAfternoonSnackForUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RecommendMenuBreakfastForUser",
+    "RelativePath": "api/v1/customers/recommendMenuBreakfastForUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RecommendMenuDinnerForUser",
+    "RelativePath": "api/v1/customers/recommendMenuDinnerForUser/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.CustomerController",
+    "Method": "RecommendMenuLunchForUser",
+    "RelativePath": "api/v1/customers/recommendMenuLunchForUser/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

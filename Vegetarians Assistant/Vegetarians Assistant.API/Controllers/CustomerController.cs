@@ -181,17 +181,79 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Customer")]
-        [HttpGet("/api/v1/customers/recommendMenu/{userId}")]
-        public async Task<IActionResult> RecommendMenu(int userId)
+        [HttpGet("/api/v1/customers/recommendMenuBreakfastForUser/{userId}")]
+        public async Task<IActionResult> RecommendMenuBreakfastForUser(int userId)
         {
             try
             {
-                // Gọi hàm RecommendMenuForUser từ service
-                var menu = await _customerManagementService.RecommendMenuForUser(userId);
+                var menu = await _customerManagementService.RecommendMenuBreakfastForUser(userId);
 
                 if (menu == null || !menu.Any())
                 {
-                    return NotFound("Không tìm thấy món ăn phù hợp cho người dùng.");
+                    return NotFound("Không tìm thấy menu bữa sáng phù hợp cho người dùng.");
+                }
+
+                return Ok(menu);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi khi đề xuất menu cho người dùng: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/recommendMenuLunchForUser/{userId}")]
+        public async Task<IActionResult> RecommendMenuLunchForUser(int userId)
+        {
+            try
+            {
+                var menu = await _customerManagementService.RecommendMenuLunchForUser(userId);
+
+                if (menu == null || !menu.Any())
+                {
+                    return NotFound("Không tìm thấy menu bữa trưa phù hợp cho người dùng.");
+                }
+
+                return Ok(menu);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi khi đề xuất menu cho người dùng: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/recommendMenuAfternoonSnackForUser/{userId}")]
+        public async Task<IActionResult> RecommendMenuAfternoonSnackForUser(int userId)
+        {
+            try
+            {
+                var menu = await _customerManagementService.RecommendMenuAfternoonSnackForUser(userId);
+
+                if (menu == null || !menu.Any())
+                {
+                    return NotFound("Không tìm thấy menu bữa ăn nhẹ chiều phù hợp cho người dùng.");
+                }
+
+                return Ok(menu);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Lỗi khi đề xuất menu cho người dùng: {ex.Message}");
+            }
+        }
+
+        [Authorize(Roles = "Customer")]
+        [HttpGet("/api/v1/customers/recommendMenuDinnerForUser/{userId}")]
+        public async Task<IActionResult> RecommendMenuDinnerForUser(int userId)
+        {
+            try
+            {
+                var menu = await _customerManagementService.RecommendMenuDinnerForUser(userId);
+
+                if (menu == null || !menu.Any())
+                {
+                    return NotFound("Không tìm thấy menu bữa tối phù hợp cho người dùng.");
                 }
 
                 return Ok(menu);
@@ -272,7 +334,7 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
-        [Authorize(Roles = "Customer,Moderator")]
+        [Authorize(Roles = "Customer,Moderator,Staff")]
         [HttpPut("/api/v1/customers/EditCustomer/membership/changePoint/{userId}/{points}")]
         public async Task<IActionResult> changePoint(int userId, int points)
         {
