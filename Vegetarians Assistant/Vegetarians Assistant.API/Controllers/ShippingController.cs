@@ -65,5 +65,17 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
 
+        
+     //   [Authorize(Roles = "Admin")]
+        [HttpGet("getAllShippings")]
+        public async Task<ActionResult<IEnumerable<ShippingView>>> GetAllShippings()
+        {
+            var shippings = await _shippingManagementService.GetAllShippings();
+            if (shippings == null || !shippings.Any())
+            {
+                return NotFound("No shippings found");
+            }
+            return Ok(shippings);
+        }
     }
 }

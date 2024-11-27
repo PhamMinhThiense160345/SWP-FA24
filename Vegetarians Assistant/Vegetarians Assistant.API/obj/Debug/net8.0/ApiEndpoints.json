@@ -1904,6 +1904,26 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "GetAllShippings",
+    "RelativePath": "api/v1/Shipping/getAllShippings",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Repo.Entity.ShippingView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
     "Method": "GetShippingByOrderId",
     "RelativePath": "api/v1/Shipping/getShippingByOrderId/{orderId}",
     "HttpMethod": "GET",
