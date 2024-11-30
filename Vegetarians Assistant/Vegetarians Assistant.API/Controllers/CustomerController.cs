@@ -223,27 +223,6 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Customer")]
-        [HttpGet("/api/v1/customers/recommendMenuAfternoonSnackForUser/{userId}")]
-        public async Task<IActionResult> RecommendMenuAfternoonSnackForUser(int userId)
-        {
-            try
-            {
-                var menu = await _customerManagementService.RecommendMenuAfternoonSnackForUser(userId);
-
-                if (menu == null || !menu.Any())
-                {
-                    return NotFound("Không tìm thấy menu bữa ăn nhẹ chiều phù hợp cho người dùng.");
-                }
-
-                return Ok(menu);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest($"Lỗi khi đề xuất menu cho người dùng: {ex.Message}");
-            }
-        }
-
-        [Authorize(Roles = "Customer")]
         [HttpGet("/api/v1/customers/recommendMenuDinnerForUser/{userId}")]
         public async Task<IActionResult> RecommendMenuDinnerForUser(int userId)
         {
