@@ -2040,5 +2040,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/v1/users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginInfo",
+        "Type": "Vegetarians_Assistant.Services.ModelView.LoginView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

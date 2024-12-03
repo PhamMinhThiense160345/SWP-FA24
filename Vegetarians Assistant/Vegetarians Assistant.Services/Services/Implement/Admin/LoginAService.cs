@@ -24,46 +24,55 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             //this._authService = authService;
         }
 
-        //public async Task<UserView?> AuthenticateUser(LoginView loginInfo)
-        //{
-        //    try
-        //    {
-            
-        //        User? user = (await _unitOfWork.UserRepository.FindAsync(
-        //            a => a.Email == loginInfo.Email && a.Password == loginInfo.Password)).FirstOrDefault();
+        public async Task<UserView?> Login(LoginView loginInfo)
+        {
+            try
+            {
+                User? user = (await _unitOfWork.UserRepository.GetAsync(a => a.PhoneNumber == loginInfo.PhoneNumber)).FirstOrDefault();
+                if (user == null || !BCrypt.Net.BCrypt.Verify(loginInfo.Password, user.Password))
+                {
+                    // Trả về null nếu không tìm thấy hoặc mật khẩu không khớp
+                    return null;
+                }
+                //User? user = (await _unitOfWork.UserRepository.GetAsync(a => a.PhoneNumber == loginInfo.PhoneNumber && a.Password == loginInfo.Password)).FirstOrDefault();
+                //if (user == null)
+                //{
+                //    return null;
+                //}
+                var userExisted = (await _unitOfWork.UserRepository.GetAsync(c => c.UserId == user.UserId)).FirstOrDefault();
+                if (userExisted == null)
+                {
+                    return null;
+                }
+                UserView? userView = new UserView()
+                {
+                    UserId = user.UserId,
+                    PhoneNumber = user.PhoneNumber,
+                    Password = user.Password,
+                    ActivityLevel = user.ActivityLevel,
+                    Address = user.Address,
+                    Age = user.Age,
+                    DietaryPreferenceId = user.DietaryPreferenceId,
+                    Email = user.Email,
+                    Gender = user.Gender,
+                    Goal = user.Goal,
+                    Height = user.Height,
+                    ImageUrl = user.ImageUrl,
+                    IsPhoneVerified = user.IsPhoneVerified,
+                    Profession = user.Profession,
+                    RoleId = user.RoleId,
+                    Status = user.Status,
+                    Username = user.Username,
+                    Weight = user.Weight
 
-        //        if (user == null)
-        //        {
-        //            return null;
-        //        }
-
-        //        // Tạo token
-        //        string token = _authService.GenerateToken(user);
-
-        //        // Tạo UserView và gán token
-        //        UserView userView = new UserView()
-        //        {
-        //            UserId = user.UserId,
-        //            Email = user.Email,
-        //            Username = user.Username,
-        //            ActivityLevel = user.ActivityLevel,
-        //            Address = user.Address,
-        //            Age = user.Age,
-        //            Gender = user.Gender,
-        //            Height = user.Height,
-        //            PhoneNumber = user.PhoneNumber,
-        //            Profession = user.Profession,
-        //            Weight = user.Weight,
-
-        //        };
-
-        //        return userView;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi khi xác thực người dùng: {ex.Message}", ex);
-        //    }
-        //}
+                };
+                return userView;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi xác thực người dùng: {ex.Message}", ex);
+            }
+        }
 
         public async Task<bool> IsExistedEmail(string email)
         {

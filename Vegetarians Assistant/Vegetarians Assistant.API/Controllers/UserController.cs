@@ -6,6 +6,8 @@ using Vegetarians_Assistant.Services.Services.Interface.Admin;
 using Vegetarians_Assistant.Services.Services.Implement;
 using Vegetarians_Assistant.Repo.Entity;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Configuration;
+using Vegetarians_Assistant.Services.Tool;
 
 namespace Vegetarians_Assistant.API.Controllers
 {
@@ -15,11 +17,68 @@ namespace Vegetarians_Assistant.API.Controllers
     {
         private readonly ILoginAService _loginAService;
         private readonly IUserManagementService _userManagementService;
+        private readonly IConfiguration _configuration;
 
-        public UserController(ILoginAService loginAService, IUserManagementService userManagementService)
+        public UserController(ILoginAService loginAService, IUserManagementService userManagementService, IConfiguration configuration)
         {
             _loginAService = loginAService;
             _userManagementService = userManagementService;
+            _configuration = configuration;
+        }
+
+        [HttpPost("/api/v1/users/login")]
+        public async Task<IActionResult> Login([FromBody] LoginView loginInfo)
+        {
+            JWT jwt = new(_configuration);
+            var check = await _loginAService.Login(loginInfo);
+
+            if (check == null)
+            {
+                return NotFound("No account found");
+            }
+            else if (check.Status.Equals("inactive"))
+            {
+                return BadRequest("Your account is baned");
+            }
+            else if (check != null)
+            {
+                string role = check.RoleId switch
+                {
+                    1 => "Admin",
+                    2 => "Staff",
+                    3 => "Customer",
+                    4 => "Moderator",
+                    5 => "Nutritionist",
+                    _ => "User" 
+                };
+                string token = jwt.GenerateJwtToken(loginInfo.PhoneNumber, role);
+                return Ok(new
+                {
+                    Token = token,
+                    User = new
+                    {
+                        check.UserId,
+                        check.Username,
+                        check.Password,
+                        check.PhoneNumber,
+                        check.Email,
+                        check.Address,
+                        check.RoleId,
+                        check.Status,
+                        check.Gender,
+                        check.DietaryPreferenceId,
+                        check.Goal,
+                        check.ActivityLevel,
+                        check.Age,
+                        check.ImageUrl,
+                        check.Height,
+                        check.Weight,
+                        check.Profession,
+                        check.IsPhoneVerified
+                    }
+                });
+            }
+            return BadRequest("Login Failed");
         }
 
         [Authorize(Roles = "Admin, Customer")]

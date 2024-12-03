@@ -181,7 +181,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                 bool status = false;
 
                 newArticle.Status = "pending";
-
+                newArticle.ModerateDate = DateOnly.FromDateTime(DateTime.Now);
                 var article = _mapper.Map<Article>(newArticle);
 
                 await _unitOfWork.ArticleRepository.InsertAsync(article);
@@ -207,7 +207,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
 
                 throw new Exception($"Lỗi khi tạo bài viết: {ex.Message}");
             }
-        }//
+        }
 
         public async Task<bool> CreateArticleByNutritionist(ArticleView newArticle)
         {

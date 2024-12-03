@@ -5048,11 +5048,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj",
+      "projectUniqueName": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj",
       "projectName": "Vegetarians Assistant.API",
-      "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj",
+      "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj",
       "packagesPath": "C:\\Users\\Pham Huu Tri\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.API\\obj\\",
+      "outputPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Pham Huu Tri\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5070,8 +5070,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {
-              "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\Deploy\\Vegetarians-Assistant\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj"
+            "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj": {
+              "projectPath": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj"
             }
           }
         }

@@ -10,7 +10,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Admin
 {
     public interface ILoginAService
     {
-        //Task<UserView?> AuthenticateUser(LoginView loginInfo);
+        Task<UserView?> Login(LoginView loginInfo);
 
         Task<bool> IsExistedEmail(string email);
     }
