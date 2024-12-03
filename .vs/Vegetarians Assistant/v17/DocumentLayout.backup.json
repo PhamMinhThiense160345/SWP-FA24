@@ -7,8 +7,8 @@
       "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp-fa24\\vegetarians assistant\\vegetarians assistant.api\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A06B8E6-7B44-4B45-AD88-86AE933FA660}|Vegetarians Assistant\\Vegetarians Assistant.API\\Vegetarians Assistant.API.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.api\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|d:\\fpt\\learning\\capstone project\\project\\3\\swp-fa24\\vegetarians assistant\\vegetarians assistant.services\\services\\implement\\admin\\loginaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51953488-2C18-4D8B-AAF5-E14A8C509330}|Vegetarians Assistant\\Vegetarians Assistant.Services\\Vegetarians Assistant.Services.csproj|solutionrelative:vegetarians assistant\\vegetarians assistant.services\\services\\implement\\admin\\loginaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -48,22 +48,22 @@
               "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
               "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
               "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA9wDQAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwCQAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T02:14:36.284Z",
+              "WhenOpened": "2024-12-03T02:32:43.721Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CustomerController.cs",
-              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.API\\Controllers\\CustomerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA3AAAAAAAAAA==",
+              "Title": "LoginAService.cs",
+              "DocumentMoniker": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\LoginAService.cs",
+              "RelativeDocumentMoniker": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\LoginAService.cs",
+              "ToolTip": "D:\\FPT\\Learning\\Capstone Project\\project\\3\\SWP-FA24\\Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\LoginAService.cs",
+              "RelativeToolTip": "Vegetarians Assistant\\Vegetarians Assistant.Services\\Services\\Implement\\Admin\\LoginAService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAzwCoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T02:11:53.416Z",
+              "WhenOpened": "2024-12-03T02:30:31.511Z",
               "EditorCaption": ""
             }
           ]

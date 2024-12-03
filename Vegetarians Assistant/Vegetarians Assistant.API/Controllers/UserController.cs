@@ -34,7 +34,7 @@ namespace Vegetarians_Assistant.API.Controllers
 
             if (check == null)
             {
-                return NotFound("No account found");
+                return NotFound("Phone number does not exist");
             }
             else if (check.Status.Equals("inactive"))
             {
