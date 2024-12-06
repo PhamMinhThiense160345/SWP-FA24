@@ -185,6 +185,29 @@ namespace Vegetarians_Assistant.API.Controllers
             }
         }
 
+        [Authorize(Roles = "Nutritionist,Customer")]
+        [HttpPut("/api/v1/articles/updateArticleByArticleId")]
+        public async Task<IActionResult> UpdateArticleByArticleId([FromBody] ArticleInfoView updateArticle)
+        {
+            try
+            {
+                var success = await _articleService.UpdateArticleByArticleId(updateArticle);
+
+                if (success)
+                {
+                    return Ok("Article detail updated successfully");
+                }
+                else
+                {
+                    return NotFound("Article not found or failed to update Article detail");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [Authorize(Roles = "Customer")]
         [HttpDelete("/api/v1/articles/deleteCommentByUserId")]
         public async Task<IActionResult> DeleteCommentByUserId([FromBody] CommentView deleteComment)

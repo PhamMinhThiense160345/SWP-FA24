@@ -320,5 +320,38 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
             }
         }
 
+        public async Task<bool> UpdateArticleByArticleId(ArticleInfoView updateArticle)
+        {
+            try
+            {
+                bool status = false;
+                var article = _mapper.Map<Article>(updateArticle);
+                article.ModerateDate = DateOnly.FromDateTime(DateTime.Now);
+                await _unitOfWork.ArticleRepository.UpdateAsync(article);
+                await _unitOfWork.SaveAsync();
+                var exsitArticle = (await _unitOfWork.ArticleRepository.FindAsync(c => c.ArticleId == updateArticle.ArticleId)).FirstOrDefault();
+
+                if (exsitArticle != null)
+                {
+                    var favo = new Article
+                    {
+                        ArticleId = exsitArticle.ArticleId,
+                        Title = exsitArticle.Title,
+                        Content = exsitArticle.Content,
+                        Status = exsitArticle.Status,
+                        AuthorId = exsitArticle.AuthorId,
+                        ModerateDate = exsitArticle?.ModerateDate,
+                    };
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

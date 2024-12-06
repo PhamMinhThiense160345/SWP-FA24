@@ -22,6 +22,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.IArticle
         Task<bool> CreateArticleByNutritionist(ArticleView newArticle);
         Task<List<ArticleView?>> GetArticleByAuthorId(int id);
         Task<bool> DeleteCommentByUserId(CommentView deleteFavorite);
+        Task<bool> UpdateArticleByArticleId(ArticleInfoView updateArticle);
 
     }
 

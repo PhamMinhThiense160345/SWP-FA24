@@ -482,6 +482,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
+    "Method": "UpdateArticleByArticleId",
+    "RelativePath": "api/v1/articles/updateArticleByArticleId",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateArticle",
+        "Type": "Vegetarians_Assistant.Services.ModelView.ArticleInfoView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "UpdateArticleStatusByArticleId",
     "RelativePath": "api/v1/articles/updateArticleStatusByArticleId/{id}",
     "HttpMethod": "PUT",
