@@ -301,6 +301,40 @@ namespace Vegetarians_Assistant.Services.Services.Implement.DishImp
             }
         }
 
+        public async Task<bool> CreateDish(DishView newDish)
+        {
+            try
+            {
+                bool status = false;
+                newDish.Status = "active";
+                var dish = _mapper.Map<Dish>(newDish);
+
+                var exitsDish = (await _unitOfWork.DishRepository.FindAsync(a => a.Name == newDish.Name)).FirstOrDefault();
+
+                if (exitsDish == null)
+                {
+                    await _unitOfWork.DishRepository.InsertAsync(dish);
+                    await _unitOfWork.SaveAsync();
+                    status = true;
+                }
+                else
+                {
+                    return false;
+                }
+                return status;
+            }
+            catch (Exception ex)
+            {
+                var exitsDish = (await _unitOfWork.DishRepository.FindAsync(a => a.DishId == newDish.DishId)).FirstOrDefault();
+                if (exitsDish != null)
+                {
+                    await _unitOfWork.DishRepository.DeleteAsync(exitsDish);
+                    await _unitOfWork.SaveAsync();
+                }
+                throw new Exception(ex.Message);
+            }
+        }
+
         public async Task<bool> UpdateDishDetailByDishId(DishView updateDish)
         {
             try

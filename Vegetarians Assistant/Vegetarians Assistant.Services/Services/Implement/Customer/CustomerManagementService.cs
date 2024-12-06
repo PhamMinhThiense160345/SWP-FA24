@@ -196,6 +196,7 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Customer
 
         public async Task<UserView?> EditUser(UserView view)
         {
+            view.Password = BCrypt.Net.BCrypt.HashPassword(view.Password);
             var user = _mapper.Map<User>(view);
             if (user != null)
             {

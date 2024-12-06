@@ -1058,6 +1058,22 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
+    "Method": "CreateIngredient",
+    "RelativePath": "api/v1/dishs/createDish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newDish",
+        "Type": "Vegetarians_Assistant.Services.ModelView.DishView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.DishController",
     "Method": "GetDishByDietaryPreferenceId",
     "RelativePath": "api/v1/dishs/getDishByDietaryPreferenceId/{id}",
     "HttpMethod": "GET",
@@ -2068,6 +2084,22 @@
       {
         "Name": "loginInfo",
         "Type": "Vegetarians_Assistant.Services.ModelView.LoginView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.UserController",
+    "Method": "UpdateStaff",
+    "RelativePath": "api/v1/users/updateStaff",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updateStaff",
+        "Type": "Vegetarians_Assistant.Services.ModelView.StaffView",
         "IsRequired": true
       }
     ],

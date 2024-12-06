@@ -105,7 +105,7 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(userDetail);
         }
 
-        [Authorize(Roles = "Admin, Customer")]
+        [Authorize]
         [HttpGet("/api/v1/users/getUserByID/{id}")]
         public async Task<ActionResult<UserView>> GetUserByID(int id)
         {
@@ -142,6 +142,29 @@ namespace Vegetarians_Assistant.API.Controllers
             else
             {
                 return BadRequest("Not correct role");
+            }
+        }
+
+        [Authorize(Roles = "Nutritionist,Admin,Staff,Moderator")]
+        [HttpPut("/api/v1/users/updateStaff")]
+        public async Task<IActionResult> UpdateStaff([FromBody] StaffView updateStaff)
+        {
+            try
+            {
+                var success = await _userManagementService.UpdateStaff(updateStaff);
+
+                if (success)
+                {
+                    return Ok("Staff updated successfully");
+                }
+                else
+                {
+                    return NotFound("Staff not found or failed to update Staff detail");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 

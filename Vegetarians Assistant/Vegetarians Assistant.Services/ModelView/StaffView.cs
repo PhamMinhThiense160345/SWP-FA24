@@ -8,6 +8,7 @@ namespace Vegetarians_Assistant.Services.ModelView
 {
     public class StaffView
     {
+        public int UserId { get; set; }
         public string Username { get; set; } = null!;
 
         public string Password { get; set; } = null!;

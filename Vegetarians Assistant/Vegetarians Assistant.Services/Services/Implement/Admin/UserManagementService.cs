@@ -269,7 +269,28 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Admin
             {
                 throw new Exception(ex.Message);
             }
-
         }
+
+        public async Task<bool> UpdateStaff(StaffView updateStaff)
+        {
+            try
+            {
+                var exitsStaff = (await _unitOfWork.UserRepository.FindAsync(c => c.UserId == updateStaff.UserId)).FirstOrDefault();
+                if (exitsStaff == null)
+                {
+                    return false;
+                }
+                updateStaff.Password = BCrypt.Net.BCrypt.HashPassword(updateStaff.Password);
+                _mapper.Map(updateStaff, exitsStaff);
+                await _unitOfWork.UserRepository.UpdateAsync(exitsStaff);
+                await _unitOfWork.SaveAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

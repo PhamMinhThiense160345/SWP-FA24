@@ -132,6 +132,21 @@ namespace Vegetarians_Assistant.API.Controllers
         }
 
         [Authorize(Roles = "Nutritionist")]
+        [HttpPost("/api/v1/dishs/createDish")]
+        public async Task<IActionResult> CreateIngredient([FromBody] DishView newDish)
+        {
+            bool checkDish = await _dishManagementService.CreateDish(newDish);
+            if (checkDish)
+            {
+                return Ok("Create dish success");
+            }
+            else
+            {
+                return BadRequest("Dish already exists");
+            }
+        }
+
+        [Authorize(Roles = "Nutritionist")]
         [HttpPut("dishs/updateIngredient")]
         public async Task<IActionResult> UpdateIngredientInDish([FromBody] UpdateIngredientView request)
         {

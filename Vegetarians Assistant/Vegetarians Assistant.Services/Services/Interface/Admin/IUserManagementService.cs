@@ -16,5 +16,6 @@ namespace Vegetarians_Assistant.Services.Services.Interface.Admin
         Task<bool> IsExistedEmail(string email);
         Task<bool> IsExistedPhone(string phone);
         Task<bool> IsExistedUserName(string name);
+        Task<bool> UpdateStaff(StaffView updateStaff);
     }
 }
