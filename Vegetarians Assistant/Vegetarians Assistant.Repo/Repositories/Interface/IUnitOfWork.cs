@@ -25,6 +25,8 @@ namespace Vegetarians_Assistant.Repo.Repositories.Interface
         IGenericRepository<Following> FollowingRepository { get; }
         IGenericRepository<HealthRecord> HealthRecordRepository { get; }
         IGenericRepository<MembershipTier> MembershipTierRepository { get; }
+        IGenericRepository<Menu> MenuRepository { get; }
+        IGenericRepository<MenuDish> MenuDishRepository { get; }
         IGenericRepository<Notification> NotificationRepository { get; }
         IGenericRepository<NotificationSetting> NotificationSettingRepository { get; }
         IGenericRepository<NotificationType> NotificationTypeRepository { get; }

@@ -1246,6 +1246,32 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "GetAllDishByMenuId",
+    "RelativePath": "api/v1/favorites/allDishByMenuId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.MenuDishView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
     "Method": "GetAllDishFavoriteByUserId",
     "RelativePath": "api/v1/favorites/allDishFavoriteByUserId/{id}",
     "HttpMethod": "GET",
@@ -1272,6 +1298,48 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "GetAllMenuByUserId",
+    "RelativePath": "api/v1/favorites/allMenuByUserId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Vegetarians_Assistant.Services.ModelView.MenuInfoView",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "CreateDishForFavoriteMenu",
+    "RelativePath": "api/v1/favorites/createDishForFavoriteMenu",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newDish",
+        "Type": "Vegetarians_Assistant.Services.ModelView.MenuDishView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
     "Method": "CreateFavoriteDish",
     "RelativePath": "api/v1/favorites/createFavoriteDish",
     "HttpMethod": "POST",
@@ -1288,6 +1356,38 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "CreateFavoriteMenu",
+    "RelativePath": "api/v1/favorites/createFavoriteMenu",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newFavorite",
+        "Type": "Vegetarians_Assistant.Services.ModelView.MenuView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "DeleteAllDishByMenuId",
+    "RelativePath": "api/v1/favorites/deleteAllDishByMenuId/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
     "Method": "DeleteFavoriteDish",
     "RelativePath": "api/v1/favorites/deleteFavoriteDish",
     "HttpMethod": "DELETE",
@@ -1297,6 +1397,38 @@
       {
         "Name": "newFavorite",
         "Type": "Vegetarians_Assistant.Services.ModelView.FavoriteView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "DeleteMenuByMenuId",
+    "RelativePath": "api/v1/favorites/deleteMenuByMenuId/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.FavoriteController",
+    "Method": "GetLatestMenuByUserId",
+    "RelativePath": "api/v1/favorites/getLatestMenuByUserId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

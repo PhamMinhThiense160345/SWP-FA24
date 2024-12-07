@@ -135,5 +135,183 @@ namespace Vegetarians_Assistant.Services.Services.Implement.Favorite
             }
         }
 
+        public async Task<bool> CreateFavoriteMenu(MenuView newFavorite)
+        {
+            try
+            {
+                bool status = false;
+                var menu = _mapper.Map<Menu>(newFavorite);
+                menu.CreatedAt = DateTime.Now;
+                await _unitOfWork.MenuRepository.InsertAsync(menu);
+                await _unitOfWork.SaveAsync();
+
+                var insertedArticle = await _unitOfWork.MenuRepository.GetByIDAsync(menu.MenuId);
+
+                if (insertedArticle != null)
+                {
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi thêm favorite menu: {ex.Message}");
+            }
+        }
+
+        public async Task<MenuInfoView?> GetLatestMenuByUserId(int id)
+        {
+            try
+            {
+                var menus = await _unitOfWork.MenuRepository.FindAsync(m => m.UserId == id);
+
+                var latestMenu = menus.OrderByDescending(m => m.CreatedAt).FirstOrDefault();
+
+                if (latestMenu != null)
+                {
+                    var menuView = new MenuInfoView
+                    {
+                        MenuId = latestMenu.MenuId,
+                        UserId = latestMenu.UserId,
+                        MenuName = latestMenu.MenuName,
+                        MenuDescription = latestMenu.MenuDescription,
+                        CreatedAt = latestMenu.CreatedAt
+                    };
+                    return menuView;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error while fetching the latest menu: {ex.Message}");
+            }
+        }
+
+        public async Task<List<MenuInfoView?>> GetAllMenuByUserId(int id)
+        {
+
+            try
+            {
+                var favorites = await _unitOfWork.MenuRepository.FindAsync(c => c.UserId == id);
+                var favoriteViews = new List<MenuInfoView>();
+
+                foreach (var favorite in favorites)
+                {
+                    favoriteViews.Add(new MenuInfoView
+                    {
+                        MenuId = favorite.MenuId,
+                        UserId = favorite.UserId,
+                        MenuName = favorite.MenuName,
+                        MenuDescription = favorite.MenuDescription,
+                        CreatedAt = favorite.CreatedAt
+                    });
+                }
+                return favoriteViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> CreateDishForFavoriteMenu(MenuDishView newDish)
+        {
+            try
+            {
+                bool status = false;
+                var menu = _mapper.Map<MenuDish>(newDish);
+                await _unitOfWork.MenuDishRepository.InsertAsync(menu);
+                await _unitOfWork.SaveAsync();
+
+                var insertedArticle = await _unitOfWork.MenuDishRepository.GetByIDAsync(menu.MenuDishId);
+
+                if (insertedArticle != null)
+                {
+                    status = true;
+                }
+
+                return status;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi thêm dish for menu: {ex.Message}");
+            }
+        }
+
+        public async Task<List<MenuDishView?>> GetAllDishByMenuId(int id)
+        {
+
+            try
+            {
+                var favorites = await _unitOfWork.MenuDishRepository.FindAsync(c => c.MenuId == id);
+                var favoriteViews = new List<MenuDishView>();
+
+                foreach (var favorite in favorites)
+                {
+                    favoriteViews.Add(new MenuDishView
+                    {
+                        MenuId = favorite.MenuId,
+                        MenuDishId = favorite.MenuDishId,
+                        DishId = favorite.DishId
+                    });
+                }
+                return favoriteViews;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<bool> DeleteAllDishByMenuId(int id)
+        {
+            try
+            {
+                var favorite = await _unitOfWork.MenuDishRepository.GetAsync(c => c.MenuId == id);
+
+                if (favorite != null)
+                {
+                    foreach (var favorites in favorite)
+                    {
+                        await _unitOfWork.MenuDishRepository.DeleteAsync(favorites);
+                    }
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> DeleteMenuByMenuId(int id)
+        {
+            try
+            {
+                var favorite = await _unitOfWork.MenuRepository.GetByIDAsync(id);
+
+                if (favorite != null)
+                {
+
+                    await _unitOfWork.MenuRepository.DeleteAsync(favorite);
+                    await _unitOfWork.SaveAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

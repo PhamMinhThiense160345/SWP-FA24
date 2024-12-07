@@ -9,7 +9,7 @@ public partial class Menu
 
     public int? UserId { get; set; }
 
-    public string MenuName { get; set; } = null!;
+    public string? MenuName { get; set; }
 
     public string? MenuDescription { get; set; }
 

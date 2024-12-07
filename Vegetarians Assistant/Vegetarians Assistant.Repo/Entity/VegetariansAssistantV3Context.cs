@@ -522,7 +522,6 @@ public partial class VegetariansAssistantV3Context : DbContext
                 .HasColumnName("menu_description");
             entity.Property(e => e.MenuName)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("menu_name");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
@@ -1023,7 +1022,7 @@ public partial class VegetariansAssistantV3Context : DbContext
 
         modelBuilder.Entity<UsersNutritionCriterion>(entity =>
         {
-            entity.HasKey(e => e.UserNutritionCriteriaId).HasName("PK__Users_Nu__06CD70D1B95E818C");
+            entity.HasKey(e => e.UserNutritionCriteriaId).HasName("PK__Users_Nu__06CD70D141C31A6F");
 
             entity.ToTable("Users_Nutrition_Criteria");
 
@@ -1033,11 +1032,11 @@ public partial class VegetariansAssistantV3Context : DbContext
 
             entity.HasOne(d => d.Criteria).WithMany(p => p.UsersNutritionCriteria)
                 .HasForeignKey(d => d.CriteriaId)
-                .HasConstraintName("FK__Users_Nut__crite__3EDC53F0");
+                .HasConstraintName("FK__Users_Nut__crite__79FD19BE");
 
             entity.HasOne(d => d.User).WithMany(p => p.UsersNutritionCriteria)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Users_Nut__user___3DE82FB7");
+                .HasConstraintName("FK__Users_Nut__user___7908F585");
         });
 
         OnModelCreatingPartial(modelBuilder);
