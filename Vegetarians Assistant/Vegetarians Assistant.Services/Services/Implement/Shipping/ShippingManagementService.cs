@@ -1,103 +1,87 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Vegetarians_Assistant.Repo.Entity;
 using Vegetarians_Assistant.Repo.Repositories.Interface;
-using Vegetarians_Assistant.Services.ModelView;
 using Vegetarians_Assistant.Services.Services.Interface.IShipping;
 
-namespace Vegetarians_Assistant.Services.Services.Implement.ShippingImp
+namespace Vegetarians_Assistant.Services.Services.Implement.ShippingImp;
+public class ShippingManagementService(IGenericRepository<Shipping> shippingRepository, IMapper mapper) : IShippingManagementService
 {
-    public class ShippingManagementService : IShippingManagementService
+    private readonly IGenericRepository<Shipping> _shippingRepository = shippingRepository;
+    private readonly IMapper _mapper = mapper;
+
+    public async Task<bool> CreateShipping(ShippingView newShipping)
     {
-        private readonly IGenericRepository<Shipping> _shippingRepository;
-        private readonly IMapper _mapper;
-
-        public ShippingManagementService(IGenericRepository<Shipping> shippingRepository, IMapper mapper)
+        try
         {
-            _shippingRepository = shippingRepository;
-            _mapper = mapper;
+            var shippingEntity = _mapper.Map<Shipping>(newShipping);
+            await _shippingRepository.InsertAsync(shippingEntity);
+            return true;
         }
-
-        // Triển khai phương thức CreateShipping
-        public async Task<bool> CreateShipping(ShippingView newShipping)
+        catch (Exception)
         {
-            try
-            {
-                var shippingEntity = _mapper.Map<Shipping>(newShipping);
-                await _shippingRepository.InsertAsync(shippingEntity);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return false;
         }
+    }
 
-        // Triển khai phương thức UpdateShippingByOrderId
-        public async Task<bool> UpdateShippingByOrderId(int orderId, ShippingView updatedShipping)
+    public async Task<bool> UpdateShippingByTrackingId(long trackingId, ShippingView updatedShipping)
+    {
+        try
         {
-            try
-            {
-                var shipping = await _shippingRepository.FindAsync(s => s.OrderId == orderId);
-                var shippingToUpdate = shipping.FirstOrDefault();
+            var shipping = await _shippingRepository.FindAsync(s => s.TrackingId == trackingId);
+            var shippingToUpdate = shipping.FirstOrDefault();
 
-                if (shippingToUpdate == null)
-                {
-                    return false;
-                }
+            if (shippingToUpdate == null) return false;
 
-                shippingToUpdate.ShipperName = updatedShipping.ShipperName;
-                shippingToUpdate.PhoneNumber = updatedShipping.PhoneNumber;
-                shippingToUpdate.TransportCompany = updatedShipping.TransportCompany;
-                shippingToUpdate.PickupTime = updatedShipping.PickupTime;
-                shippingToUpdate.DeliveryTime = updatedShipping.DeliveryTime;
-                shippingToUpdate.FailureReason = updatedShipping.FailureReason;
+            shippingToUpdate.Status = updatedShipping.Status;
+            shippingToUpdate.StatusText = updatedShipping.StatusText;
+            shippingToUpdate.Created = updatedShipping.Created;
+            shippingToUpdate.Modified = updatedShipping.Modified;
+            shippingToUpdate.Message = updatedShipping.Message;
+            shippingToUpdate.PickDate = updatedShipping.PickDate;
+            shippingToUpdate.DeliverDate = updatedShipping.DeliverDate;
+            shippingToUpdate.CustomerFullname = updatedShipping.CustomerFullname;
+            shippingToUpdate.CustomerTel = updatedShipping.CustomerTel;
+            shippingToUpdate.Address = updatedShipping.Address;
+            shippingToUpdate.ShipMoney = updatedShipping.ShipMoney;
+            shippingToUpdate.Insurance = updatedShipping.Insurance;
+            shippingToUpdate.Value = updatedShipping.Value;
+            shippingToUpdate.PickMoney = updatedShipping.PickMoney;
 
-                await _shippingRepository.UpdateAsync(shippingToUpdate);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            await _shippingRepository.UpdateAsync(shippingToUpdate);
+            return true;
         }
-
-        // Triển khai phương thức GetShippingByOrderId
-        public async Task<ShippingView> GetShippingByOrderId(int orderId)
+        catch (Exception)
         {
-            try
-            {
-                var shipping = await _shippingRepository.FindAsync(s => s.OrderId == orderId);
-                var shippingToReturn = shipping.FirstOrDefault();
-
-                if (shippingToReturn == null)
-                {
-                    return null;  // Nếu không tìm thấy, trả về null
-                }
-
-                return _mapper.Map<ShippingView>(shippingToReturn);
-            }
-            catch (Exception)
-            {
-                return null;  // Nếu có lỗi, trả về null
-            }
+            return false;
         }
+    }
 
-        // Triển khai phương thức GetAllShippings
-        public async Task<IEnumerable<ShippingView>> GetAllShippings()
+    public async Task<ShippingView?> GetShippingByTrackingId(long trackingId)
+    {
+        try
         {
-            try
-            {
-                var allShippings = await _shippingRepository.GetAllAsync();
-                return _mapper.Map<IEnumerable<ShippingView>>(allShippings);
-            }
-            catch (Exception)
-            {
-                return Enumerable.Empty<ShippingView>();  // Nếu có lỗi, trả về một danh sách rỗng
-            }
+            var shipping = await _shippingRepository.FindAsync(s => s.TrackingId == trackingId);
+            var shippingToReturn = shipping.FirstOrDefault();
+
+            if (shippingToReturn == null) return null;
+            return _mapper.Map<ShippingView>(shippingToReturn);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    public async Task<IEnumerable<ShippingView>> GetAllShippings()
+    {
+        try
+        {
+            var allShippings = await _shippingRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<ShippingView>>(allShippings);
+        }
+        catch (Exception)
+        {
+            return Enumerable.Empty<ShippingView>();
         }
     }
 }

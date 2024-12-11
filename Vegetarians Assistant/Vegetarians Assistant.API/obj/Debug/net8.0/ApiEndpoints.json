@@ -2036,15 +2036,31 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
-    "Method": "CreateShipping",
-    "RelativePath": "api/v1/Shipping/createShipping",
+    "Method": "CancelShippingAsync",
+    "RelativePath": "api/v1/shipping/cancel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackingId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "CreateShippingAsync",
+    "RelativePath": "api/v1/shipping/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "newShipping",
-        "Type": "Vegetarians_Assistant.Repo.Entity.ShippingView",
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Helpers.Ghtk.Models.Orders.CreateShippingRequest",
         "IsRequired": true
       }
     ],
@@ -2053,7 +2069,7 @@
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
     "Method": "GetAllShippings",
-    "RelativePath": "api/v1/Shipping/getAllShippings",
+    "RelativePath": "api/v1/shipping/get-all",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2072,8 +2088,8 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
-    "Method": "GetShippingByOrderId",
-    "RelativePath": "api/v1/Shipping/getShippingByOrderId/{orderId}",
+    "Method": "GetAllShippingsByOrder",
+    "RelativePath": "api/v1/shipping/get-all/by-order",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2081,7 +2097,59 @@
       {
         "Name": "orderId",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Repo.Entity.ShippingView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "GetAllShippingsByUser",
+    "RelativePath": "api/v1/shipping/get-all/by-user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Vegetarians_Assistant.Repo.Entity.ShippingView, Vegetarians Assistant.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
+    "Method": "GetShippingByTrackingIdAsync",
+    "RelativePath": "api/v1/shipping/get-by-tracking-id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "trackingId",
+        "Type": "System.Int64",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -2098,21 +2166,16 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ShippingController",
-    "Method": "UpdateShippingByOrderId",
-    "RelativePath": "api/v1/Shipping/updateShipping/{orderId}",
-    "HttpMethod": "PUT",
+    "Method": "TrackShippingAsync",
+    "RelativePath": "api/v1/shipping/track",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "orderId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "updatedShipping",
-        "Type": "Vegetarians_Assistant.Repo.Entity.ShippingView",
-        "IsRequired": true
+        "Name": "trackingId",
+        "Type": "System.Int64",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

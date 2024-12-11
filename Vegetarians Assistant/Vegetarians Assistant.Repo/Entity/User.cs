@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Vegetarians_Assistant.Repo.Entity;
+﻿namespace Vegetarians_Assistant.Repo.Entity;
 
 public partial class User
 {
@@ -84,4 +81,6 @@ public partial class User
     public virtual UserMembership? UserMembership { get; set; }
 
     public virtual ICollection<UsersNutritionCriterion> UsersNutritionCriteria { get; set; } = new List<UsersNutritionCriterion>();
+
+    public virtual ICollection<Shipping> Shippings { get; set; } = new List<Shipping>();
 }

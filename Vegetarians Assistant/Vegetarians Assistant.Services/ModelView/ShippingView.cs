@@ -1,24 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Vegetarians_Assistant.Repo.Entity;
+﻿namespace Vegetarians_Assistant.Repo.Entity;
 
 public partial class ShippingView
 {
-    public int ShippingId { get; set; }
+    public int Id { get; set; }
 
-    public int OrderId { get; set; }
+    public int Status { get; set; }
 
-    public string? ShipperName { get; set; }
+    public string StatusText { get; set; } = null!;
 
-    public string? PhoneNumber { get; set; }
+    public DateTime Created { get; set; }
 
-    public string? TransportCompany { get; set; }
+    public DateTime Modified { get; set; }
 
-    public DateTime? PickupTime { get; set; }
+    public string Message { get; set; } = null!;
 
-    public DateTime? DeliveryTime { get; set; }
+    public DateTime PickDate { get; set; }
 
-    public string? FailureReason { get; set; }
+    public DateTime DeliverDate { get; set; }
 
+    public string CustomerFullname { get; set; } = null!;
+
+    public string CustomerTel { get; set; } = null!;
+
+    public string Address { get; set; } = null!;
+
+    public int ShipMoney { get; set; }
+
+    public int Insurance { get; set; }
+
+    public int Value { get; set; }
+
+    public int PickMoney { get; set; }
+
+    public int? UserId { get; set; }
+
+    public int? OrderId { get; set; }
+
+    public long TrackingId { get; set; }
 }

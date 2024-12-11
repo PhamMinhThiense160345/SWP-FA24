@@ -807,33 +807,52 @@ public partial class VegetariansAssistantV3Context : DbContext
 
         modelBuilder.Entity<Shipping>(entity =>
         {
-            entity.HasKey(e => e.ShippingId).HasName("PK__Shipping__059B15A92CC167A8");
+            entity.HasKey(e => e.Id).HasName("PK__Shipping__3213E83F1F4BE7F9");
 
-            entity.Property(e => e.ShippingId).HasColumnName("shipping_id");
-            entity.Property(e => e.DeliveryTime)
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Address).HasColumnName("address");
+            entity.Property(e => e.Created)
                 .HasColumnType("datetime")
-                .HasColumnName("delivery_time");
-            entity.Property(e => e.FailureReason).HasColumnName("failure_reason");
+                .HasColumnName("created");
+            entity.Property(e => e.CustomerFullname)
+                .HasMaxLength(255)
+                .HasColumnName("customer_fullname");
+            entity.Property(e => e.CustomerTel)
+                .HasMaxLength(50)
+                .HasColumnName("customer_tel");
+            entity.Property(e => e.DeliverDate)
+                .HasColumnType("datetime")
+                .HasColumnName("deliver_date");
+            entity.Property(e => e.Insurance).HasColumnName("insurance");
+            entity.Property(e => e.Message)
+                .HasMaxLength(255)
+                .HasColumnName("message");
+            entity.Property(e => e.Modified)
+                .HasColumnType("datetime")
+                .HasColumnName("modified");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
-            entity.Property(e => e.PhoneNumber)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .HasColumnName("phone_number");
-            entity.Property(e => e.PickupTime)
+            entity.Property(e => e.PickDate)
                 .HasColumnType("datetime")
-                .HasColumnName("pickup_time");
-            entity.Property(e => e.ShipperName)
-                .HasMaxLength(100)
-                .HasColumnName("shipper_name");
-            entity.Property(e => e.TransportCompany)
-                .HasMaxLength(100)
-                .HasColumnName("transport_company");
+                .HasColumnName("pick_date");
+            entity.Property(e => e.PickMoney).HasColumnName("pick_money");
+            entity.Property(e => e.ShipMoney).HasColumnName("ship_money");
+            entity.Property(e => e.Status).HasColumnName("status");
+            entity.Property(e => e.StatusText)
+                .HasMaxLength(255)
+                .HasColumnName("status_text");
+            entity.Property(e => e.TrackingId).HasColumnName("tracking_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Value).HasColumnName("value");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Shippings)
+                 .HasForeignKey(d => d.UserId)
+                 .HasConstraintName("FK__Shippings__user___00AA174D");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Shippings)
                 .HasForeignKey(d => d.OrderId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Shippings__order__762C88DA");
+                .HasConstraintName("FK__Shippings__order__019E3B86");
         });
+
 
         modelBuilder.Entity<TotalNutritionDish>(entity =>
         {

@@ -52,6 +52,7 @@ using Vegetarians_Assistant.Services.Services.Interface;
 
 using Vegetarians_Assistant.Services.Services.Interface.IShipping;
 using Vegetarians_Assistant.Services.Services.Implement.ShippingImp;
+using Vegetarians_Assistant.API.Helpers.Ghtk;
 
 
 
@@ -73,6 +74,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //add Repo
 builder.Services.AddScoped<ArticleRepository>();
 builder.Services.AddScoped<CartRepository>();
+builder.Services.AddHttpClient();
 
 //Add service to the container
 builder.Services.AddScoped<ILoginAService, LoginAService>();
@@ -120,6 +122,7 @@ builder.Services.AddScoped<IEncryptionHelper, EncryptionHelper>();
 builder.Services.AddScoped<IPayOSHelper, PayOSHelper>();
 builder.Services.AddScoped<IGoogleMapHelper, GoogleMapHelper>();
 builder.Services.AddScoped<IFirebaseHelper, FirebaseHelper>();
+builder.Services.AddScoped<IGhtkHelper, GhtkHelper>();
 
 builder.Services.AddScoped<IShippingManagementService, ShippingManagementService>();
 
