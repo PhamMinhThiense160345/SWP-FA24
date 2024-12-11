@@ -216,7 +216,7 @@ namespace Vegetarians_Assistant.Services.Services.Interface.ArticleImp
                 bool status = false;
 
                 newArticle.Status = "accepted";
-
+                newArticle.ModerateDate = DateOnly.FromDateTime(DateTime.Now);
                 var article = _mapper.Map<Article>(newArticle);
 
                 await _unitOfWork.ArticleRepository.InsertAsync(article);
