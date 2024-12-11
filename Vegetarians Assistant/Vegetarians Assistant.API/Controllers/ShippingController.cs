@@ -105,8 +105,47 @@ public class ShippingController(
             return Ok(new ResponseModel(false, ex.Message));
         }
     }
+    [HttpGet("track")]
+    public async Task<IActionResult> TrackShippingAsync([FromQuery] long trackingId)
+    {
+        try
+        {
+            var response = await _ghtkHelper.TrackAsync(trackingId);
+            var orderInfo = response.Content;
 
-    
+            if (orderInfo != null)
+            {
+                var newShipping = new ShippingView()
+                {
+                    Status = orderInfo.Status,
+                    StatusText = orderInfo.StatusText,
+                    Created = orderInfo.Created,
+                    Modified = orderInfo.Modified,
+                    Message = orderInfo.Message,
+                    PickDate = orderInfo.PickDate,
+                    DeliverDate = orderInfo.DeliverDate,
+                    CustomerFullname = orderInfo.CustomerFullname,
+                    CustomerTel = orderInfo.CustomerTel,
+                    Address = orderInfo.Address,
+                    ShipMoney = orderInfo.ShipMoney,
+                    Insurance = orderInfo.Insurance,
+                    Value = orderInfo.Value,
+                    PickMoney = orderInfo.PickMoney,
+                };
+
+                await _shippingManagementService.UpdateShippingByTrackingId(trackingId, newShipping);
+            }
+
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            return Ok(new ResponseModel(false, ex.Message));
+        }
+    }
+
+
+
 
     #region private
     private async Task<List<Product>> MapToItem(List<OrderDetailInfo?> items)
