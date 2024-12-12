@@ -199,6 +199,13 @@ public class ShippingController(
         return Ok(shippings);
     }
 
+    [HttpGet("get-all/by-user")]
+    public async Task<ActionResult<IEnumerable<ShippingView>>> GetAllShippingsByUser([FromQuery] int userId)
+    {
+        var shippings = await _shippingManagementService.GetAllShippings();
+        if (shippings == null || !shippings.Any()) return NotFound("No shippings found");
+        return Ok(shippings.Where(x => x.UserId == userId).ToList());
+    }
 
     #region private
     private async Task<List<Product>> MapToItem(List<OrderDetailInfo?> items)
