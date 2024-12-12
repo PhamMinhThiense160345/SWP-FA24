@@ -191,6 +191,13 @@ public class ShippingController(
         if (shipping == null) return NotFound("Shipping not found");
         return Ok(shipping);
     }
+    [HttpGet("get-all")]
+    public async Task<ActionResult<IEnumerable<ShippingView>>> GetAllShippings()
+    {
+        var shippings = await _shippingManagementService.GetAllShippings();
+        if (shippings == null || !shippings.Any()) return NotFound("No shippings found");
+        return Ok(shippings);
+    }
 
 
     #region private
