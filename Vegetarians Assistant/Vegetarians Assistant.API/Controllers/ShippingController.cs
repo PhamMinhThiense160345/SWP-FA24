@@ -184,7 +184,13 @@ public class ShippingController(
         }
     }
 
-
+    [HttpGet("get-by-tracking-id")]
+    public async Task<ActionResult<ShippingView>> GetShippingByTrackingIdAsync([FromQuery] long trackingId)
+    {
+        var shipping = await _shippingManagementService.GetShippingByTrackingId(trackingId);
+        if (shipping == null) return NotFound("Shipping not found");
+        return Ok(shipping);
+    }
 
 
     #region private
