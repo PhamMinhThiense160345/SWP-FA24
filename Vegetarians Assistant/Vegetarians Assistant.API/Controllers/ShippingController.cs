@@ -207,6 +207,14 @@ public class ShippingController(
         return Ok(shippings.Where(x => x.UserId == userId).ToList());
     }
 
+    [HttpGet("get-all/by-order")]
+    public async Task<ActionResult<IEnumerable<ShippingView>>> GetAllShippingsByOrder([FromQuery] int orderId)
+    {
+        var shippings = await _shippingManagementService.GetAllShippings();
+        if (shippings == null || !shippings.Any()) return NotFound("No shippings found");
+        return Ok(shippings.Where(x => x.OrderId == orderId).ToList());
+    }
+
     #region private
     private async Task<List<Product>> MapToItem(List<OrderDetailInfo?> items)
     {
