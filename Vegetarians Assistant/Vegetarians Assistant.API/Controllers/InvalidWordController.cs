@@ -33,7 +33,14 @@ public class InvalidWordController(IInvalidWordService invalidWordService) : Con
         return Ok(result);
     }
 
-  
+    [HttpDelete("remove")]
+    public async Task<IActionResult> RemoveInvalidWord([FromBody] InValidWordRequest request)
+    {
+        var result = await _invalidWordService.RemoveAsync(request.Content);
+        return Ok(result);
+    }
+
+   
 }
 
 
