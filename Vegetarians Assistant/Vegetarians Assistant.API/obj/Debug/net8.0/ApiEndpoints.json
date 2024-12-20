@@ -292,22 +292,6 @@
   },
   {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
-    "Method": "AddInvalidWord",
-    "RelativePath": "api/v1/articles/add-invalid-word",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "content",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Vegetarians_Assistant.API.Controllers.ArticleController",
     "Method": "GetArticleByRoleId",
     "RelativePath": "api/v1/articles/allArticleByRoleId/{id}",
     "HttpMethod": "GET",
@@ -1695,6 +1679,80 @@
       {
         "Name": "updateIngredient",
         "Type": "Vegetarians_Assistant.Services.ModelView.IngredientInfoView",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.InvalidWordController",
+    "Method": "AddInvalidWord",
+    "RelativePath": "api/v1/invalid-word/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.InValidWordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.InvalidWordController",
+    "Method": "CheckInvalidWord",
+    "RelativePath": "api/v1/invalid-word/check",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.InValidWordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.InvalidWordController",
+    "Method": "GetAllInvalidWord",
+    "RelativePath": "api/v1/invalid-word/getall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.InvalidWordController",
+    "Method": "RemoveInvalidWord",
+    "RelativePath": "api/v1/invalid-word/remove",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.InValidWordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.InvalidWordController",
+    "Method": "UpdateInvalidWord",
+    "RelativePath": "api/v1/invalid-word/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Vegetarians_Assistant.API.Requests.UpdateInvalidWordRequest",
         "IsRequired": true
       }
     ],

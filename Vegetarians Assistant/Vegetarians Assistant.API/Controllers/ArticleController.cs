@@ -155,12 +155,12 @@ namespace Vegetarians_Assistant.API.Controllers
             return Ok(new ResponseView(valid, valid ? "Content is valid." : "Invalid content."));
         }
 
-        [HttpGet("/api/v1/articles/add-invalid-word")]
+        /*[HttpGet("/api/v1/articles/add-invalid-word")]
         public async Task<IActionResult> AddInvalidWord([FromQuery] string content)
         {
             var result = await _invalidWordService.AddAsync(content);
             return Ok(new ResponseView(result.Item1, result.Item2));
-        }
+        }*/
 
         [Authorize(Roles = "Moderator")]
         [HttpPut("/api/v1/articles/updateArticleStatusByArticleId/{id}")]
