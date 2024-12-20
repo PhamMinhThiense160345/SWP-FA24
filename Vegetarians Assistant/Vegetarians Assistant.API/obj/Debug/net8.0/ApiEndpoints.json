@@ -1775,6 +1775,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NotificationController",
+    "Method": "SendNotification",
+    "RelativePath": "api/v1/notifications/send-notification",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "notificationType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "content",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Vegetarians_Assistant.API.Controllers.NotificationController",
+    "Method": "UpdateNotificationSettings",
+    "RelativePath": "api/v1/notifications/update-notification-settings",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "settingName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "isEnabled",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Vegetarians_Assistant.API.Controllers.NutritionCriterionController",
     "Method": "GetAllNutritionCriteria",
     "RelativePath": "api/v1/nutritionCriterions/allNutritionCriteria",

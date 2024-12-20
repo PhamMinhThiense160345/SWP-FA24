@@ -97,6 +97,17 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
             context.Entry(entityToUpdate).State = EntityState.Modified;
             await context.SaveChangesAsync();
         }
+
+        public async Task UpdateRangeAsync(IEnumerable<TEntity> entities)
+        {
+            foreach (var entity in entities)
+            {
+                dbSet.Attach(entity);
+                context.Entry(entity).State = EntityState.Modified;
+            }
+            await context.SaveChangesAsync();
+        }
+
         public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await dbSet.ToListAsync();

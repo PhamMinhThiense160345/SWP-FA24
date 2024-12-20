@@ -53,6 +53,10 @@ using Vegetarians_Assistant.Services.Services.Interface;
 using Vegetarians_Assistant.Services.Services.Interface.IShipping;
 using Vegetarians_Assistant.Services.Services.Implement.ShippingImp;
 using Vegetarians_Assistant.API.Helpers.Ghtk;
+using Vegetarians_Assistant.Services.Services.Implement.Firebase;
+using Vegetarians_Assistant.Services.Services.Implement.NotificationImp;
+using Vegetarians_Assistant.Services.Services.Interface.IFirebase;
+using Vegetarians_Assistant.Services.Services.Interface.INotification;
 
 
 
@@ -108,6 +112,8 @@ builder.Services.AddScoped<INutritionCriterionManagementService, NutritionCriter
 builder.Services.AddScoped<IArticleImageManagementService, ArticleImageManagementService>();
 
 builder.Services.AddScoped<ILoginCService, LoginCService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IFirebaseService, FirebaseService>();
 
 builder.Services.AddScoped<IArticleLikeManagementService, ArticleLikeManagementService>();
 builder.Services.AddScoped<IArticleBodyManagementService, ArticleBodyManagementService>();

@@ -45,6 +45,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         private GenericRepository<TotalNutritionDish> _totalNutritionDishRepository;
         private GenericRepository<UsersNutritionCriterion> _usersNutritionCriterionRepository;
         private GenericRepository<User> _userRepository;
+        private GenericRepository<UserDeviceToken> _userDeviceTokenRepository;
         private GenericRepository<UserMembership> _userMembershipRepository;
         private GenericRepository<Cart> _cartRepository;
         private GenericRepository<Ingredient> _ingredientRepository;
@@ -96,6 +97,7 @@ namespace Vegetarians_Assistant.Repo.Repositories.Implement
         public IGenericRepository<TotalNutritionDish> TotalNutritionDishRepository => _totalNutritionDishRepository ?? new GenericRepository<TotalNutritionDish>(context);
         public IGenericRepository<UsersNutritionCriterion> UsersNutritionCriterionRepository => _usersNutritionCriterionRepository ?? new GenericRepository<UsersNutritionCriterion>(context);
         public IGenericRepository<User> UserRepository => _userRepository ?? new GenericRepository<User>(context);
+        public IGenericRepository<UserDeviceToken> UserDeviceTokenRepository => _userDeviceTokenRepository ?? new GenericRepository<UserDeviceToken>(context);
         public IGenericRepository<UserMembership> UserMembershipRepository => _userMembershipRepository ?? new GenericRepository<UserMembership>(context);
         public IGenericRepository<Cart> CartRepository => _cartRepository ?? new GenericRepository<Cart>(context);
         public IGenericRepository<Ingredient> IngredientRepository => _ingredientRepository ?? new GenericRepository<Ingredient>(context);
