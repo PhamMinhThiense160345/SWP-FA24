@@ -40,7 +40,19 @@ public class InvalidWordController(IInvalidWordService invalidWordService) : Con
         return Ok(result);
     }
 
-   
+    [HttpPut("update")]
+    public async Task<IActionResult> UpdateInvalidWord([FromBody] UpdateInvalidWordRequest request)
+    {
+        var result = await _invalidWordService.UpdateAsync(request.Content, request.NewContent);
+        return Ok(result);
+    }
+
+    [HttpPost("check")]
+    public async Task<IActionResult> CheckInvalidWord([FromBody] InValidWordRequest request)
+    {
+        var valid = await _invalidWordService.IsValidAsync(request.Content);
+        return Ok(new ResponseView(valid, valid ? "Từ hợp lệ." : "Từ không hợp lệ."));
+    }
 }
 
 
